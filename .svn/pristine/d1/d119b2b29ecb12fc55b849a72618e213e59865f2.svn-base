@@ -1,0 +1,12 @@
+<h2>Methods run, sorted chronologically</h2><h3>&gt;&gt; means before, &lt;&lt; means after</h3><p/><br/><em>VerifySignupFromAddToWishlistOnAnyCourseLandingPage</em><p/><small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table border="1">
+<tr><th>Time</th><th>Delta (ms)</th><th>Suite<br>configuration</th><th>Test<br>configuration</th><th>Class<br>configuration</th><th>Groups<br>configuration</th><th>Method<br>configuration</th><th>Test<br>method</th><th>Thread</th><th>Instances</th></tr>
+<tr bgcolor="6ab1ab">  <td>16/08/04 18:08:56</td>   <td>0</td> <td>&nbsp;</td><td>&nbsp;</td><td title="&gt;&gt;DriverTestCase.setUp()[pri:0, instance:com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage@e45f292]">&gt;&gt;setUp</td> 
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>  <td>main@2025864991</td>   <td></td> </tr>
+<tr bgcolor="6ab1ab">  <td>16/08/04 18:12:18</td>   <td>202012</td> <td>&nbsp;</td><td>&nbsp;</td><td title="&lt;&lt;DriverTestCase.tearDown()[pri:0, instance:com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage@e45f292]">&lt;&lt;tearDown</td> 
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>  <td>main@2025864991</td>   <td></td> </tr>
+<tr bgcolor="70999e">  <td>16/08/04 18:09:18</td>   <td>21331</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="VerifySignupFromAddToWishlistOnAnyCourseLandingPage.test_003VerifySignupFromAddToWishlistOnAnyCourseLandingPage()[pri:0, instance:com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage@e45f292]">test_003VerifySignupFromAddToWishlistOnAnyCourseLandingPage</td> 
+  <td>main@2025864991</td>   <td></td> </tr>
+<tr bgcolor="70999e">  <td>16/08/04 18:10:44</td>   <td>107369</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="VerifySignupFromAddToWishlistOnAnyCourseLandingPage.test_012SignInFromAddToWishlistOnAnyCourseLandingPage()[pri:0, instance:com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage@e45f292]">test_012SignInFromAddToWishlistOnAnyCourseLandingPage</td> 
+  <td>main@2025864991</td>   <td></td> </tr>
+</table>

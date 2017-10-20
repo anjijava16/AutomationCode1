@@ -1,0 +1,33 @@
+<h2>Reporter output</h2><table><tr><td>Navigate to the Edureka application url<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Verify Selected Course Page Is Open<br></td></tr>
+<tr><td>Click on Signin<br></td></tr>
+<tr><td>Verify Login is selected as default<br></td></tr>
+<tr><td>click on Sign up link<br></td></tr>
+<tr><td>Sign up user<br></td></tr>
+<tr><td>Verify User Home Page<br></td></tr>
+<tr><td>Verify Data in User Table<br></td></tr>
+<tr><td>Verify Data in User Lead Table<br></td></tr>
+<tr><td>Verify Data in User Course table<br></td></tr>
+<tr><td>Verify Data in User Event Table<br></td></tr>
+<tr><td>Veriy Data in Ambassadors table<br></td></tr>
+<tr><td>Click on Profile Dropdown<br></td></tr>
+<tr><td>Logout from the application.<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Click on Sign in button<br></td></tr>
+<tr><td>Sign in user<br></td></tr>
+<tr><td>Click on Start Learning button<br></td></tr>
+<tr><td>Verify User Page<br></td></tr>
+<tr><td>Click on Course Tab<br></td></tr>
+<tr><td>Verify All Courses page<br></td></tr>
+<tr><td>Click on List view Icon<br></td></tr>
+<tr><td>Select Course From List View<br></td></tr>
+<tr><td>Verify Selected Course Page Is Open<br></td></tr>
+<tr><td>Click on Add To Wishlist Icon<br></td></tr>
+<tr><td>Verify Order Summary Page<br></td></tr>
+<tr><td>Verify Data in user table<br></td></tr>
+<tr><td>Verify Data in User Lead Table<br></td></tr>
+<tr><td>Verify Data in User Course table<br></td></tr>
+<tr><td>Verify Data in User Event Table<br></td></tr>
+<tr><td>Veriy Data in Ambassadors table<br></td></tr>
+</table>

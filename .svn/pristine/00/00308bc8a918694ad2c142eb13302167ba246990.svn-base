@@ -1,0 +1,125 @@
+package com.edureka.util.database;
+
+public final class DatabaseConnInfoHolder {
+	/**
+	 * ConnectionDriver is of format: "oracle.jdbc.driver.OracleDriver"
+	 */
+	private String ConnectionDriver = new String();
+
+	/**
+	 * ConnectionURL is of format:
+	 * "jdbc:oracle:thin:@SVMQCINSDBS001:1521:ASAUTO"
+	 */
+	private String ConnectionUrl = new String();
+
+	/**
+	 * Contains the Database User's Password
+	 */
+	private String DbPassword = new String();
+
+	/**
+	 * Contains the Database Port i.e. the Database Port on which the database
+	 * is open for making connections.
+	 */
+	private String DbPort = new String();
+
+	/**
+	 * Contains the Database SID i.e. the Database Identifier to which the
+	 * application needs to get connected.
+	 */
+	private String DbSid = new String();
+
+	/**
+	 * Contains the Database User i.e. the User Name (Schema Owner name) with
+	 * which the User needs to get Connected.
+	 */
+	private String DbUser = new String();
+
+	/**
+	 * Contains the Host Name i.e. the Server Name where the Database is mounted
+	 * and opened.
+	 */
+	private String HostName = new String();
+
+	public DatabaseConnInfoHolder() {
+		this.ConnectionDriver = "";
+		this.ConnectionUrl = "";
+		this.DbPassword = "";
+		this.DbPort = "";
+		this.DbSid = "";
+		this.DbUser = "";
+		this.HostName = "";
+	}
+
+	public DatabaseConnInfoHolder(final DatabaseConnInfoHolder dbConInfo) {
+		this.ConnectionDriver = dbConInfo.ConnectionDriver;
+		this.ConnectionUrl = dbConInfo.ConnectionUrl;
+		this.DbPassword = dbConInfo.DbPassword;
+		this.DbPort = dbConInfo.DbPort;
+		this.DbSid = dbConInfo.DbSid;
+		this.DbUser = dbConInfo.DbUser;
+		this.HostName = dbConInfo.HostName;
+	}
+
+	public synchronized final String GetConnectionDriver() {
+		return this.ConnectionDriver;
+	}
+
+	public synchronized final String GetConnectionUrl() {
+		return this.ConnectionUrl;
+	}
+
+	public synchronized final String GetDbPassword() {
+		return this.DbPassword;
+	}
+
+	public synchronized final String GetDbPort() {
+		return this.DbPort;
+	}
+
+	public synchronized final String GetDbSid() {
+		return this.DbSid;
+	}
+
+	public synchronized final String GetDbUser() {
+		return this.DbUser;
+	}
+
+	public synchronized final String GetHostName() {
+		return this.HostName;
+	}
+
+	public synchronized final void SetConnectionDriver(
+			final String connectionDriver) {
+		this.ConnectionDriver = connectionDriver;
+	}
+
+	public synchronized final void SetConnectionUrl(final String connectionUrl) {
+		this.ConnectionUrl = connectionUrl;
+	}
+
+	public synchronized final void SetDbPassword(final String dbPassword) {
+		this.DbPassword = dbPassword;
+	}
+
+	public synchronized final void SetDbPort(final int dbPort) {
+		this.DbPort = Integer.toString(dbPort);
+	}
+
+	public synchronized final void SetDbPort(final String dbPort) {
+		this.DbPort = dbPort;
+	}
+
+	public synchronized final void SetDbSid(final String dbSid) {
+		this.DbSid = dbSid;
+	}
+
+	public synchronized final void SetDbUser(final String dbUser) {
+		this.DbUser = dbUser;
+	}
+
+	public synchronized final void SetHostName(final String hostName) {
+		this.HostName = hostName;
+	}
+
+}

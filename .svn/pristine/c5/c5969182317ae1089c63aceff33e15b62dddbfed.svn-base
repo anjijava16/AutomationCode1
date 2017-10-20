@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<HomePage>
+		<PageHeader><![CDATA[//span[@class='webinar-profile-name']]]></PageHeader>
+		<Courses><![CDATA[//div[@class='owl-stage-outer']/div/div]]></Courses>
+	</HomePage>
+	
+	<ProfileDropdown>
+        <UserName><![CDATA[(//span[@class='webinar-profile-name'])[1]]]></UserName>
+        <LTLogout><![CDATA[(//a[text()='Log Out'])[1]]]></LTLogout>
+    </ProfileDropdown>
+    
+</Locators>

@@ -1,0 +1,511 @@
+package com.edureka.paymentProcess;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.AdminAddOfferPage;
+import com.edureka.pages.AdminDashboard;
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.MyProfilePage;
+import com.edureka.pages.OrderSummaryPage;
+import com.edureka.pages.PayPalPage;
+import com.edureka.pages.RazorPayPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class MakePaymentWhenNoneOfOfferPresent extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private UserHomePage userHomePage;
+    private SelectedCoursePage selectedCoursePage;
+    private OrderSummaryPage orderSummaryPage;
+    private SignInModalPage signInModalPage;
+    private RazorPayPage razorPayPage;
+    private MyProfilePage myProfilePage;
+    private PayPalPage payPalPage;
+    private AdminDashboard adminDashboard;
+    private AdminAddOfferPage adminAddOfferPage;
+
+    @Test
+    public void test_013MakePaymentWhenNoneOfOfferPresent() throws Exception {
+
+        try {
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+           // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+           // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+          // Verify LogIn Is Default
+            addLog("Verify LogIn Is Default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // click on Sign up link
+            addLog("click on Sign up link");
+            signInModalPage=signInModalPage.clickSignUp();
+
+            String edurekaDomain = propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            userHomePage= signInModalPage.signUp(UserHomePage.class, edurekaDomain);
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            userHomePage=userHomePage.verifyUserPage();
+
+            // Select Course
+            String courseName = propertyReader.readTestData("BigData&Hadoop");
+            addLog("Select Course" +courseName);
+            selectedCoursePage=dashboardPage.selectCourse(courseName);
+
+            // Verify Selected course should be open.
+            addLog("Verify Selected course should be open");
+            selectedCoursePage=selectedCoursePage.verifySelectedPopularCoursePage(courseName);
+
+            // Click on Enroll Button
+            addLog("Click on Enroll Button");
+            orderSummaryPage=selectedCoursePage.clickOnEnrollButton(OrderSummaryPage.class);
+           
+            // On click of Enroll when none of the offer is present
+             
+            // Verify Order Summary Page
+            addLog("Verify Order Summary Page");
+            orderSummaryPage=orderSummaryPage.verifyPage();
+
+            // Change Currency
+            String currency= propertyReader.readTestData("INRCurrency");
+            addLog("Select currecnt" +currency +" from currnecy table");
+            orderSummaryPage=orderSummaryPage.changeCurrency(currency);
+
+            // Verify total Amount for USD is equal to Net price
+            addLog("verify Total amount");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmountWithoutNetPrice(currency);
+            
+            //
+            String course_Id= propertyReader.readTestData("Course_ID_BigData");
+            String course_Title= propertyReader.readTestData("BigData_Hadoop_Title");
+           // String discountPlan="0";
+            //String freeCourseId=null;
+            orderSummaryPage=orderSummaryPage.dataVerificationInUser_PreOrderTable(course_Id, course_Title, "",currency,"MakePaymentWhenNoneOfOfferPresent","pre_orders");
+       	 
+             // On click of Pay securely(Razorpay) when none of the offer is present:
+             
+            // Click on Razor pay securely button
+            addLog("Click on Razor pay securely button");
+            razorPayPage= orderSummaryPage.clickOnRazorPaySecurelyButton();
+
+            // Verify Razor page
+            addLog("Verify Razor page");
+            razorPayPage=razorPayPage.verifyPage();
+
+            // Click on Net Banking tab
+            addLog("Click on Net Banking tab");
+            razorPayPage=razorPayPage.clickOnNetBankingTab();
+
+            // Select bank
+            String bankName = propertyReader.readTestData("Bank");
+            addLog("Select Bank" +bankName +" from bank table ");
+            razorPayPage=razorPayPage.selectBank(bankName);
+
+            // Click on pay button
+            addLog("Click on pay button");
+            razorPayPage=razorPayPage.clickOnPayButton();
+
+            // Get Parent window Id
+            addLog("Get Parent Window ID");
+            String parentWidnow = getParentWindowHandle();
+
+            // Switch Child Window and Click on Succss button
+            addLog("Switch Child Window and Click on Succss button");
+            switchPreviewWindow();
+            myProfilePage=razorPayPage.clickOnSuccessButton();
+            Thread.sleep(5000);
+            // Switch to Parent Window and verify my Profile page
+            addLog("Switch to Parent Window and verify my Profile page");
+            switchParentWindow(parentWidnow);
+            myProfilePage= myProfilePage.verifyPage();
+
+            // Verify Payment success message
+            addLog("Verify payment success message 'Thank you for making payment !'");
+            myProfilePage= myProfilePage.verifySuccessPaymentMessage();
+
+            // Verify Data in User table
+            addLog("Verify Data in User table");
+            myProfilePage=myProfilePage.dataVerificationInUserTable("2");
+
+            // Verify Data in Pre-Order table
+            addLog("Verify Data in Pre-Order table");
+            
+            String paymentGateway = propertyReader.readTestData("PaymentGatewayRazor");
+            myProfilePage=myProfilePage.dataVerificationInUser_PreOrderTable(course_Id,course_Title,paymentGateway,currency,"MakePaymentWhenNoneOfOfferPresent","pre_orders_RazorPayment");
+
+            // Verify Data in User Course Table
+            String course_Group = propertyReader.readTestData("Course_Group_BigData");
+            String isPaidValue= propertyReader.readTestData("PaidCourses_Is_Paid_Value");
+            addLog("Verify Data in User Course Table");
+            myProfilePage=myProfilePage.dataVerificationInUser_CoursedTable(course_Id, isPaidValue, course_Group);
+
+            // Database verification in Post order table
+            addLog("Database verification in Post order table");
+            myProfilePage=myProfilePage.dataVerificationInUser_PostOrderTable(course_Id,course_Title,paymentGateway,currency);
+            //Verify the Url  on my profile page after payment
+            myProfilePage=myProfilePage.verifyCourseIdInUrl(course_Id);
+            
+            //Data Verification in event table for payment type Razorpay
+            String eventType=propertyReader.readTestData("EventTypeRazorpay");;
+            myProfilePage=myProfilePage.dataVerificationInUser_Events_Table_PaymentType(eventType);
+            
+            // Click on Profile Dropdown
+            String userName = propertyReader.readRunTimeData("UserName");
+            addLog("Click on Profile Dropdown");
+            myProfilePage=myProfilePage.clickOnProfileDropdown(userName);            
+            
+            // Logout from the application
+            addLog("Logout from the application.");
+            dashboardPage = myProfilePage.logout(); 
+            
+            
+            // On click of Pay securely(Paypal) when none of the offer is present
+            
+             
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify LogIn Is Default
+            addLog("Verify LogIn Is Default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // click on Sign up link
+            addLog("click on Sign up link");
+            userHomePage=signInModalPage.loginApp();
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            userHomePage=userHomePage.verifyUserPage();
+
+            // Select Course
+            courseName = propertyReader.readTestData("ApacheSpark&Scala");
+            addLog("Select Course" +courseName);
+            selectedCoursePage=dashboardPage.selectCourse(courseName);
+
+            // Verify Selected course should be open.
+            addLog("Verify Selected course should be open");
+            selectedCoursePage=selectedCoursePage.verifySelectedPopularCoursePage(courseName);
+
+            // Click on Enroll Button
+            addLog("Click on Enroll Button");
+            orderSummaryPage=selectedCoursePage.clickOnEnrollButton(OrderSummaryPage.class);
+            
+            // Verify Order Summary Page
+            addLog("Verify Order Summary Page");
+            orderSummaryPage=orderSummaryPage.verifyPage();
+
+            currency= propertyReader.readTestData("USDCurrency");
+            orderSummaryPage=orderSummaryPage.changeCurrency(currency);
+
+            // Verify total Amount for USD is equal to Net price
+            addLog("Verify total Amount for USD is equal to Net price");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmountWithoutNetPrice(currency);
+
+            // Verify USD Currency Exclusive Of Service Tax
+            addLog("Verify USD Currency Exclusive Of Service Tax");
+            orderSummaryPage=orderSummaryPage.verifyUSDCurrency();
+
+            // Click on Paypal link
+            addLog("Click on Paypal link");
+            payPalPage= orderSummaryPage.clickOnPaypalLink_New();
+
+            // Verify Paypal Page
+            addLog("Verify Paypal Page");
+            payPalPage=payPalPage.verifyPage();
+
+            // Enter Email, Password and Login paypal account
+            addLog("Enter Email, Password and Login paypal account");
+            payPalPage=payPalPage.enterEmailAndPassword();
+
+            // Make payment by clicking on Continue button
+            addLog("Make payment by clicking on Continue button");
+            myProfilePage=payPalPage.clickOnContinueButton();
+
+            // Switch to Parent Window and verify my Profile page
+            addLog("Switch to Parent Window and verify my Profile page");
+            myProfilePage= myProfilePage.verifyPage();
+
+            // Verify Payment success message
+            addLog("Verify payment success message 'Thank you for making payment !'");
+            myProfilePage= myProfilePage.verifySuccessPaymentMessage();
+           
+            //Data Verification in event table for payment type Razorpay
+            eventType=propertyReader.readTestData("EventTypePaypal");;
+            myProfilePage=myProfilePage.dataVerificationInUser_Events_Table_PaymentType(eventType);
+            
+           
+             // On click of Pay securely(CC avenue) when any type of discount with B1S2 is present:
+            
+         // Click on Profile Dropdown
+            userName = propertyReader.readRunTimeData("UserName");
+            addLog("Click on Profile Dropdown");
+            myProfilePage=myProfilePage.clickOnProfileDropdown(userName);            
+            
+            // Logout from the application
+            addLog("Logout from the application.");
+            dashboardPage = myProfilePage.logout(); 
+            
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify LogIn Is Default
+            addLog("Verify LogIn Is Default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+            
+            // Login Application through Admin credentials
+            String email = propertyReader.readApplicationFile("Admin_UserName");
+            String password = propertyReader.readApplicationFile("Admin_Password");
+            addLog("Login Application through Admin credentials");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on Start Learning Course button
+            addLog("Click on Start Learning Course button");
+            userHomePage=signInModalPage.clickStartLearningButton(UserHomePage.class);
+
+            // Verify Admin User Home page
+            addLog("Verify Admin User Home page");
+            userHomePage=userHomePage.verifyAdminUserPage();
+
+            // Click on Profile dropdown
+            userName = propertyReader.readTestData("Admin_UserName");
+            addLog("Click on Profile dropdown");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Select Admin from Prfile Dropdown
+            addLog("Select Admin from Profile dropdown");
+            adminDashboard=userHomePage.selectAdmin();
+
+            // Verify Admin Dashboard
+            addLog("Verify Admin Dashboard");
+            adminDashboard= adminDashboard.verifyAdminDashboard();
+
+            // Select Menu Tab
+            String menuTab = propertyReader.readTestData("Tab_Sales");
+            addLog("Select Menu Tab " +menuTab);
+            adminDashboard=adminDashboard.selectMenuTab(menuTab);
+            
+            // Select Menu Tab
+            String subMenuTab = propertyReader.readTestData("SubMenu_ChangeGateway");
+            addLog("Select Menu Tab " +subMenuTab);
+            adminDashboard=adminDashboard.selectSubMenu(subMenuTab);
+           
+            //Change Payment Gateway
+            String gateway=propertyReader.readTestData("Gateway_CCAvenue");
+            adminAddOfferPage=adminDashboard.changePaymentGateway(gateway);
+            
+            userHomePage=adminAddOfferPage.clickOnLogo();
+            
+            // Click on Profile dropdown
+            addLog("Click on Profile dropdown");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Logout Application
+            addLog("Logout Application");
+            dashboardPage=userHomePage.logout();
+            
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+ 
+            // Verify LogIn Is Default
+            addLog("Verify LogIn Is Default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // click on Sign up link
+            addLog("Login with email and password");
+            userHomePage= signInModalPage.loginApp();
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            userHomePage=userHomePage.verifyUserPage();
+
+            // Select Course
+            courseName = propertyReader.readTestData("Course_DevOps_Certification");
+            addLog("Select Course" +courseName);
+            selectedCoursePage=dashboardPage.selectCourse(courseName);
+
+            // Verify Selected course should be open.
+            addLog("Verify Selected course should be open");
+            selectedCoursePage=selectedCoursePage.verifySelectedPopularCoursePage(courseName);
+
+            // Click on Enroll Button
+            addLog("Click on Enroll Button");
+            orderSummaryPage=selectedCoursePage.clickOnEnrollButton(OrderSummaryPage.class);
+
+            // Verify Order Summary Page
+            addLog("Verify Order Summary Page");
+            orderSummaryPage=orderSummaryPage.verifyPage();
+
+            // Change Currency
+            currency= propertyReader.readTestData("INRCurrency");
+            addLog("Select currecnt" +currency +" from currnecy table");
+            orderSummaryPage=orderSummaryPage.changeCurrency(currency);
+
+            // Click on Razor pay securely button
+            addLog("Click on Razor pay securely button");
+            razorPayPage= orderSummaryPage.clickOnRazorPaySecurelyButton();
+           
+            //Verify elements on CC Avenue page
+            razorPayPage=razorPayPage.verifyCCAvenuePage();
+            
+            //Navigate to url
+            String url=propertyReader.readApplicationFile("Edureka-URL");
+            userHomePage=razorPayPage.navigateToUrl(url);
+            
+            
+            // Click on Profile dropdown
+            addLog("Click on Profile dropdown");
+            userName=propertyReader.readRunTimeData("UserName");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Logout Application
+            addLog("Logout Application");
+            dashboardPage=userHomePage.logout();
+            
+            
+         // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // Login Application through Admin credentials
+            email = propertyReader.readApplicationFile("Admin_UserName");
+            password = propertyReader.readApplicationFile("Admin_Password");
+            addLog("Login Application through Admin credentials");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on Start Learning Course button
+            addLog("Click on Start Learning Course button");
+            userHomePage=signInModalPage.clickStartLearningButton(UserHomePage.class);
+
+            // Verify Admin User Home page
+            addLog("Verify Admin User Home page");
+            userHomePage=userHomePage.verifyAdminUserPage();
+
+            // Click on Profile dropdown
+            userName = propertyReader.readTestData("Admin_UserName");
+            addLog("Click on Profile dropdown");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Select Admin from Prfile Dropdown
+            addLog("Select Admin from Profile dropdown");
+            adminDashboard=userHomePage.selectAdmin();
+
+            // Verify Admin Dashboard
+            addLog("Verify Admin Dashboard");
+            adminDashboard= adminDashboard.verifyAdminDashboard();
+
+            // Select Menu Tab
+            menuTab = propertyReader.readTestData("Tab_Sales");
+            addLog("Select Menu Tab " +menuTab);
+            adminDashboard=adminDashboard.selectMenuTab(menuTab);
+            
+            // Select Menu Tab
+            subMenuTab = propertyReader.readTestData("SubMenu_ChangeGateway");
+            addLog("Select Menu Tab " +subMenuTab);
+            adminDashboard=adminDashboard.selectSubMenu(subMenuTab);
+           
+            //Change Payment Gateway
+            gateway=propertyReader.readTestData("Gateway_Razorpay");
+            adminAddOfferPage=adminDashboard.changePaymentGateway(gateway);
+            
+            userHomePage=adminAddOfferPage.clickOnLogo();         
+                        
+            // Click on Profile dropdown
+            addLog("Click on Profile dropdown");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Logout Application
+            addLog("Logout Application");
+            dashboardPage=userHomePage.logout();
+            
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+ 
+            // Verify LogIn Is Default
+            addLog("Verify LogIn Is Default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // click on Sign up link
+            addLog("Login with email and password");
+            userHomePage= signInModalPage.loginApp();
+            
+            addLog("Click on Profile dropdown");
+            userName = propertyReader.readRunTimeData("UserName");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Select My Profile
+            addLog("Select My Profile");
+            myProfilePage=userHomePage.clickOnMyProfile();
+            
+        }
+        catch (Error e) {
+            captureScreenshot("test_013MakePaymentWhenNoneOfOfferPresent");
+            throw e;
+        } catch (Exception e) {
+            captureScreenshot("test_013MakePaymentWhenNoneOfOfferPresent");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_013MakePaymentWhenNoneOfOfferPresent"})
+    public void test_019BackendDatabaseValidationWhenNoOfferPresent() throws Exception {
+        try {        	
+        	// Verify Data in User table
+            addLog("Verify Data in User table");
+            myProfilePage=myProfilePage.dataVerificationInUserTable("3");
+
+            // Verify Data in Pre-Order table
+            String paymentGateway = propertyReader.readTestData("PaymentGatewayPaypal");
+            String course_Id= propertyReader.readTestData("Course_ID_ApacheSpark&Scala");
+            String course_Title= propertyReader.readTestData("ApacheSpark_Title");
+            String courseName=propertyReader.readTestData("ApacheSpark&Scala");
+            String currency= propertyReader.readTestData("USDCurrency");
+
+            addLog("Verify Data in Pre-Order table");
+            myProfilePage=myProfilePage.dataVerificationInUser_PreOrderTable(course_Id,course_Title,paymentGateway,currency,"MakePaymentWhenNoneOfOfferPresent","pre_orders_PapalPayment");
+
+            // Verify Data in User Course Table
+            String course_Group = propertyReader.readTestData("Course_Group_ApacheSpark&Scala");
+            String isPaidValue= propertyReader.readTestData("PaidCourses_Is_Paid_Value");
+            addLog("Verify Data in User Course Table");
+            myProfilePage=myProfilePage.dataVerificationInUser_CoursedTable(course_Id, isPaidValue, course_Group);
+
+            // Database verification in Post order table
+            addLog("Verify Data in in Post order table");
+           myProfilePage=myProfilePage.dataVerificationInUser_PostOrderTable(course_Id,course_Title,paymentGateway,currency);
+            
+            // Database verification in Post order table
+            addLog("Verify Data in Post order table on the basis of pre order table");
+           myProfilePage=myProfilePage.dataVerificationIn_PostOrderOnTheBasisOfPreOrderTable(course_Id,course_Title,paymentGateway,currency);
+            
+            // Database verification in Post order table
+            addLog("Verify Data in customer records tables");
+            myProfilePage=myProfilePage.dataVerificationIn_CustomerRecordsTable(course_Id,courseName,paymentGateway,currency);                     
+        }
+        catch (final Error e) {
+            captureScreenshot("test_019BackendDatabaseValidationWhenNoOfferPresent");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_019BackendDatabaseValidationWhenNoOfferPresent");
+            throw e;
+        }
+    } 
+}

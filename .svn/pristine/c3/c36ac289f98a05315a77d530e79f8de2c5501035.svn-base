@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//div[@class='ordersummdeatil whitebg clearfix']/div[1]]]></PageHeader>
+	<BTNEnroll><![CDATA[//span[@class='btn btn-primary custbtn']]]></BTNEnroll>
+	<LTWishlst><![CDATA[//i[@class='fa fa-heart-o btn-link']]]></LTWishlst>
+	<BTNPlayVideo><![CDATA[//span[@id='playiconvideo']]]></BTNPlayVideo>
+
+	<QueryBox>
+		<HeaderQueryBox><![CDATA[//div[@id='footer_v2']/div[1]/div/div/span/i]]></HeaderQueryBox>
+		<TBQueryName><![CDATA[//input[@id='inquiry_name']]]></TBQueryName>
+		<TBQueryEmail><![CDATA[//input[@id='inquiry_email']]]></TBQueryEmail>
+		<TBQueryPhNumber><![CDATA[//input[@id='inquiry_mobile']]]></TBQueryPhNumber>
+		<TBInquiry><![CDATA[//input[@id='inquiry_query']]]></TBInquiry>
+		<BTNSubmit><![CDATA[//Button[@id='drop-query-new']]]></BTNSubmit>
+		<MsgSubmitInquiry><![CDATA[//p[contains(text(),'Thanks for inquiring with us.']]]></MsgSubmitInquiry>
+	</QueryBox>
+
+	<Currency>
+		<LTCurrency><![CDATA[//div[@id='web_view']/div/article/span[2]/a]]></LTCurrency>
+		<CurrencyList><![CDATA[//ul[@id='currency-select-item']/li]]></CurrencyList>
+		<BTNApply><![CDATA[//button[text()='Apply']]]></BTNApply>
+		<CurrencyPopUp><![CDATA[//div[@id='country-modal-currency']]]></CurrencyPopUp>
+	</Currency>
+</Locators>

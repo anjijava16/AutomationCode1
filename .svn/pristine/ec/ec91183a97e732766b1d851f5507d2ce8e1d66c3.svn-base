@@ -1,0 +1,25 @@
+#
+#Thu Jul 14 19:55:13 IST 2016
+PhNumberInAlphabets=abcdefghid
+InCorrectPassword=1234567
+Password=1234567PZ
+CorrectEmail=testing@tech.edureka.in
+Table_Name=users
+NotRegisteredEmail=tes_1111Q@tech.edureka
+DataScienceCourse=Data Science
+BlankEmailMessage=Please enter your email id to reset password
+InCorrectEmail=testDAQ@tech.edureka
+ApacheSpark&Sacla=Apache Spark and Sacla
+UserName=userabc
+Query=ABCDEF
+NotRegisteredEmailMessage=This email id is not registered.
+ChangePasswordMessage=Your password has been successfully updated.
+Column_Name=first_name
+NewPassword=1234567
+INRCurrency=INR
+USDCurrency=USD
+PhoneNumber=9897989798
+BigData&Haddop=Big Data and Hadoop
+ErrorMessage=Please enter a valid input.
+ErrorMessageForExistingEmailID=Email address already exists. Please Sign In.
+

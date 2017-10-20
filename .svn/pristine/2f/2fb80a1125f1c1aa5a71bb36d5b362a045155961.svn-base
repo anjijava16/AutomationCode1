@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestSuiteLeadProcess" verbose="1" thread-count="1">
+	<test name="TestSuiteLeadProcess" preserve-order="true">
+		<classes>
+			<class name="com.edureka.leadProcess.SignUpFromAddToWishlistInGridView" />
+			<class name="com.edureka.leadProcess.SingupFromEnrollInListView" />
+			<class name="com.edureka.leadProcess.SingupFromWishListInListView" />
+			<class
+				name="com.edureka.leadProcess.VerifySignInLeadProcessNavigationHeader" />
+			<class
+				name="com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage" />
+			<class name="com.edureka.leadProcess.VerifySignupFromCourseLandingPage" />
+			<class name="com.edureka.leadProcess.VerifySignupFromEnrollOnAnyCourse" />
+			<class name="com.edureka.leadProcess.VerifySignupFromHeaderHomePage" />
+			<class
+				name="com.edureka.leadProcess.VerifySignupFromWatchSampleClassRecording" />
+
+			<class name="com.edureka.leadProcess.CheckForInquiryFromAllCoursePage" />
+			<class name="com.edureka.leadProcess.InquiryFromCourseLandingPage" />
+			<class name="com.edureka.leadProcess.AddToWishListOnAnyCourseLandingPage" />
+			<class name="com.edureka.leadProcess.SignupFromAllCoursesPage" />
+			<class name="com.edureka.leadProcess.WishListInListViewAllCoursePage" />
+			<class name="com.edureka.leadProcess.SignInFromAddToWishListInListViewOnAllCoursesPage" />
+			<class name="com.edureka.leadProcess.SignInFromAddToWishlistOnAnyCourseLandingPage" />
+			<class name="com.edureka.leadProcess.EnrollInListViewAllCoursePage" />
+			<class name="com.edureka.leadProcess.SignInEnrollOnAnyCourse" />
+			<class name="com.edureka.leadProcess.EnrollOnAnyCourseLandingPage" />
+			
+		</classes>
+	</test>
+</suite> 

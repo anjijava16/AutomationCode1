@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestSuiteReferralProcess" verbose="1" thread-count="1">
+	<test name="TestSuiteReferralProcess" preserve-order="true">
+		<classes>
+			<class
+				name="com.edureka.referralProcess.VerifyReferralProcessWhenNoneOfOfferIsPresent" />
+			<class
+				name="com.edureka.referralProcess.IfNoneOfOfferPresentExceptCustomerDiscount" />
+
+			<class
+				name="com.edureka.referralProcess.IfOneExistingUserRefersToAnotherExistingUser" />
+			<class
+				name="com.edureka.referralProcess.ValidateRedeemNowInsideReferralTabTakesYouToAllCoursesPage" />
+			<class
+				name="com.edureka.referralProcess.ValidateTheImagesPresentInsideReferralTab" />
+			<class
+				name="com.edureka.referralProcess.ValidateUserCPurchaseCourseThenUserBGetPointNotA" />
+			<class
+				name="com.edureka.referralProcess.VerifyExisting_Customer_Remind_Earned_CreditInReferral" />
+			<class
+				name="com.edureka.referralProcess.VerifyFriendsReferredInsideReferralTab" />
+			<class
+				name="com.edureka.referralProcess.VerifyNameEmailInUserTableIfUserRegisteredOurWebsite" />
+			<class name="com.edureka.referralProcess.VerifyReferralPopupWindow" />
+			<class name="com.edureka.referralProcess.VerifyReferringFlow" />
+			<class name="com.edureka.referralProcess.VerifyRemindFunctionality" />
+			<class
+				name="com.edureka.referralProcess.VerifyValueOfEnrolmentsNumberInsideReferral" />
+			<class
+				name="com.edureka.referralProcess.AdditionalDisocuntMessageWhenSomeOfferIsPresent" />
+		</classes>
+	</test>
+</suite> 

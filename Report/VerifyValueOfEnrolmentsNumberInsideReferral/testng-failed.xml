@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyValueOfEnrolmentsNumberInsideReferral]">
+  <test name="VerifyValueOfEnrolmentsNumberInsideReferral(failed)">
+    <classes>
+      <class name="com.edureka.referralProcess.VerifyValueOfEnrolmentsNumberInsideReferral">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_014VerifyValueOfEnrolmentsNumberInsideReferral"/>
+        </methods>
+      </class> <!-- com.edureka.referralProcess.VerifyValueOfEnrolmentsNumberInsideReferral -->
+    </classes>
+  </test> <!-- VerifyValueOfEnrolmentsNumberInsideReferral(failed) -->
+</suite> <!-- Failed suite [VerifyValueOfEnrolmentsNumberInsideReferral] -->

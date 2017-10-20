@@ -1,0 +1,107 @@
+package com.edureka.leadProcess;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.util.DriverTestCase;
+
+public class VerifySignupFromAddToWishlistOnAnyCourseLandingPage extends DriverTestCase {
+
+    private DashboardPage dashboardPage;
+    private SelectedCoursePage selectedCoursePage;
+    private SignInModalPage signInModalPage;
+
+    static String course__Id ;
+    static String webSiteAction;
+    static String course_Group;
+    static String isPaidValue;
+    static String campaign_Values;
+    static String level_id;
+    static String event ;
+    static String country;
+    static String campaignSource;
+    static String campaignName;
+    static String campaignMedium;
+
+    @Test
+    public void test_003VerifySignupFromAddToWishlistOnAnyCourseLandingPage() throws Exception {
+
+        try {
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetupForLead();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Select Course From Trending Courses
+            String coursename = propertyReader.readTestData("ApacheSpark&Scala");
+            addLog("Select Course From Trending Courses");
+            selectedCoursePage= dashboardPage.selectCourse(coursename);
+
+            // Verify Selected Course Page Is Open
+            addLog("Verify Selected Course Page Is Open");
+            selectedCoursePage= selectedCoursePage.verifySelectedCoursePage(coursename);
+
+            // Click on Add To Wishlist Icon
+            addLog("Click on Add To Wishlist Icon");
+            signInModalPage= selectedCoursePage.clickOnAddToWishlistIcon(SignInModalPage.class);
+
+            // Sign up user
+            String domainName= propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            selectedCoursePage= signInModalPage.signUp(SelectedCoursePage.class, domainName);
+
+            // Verify User Home Page
+            addLog("Verify sign up successfully");
+            selectedCoursePage=selectedCoursePage.verifySignUpSuccessfully();
+
+            // Verify Data in user table
+            addLog("Verify Data in user table");
+            selectedCoursePage = selectedCoursePage.dataVerificationInUserTable();
+
+            // Verify Data in User Lead Table
+            course__Id = propertyReader.readTestData("Course_ID_ApacheSpark&Scala");
+            webSiteAction = propertyReader.readTestData("HomePage_Signup_WebSite_Action");
+            country= propertyReader.readTestData("CountryIndia");
+            campaignSource= propertyReader.readTestData("LeadCampaignSource");
+            campaignName= propertyReader.readTestData("LeadCampaignName");
+            campaignMedium= propertyReader.readTestData("LeadCampaignMedium");
+            addLog("Verify Data in User Lead Table");
+            selectedCoursePage= selectedCoursePage.dataVerificationInUser_LeadsTable(course__Id,webSiteAction,country,campaignSource, campaignName, campaignMedium);
+
+            // Verify Data in User Event Table
+            campaign_Values= propertyReader.readTestData("LeadCampaignName");
+            String event_Type=propertyReader.readTestData("EventType");
+            addLog("Verify Data in User Event Table");
+            selectedCoursePage= selectedCoursePage.dataVerificationInUser_EventTable(course__Id,webSiteAction,campaign_Values,event_Type);
+
+            // Veriy Data in Ambassadors table
+            level_id = propertyReader.readTestData("HomePage_Signup_level_id");
+            addLog("Veriy Data in Ambassadors table");
+            selectedCoursePage= selectedCoursePage.dataVerificationInUser_AmbassadorsTable(level_id);
+
+
+            // Click on Profile Dropdown
+            String userName = propertyReader.readRunTimeData("UserName");
+            addLog("Click on Profile Dropdown");
+            selectedCoursePage=selectedCoursePage.clickOnProfileDropdown(userName);            
+
+            // Logout from the application
+            addLog("Logout from the application.");
+            dashboardPage = selectedCoursePage.logout();            
+
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test_003VerifySignupFromAddToWishlistOnAnyCourseLandingPage");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_003VerifySignupFromAddToWishlistOnAnyCourseLandingPage");
+            throw e;
+        }
+    }
+}

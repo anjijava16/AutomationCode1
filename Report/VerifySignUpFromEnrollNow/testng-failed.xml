@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifySignUpFromEnrollNow]">
+  <test name="VerifySignUpFromEnrollNow(failed)">
+    <classes>
+      <class name="com.edureka.scripts.VerifySignUpFromEnrollNow">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="afterMainMethod"/>
+          <include name="test_02VerifySignUpFromEnrollNow"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifySignUpFromEnrollNow -->
+    </classes>
+  </test> <!-- VerifySignUpFromEnrollNow(failed) -->
+</suite> <!-- Failed suite [VerifySignUpFromEnrollNow] -->

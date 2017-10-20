@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyReferralPopupWindow]">
+  <test name="VerifyReferralPopupWindow(failed)">
+    <classes>
+      <class name="com.edureka.referralProcess.VerifyReferralPopupWindow">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_006VerifyReferralPopupWindow"/>
+        </methods>
+      </class> <!-- com.edureka.referralProcess.VerifyReferralPopupWindow -->
+    </classes>
+  </test> <!-- VerifyReferralPopupWindow(failed) -->
+</suite> <!-- Failed suite [VerifyReferralPopupWindow] -->

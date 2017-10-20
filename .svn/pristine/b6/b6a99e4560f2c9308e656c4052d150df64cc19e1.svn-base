@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestSuiteRegistrationProcess" verbose="1"
+	thread-count="1">
+	<test name="TestSuiteRegistrationProcess" preserve-order="true">
+		<classes>
+			<class name="com.edureka.registration.VerifySignUpFromNavigationHeader" />
+			<class
+				name="com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty" />
+			<class
+				name="com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets" />
+			<class
+				name="com.edureka.registration.VerifyLoginWithCorrectEmailAndCorrectPassword" />
+			<class
+				name="com.edureka.registration.VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword" />
+			<class name="com.edureka.registration.LoginWithEmailAndWithoutPassword" />
+			<class
+				name="com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank" />
+		</classes>
+	</test>
+</suite> 

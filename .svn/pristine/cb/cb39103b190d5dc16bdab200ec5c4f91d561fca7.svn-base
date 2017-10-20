@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="5" verbose="1" name="BatchTableValidationOnChangeOfTimeZone_Currency"
+    annotations="JDK">
+    <test name="BatchTableValidationOnChangeOfTimeZone_Currency" junit="false"
+        preserve-order="true">
+        <classes>
+            <class name="com.edureka.paymentProcess.BatchTableValidationOnChangeOfTimeZone_Currency" />
+        </classes>
+    </test>
+</suite>

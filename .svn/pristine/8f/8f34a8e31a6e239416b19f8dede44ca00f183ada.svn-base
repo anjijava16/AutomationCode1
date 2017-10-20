@@ -1,0 +1,196 @@
+package com.edureka.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class MyCourses extends DriverHelper{
+
+    private LocatorReader myCourses;
+    private DatabaseVerifications databaseVerification;
+
+    public MyCourses(WebDriver driver) {
+        super(driver);
+        myCourses = new LocatorReader("MyCourses.xml");
+        databaseVerification= new DatabaseVerifications(getWebDriver());
+    }
+
+    /**
+     *  Verify My Courses Page
+     * @return
+     */
+    public MyCourses verifyPage(String myCourseName){
+        String pageHeader = myCourses.getLocator("PageHeader");
+        WaitForElementPresent(pageHeader, getTimeOut());
+        String myCourse = getText(pageHeader);
+        Assert.assertTrue(myCourse.contains(myCourseName));
+        return PageFactory.initElements(driver, MyCourses.class);
+    }
+
+    /**
+     *  Click on Go To Course Tab
+     * @return
+     */
+    public MyCourses clickOnGoToCourse(){
+        String tabGoToCourse = myCourses.getLocator("TabGoToCourse");
+        WaitForElementPresent(tabGoToCourse, getTimeOut());
+        clickOn(tabGoToCourse);
+        return PageFactory.initElements(driver, MyCourses.class);
+    }
+
+    /**
+     *  Verify Course Contents
+     * @return
+     * @throws InterruptedException 
+     */
+    public MyCourses verifyCourseContent() throws InterruptedException{
+        getWebDriver().switchTo().defaultContent();
+        String tabGettingStarted = myCourses.getLocator("CourseContent.TabGettingStarted");
+        WaitForElementPresent(tabGettingStarted, 30);
+        Assert.assertTrue(isElementPresent(tabGettingStarted));
+
+        String ltRefer = myCourses.getLocator("CourseContent.LTRefer");
+        WaitForElementPresent(ltRefer, getTimeOut());
+        if(isElementPresent(ltRefer)){
+            Assert.assertTrue(isElementPresent(ltRefer));
+        }
+        String classRecording = myCourses.getLocator("CourseContent.ClassRecording");
+        WaitForElementPresent(classRecording, getTimeOut());
+        Assert.assertTrue(isElementPresent(classRecording));
+
+        String courseContent = myCourses.getLocator("CourseContent.TabCourseContent");
+        WaitForElementPresent(courseContent, getTimeOut());
+        Assert.assertTrue(isElementPresent(courseContent));
+        return PageFactory.initElements(driver, MyCourses.class);
+    }
+
+    /**
+     *  Play Class Recording video
+     * @return
+     */
+    public MyCourses playClassRecording(){
+        String classRecording = myCourses.getLocator("CourseContent.ClassRecording");
+        WaitForElementPresent(classRecording, getTimeOut());
+        clickOn(classRecording);
+
+        String playButton=myCourses.getLocator("ClassRecording.BTNPlay");
+        WaitForElementVisible(playButton, getTimeOut());
+        clickOn(playButton);
+        return PageFactory.initElements(driver, MyCourses.class);
+    }
+
+    /**
+     *  Verify user is able to play video
+     * @return
+     * @throws InterruptedException
+     */
+    public MyCourses verifyUserAbleToPlay() throws InterruptedException{
+        String videoPause=myCourses.getLocator("ClassRecording.BTNVideoPause");
+        WaitForElementVisible(videoPause, getTimeOut());
+        if(isElementPresent(videoPause)){
+            mouseOver(videoPause);
+            clickOn(videoPause);
+        }
+        String videoPlaying=myCourses.getLocator("ClassRecording.BTNVideoPlaying");
+        WaitForElementVisible(videoPlaying, getTimeOut());
+        Assert.assertTrue(isElementPresent(videoPlaying));
+        clickOn(videoPlaying);
+
+        WaitForElementVisible(videoPause, getTimeOut());
+        Assert.assertTrue(isElementPresent(videoPause));
+        return PageFactory.initElements(driver, MyCourses.class);
+    }
+
+
+    /**
+     *  Verify Data in user Table
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataBaseVerificationInUserTable() throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerificationInUserTable(MyCourses.class);
+        return myCourses;
+    }
+
+
+    /**
+     *  Database verification in Pre_Order table When currency is INR
+     * @param course_Id
+     * @param courseTitle
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataBaseVerificationInUser_PreOrderTableForINR(String course_Id, String courseTitle) throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerificationInPreOrderTableForINR(MyCourses.class, course_Id, courseTitle);
+        return myCourses;
+    }
+
+    /**
+     *  Database verification in Pre_Order table When currency is USD
+     * @param course_Id
+     * @param courseTitle
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataBaseVerificationInUser_PreOrderTableForUSD(String course_Id, String courseTitle) throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerificationInPreOrderTableForUSD(MyCourses.class, course_Id, courseTitle);
+        return myCourses;
+    }
+
+    /**
+     *  Verify Data in User Courses Table
+     * @param courseId
+     * @param isPaidValue
+     * @param courseGroup
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataBaseVerificationInUser_CoursedTable(String courseId, String isPaidValue, String courseGroup) throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerificationInUser_Course_Table(MyCourses.class, courseId, isPaidValue, courseGroup);
+        return myCourses;
+    }
+
+    /**
+     *  Database verification for LMS
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataBaseVerificationForLMS() throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerification_For_LMS(MyCourses.class);
+        return myCourses;
+    }
+
+    /**
+     *  Verify Data in User_Leads Table
+     * @param courseID
+     * @param webSiteAction
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataVerificationInUser_LeadsTable(String courseId, String webSiteAction) throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerificationInUserLeadTable(MyCourses.class, courseId, webSiteAction);
+        return myCourses;
+    }
+
+    /**
+     *  Database verification for Class Recording
+     * @param courseId
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataVerification_For_ClassRecordingVideo(String courseId) throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerification_For_ClassRecordingVideo(MyCourses.class, courseId);
+        return myCourses;
+    }
+
+}

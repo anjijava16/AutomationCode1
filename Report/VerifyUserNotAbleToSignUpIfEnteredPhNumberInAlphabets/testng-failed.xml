@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets]">
+  <test name="VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets(failed)">
+    <classes>
+      <class name="com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_010VerifyClickingHyperlinkOnClickingRedirectToPrivacyPolicyPage"/>
+          <include name="afterMainMethod"/>
+          <include name="test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters"/>
+          <include name="test_005VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets"/>
+          <include name="tearDown"/>
+          <include name="test_007VerifyAllTextBoxesContainsrelevantPlaceholderText"/>
+          <include name="test_011VerifyCrossClosedSignupPopop"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets -->
+    </classes>
+  </test> <!-- VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets(failed) -->
+</suite> <!-- Failed suite [VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets] -->

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyCourseAmountOnOrderSummaryForForeignCurrency]">
+  <test name="VerifyCourseAmountOnOrderSummaryForForeignCurrency(failed)">
+    <classes>
+      <class name="com.edureka.scripts.VerifyCourseAmountOnOrderSummaryForForeignCurrency">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_07VerifyCourseAmountOnOrderSummaryForForeignCurrency"/>
+          <include name="afterMainMethod"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifyCourseAmountOnOrderSummaryForForeignCurrency -->
+    </classes>
+  </test> <!-- VerifyCourseAmountOnOrderSummaryForForeignCurrency(failed) -->
+</suite> <!-- Failed suite [VerifyCourseAmountOnOrderSummaryForForeignCurrency] -->

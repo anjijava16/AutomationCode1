@@ -1,0 +1,1 @@
+ant run-tests-by-pattern -Dmodule=SearchFunctionality -Dbrowser=firefox -Denvironment=Test -Dpattern=

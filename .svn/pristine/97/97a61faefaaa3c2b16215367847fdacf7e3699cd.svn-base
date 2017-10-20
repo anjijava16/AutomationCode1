@@ -1,0 +1,21 @@
+#Login to application with this test data
+
+UserName=userabc
+PhoneNumber=9897989798
+Password=123456789
+Query=ABCDEF
+PhNumberInAlphabets=abcdefghid
+InCorrectPassword=1234567
+
+#Currency
+INRCurrency=INR
+USDCurrency=USD
+
+#Course Names
+BigData&Haddop= Big Data and Hadoop
+ApacheSpark&Sacla=Apache Spark and Sacla
+DataScienceCourse=Data Science
+
+#Database Info
+Table_Name=users
+Column_Name=first_name

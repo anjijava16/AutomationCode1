@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [SignInFromAddToWishlistOnAnyCourseLandingPage]">
+  <test name="SignInFromAddToWishlistOnAnyCourseLandingPage(failed)">
+    <classes>
+      <class name="com.edureka.leadProcess.SignInFromAddToWishlistOnAnyCourseLandingPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_012SignInFromAddToWishlistOnAnyCourseLandingPage"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.SignInFromAddToWishlistOnAnyCourseLandingPage -->
+    </classes>
+  </test> <!-- SignInFromAddToWishlistOnAnyCourseLandingPage(failed) -->
+</suite> <!-- Failed suite [SignInFromAddToWishlistOnAnyCourseLandingPage] -->

@@ -1,0 +1,7 @@
+#set browser type "IE" for Internet explorer, "chrome" for Google chrome and "Firefox" for FireFox browser
+Browser=Firefox
+#application urls
+Edureka-URL=http://test.edureka.in
+
+Time_Out=120
+Page_Load_Time_Out=120

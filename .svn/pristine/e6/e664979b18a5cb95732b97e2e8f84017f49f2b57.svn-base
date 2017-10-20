@@ -1,0 +1,62 @@
+package com.edureka.searchFunctionality;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.AllCoursesPage;
+import com.edureka.pages.DashboardPage;
+import com.edureka.util.DriverTestCase;
+
+public class SearchBasedOnCategory extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private AllCoursesPage allCoursesPage;
+
+    @Test
+    public void test_001SearchBasedOnCategory() throws Exception {
+
+        try {
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Course Tab
+            addLog("Click on Course Tab");
+            allCoursesPage= dashboardPage.clickOnCoursesTab();
+
+            // Verify All Courses page
+            addLog("Verify All Courses page");
+            allCoursesPage= allCoursesPage.verifyAllCoursesPage();
+
+            // Click on View all Link in Search Category
+            addLog("Click on View all Link in Search Category");
+            allCoursesPage= allCoursesPage.clickOnViewAllButton();
+
+            // Verify All Search Categories are visible
+            addLog("Verify All Search Categories are visible");
+            allCoursesPage= allCoursesPage.verifyAllSearchCategoriesVisible();
+
+            // Check Course Check box in Search Category
+            String course = propertyReader.readTestData("Big_Data_Analytics");
+            addLog("Check "+course+" Check box in Search Category");
+            allCoursesPage = allCoursesPage.checkCourseCheckBoxinSearch(course);
+
+            // Verify Selected course is appread in Searched Result
+            addLog("Verify Selected "+course+" is appread in Searched Result");
+            allCoursesPage = allCoursesPage.verifySelectCourseAppear(course);
+            
+            // Verify Data in user table
+            addLog("Verify Data in User Table");
+            allCoursesPage = allCoursesPage.dataVerificationInUserTable();
+
+        }   catch (final Error e) {
+            captureScreenshot("test_001SearchBasedOnCategory");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_001SearchBasedOnCategory");
+            throw e;
+        }
+    }
+}

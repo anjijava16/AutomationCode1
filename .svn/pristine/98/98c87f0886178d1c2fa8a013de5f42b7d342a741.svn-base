@@ -1,0 +1,86 @@
+package com.edureka.searchFunctionality;
+
+import org.testng.annotations.Test;
+import com.edureka.pages.AllCoursesPage;
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class SearchAnythingWithLogin extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private SignInModalPage signInModalPage;
+    private UserHomePage userHomePage;
+    private AllCoursesPage allCoursesPage;
+
+    @Test
+    public void test_005SearchAnythingWithLogin() throws Exception {
+
+        try {
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // Login Application
+            addLog(" Login Application");
+            userHomePage= signInModalPage.loginApp();
+
+            // Verify User Home Page
+            addLog("User has logged in successfully and Verify User Home Page");
+            userHomePage=userHomePage.verifyUserPage();
+
+            //  Select AllCourse Tab from Courses dropdown
+            String allCourse = propertyReader.readTestData("AllCourse");
+            addLog("Select "+allCourse+" Tab from Courses dropdown");
+            allCoursesPage= userHomePage.selectCourseOption(AllCoursesPage.class, allCourse);
+
+            // Verify All Courses page
+            addLog("Verify All Courses page");
+            allCoursesPage= allCoursesPage.verifyAllCoursesPage();
+
+            //  Select AllCourse Tab from Courses dropdown
+            allCourse = propertyReader.readTestData("AllCourse");
+            addLog("Select "+allCourse+" Tab from Courses dropdown");
+            allCoursesPage= userHomePage.selectCourseOption(AllCoursesPage.class, allCourse);
+
+            // Verify All Courses page
+            addLog("Verify All Courses page");
+            allCoursesPage= allCoursesPage.verifyAllCoursesPage();
+
+            // Search Data based on correct keywords
+            String keywaord = propertyReader.readTestData("BigData&Hadoop");
+            String createdTime= allCoursesPage.searchDataBasedOnKeyword(keywaord);
+            addLog("Search Data based on correct keywords and Get Created Date " +createdTime);
+
+            // Get User ID
+            String user_Id=allCoursesPage.getUserId();
+            addLog("Get User ID "+user_Id);
+
+            // Verify Dispalyed courses based on Search Keyword
+            String queryFor_SearchKeyword= propertyReader.readTestData("TC_005_SearchQuery");
+            queryFor_SearchKeyword= queryFor_SearchKeyword.replace("#", keywaord);
+            queryFor_SearchKeyword= queryFor_SearchKeyword.replace("$", user_Id);
+            addLog("Verify Dispalyed courses based on "+keywaord);
+            allCoursesPage = allCoursesPage.verifySearchDataInSearchLogTable(queryFor_SearchKeyword);
+
+        }catch (final Error e) {
+            captureScreenshot("test_005SearchAnythingWithLogin");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_005SearchAnythingWithLogin");
+            throw e;
+        }
+    }
+}

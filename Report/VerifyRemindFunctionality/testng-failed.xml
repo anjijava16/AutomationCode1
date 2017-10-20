@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyRemindFunctionality]">
+  <test name="VerifyRemindFunctionality(failed)">
+    <classes>
+      <class name="com.edureka.referralProcess.VerifyRemindFunctionality">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_020VerifyHyphonSymbolForCourse"/>
+          <include name="test_016VerifyRemindFunctionality"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.referralProcess.VerifyRemindFunctionality -->
+    </classes>
+  </test> <!-- VerifyRemindFunctionality(failed) -->
+</suite> <!-- Failed suite [VerifyRemindFunctionality] -->

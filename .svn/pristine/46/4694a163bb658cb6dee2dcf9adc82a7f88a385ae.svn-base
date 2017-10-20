@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//input[@id='input']]]></PageHeader>
+	<BTNPostQuestion><![CDATA[//a[@id='post-question-link']]]></BTNPostQuestion>
+	<SuccessMsgPostQuestion><![CDATA[//div[text()='Your question was received successfully.']]]></SuccessMsgPostQuestion>
+</Locators>

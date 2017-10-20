@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifySignInLeadProcessNavigationHeader]">
+  <test name="VerifySignInLeadProcessNavigationHeader(failed)">
+    <classes>
+      <class name="com.edureka.leadProcess.VerifySignInLeadProcessNavigationHeader">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_010VerifySignInLeadProcessNavigationHeader"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.VerifySignInLeadProcessNavigationHeader -->
+    </classes>
+  </test> <!-- VerifySignInLeadProcessNavigationHeader(failed) -->
+</suite> <!-- Failed suite [VerifySignInLeadProcessNavigationHeader] -->

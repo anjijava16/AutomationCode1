@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifySubjectLineOfVerification]">
+  <test name="VerifySubjectLineOfVerification(failed)">
+    <classes>
+      <class name="com.edureka.registration.VerifySubjectLineOfVerification">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_027VerifyErrorMsgForIncorrectVeirficationCode"/>
+          <include name="test_025VerifySubjectLineOfVerification"/>
+          <include name="test_026VerifyCorrectVerificationCode"/>
+          <include name="tearDown"/>
+          <include name="test_029VerifyNewPasswordShouldNotBeLessThan8Characters"/>
+        </methods>
+      </class> <!-- com.edureka.registration.VerifySubjectLineOfVerification -->
+    </classes>
+  </test> <!-- VerifySubjectLineOfVerification(failed) -->
+</suite> <!-- Failed suite [VerifySubjectLineOfVerification] -->

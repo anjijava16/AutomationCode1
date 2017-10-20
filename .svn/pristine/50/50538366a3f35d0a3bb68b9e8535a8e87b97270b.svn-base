@@ -1,0 +1,878 @@
+package com.edureka.pages;
+
+import java.awt.AWTException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class AllCoursesPage extends DriverHelper {
+
+    private LocatorReader allCoursesLocator;
+    private DatabaseVerifications databaseVerification;
+
+    public AllCoursesPage(WebDriver driver) {
+        super(driver);
+        allCoursesLocator = new LocatorReader("AllCourses.xml");
+        databaseVerification = new DatabaseVerifications(driver);
+    }
+
+    /**
+     * Change Currency
+     * 
+     * @param currencyName
+     * @return
+     * @throws InterruptedException
+     */
+    public AllCoursesPage changeCurrency(String currencyName) throws InterruptedException {
+        String ddCurrency = allCoursesLocator.getLocator("DDCurrency");
+        WaitForElementPresent(ddCurrency, getTimeOut());
+        clickOn(ddCurrency);
+
+        String currency = "//li[@data-original-index='" + currencyName + "']";
+        WaitForElementPresent(currency, 20);
+        clickOn(currency);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Check Course check box in Search Category
+     * 
+     * @param course
+     * @return
+     */
+    public AllCoursesPage checkCourseCheckBoxinSearch(String course) {
+        String chkCourse = "//label[contains(text(),'" + course + "')]";
+        WaitForElementPresent(chkCourse, getTimeOut());
+        clickOn(chkCourse);
+        _waitForJStoLoad();
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Click on Add To Wish List
+     * 
+     * @param course
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T clickOnAddToWishList(@SuppressWarnings("rawtypes") Class className, String course) {
+        scrollWindow(0, 250);
+        String allGridViewCourses = allCoursesLocator.getLocator("HomePage.Courses");
+        List<WebElement> courses = driver.findElements(By.xpath(allGridViewCourses));
+        int rows = courses.size();
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//ul[@id='product-wrap']/li[" + i + "]/div[1]/div[1]/a/span[2]";
+            WaitForElementPresent(coursesList, 20);
+            String coursesName = getText(coursesList);
+            scrollWindow(0, 250);
+            System.out.println(coursesName);
+            if (coursesName.contains(course)) {
+                String courseLink = "//ul[@id='product-wrap']/li[" + i + "]/div[1]/div[1]/a";
+                mouseOver(courseLink);
+                String btnAddToWishList = "//ul[@id='product-wrap']/li[" + i + "]/div[2]/div/div/span/a/i";
+                WaitForElementPresent(btnAddToWishList, getTimeOut());
+                clickOn(btnAddToWishList);
+                break;
+            }
+        }
+        return (T) PageFactory.initElements(driver, className);
+    }
+    /**
+     * Click on Add To Wish List
+     * 
+     * @param course
+     * @return
+     * @throws InterruptedException 
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T clickOnAddToWishListNew(@SuppressWarnings("rawtypes") Class className, String courseId) throws InterruptedException {
+        scrollWindow(0, 1000);
+        Thread.sleep(10000);
+        scrollWindow(1000, 2000);
+        Thread.sleep(10000);
+        String courseImage=	"//*[@id='course-box-"+courseId+"']/div[1]/a[2]/div/img";
+        WebElement element=driver.findElement(By.xpath(courseImage));
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click();", element);
+        driver.findElement(By.xpath("//div[3]/a/i")).click();
+        return (T) PageFactory.initElements(driver, className);
+    }
+
+    /**
+     * Click on Add to WishList From List view courses
+     * 
+     * @param className
+     * @param courseName
+     * @return
+     * @throws AWTException 
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T clickOnAddToWishListFromListCourses(@SuppressWarnings("rawtypes") Class className, String courseName) throws AWTException {
+        String imgAddToWishList = "//span[contains(text(),'" + courseName + "')]/../following::p[1]/span[5]/a";
+        WaitForElementPresent(imgAddToWishList, getTimeOut());
+        clickOn(imgAddToWishList);
+        return (T) PageFactory.initElements(driver, className);
+    }
+    /**
+     * Click on Add to WishList From List view courses
+     * 
+     * @param className
+     * @param courseName
+     * @return
+     * @throws AWTException 
+     * @throws InterruptedException 
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T clickOnAddToWishListFromListCoursesByCourseId(@SuppressWarnings("rawtypes") Class className, String courseId) throws AWTException, InterruptedException {
+        String imgAddToWishList = "//li[@id='course-box-"+courseId+"']/div/div/p/span[5]/a/i";
+        scrollWindow(0, 1000);
+        Thread.sleep(5000);
+        scrollWindow(1000, 2000);
+        Thread.sleep(5000);
+        WebElement element=driver.findElement(By.xpath(imgAddToWishList));
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].click();", element);
+        return (T) PageFactory.initElements(driver, className);
+    }
+    /**
+     * Click on Enroll button From List view courses
+     * 
+     * @param className
+     * @param courseName
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T clickOnEnrollButtonFromListCourses(@SuppressWarnings("rawtypes") Class className, String courseName) {
+        String ltShowBatches = "//span[contains(text(),'" + courseName + "')]/../following::p[1]/span[contains(text(),'Show Batches')]";
+        WaitForElementPresent(ltShowBatches, getTimeOut());
+        clickOn(ltShowBatches);
+
+        String btnEnrollNow = "//span[contains(text(),'" + courseName + "')]/../following::p[1]/span[contains(text(),'Hide Batches')]/../../following::div[1]/div/div[1]/div[4]/a";
+        WaitForElementPresent(btnEnrollNow, getTimeOut());
+        clickOn(btnEnrollNow);
+        return (T) PageFactory.initElements(driver, className);
+    }
+    /**
+     * Click on Enroll button From List view courses
+     * 
+     * @param className
+     * @param courseName
+     * @return
+     * @throws InterruptedException 
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T clickOnEnrollButtonFromListCoursesFromJavaScript(@SuppressWarnings("rawtypes") Class className, String courseId) throws InterruptedException {
+        scrollWindow(0,1000);
+        Thread.sleep(5000);
+        scrollWindow(1000,2000);
+        Thread.sleep(5000);
+        WebElement showBatches=driver.findElement(By.id(courseId));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", showBatches);
+
+        WebElement enrollButton=driver.findElement(By.xpath("//*[@id='open-batch-content-"+courseId+"']/div[1]/div[1]/div[4]/a"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", enrollButton);
+
+        return (T) PageFactory.initElements(driver, className);
+    }
+
+    /**
+     * Click on Grid View Icon
+     * 
+     * @return
+     */
+    public AllCoursesPage clickOnGridViewIcon() {
+        String imgGridView = allCoursesLocator.getLocator("HomePage.ImgGridView");
+        WaitForElementPresent(imgGridView, getTimeOut());
+        clickOn(imgGridView);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Click on List view icon
+     * 
+     * @return
+     */
+    public AllCoursesPage clickOnListViewIcon() {
+        String imgListView = allCoursesLocator.getLocator("HomePage.ImgListView");
+        WaitForElementPresent(imgListView, getTimeOut());
+        clickOn(imgListView);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Click on Profile Dropdown
+     * 
+     * @param userName
+     * @return
+     */
+    public AllCoursesPage clickOnProfileDropdown(String userName) {
+        String dropdown = "//span[contains(text(),'" + userName + "')]";
+        WaitForElementPresent(dropdown, getTimeOut());
+        clickOn(dropdown);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Click on Query box
+     * 
+     * @return
+     * @throws InterruptedException
+     */
+    public AllCoursesPage clickOnQueryBox() throws InterruptedException {
+        scrollWindow(0, 1000);
+        String queryBox = allCoursesLocator.getLocator("QueryBox.HeaderQueryBox");
+        Thread.sleep(5000);
+        mouseClickByLocator(queryBox, "Click on QuerBox");
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Click on View All Link
+     * 
+     * @return
+     */
+    public AllCoursesPage clickOnViewAllButton() {
+        String ltViewAll = allCoursesLocator.getLocator("SearchFunctionality.LTViewAll");
+        WaitForElementPresent(ltViewAll, getTimeOut());
+        clickOn(ltViewAll);
+        String viewLess = "//a[text()='View less']";
+        WaitForElementPresent(viewLess, getTimeOut());
+        Assert.assertTrue(isElementPresent(viewLess));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Click on Sign In Link
+     * 
+     * @return
+     */
+    public SignInModalPage clickSignInHeader() {
+        String lTsignIn = allCoursesLocator.getLocator("HomePage.LTsignIn");
+        WaitForElementPresent(lTsignIn, getTimeOut());
+        Assert.assertTrue(isElementPresent(lTsignIn));
+        clickOn(lTsignIn);
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     * Verify Data in user Events Table
+     * 
+     * @param courseId
+     * @param event_context
+     * @param utm_source
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage dataVerificationInCompleted_Queue_Jobs_Table( String courseStatus, String courseProperty, String event_Type) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage) databaseVerification.dataVerificationInCompleted_Queue_Jobs_Table(AllCoursesPage.class, courseStatus, courseProperty, event_Type);
+        return allCourses;
+    }
+
+    /**
+     * Verify Data in Ambassadors Table
+     * 
+     * @param level_id
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage dataVerificationInUser_AmbassadorsTable(String level_id) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage) databaseVerification.dataVerificationInAmbassadors(AllCoursesPage.class, level_id);
+        return allCourses;
+    }
+
+    /**
+     * Verify Data in User Courses Table
+     * 
+     * @param courseId
+     * @param isPaidValue
+     * @param courseGroup
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage dataVerificationInUser_CoursedTable(String courseId, String isPaidValue, String courseGroup) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage) databaseVerification.dataVerificationInUser_Course_Table(AllCoursesPage.class, courseId, isPaidValue, courseGroup);
+        return allCourses;
+    }
+
+    /**
+     * Verify Data in user Events Table
+     * 
+     * @param courseId
+     * @param event_context
+     * @param utm_source
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage dataVerificationInUser_EventTable(String courseId, String status, String priority, String event_Type) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage) databaseVerification.dataVerificationInUser_Events_Table(AllCoursesPage.class, courseId, status, priority, event_Type);
+        return allCourses;
+    }
+
+    /**
+     * Verify Data in User_Leads Table
+     * 
+     * @param courseID
+     * @param webSiteAction
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage dataVerificationInUser_LeadsTable(String courseId, String webSiteAction, String country, String campaignSource, String campaignName, String campaignMdedium) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage) databaseVerification.dataVerificationInUserLeadTable(AllCoursesPage.class, courseId, webSiteAction, country, campaignSource, campaignName, campaignMdedium);
+        return allCourses;
+    }
+
+    /**
+     * Verify Data in user Table
+     * 
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage dataVerificationInUserTable() throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage) databaseVerification.dataVerificationInUserTable(AllCoursesPage.class);
+        return allCourses;
+    }
+    /**
+     * Verify Data in user Table
+     * 
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage dataVerificationInUserTable(String custID) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage) databaseVerification.dataVerificationInUserTable(AllCoursesPage.class,custID);
+        return allCourses;
+    }
+
+    /**
+     * Logout application
+     * 
+     * @return
+     */
+    public DashboardPage logout() {
+        String logout = allCoursesLocator.getLocator("ProfileDropdown.LTLogout");
+        ;
+        WaitForElementPresent(logout, getTimeOut());
+        mouseOver(logout);
+        clickOn(logout);
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     * Navigate on User Home page
+     * 
+     * @return
+     */
+    public UserHomePage navigteOnHomePage() {
+        String home = allCoursesLocator.getLocator("LTHome");
+        WaitForElementPresent(home, getTimeOut());
+        clickOn(home);
+        return PageFactory.initElements(driver, UserHomePage.class);
+
+    }
+
+    /**
+     * Search Data
+     * 
+     * @param searchData
+     * @return
+     */
+    public SelectedCoursePage searchData(String searchData) {
+        String tbSearch = allCoursesLocator.getLocator("SearchFunctionality.TBSearch");
+        WaitForElementPresent(tbSearch, getTimeOut());
+        sendKeys(tbSearch, searchData);
+
+        String searchedData = allCoursesLocator.getLocator("SearchFunctionality.SearchedData");
+        WaitForElementPresent(searchedData, 20);
+        clickOn(searchedData);
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     * Search Data based on Keyword
+     * 
+     * @param searchKeyword
+     * @return
+     * @throws InterruptedException 
+     */
+    public AllCoursesPage searchDataBasedOnKeyword(String searchKeyword) throws InterruptedException {
+        String tbSearch = allCoursesLocator.getLocator("SearchFunctionality.TBSearch");
+        WaitForElementPresent(tbSearch, getTimeOut());
+        sendKeys(tbSearch, searchKeyword);
+        Thread.sleep(3000);
+        /* String imgSearch = allCoursesLocator.getLocator("SearchFunctionality.ImgSearch");
+        WaitForElementPresent(imgSearch, 20);
+        clickOn(imgSearch);*/
+
+        String allGridViewCourses = allCoursesLocator.getLocator("HomePage.Courses");
+        List<WebElement> courses = driver.findElements(By.xpath(allGridViewCourses));
+        int rows = courses.size();
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//ul[@id='product-wrap']/li[" + i + "]/div[1]/div[1]/a/span[2]";
+            WaitForElementPresent(coursesList, 20);
+            String coursesName = getText(coursesList);
+            System.out.println("coursesName::: " +coursesName);
+            if(coursesName.contains(searchKeyword)){
+                Assert.assertTrue(coursesName.contains(searchKeyword));
+                break;
+            }
+        }
+        driver.findElement(By.xpath(tbSearch)).sendKeys(Keys.ENTER);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Select given course from Grid View
+     * 
+     * @return
+     */
+    public SelectedCoursePage selectCourseFromGridView(String course) {
+        String allGridViewCourses = allCoursesLocator.getLocator("HomePage.Courses");
+        List<WebElement> courses = driver.findElements(By.xpath(allGridViewCourses));
+        int rows = courses.size();
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//ul[@id='product-wrap']/li[" + i + "]/div[1]/div[1]/a/span[2]";
+            WaitForElementPresent(coursesList, 20);
+            String coursesName = getText(coursesList);
+            System.out.println(coursesName);
+            if (coursesName.contains(course)) {
+                String courseLink = "//ul[@id='product-wrap']/li[" + i + "]/div[1]/div[1]/a";
+                String loc = getAttribute(courseLink, "href");
+                driver.get(loc);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     * Select Course From list view
+     * 
+     * @param courseName
+     * @return
+     */
+    public SelectedCoursePage selectCourseFromListView(String courseName) {
+        String course = "//span[contains(text(),'" + courseName + "')]";
+        WaitForElementPresent(course, getTimeOut());
+        clickOn(course);
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     * Select Training Type
+     * 
+     * @param type
+     * @return
+     */
+    public AllCoursesPage selectTrainingType(String type) {
+        String trainingType = "//h5[text()='Training Type']/following::label[contains(text(),'" + type + "')]";
+        WaitForElementPresent(trainingType, getTimeOut());
+        clickOn(trainingType);
+        _waitForJStoLoad();
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Drop query
+     * 
+     * @param query
+     * @param phNumber
+     * @return
+     */
+    public AllCoursesPage sendQuery() {
+        String userName = "User" + randomString(2);
+        String email = "test" + randomString(3) + "@tech.edureka.in";
+        propertyReader.updatePropertyTestData("QueryEmail_Id", email);
+        propertyReader.updatePropertyTestData("QueryUserName", userName);
+        String query = propertyReader.readTestData("Query");
+
+        String phNumber = propertyReader.readTestData("PhoneNumber");
+
+        String tbQueryName = allCoursesLocator.getLocator("QueryBox.TBQueryName");
+        WaitForElementVisible(tbQueryName, 30);
+        sendKeys(tbQueryName, userName);
+
+        String tbQueryEmail = allCoursesLocator.getLocator("QueryBox.TBQueryEmail");
+        WaitForElementVisible(tbQueryEmail, getTimeOut());
+        sendKeys(tbQueryEmail, email);
+
+        String tbQueryPhNumberString = allCoursesLocator.getLocator("QueryBox.TBQueryPhNumber");
+        WaitForElementVisible(tbQueryPhNumberString, getTimeOut());
+        sendKeys(tbQueryPhNumberString, phNumber);
+
+        String tbInquiry = allCoursesLocator.getLocator("QueryBox.TBInquiry");
+        WaitForElementVisible(tbInquiry, getTimeOut());
+        sendKeys(tbInquiry, query);
+
+        String btnSubmit = allCoursesLocator.getLocator("QueryBox.BTNSubmit");
+        WaitForElementVisible(btnSubmit, getTimeOut());
+        clickOn(btnSubmit);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Verify All Courses Page
+     * 
+     * @return
+     */
+    public AllCoursesPage verifyAllCoursesPage() {
+        String pageheader = allCoursesLocator.getLocator("HomePage.PageHeader");
+        WaitForElementPresent(pageheader, getTimeOut());
+        Assert.assertTrue(isElementPresent(pageheader));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Verify hidden Search Categories are visible
+     * 
+     * @return
+     */
+    public AllCoursesPage verifyAllSearchCategoriesVisible() {
+        String hiddenSearchCategories = allCoursesLocator.getLocator("SearchFunctionality.HiddenSearchCategories");
+        WaitForElementPresent(hiddenSearchCategories, getTimeOut());
+        String hiddenSearchCategoriesStyle = getAttribute(hiddenSearchCategories, "style");
+        Assert.assertFalse(hiddenSearchCategoriesStyle.contains("none"));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Verify Country Flag Images
+     * 
+     * @return
+     */
+    public AllCoursesPage verifyCountryFlagImages() {
+        String ddCountry = allCoursesLocator.getLocator("Images.DDCountry");
+        WaitForElementPresent(ddCountry, getTimeOut());
+        clickOn(ddCountry);
+
+        String IndiaFlag = allCoursesLocator.getLocator("Images.IndiaFlag");
+        WaitForElementPresent(IndiaFlag, getTimeOut());
+        Assert.assertTrue(isElementPresent(IndiaFlag));
+
+        String USFlag = allCoursesLocator.getLocator("Images.USFlag");
+        WaitForElementPresent(USFlag, getTimeOut());
+        Assert.assertTrue(isElementPresent(USFlag));
+
+        String UnitedKingdomFlag = allCoursesLocator.getLocator("Images.UnitedKingdomFlag");
+        WaitForElementPresent(UnitedKingdomFlag, getTimeOut());
+        Assert.assertTrue(isElementPresent(UnitedKingdomFlag));
+
+        String SingaporeFlag = allCoursesLocator.getLocator("Images.SignaporeFlag");
+        WaitForElementPresent(SingaporeFlag, getTimeOut());
+        Assert.assertTrue(isElementPresent(SingaporeFlag));
+
+        String CanadaFlag = allCoursesLocator.getLocator("Images.CanadaFlag");
+        WaitForElementPresent(CanadaFlag, getTimeOut());
+        Assert.assertTrue(isElementPresent(CanadaFlag));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Verify Course are in Grid view
+     * 
+     * @return
+     */
+    public AllCoursesPage verifyCourseInGridView() {
+        String gridViewSelected = allCoursesLocator.getLocator("GridViewSelected");
+        WaitForElementPresent(gridViewSelected, getTimeOut());
+        String gridViewButton = getAttribute(gridViewSelected, "class");
+        Assert.assertTrue(gridViewButton.contains("selected"));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Verify Course are in list view
+     * 
+     * @return
+     */
+    public AllCoursesPage verifyCourseInListView() {
+        String listViewSelected = allCoursesLocator.getLocator("ListViewSelected");
+        WaitForElementPresent(listViewSelected, getTimeOut());
+        String gridViewButton = getAttribute(listViewSelected, "class");
+        Assert.assertTrue(gridViewButton.contains("selected"));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Verify Data for inquiry
+     * 
+     * @param courseId
+     * @param webSiteAction
+     * @param event_context
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage verifyDataForInquiry(String courseId, String webSiteAction, String event_context, String utm_campaign,String course_Group,String event,String level_id) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage) databaseVerification.dataVerificationFor_Inquiry(AllCoursesPage.class, courseId, webSiteAction, event_context, utm_campaign,course_Group,event,level_id);
+        return allCourses;
+    }
+
+    /**
+     * Verify Edureka Logo
+     * 
+     * @return
+     */
+    public AllCoursesPage verifyEdurekaLogo() {
+        String edurekaLogo = allCoursesLocator.getLocator("Images.EdurekaLogo");
+        WaitForElementPresent(edurekaLogo, getTimeOut());
+        Assert.assertTrue(isElementPresent(edurekaLogo));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Verify Searched Result based on wrong keyword
+     * 
+     * @return
+     */
+    public AllCoursesPage verifySearchResultBasedOnWrongKeyword() {
+        String notResultFound = allCoursesLocator.getLocator("SearchFunctionality.SearchedResultNoResultFound");
+        WaitForElementPresent(notResultFound, 20);
+        Assert.assertTrue(isElementPresent(notResultFound));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Selected Filter based on Search Category are appeared
+     * 
+     * @param course
+     * @return
+     */
+    public AllCoursesPage verifySelectFilterAppear(String filter) {
+        String searchedCourse = "//ul[@id='setFilters']/li/span[text()='" + filter + "']";
+        WaitForElementPresent(searchedCourse, getTimeOut());
+        Assert.assertTrue(isElementPresent(searchedCourse));
+        _waitForJStoLoad();
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Verify User name
+     * 
+     * @return
+     */
+    public AllCoursesPage verifySignUpSuccessfully() {
+        String pageName = allCoursesLocator.getLocator("ProfileDropdown.UserName");
+        WaitForElementPresent(pageName, 20);
+        WebElement userNameHeader = driver.findElement(By.xpath(pageName));
+        String tBuserName = propertyReader.readRunTimeData("UserName");
+        String pageheaderText = userNameHeader.getText();
+        Assert.assertTrue(pageheaderText.equalsIgnoreCase(tBuserName));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Verify Submit Inquiry Message
+     * 
+     * @return
+     */
+    public AllCoursesPage verifySumbitInquiry() {
+        String messageSubmitInquiry = allCoursesLocator.getLocator("QueryBox.MsgSubmitInquiry");
+        WaitForElementPresent(messageSubmitInquiry, 5);
+        Assert.assertTrue(isElementPresent(messageSubmitInquiry));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     *  Verify Tool Tip Message
+     * @param course_Id
+     * @param toolTipMessage
+     * @return
+     */
+    public AllCoursesPage verifyToolTipMessage(String course_Id, String toolTipMessage) {
+        String course = "//li[@id='course-box-"+course_Id+"']/div/div/span/span/a";
+        WaitForElementPresent(course, getTimeOut());
+        mouseOver(course);
+        String toolTip= getAttribute(course, "title");
+        Assert.assertTrue(toolTip.contains(toolTipMessage));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     *  Verify price after referral discount and offer discount
+     * @param course_Id
+     * @param offer_discount
+     * @param referral_Discount
+     * @return
+     */
+    public AllCoursesPage verifyDiscountPriceValue(String course_Id,String offer_discount, String referral_Discount) {
+        String totalValue = "//li[@id='course-box-"+course_Id+"']/div[1]/div[1]/span/small/span[2]";
+        String totalValuePrice= getText(totalValue);
+        String  totalValuePriceText_2 = totalValuePrice.replace(",", "");
+        String  totalValuePriceText_3=  totalValuePriceText_2.trim();
+        int totalValuePriceValue= Integer.parseInt(totalValuePriceText_3);
+        int discountPercentage = Integer.parseInt(offer_discount);
+        int referralDisocunt = Integer.parseInt(referral_Discount);
+        double discountAmount =round((totalValuePriceValue*(discountPercentage/100.0f)),2);
+        double discountAmount_1= totalValuePriceValue-discountAmount;
+        double discountAmount_2=round((discountAmount_1*(referralDisocunt/100.0f)),2);
+        int discountAmount_3 = (int)(discountAmount_1-discountAmount_2);
+
+        String actualValue = "//li[@id='course-box-"+course_Id+"']/div[1]/div[1]/span/b/span[2]";
+        String actualValue_1 = getText(actualValue);
+        String actualValue_2= actualValue_1.replace(",","");
+        int actualValue_3= Integer.parseInt(actualValue_2);
+        Assert.assertEquals(discountAmount_3, actualValue_3);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+
+    /**
+     *  Verify Tool Tip Message for existing customer and credit points
+     * @param course_Id
+     * @param toolTipMessage
+     * @return
+     */
+    public AllCoursesPage verifyToolTipMessageForExistingCustomerAndCreditPoitns(String course_Id) {
+        String creditPoints = propertyReader.readRunTimeData("EarnedCredits");
+        String course = "//li[@id='course-box-"+course_Id+"']/div/div/span/span/a";
+        WaitForElementPresent(course, getTimeOut());
+        mouseOver(course);
+        String toolTip= getAttribute(course, "title");
+        Assert.assertTrue(toolTip.contains("20% off + "+creditPoints+" Referral Credits"));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Verify price after existing customer discount and credit points
+     * @param course_Id
+     * @param offer_discount
+     * @param currency
+     * @return
+     */
+    public AllCoursesPage verifyPriceValueForExistingCustomerAndCreditPoints(String course_Id,String offer_discount, String currency) {
+        String creditPoints = propertyReader.readRunTimeData("EarnedCredits");
+        int actualValue_3;
+        int discountAmount_3 = 0;
+        int creditPointsValue= Integer.parseInt(creditPoints);
+        String totalValue = "//li[@id='course-box-"+course_Id+"']/div[1]/div[1]/span/small/span[2]";
+        String totalValuePrice= getText(totalValue);
+        String  totalValuePriceText_2 = totalValuePrice.replace(",", "");
+        String  totalValuePriceText_3=  totalValuePriceText_2.trim();
+        int totalValuePriceValue= Integer.parseInt(totalValuePriceText_3);
+        int discountPercentage = Integer.parseInt(offer_discount);
+        double discountAmount =round((totalValuePriceValue*(discountPercentage/100.0f)),2);
+        int discountAmount_1= (int)(totalValuePriceValue-discountAmount);
+        if (currency.equals("INR")){
+
+            discountAmount_3 = (int)(discountAmount_1-creditPointsValue);
+        }
+        String actualValue = "//li[@id='course-box-"+course_Id+"']/div[1]/div[1]/span/b/span[2]";
+        String actualValue_1 = getText(actualValue);
+        String actualValue_2= actualValue_1.replace(",","");
+        actualValue_3= Integer.parseInt(actualValue_2);
+        if (currency.equals("INR")){
+
+            Assert.assertEquals(discountAmount_3, actualValue_3);
+        }
+        else {
+            Assert.assertEquals(discountAmount_1, actualValue_3);
+        }
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     *  Verify Displayed Course based on Category 
+     * @param query
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage verifyDisplayedCourses(String query) throws Exception {
+        ArrayList<String> course_list=new ArrayList<String>();
+        ArrayList<String> db_courses_List=databaseVerification.getCourseBasedOnCategory(query);
+        int rows= db_courses_List.size();
+        scrollWindow(0,1500);
+        ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+        Thread.sleep(5000);
+        for (int i = 1; i <= rows; i++) {
+            if(i==22){
+                scrollWindow(0,1500);
+                _waitForJStoLoad();
+            }
+            if(i==32){
+                scrollWindow(0,3000);
+                _waitForJStoLoad();
+            }
+            String coursesList = "//ul[@id='product-wrap']/li[" + i + "]/div[1]/div[1]/a/span[contains(@class,'course-display-title-full show-list course-display-title-')]";
+            WaitForElementPresent(coursesList, 20);
+            String coursesName = getAttribute(coursesList, "innerHTML");
+
+            coursesName = coursesName.replace("®", "&#174");
+            coursesName=coursesName.replace("&amp;", "&");
+            course_list.add(coursesName);
+        }
+        try{
+            Assert.assertTrue(db_courses_List.equals(course_list));
+        }
+        catch(Exception ex){
+
+            System.out.println(ex.getMessage());
+        }
+        driver.navigate().refresh();
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     *  Verify Redirected URL
+     * @param redirected_Url
+     * @return
+     */
+    public AllCoursesPage verifyRedirectedUrl(String redirected_Url) {
+        String url = driver.getCurrentUrl();
+        System.out.println("url  " +url);
+        Assert.assertTrue(url.contains(redirected_Url));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     *  Verify Suggestion Course Link 
+     * @return
+     */
+    public AllCoursesPage verifySuggestionCourseLink() {
+        String link = allCoursesLocator.getLocator("SearchFunctionality.LTSuggestCourse");
+        WaitForElementPresent(link, getTimeOut());
+        Assert.assertTrue(isElementPresent(link));
+        clickOn(link);
+
+        String queryBox= allCoursesLocator.getLocator("QueryBox.TBInquiry");
+        String value =getAttribute(queryBox, "value");
+        Assert.assertTrue(!(value.equals(null)));
+        Assert.assertTrue(isElementPresent(queryBox));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Select Batch Type
+     * @param type
+     * @return
+     */
+    public AllCoursesPage selectBatchType(String batch) {
+        scrollWindow(0, 250);
+        _waitForJStoLoad();
+        String batchType = "//h5[text()='Batch Type']/following::label[contains(text(),'" + batch + "')]";
+        WaitForElementPresent(batchType, getTimeOut());
+        clickOn(batchType);
+        _waitForJStoLoad();
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+}
+

@@ -1,0 +1,128 @@
+package com.edureka.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+
+public class AdminDashboard extends DriverHelper{
+
+    private LocatorReader adminDashboardLocator;
+
+    public AdminDashboard(WebDriver driver) {
+        super(driver);
+        adminDashboardLocator = new LocatorReader("AdminDashboard.xml");
+    }
+
+    /**
+     *  Verify Admin Dashboard Page
+     * @return
+     */
+    public AdminDashboard verifyAdminDashboard() {
+        String pageheader=adminDashboardLocator.getLocator("PageHeader");
+        WaitForElementPresent(pageheader, getTimeOut());
+        Assert.assertTrue(isElementPresent(pageheader));
+        return PageFactory.initElements(driver, AdminDashboard.class);
+    }
+
+    /**
+     *  Select Menu tab
+     * @param tabName
+     * @return
+     */
+    public AdminDashboard selectMenuTab(String tabName) {
+        String tab="//a[contains(text(),'"+tabName+"')]";
+        WaitForElementPresent(tab, getTimeOut());
+        mouseOver(tab);
+        clickOn(tab);
+        return PageFactory.initElements(driver, AdminDashboard.class);
+    }
+    
+    /**
+     *  Select option from Admin Offer Dropdown
+     * @param subMenu
+     * @return
+     */
+    public AdminAddOfferPage selectOptionFromAdminOfferTab(String subMenu) {
+        String dropdownOption="//a[contains(text(),'"+subMenu+"')]";
+        WaitForElementPresent(dropdownOption, getTimeOut());
+        mouseOver(dropdownOption);
+        clickOn(dropdownOption);
+        return PageFactory.initElements(driver, AdminAddOfferPage.class);
+    }
+    /**
+     *  Select option from Admin Offer Dropdown
+     * @param subMenu
+     * @return
+     */
+    public AdminDashboard selectSubMenu(String subMenu) {
+        String dropdownOption="//a[contains(text(),'"+subMenu+"')]";
+        WaitForElementPresent(dropdownOption, getTimeOut());
+        mouseOver(dropdownOption);
+        clickOn(dropdownOption);
+        return PageFactory.initElements(driver, AdminDashboard.class);
+    }
+    /**
+     *  Select option from Admin Offer Dropdown
+     * @param subMenu
+     * @return
+     */
+    public AdminAddOfferPage changePaymentGateway(String paymentGateway) {
+        String Gateway=adminDashboardLocator.getLocator("Gateway");
+        WaitForElementPresent(paymentGateway, getTimeOut());
+        selectDropDown(Gateway, paymentGateway);
+        String gatewayButton=adminDashboardLocator.getLocator("ChangePaymentGatewayButton");
+        clickOn(gatewayButton);
+        return PageFactory.initElements(driver, AdminAddOfferPage.class);
+    }
+    
+    /**
+     *  Select submenu from Dashboard
+     * @param tabName
+     * @return
+     */
+    public AdminDashboard selectDashoardMenu(String SubmenuName) {
+        String tab="//a[contains(text(),'"+SubmenuName+"')]";
+        WaitForElementPresent(tab, getTimeOut());
+        mouseOver(tab);
+        clickOn(tab);
+        return PageFactory.initElements(driver, AdminDashboard.class);
+    }
+    
+    /**
+     *  Change Offer Coupan Settings
+     * @param value
+     * @return
+     */
+    public AdminDashboard changeOfferCouponSettings(String value) {
+        String meta="//a[text()='Meta']";
+        WaitForElementPresent(meta, getTimeOut());
+        clickOn(meta);
+        
+        String tbOrderSummary="//label[text()='order page']/following::input[1]";
+        WaitForElementPresent(tbOrderSummary, getTimeOut());
+        sendKeys(tbOrderSummary, value);
+        
+        String btnUpdate="//input[@value='Update']";
+        WaitForElementPresent(btnUpdate, getTimeOut());
+        clickOn(btnUpdate);
+        
+        return PageFactory.initElements(driver, AdminDashboard.class);
+    }
+
+    /**
+     *  Select option from Admin Offer Dropdown
+     * @param subMenu
+     * @return
+     */
+    public AdminAddOfferPage selectOptionFromAdminOfferTab1(String subMenu) {
+        String dropdownOption="//a[contains(text(),'"+subMenu+"')]";
+        WaitForElementPresent(dropdownOption, getTimeOut());
+        mouseOver(dropdownOption);
+        clickOn(dropdownOption);
+        return PageFactory.initElements(driver, AdminAddOfferPage.class);
+    }
+}

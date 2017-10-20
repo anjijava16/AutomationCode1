@@ -1,0 +1,661 @@
+package com.edureka.referralProcess;
+
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.AdminAddOfferPage;
+import com.edureka.pages.AdminDashboard;
+import com.edureka.pages.AllCoursesPage;
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.MyProfilePage;
+import com.edureka.pages.OrderSummaryPage;
+import com.edureka.pages.RazorPayPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class AdditionalDisocuntMessageWhenSomeOfferIsPresent extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private SignInModalPage signInModalPage;
+    private AdminDashboard adminDashboard;
+    private UserHomePage userHomePage;
+    private AdminAddOfferPage adminAddOfferPage;
+    private RazorPayPage razorPayPage;
+    private SelectedCoursePage selectedCoursePage;
+    private OrderSummaryPage orderSummaryPage;
+    private MyProfilePage myProfilePage;
+    private AllCoursesPage allCoursesPage;
+
+    static String email;
+    static String password;
+    static String campaignSource;
+    static String campaignName;
+    static String campaignMedium;
+
+    static String userName;
+    static String referralEmail;
+    static String referralLink;
+    static String courseName;
+    static String currency;
+    static String bankName;
+
+
+    @Test
+    public void test_023AdditionalDisocuntMessageWhenSomeOfferIsPresent() throws Exception {
+
+        try {
+
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // Login Application through Admin credentials
+            email = propertyReader.readApplicationFile("Admin_UserName");
+            password = propertyReader.readApplicationFile("Admin_Password");
+            addLog("Login Application through Admin credentials");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on Start Learning Course button
+            addLog("Click on Start Learning Course button");
+            userHomePage=signInModalPage.clickStartLearningButton(UserHomePage.class);
+
+            // Verify Admin User Home page
+            addLog("Verify Admin User Home page");
+            userHomePage=userHomePage.verifyAdminUserPage();
+
+            // Click on Profile dropdown
+            String userName = propertyReader.readTestData("Admin_UserName");
+            addLog("Click on Profile dropdown");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Select Admin from Prfile Dropdown
+            addLog("Select Admin from Profile dropdown");
+            adminDashboard=userHomePage.selectAdmin();
+
+            // Verify Admin Dashboard
+            addLog("Verify Admin Dashboard");
+            adminDashboard= adminDashboard.verifyAdminDashboard();
+
+            // Select Menu Tab
+            String menuTab = propertyReader.readTestData("Tab_Offer_Admin");
+            addLog("Select Menu Tab " +menuTab);
+            adminDashboard=adminDashboard.selectMenuTab(menuTab);
+
+            // Select Create Offer from Offer Admin
+            String createOffer= propertyReader.readTestData("Create_Offer");
+            addLog("Select Create Offer from offer Admin");
+            adminAddOfferPage=adminDashboard.selectOptionFromAdminOfferTab(createOffer);
+
+            // Verify Admin Add Offer page
+            addLog("Verify Admin Add Offer Page");
+            adminAddOfferPage = adminAddOfferPage.verifyAdminAddOfferPage();
+
+            // Create Flat Discount
+            String offerType = propertyReader.readTestData("Flat_Discount_Type");
+            String discountTitle= propertyReader.readTestData("Title_Discount");
+            String discountType = propertyReader.readTestData("Discount_Type_Percentage");
+            String percentageValue = propertyReader.readTestData("Percentage_Value");
+            addLog("Create Flat Discount");
+            adminAddOfferPage=adminAddOfferPage.createDiscount(offerType, discountTitle);
+
+            // Enter Discount Values
+            addLog("Enter Discount Values");
+            adminAddOfferPage=adminAddOfferPage.enterDiscountValues(discountType,percentageValue);
+
+            // Click on Submit Button
+            addLog("Click on Submit Button");
+            adminAddOfferPage=adminAddOfferPage.clickSubmitButton();
+
+            // select Banner Header
+            addLog("Select Banner Header");
+            adminAddOfferPage=adminAddOfferPage.selectBannerHeader();
+
+            // Get Parent window Id
+            addLog("Get Parent Window ID");
+            String parentWidnow = getParentWindowHandle();
+
+            // Switch window and Select banner
+            String bannerType = propertyReader.readTestData("Banner_T20");
+            addLog("Select Banner " +bannerType);
+            switchPreviewWindow();
+            adminAddOfferPage=adminAddOfferPage.selectBanner(bannerType);
+
+            // Switch to Parent Window and select Enter Message Near Upcoming Batches
+            addLog("Switch to Parent Window and select Enter Message Near Upcoming Batches");
+            switchParentWindow(parentWidnow);
+            adminAddOfferPage= adminAddOfferPage.enterMessageNearUpcomingBatches();
+
+            // Enter Banner Text
+            String bannerText = propertyReader.readTestData("Banner_Text");
+            addLog("Enter Banner Text");
+            switchPreviewWindow();
+            adminAddOfferPage= adminAddOfferPage.enterBannerText(bannerText);
+
+            // Get and Update Offer Id
+            addLog("Get and Update Offer Id");
+            switchParentWindow(parentWidnow);
+            adminAddOfferPage=adminAddOfferPage.getOfferId();
+
+            // Select Status
+            String status = propertyReader.readTestData("Active_Status");
+            addLog("select "+status+" from status dropdown");
+            adminAddOfferPage= adminAddOfferPage.selectStatus(status);
+
+            // Click on Edureka Logo
+            addLog("Click on Edureka Logo");
+            userHomePage=adminAddOfferPage.clickOnLogo();
+
+            // Verify Admin User Home page
+            addLog("Verify Admin User Home page");
+            userHomePage=userHomePage.verifyAdminUserPage();
+
+            // Click on Profile dropdown
+            userName = propertyReader.readTestData("Admin_UserName");
+            addLog("Click on Profile dropdown");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Select Admin from Prfile Dropdown
+            addLog("Select Admin from Profile dropdown");
+            adminDashboard=userHomePage.selectAdmin();
+
+            // Select Menu Tab
+            menuTab = propertyReader.readTestData("Tab_Offer_Admin");
+            addLog("Select Menu Tab " +menuTab);
+            adminDashboard=adminDashboard.selectMenuTab(menuTab);
+
+            // Select Create Offer from Offer Admin
+            createOffer= propertyReader.readTestData("Create_Offer");
+            addLog("Select Create Offer from offer Admin");
+            adminAddOfferPage=adminDashboard.selectOptionFromAdminOfferTab(createOffer);
+
+            // Verify Admin Add Offer page
+            addLog("Verify Admin Add Offer Page");
+            adminAddOfferPage = adminAddOfferPage.verifyAdminAddOfferPage();
+
+            // Create Flat Discount
+            offerType = propertyReader.readTestData("B1SN_Discount_Type");
+            discountTitle= propertyReader.readTestData("Title_Discount");
+            addLog("Create Flat Discount");
+            adminAddOfferPage=adminAddOfferPage.createDiscount(offerType, discountTitle);
+
+            // Check User, Customer and Repeat Customer check boxes
+            addLog("Check User, Customer and Repeat Customer check boxes");
+            adminAddOfferPage=adminAddOfferPage.checkUser_Customer_RepeatCustomer();
+
+            // Click on Submit Button
+            addLog("Click on Submit Button");
+            adminAddOfferPage=adminAddOfferPage.clickSubmitButton();
+
+            // select Banner Header
+            addLog("Select Banner Header");
+            adminAddOfferPage=adminAddOfferPage.selectBannerHeader();
+
+            // Get Parent window Id
+            addLog("Get Parent Window ID");
+            parentWidnow = getParentWindowHandle();
+
+            // Switch window and Select banner
+            bannerType = propertyReader.readTestData("Banner_Holy");
+            addLog("Select Banner " +bannerType);
+            switchPreviewWindow();
+            adminAddOfferPage=adminAddOfferPage.selectBanner(bannerType);
+
+            // Switch to Parent Window and select Enter Message Near Upcoming Batches
+            addLog("Switch to Parent Window and select Enter Message Near Upcoming Batches");
+            switchParentWindow(parentWidnow);
+            adminAddOfferPage= adminAddOfferPage.enterMessageNearUpcomingBatches();
+
+            // Enter Banner Text
+            bannerText = propertyReader.readTestData("Banner_Text");
+            addLog("Enter Banner Text");
+            switchPreviewWindow();
+            adminAddOfferPage= adminAddOfferPage.enterBannerText(bannerText);
+
+            // Get and Update Offer Id
+            addLog("Get and Update Offer Id");
+            switchParentWindow(parentWidnow);
+            adminAddOfferPage=adminAddOfferPage.getB1S2OfferId();
+
+            // Select Status
+            status = propertyReader.readTestData("Active_Status");
+            addLog("select "+status+" from status dropdown");
+            adminAddOfferPage= adminAddOfferPage.selectStatus(status);
+
+            // Click on Edureka Logo
+            addLog("Click on Edureka Logo");
+            userHomePage=adminAddOfferPage.clickOnLogo();
+
+            // Click on Profile dropdown
+            addLog("Click on Profile dropdown");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Logout Application
+            addLog("Logout Application");
+            dashboardPage=userHomePage.logout();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // click on Sign up link
+            addLog("click on Sign up link");
+            signInModalPage=signInModalPage.clickSignUp();
+
+            // Sign up User
+            String edurekaDomain = propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            userHomePage= signInModalPage.signUp(UserHomePage.class, edurekaDomain);
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            userHomePage=userHomePage.verifyUserPage();
+
+            // Select Course
+            courseName = propertyReader.readTestData("BigData&Hadoop");
+            addLog("Select Course " + courseName);
+            selectedCoursePage=userHomePage.selectCourse(courseName);
+
+            // Verify Selected course should be open.
+            addLog("Verify Selected course should be open");
+            selectedCoursePage=selectedCoursePage.verifySelectedPopularCoursePage(courseName);
+
+            // Click on Enroll Button
+            addLog("Click on Enroll Button");
+            orderSummaryPage=selectedCoursePage.clickOnEnrollButton(OrderSummaryPage.class);
+
+            // Verify Order Summary Page
+            addLog("Verify Order Summary Page");
+            orderSummaryPage=orderSummaryPage.verifyPage();
+
+            // Change Currency
+            currency= propertyReader.readTestData("INRCurrency");
+            addLog("Select currecnt" +currency +" from currnecy table");
+            orderSummaryPage=orderSummaryPage.changeCurrency(currency);
+
+            // Verify total Amount for USD is equal to Net price
+            addLog("verify Total amount");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmount(currency);
+
+            // Click on Razor pay securely button
+            addLog("Click on Razor pay securely button");
+            razorPayPage= orderSummaryPage.clickOnRazorPaySecurelyButton();
+
+            // Verify Razor page
+            addLog("Verify Razor page");
+            razorPayPage=razorPayPage.verifyPage();
+
+            // Click on Net Banking tab
+            addLog("Click on Net Banking tab");
+            razorPayPage=razorPayPage.clickOnNetBankingTab();
+
+            // Select bank
+            bankName = propertyReader.readTestData("Bank");
+            addLog("Select Bank" +bankName +" from bank table ");
+            razorPayPage=razorPayPage.selectBank(bankName);
+
+            // Click on pay button
+            addLog("Click on pay button");
+            razorPayPage=razorPayPage.clickOnPayButton();
+
+            // Get Parent window Id
+            addLog("Get Parent Window ID");
+            parentWidnow = getParentWindowHandle();
+
+            // Switch Child Window and Click on Succss button
+            addLog("Switch Child Window and Click on Succss button");
+            switchPreviewWindow();
+            myProfilePage=razorPayPage.clickOnSuccessButton();
+
+            // Switch to Parent Window and verify my Profile page
+            addLog("Switch to Parent Window and verify my Profile page");
+            switchParentWindow(parentWidnow);
+            Thread.sleep(5000);
+            myProfilePage= myProfilePage.verifyPage();
+
+            // Verify Payment success message
+            addLog("Verify payment success message 'Thank you for making payment !'");
+            myProfilePage= myProfilePage.verifySuccessPaymentMessage();
+
+            // Click on Referral Tab
+            addLog("Click on Referral Tab");
+            myProfilePage=myProfilePage.clickOnReferralTab();
+
+            // Click on Refer Friend button
+            addLog("Click on Refer Friend button");
+            myProfilePage= myProfilePage.clickOnReferButton();
+
+            // Enter Email
+            referralEmail= randomString(3)+"@tech.edureka.in";
+            propertyReader.updatePropertyTestData("RefferralEmail", referralEmail);
+            addLog("Enter email "+referralEmail);
+            myProfilePage=myProfilePage.referFriend(referralEmail);
+
+            // Get Referral Link
+            referralLink = myProfilePage.copyReferralLink();
+            addLog("Copy Referral Link "+ referralLink);
+
+            // Verify Success Message for sent refferral mail
+            addLog("Verify Success Message for sent refferral mail");
+            myProfilePage=myProfilePage.VerifySuccessRefferralMailSentMsg();
+
+            // Close Refer pop up
+            addLog("Close Refer pop up");
+            myProfilePage=myProfilePage.closeReferPopUp();
+
+            // Click on Profile Dropdown
+            userName = propertyReader.readRunTimeData("UserName");
+            Thread.sleep(5000);
+            addLog("Click on Profile Dropdown");
+            myProfilePage=myProfilePage.clickOnProfileDropdown(userName);  
+
+            // Logout from the application
+            addLog("Logout from the application.");
+            dashboardPage = myProfilePage.logout();  
+
+            // Verify Dashboard
+            addLog("Verify Dashboard");
+            dashboardPage=dashboardPage.verifyDashboard();
+
+            // Navigate to the Referral Link
+            addLog("Navigate to the "+referralLink);
+            dashboardPage=dashboardPage.changeUrl(referralLink);
+
+            // Verify final price on Dashboard after offer discount and referral discount value
+            String courseName = propertyReader.readTestData("BigData&Hadoop");
+            String referral_Discount_Value=propertyReader.readTestData("Referral_Discount_Vaule");
+            addLog("Verify final price on Dashboard after offer discount and referral discount value");
+            dashboardPage=dashboardPage.verifyCoursePriceAfterReferralAndOfferDiscount(courseName,percentageValue, referral_Discount_Value);
+
+            // Click on Course Tab
+            addLog("Click on Course Tab");
+            allCoursesPage= dashboardPage.clickOnCoursesTab();
+
+            // Click on List view Icon
+            addLog("Click on List view Icon");
+            allCoursesPage=allCoursesPage.clickOnListViewIcon();
+
+            // Verify Tool Tip message 
+            String course_Id = propertyReader.readTestData("Course_ID_BigData");
+            String tool_Tip_Message = propertyReader.readTestData("Tool_Tip_Message");
+            addLog("Verify ToolTip message " +tool_Tip_Message+ " and select course Id " +course_Id);
+            allCoursesPage=allCoursesPage.verifyToolTipMessage(course_Id, tool_Tip_Message);
+
+            // Verify final price on All courses page after offer discount and referral discount
+            addLog("Verify final price on All courses page after offer discount and referral discount");
+            allCoursesPage=allCoursesPage.verifyDiscountPriceValue(course_Id, percentageValue, referral_Discount_Value);
+
+            // Change Currency
+            String currency= propertyReader.readTestData("USDCurrency");
+            addLog("Select "+currency+" from currency dropdown");
+            allCoursesPage= allCoursesPage.changeCurrency(currency);
+
+           /* // Verify final price after offer discount and referral discount
+            addLog("Verify final price on All courses page after offer discount and referral discount");
+            allCoursesPage=allCoursesPage.verifyDiscountPriceValue(course_Id, percentageValue, referral_Discount_Value);
+
+            // Change Currency
+            currency= propertyReader.readTestData("Currency_GBP");
+            addLog("Select "+currency+" from currency dropdown");
+            allCoursesPage= allCoursesPage.changeCurrency(currency);
+
+            // Verify final price after offer discount and referral discount
+            addLog("Verify final price on All courses page after offer discount and referral discount");
+            allCoursesPage=allCoursesPage.verifyDiscountPriceValue(course_Id, percentageValue, referral_Discount_Value);
+
+            // Change Currency
+            currency= propertyReader.readTestData("Currency_CD");
+            addLog("Select "+currency+" from currency dropdown");
+            allCoursesPage= allCoursesPage.changeCurrency(currency);
+
+            // Verify final price after offer discount and referral discount
+            addLog("Verify final price on All courses page after offer discount and referral discount");
+            allCoursesPage=allCoursesPage.verifyDiscountPriceValue(course_Id, percentageValue, referral_Discount_Value);
+
+            // Change Currency
+            currency= propertyReader.readTestData("Currency_SG");
+            addLog("Select "+currency+" from currency dropdown");
+            allCoursesPage= allCoursesPage.changeCurrency(currency);
+
+            // Verify final price after offer discount and referral discount
+            addLog("Verify final price on All courses page after offer discount and referral discount");
+            allCoursesPage=allCoursesPage.verifyDiscountPriceValue(course_Id, percentageValue, referral_Discount_Value);
+
+
+            currency= propertyReader.readTestData("Currency_AU");
+            addLog("Select "+currency+" from currency dropdown");
+            allCoursesPage= allCoursesPage.changeCurrency(currency);
+
+            // Verify final price after offer discount and referral discount
+            addLog("Verify final price on All courses page after offer discount and referral discount");
+            allCoursesPage=allCoursesPage.verifyDiscountPriceValue(course_Id, percentageValue, referral_Discount_Value);
+*/
+
+            currency= propertyReader.readTestData("Currency_EU");
+            addLog("Select "+currency+" from currency dropdown");
+            allCoursesPage= allCoursesPage.changeCurrency(currency);
+
+            // Verify final price after offer discount and referral discount
+            addLog("Verify final price on All courses page after offer discount and referral discount");
+            allCoursesPage=allCoursesPage.verifyDiscountPriceValue(course_Id, percentageValue, referral_Discount_Value);
+
+            // Select Course
+            courseName = propertyReader.readTestData("BigData&Hadoop");
+            addLog("Select Course " +courseName);
+            selectedCoursePage=allCoursesPage.selectCourseFromListView(courseName);
+
+            // Verify Selected course should be open.
+            addLog("Verify Selected course should be open");
+            selectedCoursePage=selectedCoursePage.verifySelectedPopularCoursePage(courseName);
+
+            // Verify Additonal Referral and Offer Disocunt Message
+            addLog("Verify Additonal Referral and Offer Disocunt Message");
+            selectedCoursePage =selectedCoursePage.verifyAddtionalReferralAndOfferDiscountMessage();
+
+            //Click on Enroll Now Button
+            addLog("Click on Enroll Now Button");
+            signInModalPage=selectedCoursePage.clickOnEnrollButton(SignInModalPage.class);
+
+            //Sign up
+            userName = propertyReader.readTestData("UserName");
+            email = propertyReader.readRunTimeData("RefferralEmail");
+            String phNumber = propertyReader.readTestData("PhoneNumber");
+            String password = propertyReader.readTestData("Password");
+            addLog("Sign up user B who is refferrad by A in TC_001");
+            signInModalPage=signInModalPage.enterUserNameEmailAndPhoneNumnber(userName,email,phNumber);
+            signInModalPage=signInModalPage.enterPassword(password);
+
+            // Click on Sign create Account button
+            addLog("Click on Sign create Account button");
+            orderSummaryPage=signInModalPage.createAccountButton();
+
+            //Verify Order Summary page
+            addLog("Verify Order Summary page");
+            orderSummaryPage=orderSummaryPage.verifyPage();
+
+            // Verify Price after Referral Discount and Offer Discount
+            addLog("Verify Price after Referral Discount and Offer Discount");
+            orderSummaryPage=orderSummaryPage.verifyPriceAfterOfferAndReferralDiscount();
+
+            // Change Country
+            String countryName= propertyReader.readTestData("CountryName");
+            String currencySign = propertyReader.readTestData("AustralianCurrencySign");
+            addLog("Change Country from country dropdown");
+            orderSummaryPage=orderSummaryPage.changeCountry(countryName,currencySign);
+
+            // Verify Price after Referral Discount and Offer Discount
+            addLog("Verify Price after Referral Discount and Offer Discount");
+            orderSummaryPage=orderSummaryPage.verifyPriceAfterOfferAndReferralDiscount();
+
+            // Change Currency
+            currency= propertyReader.readTestData("USDCurrency");
+            addLog("Select currecnt" +currency +" from currnecy table");
+            orderSummaryPage=orderSummaryPage.changeCurrency(currency);
+
+            // Verify Price after Referral Discount and Offer Discount
+            addLog("Verify Price after Referral Discount and Offer Discount");
+            orderSummaryPage=orderSummaryPage.verifyPriceAfterOfferAndReferralDiscount();
+
+            // Change Currency
+            currency= propertyReader.readTestData("Currency_GBP");
+            addLog("Select "+currency+" from currency dropdown");
+            orderSummaryPage= orderSummaryPage.changeCurrency(currency);
+
+            // Verify Price after Referral Discount and Offer Discount
+            addLog("Verify Price after Referral Discount and Offer Discount");
+            orderSummaryPage=orderSummaryPage.verifyPriceAfterOfferAndReferralDiscount();
+
+            // Change Currency
+            currency= propertyReader.readTestData("Currency_CD");
+            addLog("Select "+currency+" from currency dropdown");
+            orderSummaryPage= orderSummaryPage.changeCurrency(currency);
+
+            // Verify Price after Referral Discount and Offer Discount
+            addLog("Verify Price after Referral Discount and Offer Discount");
+            orderSummaryPage=orderSummaryPage.verifyPriceAfterOfferAndReferralDiscount();
+
+            // Change Currency
+            currency= propertyReader.readTestData("Currency_SG");
+            addLog("Select "+currency+" from currency dropdown");
+            orderSummaryPage= orderSummaryPage.changeCurrency(currency);
+
+            // Verify Price after Referral Discount and Offer Discount
+            addLog("Verify Price after Referral Discount and Offer Discount");
+            orderSummaryPage=orderSummaryPage.verifyPriceAfterOfferAndReferralDiscount();
+
+            currency= propertyReader.readTestData("Currency_AU");
+            addLog("Select "+currency+" from currency dropdown");
+            orderSummaryPage= orderSummaryPage.changeCurrency(currency);
+
+            // Verify Price after Referral Discount and Offer Discount
+            addLog("Verify Price after Referral Discount and Offer Discount");
+            orderSummaryPage=orderSummaryPage.verifyPriceAfterOfferAndReferralDiscount();
+
+            currency= propertyReader.readTestData("Currency_EU");
+            addLog("Select "+currency+" from currency dropdown");
+            orderSummaryPage= orderSummaryPage.changeCurrency(currency);
+
+            // Verify Price after Referral Discount and Offer Discount
+            addLog("Verify Price after Referral Discount and Offer Discount");
+            orderSummaryPage=orderSummaryPage.verifyPriceAfterOfferAndReferralDiscount();
+
+            // Click on Profile Dropdown
+            addLog("Click on Profile Dropdown");
+            orderSummaryPage=orderSummaryPage.clickOnProfileDropdown(userName);            
+
+            // Logout from the application
+            addLog("Logout from the application.");
+            dashboardPage = orderSummaryPage.logout();       
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // Login Application through Admin credentials
+            email = propertyReader.readApplicationFile("Admin_UserName");
+            password = propertyReader.readApplicationFile("Admin_Password");
+            addLog("Login Application through Admin credentials");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on Start Learning Course button
+            addLog("Click on Start Learning Course button");
+            userHomePage=signInModalPage.clickStartLearningButton(UserHomePage.class);
+
+            // Verify Admin User Home page
+            addLog("Verify Admin User Home page");
+            userHomePage=userHomePage.verifyAdminUserPage();
+
+            // Click on Profile dropdown
+            userName = propertyReader.readTestData("Admin_UserName");
+            addLog("Click on Profile dropdown");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Select Admin from Prfile Dropdown
+            addLog("Select Admin from Profile dropdown");
+            adminDashboard=userHomePage.selectAdmin();
+
+            // Verify Admin Dashboard
+            addLog("Verify Admin Dashboard");
+            adminDashboard= adminDashboard.verifyAdminDashboard();
+
+            // Select Menu Tab
+            menuTab = propertyReader.readTestData("Tab_Offer_Admin");
+            addLog("Select Menu Tab " +menuTab);
+            adminDashboard=adminDashboard.selectMenuTab(menuTab);
+
+            // Select View offer List from offer Admin
+            String viewOfferList= propertyReader.readTestData("ViewOfferList");
+            addLog("Select View offer List from offer Admin");
+            adminAddOfferPage=adminDashboard.selectOptionFromAdminOfferTab(viewOfferList);
+
+            // Search Offer
+            String offer_Id= propertyReader.readRunTimeData("Offer_Id");
+            addLog("Search Offer by " +offer_Id);
+            adminAddOfferPage=adminAddOfferPage.searchOffer(offer_Id);
+
+            // Edit Offer 
+            addLog("Edit Offer");
+            adminAddOfferPage = adminAddOfferPage.editOffer();
+
+            // Select Status
+            status = propertyReader.readTestData("InactivateStatus");
+            addLog("select "+status+" from status dropdown");
+            adminAddOfferPage= adminAddOfferPage.selectStatus(status);
+
+            // Select Menu Tab
+            addLog("Select Menu Tab " +menuTab);
+            adminAddOfferPage=adminAddOfferPage.selectMenuTab(menuTab);
+
+            // Select View offer List from offer Admin
+            addLog("Select View offer List from offer Admin");
+            adminAddOfferPage=adminAddOfferPage.selectOptionFromAdminOfferTab(viewOfferList);
+
+            // Search Offer
+            offer_Id= propertyReader.readRunTimeData("B1S2OfferId");
+            addLog("Search Offer by " +offer_Id);
+            adminAddOfferPage=adminAddOfferPage.searchOffer(offer_Id);
+
+            // Edit Offer 
+            addLog("Edit Offer");
+            adminAddOfferPage = adminAddOfferPage.editOffer();
+
+            // Select Status
+            status = propertyReader.readTestData("InactivateStatus");
+            addLog("select "+status+" from status dropdown");
+            adminAddOfferPage= adminAddOfferPage.selectStatus(status);
+
+            // Clear browser cache
+            String url = propertyReader.readTestData("BrowserCacheUrl");
+            addLog("Clear Browser cache");
+            adminAddOfferPage=adminAddOfferPage.clearOfferCache(url);
+        }
+
+        catch (final Error e) {
+            captureScreenshot("test_023AdditionalDisocuntMessageWhenSomeOfferIsPresent");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_023AdditionalDisocuntMessageWhenSomeOfferIsPresent");
+            throw e;
+        }
+    }
+}

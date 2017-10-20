@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [TestSuiteEdurekaPOC]">
+  <test name="TestSuiteEdurekaPOC(failed)">
+    <classes>
+      <class name="com.edureka.scripts.VerifySignUpFromClassRecording">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifySignUpFromClassRecording -->
+      <class name="com.edureka.scripts.VerifyCourseAmountOnOrderSummaryForForeignCurrency">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_07VerifyCourseAmountOnOrderSummaryForForeignCurrency"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifyCourseAmountOnOrderSummaryForForeignCurrency -->
+      <class name="com.edureka.scripts.VerifySignUpFromAddToWishlist">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifySignUpFromAddToWishlist -->
+      <class name="com.edureka.scripts.VerifySignUpFromEnrollNow">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifySignUpFromEnrollNow -->
+      <class name="com.edureka.scripts.VerifySignUpFromNavigationHeader">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="afterMainMethod"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifySignUpFromNavigationHeader -->
+      <class name="com.edureka.scripts.VerifyCreatingLeadUsingDropUsQuery">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_05VerifyCreatingLeadUsingDropUsQuery"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifyCreatingLeadUsingDropUsQuery -->
+      <class name="com.edureka.scripts.VerifyCourseAmountOnOrderSummaryForINR">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_06VerifyCourseAmountOnOrderSummaryForINR"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifyCourseAmountOnOrderSummaryForINR -->
+    </classes>
+  </test> <!-- TestSuiteEdurekaPOC(failed) -->
+</suite> <!-- Failed suite [TestSuiteEdurekaPOC] -->

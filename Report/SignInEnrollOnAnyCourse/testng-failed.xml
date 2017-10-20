@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [SignInEnrollOnAnyCourse]">
+  <test name="SignInEnrollOnAnyCourse(failed)">
+    <classes>
+      <class name="com.edureka.leadProcess.SignInEnrollOnAnyCourse">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_023EnrollOnAnyCourseLandingPage"/>
+          <include name="tearDown"/>
+          <include name="test_014SignInEnrollOnAnyCourse"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.SignInEnrollOnAnyCourse -->
+    </classes>
+  </test> <!-- SignInEnrollOnAnyCourse(failed) -->
+</suite> <!-- Failed suite [SignInEnrollOnAnyCourse] -->

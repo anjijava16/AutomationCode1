@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+    <Razor>
+        <TBMail><![CDATA[//input[@id='email']]]></TBMail>
+        <Frame><![CDATA[//iframe[@class='razorpay-checkout-frame']]]></Frame>
+        <TabNetBanking><![CDATA[//label[text()='Netbanking']]]></TabNetBanking>
+        <ButtonPay><![CDATA[//button[@id='footer']]]></ButtonPay>
+        <HeadingRazor><![CDATA[//h3[text()='Welcome to Razorpay Bank']]]></HeadingRazor>
+        <BTNSuccess><![CDATA[//input[@value='Success']]]></BTNSuccess>
+    </Razor>
+</Locators>

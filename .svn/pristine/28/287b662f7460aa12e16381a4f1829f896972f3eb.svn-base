@@ -1,0 +1,136 @@
+package com.edureka.leadProcess;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.AllCoursesPage;
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.util.DriverTestCase;
+
+public class SignInFromAddToWishListInListViewOnAllCoursesPage extends DriverTestCase{
+    
+    private DashboardPage dashboardPage;
+    private SignInModalPage signInModalPage;
+    private AllCoursesPage allCoursesPage;
+
+    static String coursename;
+    static String email;
+    static String password;
+    static String course__Id ;
+    static String webSiteAction;
+    static String course_Group;
+    static String isPaidValue;
+    static String campaign_Values;
+    static String level_id;
+    static String event;
+    static String country;
+    static String campaignSource;
+    static String campaignName;
+    static String campaignMedium;
+    static String event_Type;
+
+
+    @Test
+    public void test_015SignInFromAddToWishListInListViewOnAllCoursesPage() throws Exception {
+
+        try {
+
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetupForLead();
+
+         // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Course Tab
+            addLog("Click on Course Tab");
+            allCoursesPage= dashboardPage.clickOnCoursesTab();
+
+            // Click on List view Icon
+            addLog("Click on List view Icon");
+            allCoursesPage=allCoursesPage.clickOnListViewIcon();
+           
+            // Click on Add To Wishlist Icon
+            coursename = propertyReader.readTestData("Course_Testing_SeleniumWebdriver");
+            course__Id = propertyReader.readTestData("Course_Id_Testing_SeleniumWebdriver");
+            addLog("Click on Add To Wishlist Icon");
+            //signInModalPage= allCoursesPage.clickOnAddToWishListFromListCourses(SignInModalPage.class, coursename);
+            signInModalPage= allCoursesPage.clickOnAddToWishListFromListCoursesByCourseId(SignInModalPage.class, course__Id);
+
+            // Verify default SignUp is selected
+            addLog("Verify default SignUp is selected");
+            signInModalPage= signInModalPage.clickOnLoginTab();
+
+            // Sign in user
+            email = propertyReader.readRunTimeData("Email_Id");
+            password = propertyReader.readTestData("Password");
+            addLog("Sign in user");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on Start Learning Course button
+            addLog("Click on Start Learning Course button");
+            allCoursesPage=signInModalPage.clickStartLearningButton(AllCoursesPage.class);
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            allCoursesPage=allCoursesPage.verifySignUpSuccessfully();
+            
+             // Verify Data in user table
+            addLog("Verify Data in user table");
+            allCoursesPage = allCoursesPage.dataVerificationInUserTable("1");
+
+            // Verify Data in User Lead Table
+            course__Id = propertyReader.readTestData("Course_Id_Testing_SeleniumWebdriver");
+            webSiteAction = propertyReader.readTestData("HomePage_Signup_WebSite_Action");
+            country= propertyReader.readTestData("CountryIndia");
+            campaignSource= propertyReader.readTestData("LeadCampaignSource");
+            campaignName= propertyReader.readTestData("LeadCampaignName");
+            campaignMedium= propertyReader.readTestData("LeadCampaignMedium");
+            addLog("Verify Data in User Lead Table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_LeadsTable(course__Id,webSiteAction,country,campaignSource, campaignName, campaignMedium);
+
+            // Verify Data in User Course table
+            course_Group = propertyReader.readTestData("Course_Group_Testing_SeleniumWebdriver");
+            isPaidValue= propertyReader.readTestData("HomePage_Signup_Is_Paid_Value");
+            addLog("Verify Data in User Course table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_CoursedTable(course__Id,isPaidValue,course_Group);
+
+            // Verify Data in User Event Table
+            campaign_Values= propertyReader.readTestData("LeadCampaignName");
+            event_Type=propertyReader.readTestData("EventType");
+            String event_context= propertyReader.readTestData("HomePage_SignIn_WebSite_Action");
+            addLog("Verify Data in User Event Table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_EventTable(course__Id,event_context,campaign_Values,event_Type);
+
+            // Veriy Data in Ambassadors table
+            level_id = propertyReader.readTestData("HomePage_Signup_level_id");
+            addLog("Veriy Data in Ambassadors table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_AmbassadorsTable(level_id);
+
+          
+         // Verify Data in Completed Queue Jobs table
+            String courseStatus = this.propertyReader.readTestData("Status");
+            String courseProperty = this.propertyReader.readTestData("Priority");
+            this.allCoursesPage = this.allCoursesPage.dataVerificationInCompleted_Queue_Jobs_Table(courseStatus, courseProperty, event_Type);
+
+            // Click on Profile Dropdown
+            String userName = propertyReader.readRunTimeData("UserName");
+            addLog("Click on Profile Dropdown");
+            allCoursesPage=allCoursesPage.clickOnProfileDropdown(userName);  
+
+            // Logout from the application
+            addLog("Logout from the application.");
+            dashboardPage = allCoursesPage.logout();  
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test_015SignInFromAddToWishListInListViewOnAllCoursesPage");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_015SignInFromAddToWishListInListViewOnAllCoursesPage");
+            throw e;
+        }
+    }
+
+}

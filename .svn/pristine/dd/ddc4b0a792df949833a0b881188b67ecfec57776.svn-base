@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="5" verbose="1" name="MakePaymentWhenCreditPointsAvailableAndB1S2OfferIsPresent"
+    annotations="JDK">
+    <test name="MakePaymentWhenCreditPointsAvailableAndB1S2OfferIsPresent" junit="false"
+        preserve-order="true">
+        <classes>
+            <class name="com.edureka.paymentProcess.MakePaymentWhenCreditPointsAvailableAndB1S2OfferIsPresent" />
+        </classes>
+    </test>
+</suite>

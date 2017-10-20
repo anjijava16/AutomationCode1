@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyCouponCodeDiscount]">
+  <test name="VerifyCouponCodeDiscount(failed)">
+    <classes>
+      <class name="com.edureka.offerFramework.VerifyCouponCodeDiscount">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_007VerifyCouponCodeDiscount"/>
+        </methods>
+      </class> <!-- com.edureka.offerFramework.VerifyCouponCodeDiscount -->
+    </classes>
+  </test> <!-- VerifyCouponCodeDiscount(failed) -->
+</suite> <!-- Failed suite [VerifyCouponCodeDiscount] -->

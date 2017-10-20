@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifySignUpFromNavigationHeader]">
+  <test name="VerifySignUpFromNavigationHeader(failed)">
+    <classes>
+      <class name="com.edureka.registration.VerifySignUpFromNavigationHeader">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_01VerifySignUpFromNavigationHeader"/>
+          <include name="tearDown"/>
+          <include name="test_35SignUpDisabledWhenNoDataIsEntered"/>
+        </methods>
+      </class> <!-- com.edureka.registration.VerifySignUpFromNavigationHeader -->
+    </classes>
+  </test> <!-- VerifySignUpFromNavigationHeader(failed) -->
+</suite> <!-- Failed suite [VerifySignUpFromNavigationHeader] -->

@@ -1,0 +1,100 @@
+package com.edureka.leadProcess;
+
+import org.testng.annotations.Test;
+
+import com.edureka.util.DriverTestCase;
+
+
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+
+public class VerifySignupFromWatchSampleClassRecording extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private SelectedCoursePage selectedCoursePage;
+    private SignInModalPage signInModalPage;
+
+    @Test
+    public void test_004VerifySignUpFromWatchSampleClassRecording() throws Exception {
+
+        try {
+
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            //Select a course
+            String course= propertyReader.readTestData("BigData&Hadoop");
+            selectedCoursePage= dashboardPage.selectCourse(course);
+
+            // Verify Selected Course Page Is Open
+            addLog("Verify Selected Course Page Is Open");
+            selectedCoursePage=	selectedCoursePage.verifySelectedCoursePage(course);
+
+            // Play class recording video
+            addLog("Play class recording video");
+            signInModalPage= selectedCoursePage.playClassRecording(SignInModalPage.class);
+
+            // Verify default SignUp is selected
+            addLog("Verify default SignUp is selected");
+            signInModalPage= signInModalPage.verifySignUpIsDefault();
+
+            // Sign up user
+            String domainName= propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            selectedCoursePage= signInModalPage.signUp(SelectedCoursePage.class, domainName);
+
+            // Verify User Home Page
+            addLog("Verify sign up successfully");
+            selectedCoursePage=selectedCoursePage.verifySignUpSuccessfully();
+
+            // Verify Data in user Table
+            addLog("Verify Data in user Table");
+            selectedCoursePage=selectedCoursePage.veryDataInUserTable();
+
+            // Verify Data in User Lead Table
+            String course__Id = propertyReader.readTestData("Course_ID_BigData");
+            String webSiteAction = propertyReader.readTestData("ClassRecording_Website_Action");
+            addLog("Verify Data in User Lead Table");
+            selectedCoursePage= selectedCoursePage.veryDataInUser_LeadsTable(course__Id,webSiteAction);
+
+            // Verify Data in User Course table
+            String isPaidValue= propertyReader.readTestData("HomePage_Signup_Is_Paid_Value");
+            String courseGroup = propertyReader.readTestData("Course_Group_BigData");
+            addLog("Verify Data in User Course table");
+            selectedCoursePage= selectedCoursePage.veryDataInUser_CoursedTable(course__Id,isPaidValue,courseGroup);
+
+            // Verify Data in User Event Table
+            String campaign_Values= propertyReader.readTestData("UTM_campaign");
+            addLog("Verify Data in User Event Table");
+            selectedCoursePage= selectedCoursePage.veryDataInUser_EventTable(course__Id,webSiteAction,campaign_Values);
+
+            // Veriy Data in Ambassadors table
+            String level_id = propertyReader.readTestData("HomePage_Signup_level_id");
+            addLog("Veriy Data in Ambassadors table");
+            selectedCoursePage= selectedCoursePage.veryDataInUser_AmbassadorsTable(level_id);
+            
+            // Click on Profile Dropdown
+            String userName = propertyReader.readRunTimeData("UserName");
+            addLog("Click on Profile Dropdown");
+            selectedCoursePage=selectedCoursePage.clickOnProfileDropdown(userName);  
+            
+            // Logout from the application
+            addLog("Logout from the application.");
+            dashboardPage = selectedCoursePage.logout();            
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test_004VerifySignUpFromWatchSampleClassRecording");
+            throw e;
+        } 
+        catch (final Exception e) {
+            captureScreenshot("test_004VerifySignUpFromWatchSampleClassRecording");
+            throw e;
+        }
+    }
+}

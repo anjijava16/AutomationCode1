@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [AdditionalDisocuntMessageWhenSomeOfferIsPresent]">
+  <test name="AdditionalDisocuntMessageWhenSomeOfferIsPresent(failed)">
+    <classes>
+      <class name="com.edureka.referralProcess.AdditionalDisocuntMessageWhenSomeOfferIsPresent">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_023AdditionalDisocuntMessageWhenSomeOfferIsPresent"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.referralProcess.AdditionalDisocuntMessageWhenSomeOfferIsPresent -->
+    </classes>
+  </test> <!-- AdditionalDisocuntMessageWhenSomeOfferIsPresent(failed) -->
+</suite> <!-- Failed suite [AdditionalDisocuntMessageWhenSomeOfferIsPresent] -->

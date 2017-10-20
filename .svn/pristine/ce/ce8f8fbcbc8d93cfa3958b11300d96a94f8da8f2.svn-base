@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//a[text()='Profile']]]></PageHeader>
+	<MessagePaymentSuccess><![CDATA[//div[@class='alert alert-success alert-dismissible fade in successalert']]]></MessagePaymentSuccess>
+	<TabCourses><![CDATA[//a[contains(text(),'Courses ')]]]></TabCourses>
+	<TabGoToCourse><![CDATA[//a[text()='Go To Course']]]></TabGoToCourse>
+	<TabLMS><![CDATA[//ul[@id='lmsTab']]]></TabLMS>
+	<DDCommunity><![CDATA[//a[contains(text(),'Community ')]]]></DDCommunity>
+	<LTChangePassword><![CDATA[//a[contains(text(),'Change Password')]]]></LTChangePassword>
+	<LTLogout><![CDATA[//a[contains(text(),'Log Out')]]]></LTLogout>
+
+	<RefferralProcess>
+		<EarnCredit><![CDATA[//p[contains(text(),'Credits Available')]/preceding-sibling::p[1]]]></EarnCredit>
+		<LinkReferral><![CDATA[//strong[contains(@class,'copydata')]]]></LinkReferral>
+		<TabReferral><![CDATA[//a[@data-target='#referral']]]></TabReferral>
+		<BTNReferFriend><![CDATA[//a[@id='referTop']]]></BTNReferFriend>
+		<BTNRefer><![CDATA[//a[contains(@class,'referel-link-dashboard btn btn-primary btn')]]]></BTNRefer>
+		<ReferralLink><![CDATA[//span[@class='refLink copylinkadd']]]></ReferralLink>
+		<RefferralForm><![CDATA[//form[@id='referralForm']]]></RefferralForm>
+		<AlertMessage><![CDATA[//div[contains(text(),' Please fill the blank fields')]]]></AlertMessage>
+		<TBEmail><![CDATA[//div[@class='bootstrap-tagsinput']/input[@placeholder='Enter email ids seperated by comma..']]]></TBEmail>
+		<BTNSendInvitation><![CDATA[//a[@id='btnSendReferrerMail']]]></BTNSendInvitation>
+		<SuccessMessage><![CDATA[//div[contains(text(),'Referral mail successfully sent. Keep referring.')]]]></SuccessMessage>
+		<BTNClose><![CDATA[//span[@class='ref-pop-close']]]></BTNClose>
+		<BTNRedeem><![CDATA[//a[contains(text(),'Redeem Now')]]]></BTNRedeem>
+		<RedeemptionCredit><![CDATA[//p[contains(text(),'Credits Redeemed')]/preceding-sibling::p[1]]]></RedeemptionCredit>
+		<ImgReferral><![CDATA[//img[contains(@src,'/img/refimage.png')]]]></ImgReferral>
+		<ReferFriendPoints><![CDATA[//p[contains(text(),'Friends referred')]/preceding-sibling::p[1]]]></ReferFriendPoints>
+		<EnrolmentsNumbers><![CDATA[//p[contains(text(),'Enrollments')]/preceding-sibling::p[1]]]></EnrolmentsNumbers>
+		<BtnViewDetails><![CDATA[//p[@id='referal-table-btn']]]></BtnViewDetails>
+		<BtnHyphen><![CDATA[//td[text()='-']]]></BtnHyphen>
+		<BtnRemind><![CDATA[//a[text()='Remind']]]></BtnRemind>
+		<ReferralTableRecords><![CDATA[//div[@id='user-referral']/table/tbody/tr]]></ReferralTableRecords>
+		<ReferralTableName><![CDATA[//strong[text()='My Referrals']]]></ReferralTableName>
+	</RefferralProcess>
+</Locators>

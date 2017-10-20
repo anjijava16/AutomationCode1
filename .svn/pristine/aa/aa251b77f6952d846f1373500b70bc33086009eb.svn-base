@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//a[text()='Profile']]]></PageHeader>
+	<MessagePaymentSuccess><![CDATA[//div[@class='alert alert-success alert-dismissible fade in successalert']]]></MessagePaymentSuccess>
+	<TabCourses><![CDATA[//a[contains(text(),'Courses ')]]]></TabCourses>
+	<TabGoToCourse><![CDATA[//a[text()='Go To Course']]]></TabGoToCourse>
+	<TabLMS><![CDATA[//ul[@id='lmsTab']]]></TabLMS>
+	<DDCommunity><![CDATA[//a[contains(text(),'Community ')]]]></DDCommunity>
+	<LTChangePassword><![CDATA[//a[contains(text(),'Change Password')]]]></LTChangePassword>
+	<LTLogout><![CDATA[//a[contains(text(),'Log Out')]]]></LTLogout>
+	<LTProfile><![CDATA[//a[contains(text(),'My Profile')]]]></LTProfile>
+	<MyOrdersTab><![CDATA[//*[@id='myTab']/li[2]/a]]></MyOrdersTab>
+	
+	<CourseImage><![CDATA[//*[@id='MyOrders']/section/article[1]/div[1]/img]]></CourseImage>
+	<CourseTitle><![CDATA[//*[@id='MyOrders']/section/article[1]/div[2]]]></CourseTitle>
+	<OrderId><![CDATA[//*[@id='MyOrders']/section/article[2]/span/p[1]]]></OrderId>
+	<Price><![CDATA[//*[@id='MyOrders']/section/article[2]/span/p[2]]]></Price>
+	<PaymentDate><![CDATA[//*[@id='MyOrders']/section/article[1]/div[2]/small]]></PaymentDate>
+	
+	<ViewInvice><![CDATA[//*[@id='MyOrders']/section/article[3]/ul/li[1]/a/span]]></ViewInvice>
+	<EmailInvoice><![CDATA[//*[@id='MyOrders']/section/article[3]/ul/li[2]/a/span]]></EmailInvoice>
+	<RetailInvoiceText><![CDATA[//*[@id='raisinvoicepriew0']/div/div/div[1]/h4]]></RetailInvoiceText>
+	<InvoiceOrderId><![CDATA[//*[@id='raisinvoicepriew0']/div/div/div[2]/div/div[2]/div[1]/p[1]]]></InvoiceOrderId>
+	<UserName><![CDATA[//*[@id='raisinvoicepriew0']/div/div/div[2]/div/div[2]/div[2]/p[2]]]></UserName>
+	<EmailId><![CDATA[//*[@id='raisinvoicepriew0']/div/div/div[2]/div/div[2]/div[2]/p[3]]]></EmailId>
+	<CourseName><![CDATA[//*[@id='raisinvoicepriew0']/div/div/div[2]/div/div[3]/div[1]/div[2]]]></CourseName>
+	<Quantity><![CDATA[.//*[@id='myTab']/li[2]/a]]></Quantity>
+	<TotalPrice><![CDATA[//*[@id='raisinvoicepriew0']/div/div/div[2]/div/div[4]/span/span[2]]]></TotalPrice>
+	<CloseButton><![CDATA[//*[@id='raisinvoicepriew0']/div/div/div[1]/button]]></CloseButton>
+	
+	<InvoiceEmailId><![CDATA[//*[@id='invoice_email']]]></InvoiceEmailId>
+	<SendButton><![CDATA[//button[contains(text(),'SEND')]]]></SendButton>
+	<PrintInvoice><![CDATA[//*[@id='MyOrders']/section/article[3]/ul/li[3]/a/span]]></PrintInvoice>
+
+	
+	<RefferralProcess>
+		<EarnCredit><![CDATA[//p[contains(text(),'Credits Available')]/preceding-sibling::p[1]]]></EarnCredit>
+		<ReferralTable><![CDATA[//div[@id='user-referral']/table/tbody/tr]]></ReferralTable>
+		<LinkReferral><![CDATA[//strong[contains(@class,'copydata')]]]></LinkReferral>
+		<TabReferral><![CDATA[//a[@data-target='#referral']]]></TabReferral>
+		<BTNReferFriend><![CDATA[//a[@id='referTop']]]></BTNReferFriend>
+		<BTNRefer><![CDATA[//a[contains(@class,'referel-link-dashboard btn btn-primary btn')]]]></BTNRefer>
+		<ReferralLink><![CDATA[//span[@class='refLink copylinkadd']]]></ReferralLink>
+		<RefferralForm><![CDATA[//form[@id='referralForm']]]></RefferralForm>
+		<AlertMessage><![CDATA[//div[contains(text(),' Please fill the blank fields')]]]></AlertMessage>
+		<TBEmail><![CDATA[//div[@class='bootstrap-tagsinput']/input[@placeholder='Enter email ids seperated by comma..']]]></TBEmail>
+		<BTNSendInvitation><![CDATA[//a[@id='btnSendReferrerMail']]]></BTNSendInvitation>
+		<SuccessMessage><![CDATA[//div[contains(text(),'Referral mail successfully sent. Keep referring.')]]]></SuccessMessage>
+		<BTNClose><![CDATA[//span[@class='ref-pop-close']]]></BTNClose>
+		<BTNRedeem><![CDATA[//a[contains(text(),'Redeem Now')]]]></BTNRedeem>
+		<RedeemptionCredit><![CDATA[//p[contains(text(),'Credits Redeemed')]/preceding-sibling::p[1]]]></RedeemptionCredit>
+		<ImgReferral><![CDATA[//img[contains(@src,'/img/refimage.png')]]]></ImgReferral>
+		<ReferFriendCount><![CDATA[//p[contains(text(),'Friends referred')]/preceding-sibling::p[1]]]></ReferFriendCount>
+		<EnrolmentsNumbers><![CDATA[//p[contains(text(),'Enrollments')]/preceding-sibling::p[1]]]></EnrolmentsNumbers>
+		<BtnViewDetails><![CDATA[//p[@id='referal-table-btn']]]></BtnViewDetails>
+		<BtnHyphen><![CDATA[//td[text()='-']]]></BtnHyphen>
+		<BtnRemind><![CDATA[//a[text()='Remind']]]></BtnRemind>
+		<ReferralTableRecords><![CDATA[//div[@id='user-referral']/table/tbody/tr]]></ReferralTableRecords>
+		<ReferralTableName><![CDATA[//strong[text()='My Referrals']]]></ReferralTableName>
+		
+		<HeaderMessage><![CDATA[//span[@class='refhead']]]></HeaderMessage>
+		<LTCopy><![CDATA[//a[text()='Copy Link']]]></LTCopy>
+		<ImportGmail><![CDATA[//a[contains(@onclick,'ImportGoogleContacts()')]]]></ImportGmail>
+		<ImportOutLook><![CDATA[//a[contains(@onclick,'ImportMicrosoftContacts()')]]]></ImportOutLook>
+		<EmailSubject><![CDATA[//input[@id='emailsubject']]]></EmailSubject>
+		<BottomMessage><![CDATA[//small[contains(text(),'92% of our customers refer edureka ')]]]></BottomMessage>
+		
+		<Twitter><![CDATA[//a[@class='twitter']]]></Twitter>
+		<BTNPostOnTwitter><![CDATA[//a[@id='btnShareinTwitter']]]></BTNPostOnTwitter>
+		
+		
+		<linkdln><![CDATA[//a[@class='linkedin']]]></linkdln>
+        <TwitterInsideMessage><![CDATA[//textarea[contains(text(),'Have you checked out the live online courses by www.edureka.co? Use my referral link http://goo.gl/isRf5f to get a 10% discount!')]]]></TwitterInsideMessage>
+        <btnShareinLinkedIn><![CDATA[//a[@id='btnShareinTwitter']]]></btnShareinLinkedIn>
+        <LinkdlnBottomTitle><![CDATA[//h4[contains(text(),'Instructor Led Online Courses with 24x7 On-Demand Support | Edureka')]]]></LinkdlnBottomTitle>
+        <LinkdlnBottomMessage><![CDATA[//p[contains(text(),'Edureka provides online training courses for BigData and Hadoop, Hadoop Admin, Cassandra, Data Science, Cloud Computing, Android Development.')]]]></LinkdlnBottomMessage>
+        <LevelAndCampaignAssignment><![CDATA[//h5[contains(text(),'Invite a friend and earn credits')]]]></LevelAndCampaignAssignment>
+	</RefferralProcess>
+</Locators>

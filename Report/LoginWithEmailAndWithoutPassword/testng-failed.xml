@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [LoginWithEmailAndWithoutPassword]">
+  <test name="LoginWithEmailAndWithoutPassword(failed)">
+    <classes>
+      <class name="com.edureka.scripts.LoginWithEmailAndWithoutPassword">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_014LoginWithEmailAndWithoutPassword"/>
+          <include name="afterMainMethod"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.LoginWithEmailAndWithoutPassword -->
+    </classes>
+  </test> <!-- LoginWithEmailAndWithoutPassword(failed) -->
+</suite> <!-- Failed suite [LoginWithEmailAndWithoutPassword] -->

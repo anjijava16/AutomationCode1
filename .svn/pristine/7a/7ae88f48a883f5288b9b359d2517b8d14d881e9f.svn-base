@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="5" verbose="1" name="VerifyCurrencyAndTimeZonePrefrences"
+    annotations="JDK">
+    <test name="VerifyCurrencyAndTimeZonePrefrences" junit="false"
+        preserve-order="true">
+        <classes>
+            <class name="com.edureka.others.VerifyCurrencyAndTimeZonePrefrences" />
+        </classes>
+    </test>
+</suite>

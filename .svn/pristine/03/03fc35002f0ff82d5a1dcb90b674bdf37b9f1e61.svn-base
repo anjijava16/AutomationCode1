@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [CheckForInquiryFromHomePage]">
+  <test name="CheckForInquiryFromHomePage(failed)">
+    <classes>
+      <class name="com.edureka.leadProcess.CheckForInquiryFromHomePage">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_033VerifySignupShouldAllowWithSameIdUsedInInquiry"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.CheckForInquiryFromHomePage -->
+    </classes>
+  </test> <!-- CheckForInquiryFromHomePage(failed) -->
+</suite> <!-- Failed suite [CheckForInquiryFromHomePage] -->

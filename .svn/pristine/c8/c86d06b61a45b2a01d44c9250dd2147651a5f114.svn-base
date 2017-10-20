@@ -1,0 +1,82 @@
+package com.edureka.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class AllCoursesPage extends DriverHelper{
+
+    private LocatorReader allCoursesLocator;
+
+    public AllCoursesPage(WebDriver driver) {
+        super(driver);
+        allCoursesLocator = new LocatorReader("AllCourses.xml");
+    }
+
+    /**
+     *  Verify All Courses Page
+     * @return
+     */
+    public AllCoursesPage verifyAllCoursesPage() {
+        String pageheader=allCoursesLocator.getLocator("HomePage.PageHeader");
+        WaitForElementPresent(pageheader, getTimeOut());
+        Assert.assertTrue(isElementPresent(pageheader));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+    
+    public SelectedCoursePage selectCourseFromListView(String courseName) {
+        String course="//span[contains(text(),'"+courseName+"')]";
+        WaitForElementPresent(course, getTimeOut());
+        clickOn(course);
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+    
+    /**
+     * @return
+     */
+    public AllCoursesPage clickOnListViewIcon() {
+        String imgListView=allCoursesLocator.getLocator("HomePage.ImgListView");
+        WaitForElementPresent(imgListView, getTimeOut());
+        clickOn(imgListView);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+    
+    /**
+     *  Click on Grid View Icon
+     * @return
+     */
+    public AllCoursesPage clickOnGridViewIcon() {
+        String imgGridView=allCoursesLocator.getLocator("HomePage.ImgGridView");
+        WaitForElementPresent(imgGridView, getTimeOut());
+        clickOn(imgGridView);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+    
+    /**
+     * Select given course from Grid View
+     * @return
+     */    
+    public SelectedCoursePage selectCourseFromGridView(String course) {
+        List<WebElement> courses = driver.findElements(By.xpath(("//ul[@id='product-wrap']/li")));
+        int rows = courses.size();
+       for (int i = 1; i < rows; i++) {
+            String coursesList = "//ul[@id='product-wrap']/li["+i+"]/div[1]/div[1]/a/span[2]";
+            WaitForElementPresent(coursesList, 20);
+            String coursesName= getText(coursesList);
+            if (coursesName.contains(course)) {
+            	String courseLink = "//ul[@id='product-wrap']/li["+i+"]/div[1]/div[1]/a";
+            	String loc = getAttribute(courseLink, "href");
+            	driver.get(loc);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+}

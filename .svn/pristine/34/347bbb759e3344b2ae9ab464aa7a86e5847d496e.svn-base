@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//input[@id='input']]]></PageHeader>
+	<BTNPostQuestion><![CDATA[//a[@id='post-question-link']]]></BTNPostQuestion>
+	<SuccessMsgPostQuestion><![CDATA[//div[text()='Your question was received successfully.']]]></SuccessMsgPostQuestion>
+	<UnderModeration><![CDATA[//span[text()='Under Moderation']]]></UnderModeration>
+	<BTNClose><![CDATA[//img[@alt='Close']]]></BTNClose>
+	<Filters><![CDATA[//ul[@class='list-inline forum-community-links']]]></Filters>
+	<TBSearchForum><![CDATA[//input[@placeholder='Search Forum']]]></TBSearchForum>
+	<SearchedResult><![CDATA[//ul[@id='delay']/li[1]]]></SearchedResult>
+	<ImgSearchData><![CDATA[//i[@class='fa fa-search']]]></ImgSearchData>
+</Locators>

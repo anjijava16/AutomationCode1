@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="5" verbose="1" name="MakePaymentWhenAnyTypeOfDiscountWithB1S2IsPresent"
+    annotations="JDK">
+    <test name="MakePaymentWhenAnyTypeOfDiscountWithB1S2IsPresent" junit="false"
+        preserve-order="true">
+        <classes>
+            <class name="com.edureka.paymentProcess.MakePaymentWhenAnyTypeOfDiscountWithB1S2IsPresent" />
+        </classes>
+    </test>
+</suite>

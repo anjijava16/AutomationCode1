@@ -1,0 +1,332 @@
+package com.edureka.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class SignInModalPage extends DriverHelper{
+
+    private LocatorReader signInLocator;
+
+    public SignInModalPage(WebDriver driver) {
+        super(driver);
+        signInLocator = new LocatorReader("SignIn.xml");
+    }
+
+    /**
+     *  Verify SignIn Page
+     * @return
+     */
+    public SignInModalPage verifySignInModal() {
+        String pageName= signInLocator.getLocator("PageHeader");
+        WaitForElementPresent(pageName, getTimeOut());
+        Assert.assertTrue(isTextPresent(pageName,"Verify Signin"));
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     * User Signup
+     * @return
+     */
+    public UserHomePage signUp(){
+        String phNumber = propertyReader.readTestData("PhoneNumber");
+        String password = propertyReader.readTestData("Password");
+        String userName= "User"+randomString(2);
+        String email = "test" + randomString(3)+ "@tech.edureka.in";
+        propertyReader.updatePropertyTestData("Email_Id", email);
+        propertyReader.updatePropertyTestData("UserName", userName);
+
+        String tbUserName = signInLocator.getLocator("SignIn.TBUserName");
+        WaitForElementVisible(tbUserName, getTimeOut());
+        sendKeys(tbUserName, userName);
+
+        String tbUserEmail = signInLocator.getLocator("SignIn.TBEmail");
+        WaitForElementPresent(tbUserEmail, getTimeOut());
+        sendKeys(tbUserEmail, email);
+
+        String tbUserMob =signInLocator.getLocator("SignIn.TBPhNumber");
+        WaitForElementPresent(tbUserMob, getTimeOut());
+        sendKeys(tbUserMob, phNumber);
+
+        String tbUserPwrd =signInLocator.getLocator("SignIn.TBUserPassword");
+        WaitForElementPresent(tbUserPwrd, getTimeOut());
+        sendKeys(tbUserPwrd, password);
+
+        String btnCreateAccount =signInLocator.getLocator("SignIn.BTNCreateAccount");
+        WaitForElementPresent(btnCreateAccount, getTimeOut());
+        clickOn(btnCreateAccount);
+
+        getPageLoadTimeOut();
+        return PageFactory.initElements(driver, UserHomePage.class);
+
+    }
+
+    /**
+     *  Login Application
+     * @return
+     */
+    public UserHomePage loginApp() {
+        String email = propertyReader.readRunTimeData("Email_Id");
+        String password = propertyReader.readTestData("Password");
+
+        String tbLoginEmail = signInLocator.getLocator("Login.TBLoginEmail");
+        WaitForElementPresent(tbLoginEmail, getTimeOut());
+        sendKeys(tbLoginEmail, email);
+
+        String tbPassword = signInLocator.getLocator("Login.TBLoginPassword");
+        WaitForElementPresent(tbPassword, getTimeOut());
+        sendKeys(tbPassword, password);
+
+        String btnStartLearning =signInLocator.getLocator("Login.BTNStartLearning");
+        WaitForElementPresent(btnStartLearning, getTimeOut());
+        clickOn(btnStartLearning);
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+    /**
+     *  Verify Login is selected in default 
+     * @return
+     */
+    public SignInModalPage verifyLoginIsDefault() {
+        String tbLoginEmail = signInLocator.getLocator("Login.TBLoginEmail");
+        WaitForElementPresent(tbLoginEmail, getTimeOut());
+        Assert.assertTrue(isElementPresent(tbLoginEmail));
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     *  Click on Signup link
+     */
+    public SignInModalPage clickSignUp() {
+        String lTsignUp = signInLocator.getLocator("SignIn.LTSignUp");
+        WaitForElementPresent(lTsignUp, getTimeOut());
+        clickOn(lTsignUp);
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     * Verify Sign Up is selected as default
+     * @return
+     */
+    public SignInModalPage verifySignUpIsDefault() {
+        String signUp = signInLocator.getLocator("SignIn.TBUserName");
+        WaitForElementPresent(signUp, getTimeOut());
+        Assert.assertTrue(isElementPresent(signUp));
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     * Enter User name, Email and phone number
+     * @param userName
+     * @param email
+     * @param phNumber
+     * @return
+     */
+    public SignInModalPage enterUserNameEmailAndPhoneNumnber(String userName, String email, String phNumber){
+
+        String tbUserName = signInLocator.getLocator("SignIn.TBUserName");
+        WaitForElementVisible(tbUserName, getTimeOut());
+        sendKeys(tbUserName, userName);
+
+        String tbUserEmail = signInLocator.getLocator("SignIn.TBEmail");
+        WaitForElementPresent(tbUserEmail, getTimeOut());
+        sendKeys(tbUserEmail, email);
+
+        String tbUserMob =signInLocator.getLocator("SignIn.TBPhNumber");
+        WaitForElementPresent(tbUserMob, getTimeOut());
+        sendKeys(tbUserMob, phNumber);
+        return PageFactory.initElements(driver, SignInModalPage.class);
+
+    }
+
+    /**
+     *  Verify Error
+     * @return
+     */
+    public SignInModalPage verifyError(){
+        String btnCreateAccount =signInLocator.getLocator("SignIn.BTNCreateAccount");
+        String btnStartLearning =signInLocator.getLocator("Login.BTNStartLearning");
+
+        if (isElementPresent(btnCreateAccount)){
+            clickOn(btnCreateAccount);
+        }
+
+        else if (isElementPresent(btnStartLearning)){
+            clickOn(btnStartLearning);
+        }
+        String msgError = signInLocator.getLocator("SignIn.TxtError");
+        WaitForElementPresent(msgError, getTimeOut());
+        String msg = getText(msgError);
+        Assert.assertTrue(msg.contains("Please enter a valid input."));  
+        return PageFactory.initElements(driver, SignInModalPage.class);
+
+    }
+
+    /**
+     *  Close Sign in module
+     */
+    public DashboardPage closeSignInModule(){
+        String imgClose = signInLocator.getLocator("SignIn.CloseIcon");
+        WaitForElementPresent(imgClose, getTimeOut());
+        clickOn(imgClose);
+        driver.navigate().refresh();
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     * Enter password
+     * @param password
+     */
+    public SignInModalPage enterPassword(String password) {
+        String tbUserPwrd =signInLocator.getLocator("SignIn.TBUserPassword");
+        WaitForElementPresent(tbUserPwrd, getTimeOut());
+        sendKeys(tbUserPwrd, password);
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     * Verify all the text boxes should contains relevant placeholder text
+     */
+    public SignInModalPage verifyPlaceholderText() {
+        String placeHolderUserName =signInLocator.getLocator("SignIn.PlaceholderName");
+        WaitForElementPresent(placeHolderUserName, getTimeOut());
+        Assert.assertTrue(isElementPresent(placeHolderUserName));
+
+        String placeHolderEmail =signInLocator.getLocator("SignIn.PlaceholderEmail");
+        Assert.assertTrue(isElementPresent(placeHolderEmail));
+
+        String placeHolderPhNumber =signInLocator.getLocator("SignIn.PlaceholderPhNumber");
+        Assert.assertTrue(isElementPresent(placeHolderPhNumber));
+
+        String placeHolderPassword =signInLocator.getLocator("SignIn.PlaceholderPassword");
+        Assert.assertTrue(isElementPresent(placeHolderPassword));
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     *  Verify user is not able to sign up with existing ID 
+     * @return
+     * @throws InterruptedException 
+     */
+    public SignInModalPage verifyErrorForSignupWithExistingID() throws InterruptedException{
+        String btnCreateAccount =signInLocator.getLocator("SignIn.BTNCreateAccount");
+        WaitForElementPresent(btnCreateAccount, getTimeOut());
+        clickOn(btnCreateAccount);
+
+        Thread.sleep(3000);
+        String msgError = signInLocator.getLocator("SignIn.ErrorExistingIDSignup");
+        WaitForElementPresent(msgError, 30);
+        String msg = getText(msgError);
+        Assert.assertTrue(msg.contains("Email address already exists. Please Sign In."));  
+        return PageFactory.initElements(driver, SignInModalPage.class);
+
+    }
+
+    /**
+     *  Verify that on clicking 'show' text in password text box the password characters become unmasked.
+     * @return
+     */
+    public SignInModalPage verifyPasswordBecomeUnmaskedByClickOnShow(){
+        String btnShow =signInLocator.getLocator("SignIn.BTNShow");
+        WaitForElementPresent(btnShow, getTimeOut());
+        clickOn(btnShow);
+
+        String unMaskedPassword =signInLocator.getLocator("SignIn.UnMaskedPassword");
+        WaitForElementPresent(unMaskedPassword, getTimeOut());
+        Assert.assertTrue(isElementPresent(unMaskedPassword));
+        return PageFactory.initElements(driver, SignInModalPage.class);
+
+    }
+
+    /**
+     *  Click on T&C condition
+     * @return
+     */
+    public SignInModalPage clickOnTCLink(){
+        String  ltTAndC=signInLocator.getLocator("SignIn.LTTAndC");
+        WaitForElementPresent(ltTAndC, getTimeOut());
+        clickOn(ltTAndC);
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     *  Verify that 'T&C' text is hyperlink and on clicking redirects to 'Terms and Conditions' page. 
+     * @return
+     */
+    public SignInModalPage verifyTAndCLinkRedirectTCPage(){
+        String termsAndConditonPage = signInLocator.getLocator("TermsAndConditions.PageHeader");
+        WaitForElementPresent(termsAndConditonPage, getTimeOut());
+        String pageHeader = getText(termsAndConditonPage);
+        Assert.assertTrue(pageHeader.contains("Terms and Conditions"));
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     *  Click on Private and Policy condition
+     * @return
+     */
+    public SignInModalPage clickOPrivateAndPolicyLink(){
+        String  lTPrivateAndPolicy=signInLocator.getLocator("SignIn.LTPrivateAndPolicy");
+        WaitForElementPresent(lTPrivateAndPolicy, getTimeOut());
+        clickOn(lTPrivateAndPolicy);
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     * Verify that ' Privacy Policy' text is hyperlink and on clicking redirects to ' Privacy Policy' page.
+     * @return
+     */
+    public SignInModalPage verifyPrivateAndPolicyRedirectPrivateAndPolicyPage(){
+        String termsAndConditonPage = signInLocator.getLocator("PrivateAndPolicy.PageHeader");
+        WaitForElementPresent(termsAndConditonPage, getTimeOut());
+        String pageHeader = getText(termsAndConditonPage);
+        Assert.assertTrue(pageHeader.contains("Privacy Policy"));
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    public DashboardPage clickOnCrossButton(){
+        String btnCross=signInLocator.getLocator("SignIn.BTNClose");
+        WaitForElementPresent(btnCross, getTimeOut());
+        clickOn(btnCross);
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     * Enter Email and Password in Login fields
+     * @param email
+     * @param password
+     * @return
+     */
+    public SignInModalPage enterEmailAndPassword(String email, String password) {
+        String tbLoginEmail = signInLocator.getLocator("Login.TBLoginEmail");
+        WaitForElementPresent(tbLoginEmail, getTimeOut());
+        sendKeys(tbLoginEmail, email);
+
+        String tbPassword = signInLocator.getLocator("Login.TBLoginPassword");
+        WaitForElementPresent(tbPassword, getTimeOut());
+        sendKeys(tbPassword, password);
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+
+    /**
+     *  Verify Error for Log in application
+     * @return
+     * @throws InterruptedException 
+     */
+    public SignInModalPage verifyErrorForLogIn() throws InterruptedException{
+        String btnStartLearning =signInLocator.getLocator("Login.BTNStartLearning");
+        clickOn(btnStartLearning);
+        
+        String msgError = signInLocator.getLocator("SignIn.TxtError");
+        WaitForElementPresent(msgError, getTimeOut());
+        String msg = getText(msgError);
+        System.out.println("msg:::" +msg);
+        Assert.assertTrue(msg.contains("Please enter a valid input."));  
+        return PageFactory.initElements(driver, SignInModalPage.class);
+
+    }
+}

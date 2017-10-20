@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<HomePage>
+		<PageHeader><![CDATA[//span[text()='All Courses']]]></PageHeader>
+		<LTsignIn><![CDATA[//a[text()='Sign In']]]></LTsignIn>
+		<GridViewCourses><![CDATA[//div[@class='owl-stage-outer']/div/div]]></GridViewCourses>
+		<ListViewCourses><![CDATA[//ul[@id='product-wrap']/li/div]]></ListViewCourses>
+		<ImgListView><![CDATA[//a[@data-view='cbp-vm-view-list']]]></ImgListView>
+		<ImgGridView><![CDATA[//a[@data-view='cbp-vm-view-grid']]]></ImgGridView>
+		<Courses><![CDATA[//ul[@id='product-wrap']/li]]></Courses>
+		<DDCurrency><![CDATA[//a[@class='currency-btn res-popup']]]></DDCurrency>
+		<LTHome><![CDATA[//a[text()='Home']]]></LTHome>
+		<GridViewSelected><![CDATA[//a[@class='grid-select cbp-vm-selected']]]></GridViewSelected>
+		<ListViewSelected><![CDATA[//a[@class='list-select cbp-vm-selected']]]></ListViewSelected>
+	</HomePage>
+
+	<QueryBox>
+		<HeaderQueryBox><![CDATA[//div[@class='container clearfix']/div/span/i]]></HeaderQueryBox>
+		<TBQueryName><![CDATA[//input[@id='inquiry_name-modal']]]></TBQueryName>
+		<TBQueryEmail><![CDATA[//input[@id='inquiry_email-modal']]]></TBQueryEmail>
+		<TBQueryPhNumber><![CDATA[//input[@id='inquiry_mobile-modal']]]></TBQueryPhNumber>
+		<TBInquiry><![CDATA[//textarea[@id='inquiry_query-modal']]]></TBInquiry>
+		<BTNSubmit><![CDATA[//button[@id='drop-query-new-modal']]]></BTNSubmit>
+		<MsgSubmitInquiry><![CDATA[//p[contains(text(),'Thanks for inquiring with us.')]]]></MsgSubmitInquiry>
+	</QueryBox>
+
+	<ProfileDropdown>
+		<UserName><![CDATA[(//span[@class='webinar-profile-name'])[1]]]></UserName>
+		<LTChangePassword><![CDATA[//a[contains(text(),'Change Password')]]]></LTChangePassword>
+		<LTLogout><![CDATA[//a[contains(text(),'Log Out')]]]></LTLogout>
+	</ProfileDropdown>
+
+	<SearchFunctionality>
+		<LTViewAll><![CDATA[//a[@id='view-all-button']]]></LTViewAll>
+		<HiddenSearchCategories><![CDATA[//div[@class='hidden-courselist list_wrapper_new']]]></HiddenSearchCategories>
+		<LTLogout><![CDATA[//a[contains(text(),'Log Out')]]]></LTLogout>
+		<TBSearch><![CDATA[//input[@id='search-inp']]]></TBSearch>
+		<ImgSearch><![CDATA[//i[@id='search-button-top']]]></ImgSearch>
+		<SearchedData><![CDATA[//ul[@class='typeahead-list']/li]]></SearchedData>
+		<SearchedResultNoResultFound><![CDATA[//span[contains(text(),'No search results found!')]]]></SearchedResultNoResultFound>
+	</SearchFunctionality>
+
+	<Images>
+		<EdurekaLogo><![CDATA[//i[@class='icon-logo edu-logo-style']]]></EdurekaLogo>
+		<DDCountry><![CDATA[//span[@id='countrydisplay']]]></DDCountry>
+		<IndiaFlag><![CDATA[//span[text()='India']/preceding-sibling::span[@class='glyphicon flag-icon flag-icon-in']]]></IndiaFlag>
+		<USFlag><![CDATA[//span[text()='US (CDT)']/preceding-sibling::span[@class='glyphicon flag-icon flag-icon-us']]]></USFlag>
+		<UnitedKingdomFlag><![CDATA[//span[text()='United Kingdom']/preceding-sibling::span[@class='glyphicon flag-icon flag-icon-gb']]]></UnitedKingdomFlag>
+		<SignaporeFlag><![CDATA[//span[text()='Singapore']/preceding-sibling::span[@class='glyphicon flag-icon flag-icon-sg']]]></SignaporeFlag>
+		<CanadaFlag><![CDATA[//span[text()='Canada']/preceding-sibling::span[@class='glyphicon flag-icon flag-icon-ca']]]></CanadaFlag>
+	</Images>
+</Locators>
+
+
+
+
+
+

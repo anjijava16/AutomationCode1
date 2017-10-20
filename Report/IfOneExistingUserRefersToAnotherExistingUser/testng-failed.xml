@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [IfOneExistingUserRefersToAnotherExistingUser]">
+  <test name="IfOneExistingUserRefersToAnotherExistingUser(failed)">
+    <classes>
+      <class name="com.edureka.referralProcess.IfOneExistingUserRefersToAnotherExistingUser">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_027ValidateUserCPurchaseCourseThenUserBGetPointNotA"/>
+        </methods>
+      </class> <!-- com.edureka.referralProcess.IfOneExistingUserRefersToAnotherExistingUser -->
+    </classes>
+  </test> <!-- IfOneExistingUserRefersToAnotherExistingUser(failed) -->
+</suite> <!-- Failed suite [IfOneExistingUserRefersToAnotherExistingUser] -->

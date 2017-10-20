@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="5" verbose="1" name="VerifySubjectLineOfVerification"
+    annotations="JDK">
+    <test name="VerifySubjectLineOfVerification" junit="false"
+        preserve-order="true">
+        <classes>
+            <class name="com.edureka.registration.VerifySubjectLineOfVerification" />
+        </classes>
+    </test>
+</suite>

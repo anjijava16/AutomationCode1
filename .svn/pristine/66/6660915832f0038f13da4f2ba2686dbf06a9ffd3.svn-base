@@ -1,0 +1,110 @@
+package com.edureka.leadProcess;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class VerifySignupFromHeaderOnAnyCourseLandingPage extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private UserHomePage userHomePage;
+    private SignInModalPage signInModalPage;
+
+    private SelectedCoursePage selectedCoursePage;
+    
+    static String email;
+    static String password;
+    static String campaignSource;
+    static String campaignName;
+    static String campaignMedium;
+    static String event_Type;
+    
+  @Test
+    public void test_011SignInFromHeaderOnAnyCourseLandingPage() throws Exception {
+
+        try {
+        	
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetupForLead();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+            
+            //Select a course
+            String course= propertyReader.readTestData("CoursesJava");
+            selectedCoursePage= dashboardPage.selectCourse_Popular(course);
+
+            // Verify Selected Course Page Is Open
+            addLog("Verify Selected Course Page Is Open");
+            selectedCoursePage=selectedCoursePage.verifySelectedPopularCoursePage(course);
+
+            // Click on Signin 
+            addLog("Click on Signin");
+            signInModalPage = selectedCoursePage.clickSignInHeader();
+
+            // Login Application
+            addLog(" Login Application");
+            userHomePage= signInModalPage.loginApp();
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            userHomePage=userHomePage.verifyUserPage();
+            
+            // Verify Data in User Table
+            addLog("Verify Data in User Table");
+            userHomePage= userHomePage.dataVerificationInUserTable("1");
+
+            // Verify Data in User Lead Table
+            String course__Id = propertyReader.readTestData("CoursesJava_Id");
+            String webSiteAction = propertyReader.readTestData("HomePage_SignIn_WebSite_Action");
+            String country= propertyReader.readTestData("CountryIndia");
+            campaignSource= propertyReader.readTestData("LeadCampaignSource");
+            campaignName= propertyReader.readTestData("LeadCampaignName");
+            campaignMedium= propertyReader.readTestData("LeadCampaignMedium");
+            addLog("Verify Data in User Lead Table");
+            userHomePage= userHomePage.dataVerificationInUser_LeadsTable(course__Id,webSiteAction,country,campaignSource, campaignName, campaignMedium);
+
+            // Verify Data in User Course table
+            String isPaidValue= propertyReader.readTestData("HomePage_Signup_Is_Paid_Value");
+            addLog("Verify Data in User Course table");
+            userHomePage= userHomePage.dataVerificationInUser_CoursedTable(course__Id,isPaidValue,course__Id);
+
+            // Verify Data in User Event Table
+            event_Type=propertyReader.readTestData("EventType");
+            addLog("Verify Data in User Event Table");
+            userHomePage= userHomePage.dataVerificationInUser_EventTable(course__Id,webSiteAction,campaignName, event_Type);
+
+            // Veriy Data in Ambassadors table
+            String level_id = propertyReader.readTestData("HomePage_Signup_level_id");
+            addLog("Veriy Data in Ambassadors table");
+            userHomePage= userHomePage.dataVerificationInUser_AmbassadorsTable(level_id);
+
+         // Verify Data in Completed Queue Jobs table
+            String courseStatus = this.propertyReader.readTestData("Status");
+            String courseProperty = this.propertyReader.readTestData("Priority");
+            userHomePage = userHomePage.dataVerificationInCompleted_Queue_Jobs_Table(courseStatus, courseProperty, event_Type);
+            
+            // Click on Profile Dropdown
+            String userName = propertyReader.readRunTimeData("UserName");
+            addLog("Click on Profile Dropdown");
+            userHomePage=userHomePage.clickOnProfileDropdown(userName);            
+            
+            // Logout from the application
+            addLog("Logout from the application.");
+            dashboardPage = userHomePage.logout();            
+            
+        }
+        catch (final Error e) {
+            captureScreenshot("test_011SignInFromHeaderOnAnyCourseLandingPage");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_011SignInFromHeaderOnAnyCourseLandingPage");
+            throw e;
+        }
+    }
+}

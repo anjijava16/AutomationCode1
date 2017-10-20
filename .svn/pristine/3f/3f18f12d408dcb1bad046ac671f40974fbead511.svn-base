@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<HomePage>
+		<PageHeader><![CDATA[//span[@class='webinar-profile-name']]]></PageHeader>
+		<Courses><![CDATA[//div[@class='owl-stage-outer']/div/div]]></Courses>
+		<TabCourses><![CDATA[//a[contains(text(),'Courses ')]]]></TabCourses>
+	</HomePage>
+	
+	<ProfileDropdown>
+        <UserName><![CDATA[(//span[@class='webinar-profile-name'])[1]]]></UserName>
+        <LTChangePassword><![CDATA[//a[@href='http://test.edureka.in/users/change_password']]]></LTChangePassword>
+        <LTLogout><![CDATA[//a[@href='http://test.edureka.in/signout']]]></LTLogout>
+    </ProfileDropdown>
+</Locators>

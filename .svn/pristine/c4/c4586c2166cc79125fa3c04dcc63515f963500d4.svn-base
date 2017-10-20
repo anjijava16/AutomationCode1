@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+    <line>
+      <![CDATA[Navigate to the Edureka application url<br>]]>
+    </line>
+    <line>
+      <![CDATA[Verify Edureka Dashboard Page<br>]]>
+    </line>
+    <line>
+      <![CDATA[Click on SignIn Navigation header<br>]]>
+    </line>
+    <line>
+      <![CDATA[Verify Login is selected as default<br>]]>
+    </line>
+    <line>
+      <![CDATA[click on Sign up link<br>]]>
+    </line>
+    <line>
+      <![CDATA[Sign up user<br>]]>
+    </line>
+    <line>
+      <![CDATA[Verify User Home Page<br>]]>
+    </line>
+    <line>
+      <![CDATA[Verify Data in User Table<br>]]>
+    </line>
+    <line>
+      <![CDATA[Verify Data in User Lead Table<br>]]>
+    </line>
+    <line>
+      <![CDATA[Verify Data in User Course table<br>]]>
+    </line>
+    <line>
+      <![CDATA[Verify Data in User Event Table<br>]]>
+    </line>
+    <line>
+      <![CDATA[Veriy Data in Ambassadors table<br>]]>
+    </line>
+    <line>
+      <![CDATA[Click on Profile Dropdown<br>]]>
+    </line>
+    <line>
+      <![CDATA[Logout from the application.<br>]]>
+    </line>
+    <line>
+      <![CDATA[Verify Edureka Dashboard Page<br>]]>
+    </line>
+    <line>
+      <![CDATA[Verify Selected Course Page Is Open<br>]]>
+    </line>
+    <line>
+      <![CDATA[Click on Signin<br>]]>
+    </line>
+    <line>
+      <![CDATA[ Login Application<br>]]>
+    </line>
+    <line>
+      <![CDATA[Verify User Home Page<br>]]>
+    </line>
+  </reporter-output>
+  <suite name="VerifySignupFromHeaderHomePage" duration-ms="135611" started-at="2016-08-05T14:49:38Z" finished-at="2016-08-05T14:51:54Z">
+    <groups>
+    </groups>
+    <test name="VerifySignupFromHeaderHomePage" duration-ms="135611" started-at="2016-08-05T14:49:38Z" finished-at="2016-08-05T14:51:54Z">
+      <class name="com.edureka.leadProcess.VerifySignupFromHeaderHomePage">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.edureka.leadProcess.VerifySignupFromHeaderHomePage@e45f292]" name="setUp" is-config="true" duration-ms="10212" started-at="2016-08-05T20:19:38Z" finished-at="2016-08-05T20:19:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="test_001VerifySignupFromHeaderHomePage()[pri:0, instance:com.edureka.leadProcess.VerifySignupFromHeaderHomePage@e45f292]" name="test_001VerifySignupFromHeaderHomePage" duration-ms="52756" started-at="2016-08-05T20:19:48Z" finished-at="2016-08-05T20:20:41Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Navigate to the Edureka application url<br>]]>
+            </line>
+            <line>
+              <![CDATA[Verify Edureka Dashboard Page<br>]]>
+            </line>
+            <line>
+              <![CDATA[Click on SignIn Navigation header<br>]]>
+            </line>
+            <line>
+              <![CDATA[Verify Login is selected as default<br>]]>
+            </line>
+            <line>
+              <![CDATA[click on Sign up link<br>]]>
+            </line>
+            <line>
+              <![CDATA[Sign up user<br>]]>
+            </line>
+            <line>
+              <![CDATA[Verify User Home Page<br>]]>
+            </line>
+            <line>
+              <![CDATA[Verify Data in User Table<br>]]>
+            </line>
+            <line>
+              <![CDATA[Verify Data in User Lead Table<br>]]>
+            </line>
+            <line>
+              <![CDATA[Verify Data in User Course table<br>]]>
+            </line>
+            <line>
+              <![CDATA[Verify Data in User Event Table<br>]]>
+            </line>
+            <line>
+              <![CDATA[Veriy Data in Ambassadors table<br>]]>
+            </line>
+            <line>
+              <![CDATA[Click on Profile Dropdown<br>]]>
+            </line>
+            <line>
+              <![CDATA[Logout from the application.<br>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- test_001VerifySignupFromHeaderHomePage -->
+        <test-method status="PASS" signature="test_011SignInFromHeaderOnAnyCourseLandingPage()[pri:0, instance:com.edureka.leadProcess.VerifySignupFromHeaderHomePage@e45f292]" name="test_011SignInFromHeaderOnAnyCourseLandingPage" duration-ms="71702" started-at="2016-08-05T20:20:41Z" depends-on-methods="com.edureka.leadProcess.VerifySignupFromHeaderHomePage.test_001VerifySignupFromHeaderHomePage" finished-at="2016-08-05T20:21:53Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Verify Edureka Dashboard Page<br>]]>
+            </line>
+            <line>
+              <![CDATA[Verify Selected Course Page Is Open<br>]]>
+            </line>
+            <line>
+              <![CDATA[Click on Signin<br>]]>
+            </line>
+            <line>
+              <![CDATA[ Login Application<br>]]>
+            </line>
+            <line>
+              <![CDATA[Verify User Home Page<br>]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- test_011SignInFromHeaderOnAnyCourseLandingPage -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.edureka.leadProcess.VerifySignupFromHeaderHomePage@e45f292]" name="tearDown" is-config="true" duration-ms="922" started-at="2016-08-05T20:21:53Z" finished-at="2016-08-05T20:21:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.edureka.leadProcess.VerifySignupFromHeaderHomePage -->
+    </test> <!-- VerifySignupFromHeaderHomePage -->
+  </suite> <!-- VerifySignupFromHeaderHomePage -->
+</testng-results>

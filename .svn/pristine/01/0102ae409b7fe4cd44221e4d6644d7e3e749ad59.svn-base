@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<HomePage>
+		<PageHeader><![CDATA[//span[@class='webinar-profile-name']]]></PageHeader>
+		<Courses><![CDATA[//div[@class='owl-stage-outer']/div/div]]></Courses>
+		<TabCourses><![CDATA[//a[contains(text(),'Courses ')]]]></TabCourses>
+		<DDCommunity><![CDATA[//a[contains(text(),'Community ')]]]></DDCommunity>
+		<Courses><![CDATA[//div[@class='owl-stage-outer']/div/div]]></Courses>
+		<Courses_New><![CDATA[//*[@id='new-not']/section/div/div[1]/div/div]]></Courses_New>
+		<IconBell><![CDATA[//a[contains(@class,'open-notifications markasread')]]]></IconBell>
+		<Notifications><![CDATA[//li[@class='notification-read']]]></Notifications>
+		<EdurekaLogo><![CDATA[//img[contains(@alt,'edureka!') and contains(@src,'http://cdn.test.edureka.in/imgver.')]]]></EdurekaLogo>
+	</HomePage>
+
+	<ProfileDropdown>
+		<UserName><![CDATA[(//span[@class='webinar-profile-name'])[1]]]></UserName>
+		<LTChangePassword><![CDATA[//a[contains(text(),'Change Password')]]]></LTChangePassword>
+		<LTLogout><![CDATA[//a[contains(text(),'Log Out')]]]></LTLogout>
+		<LTAdmin><![CDATA[//a[text()='Admin']]]></LTAdmin>
+		<LTProfile><![CDATA[//a[contains(text(),'My Profile')]]]></LTProfile>
+	</ProfileDropdown>
+</Locators>

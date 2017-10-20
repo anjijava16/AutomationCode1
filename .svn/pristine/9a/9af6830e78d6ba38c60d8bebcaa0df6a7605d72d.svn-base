@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+        <PageHeader><![CDATA[//div[contains(@class,'lms-title-mycourses')]/h4]]></PageHeader>
+</Locators>

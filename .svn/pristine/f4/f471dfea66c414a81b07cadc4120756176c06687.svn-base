@@ -1,0 +1,898 @@
+<html>
+<head>
+<title>TestNG:  TestSuiteRegistrationProcess</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>TestSuiteRegistrationProcess</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>31/3/4</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Jul 26 16:45:43 IST 2016</td>
+</tr>
+<tr><td>Total time:</td><td>1652 seconds (1652298 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.edureka.registration.VerifySubjectLineOfVerification.test_025VerifySubjectLineOfVerification()'><b>test_025VerifySubjectLineOfVerification</b><br>Test class: com.edureka.registration.VerifySubjectLineOfVerification<br/>
+<a href="#Output-530861926" onClick='toggleBox("Output-530861926", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-530861926" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-530861926">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Verify Enter email<br><br/>
+Click on forgot password<br><br/>
+Verify Message Verification code sent to email testCYK@mailinator.com<br><br/>
+<a href= 'file://D:/workspace/Edureka_Automation/screenshots/test_025VerifySubjectLineOfVerification2016-07-26.jpg'target='_blank' ><img src='file://D:/workspace/Edureka_Automation/screenshots/test_025VerifySubjectLineOfVerification2016-07-26.jpg' height="42" width="42" >test_025VerifySubjectLineOfVerification2016-07-26</a><br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.edureka.pages.SignInModalPage.verifySuccessMsgForCode(SignInModalPage.java:358)
+	at com.edureka.registration.VerifySubjectLineOfVerification.test_025VerifySubjectLineOfVerification(VerifySubjectLineOfVerification.java:54)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace530861926", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace530861926'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.edureka.pages.SignInModalPage.verifySuccessMsgForCode(SignInModalPage.java:358)
+	at com.edureka.registration.VerifySubjectLineOfVerification.test_025VerifySubjectLineOfVerification(VerifySubjectLineOfVerification.java:54)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.TestNG.privateMain(TestNG.java:1325)
+	at org.testng.TestNG.main(TestNG.java:1294)
+</pre></div></td>
+<td>73</td>
+<td>com.edureka.registration.VerifySubjectLineOfVerification@10bdf5e5</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifySignupShouldAllowWithSameIdUsedInInquiry.test_033VerifySignupShouldAllowWithSameIdUsedInInquiry()'><b>test_033VerifySignupShouldAllowWithSameIdUsedInInquiry</b><br>Test class: com.edureka.registration.VerifySignupShouldAllowWithSameIdUsedInInquiry<br/>
+<a href="#Output-1268701597" onClick='toggleBox("Output-1268701597", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1268701597" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1268701597">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Select Course<br><br/>
+Verify Selected course should be open.<br><br/>
+Submit inquiry in drop query box<br><br/>
+Verify Inquiry has been submitted<br><br/>
+<a href= 'file://D:/workspace/Edureka_Automation/screenshots/test_033VerifySignupShouldAllowWithSameIdUsedInInquiry2016-07-26.jpg'target='_blank' ><img src='file://D:/workspace/Edureka_Automation/screenshots/test_033VerifySignupShouldAllowWithSameIdUsedInInquiry2016-07-26.jpg' height="42" width="42" >test_033VerifySignupShouldAllowWithSameIdUsedInInquiry2016-07-26</a><br/>
+</div>
+</td>
+<td><div><pre>java.lang.AssertionError: expected [true] but found [false]
+	at com.edureka.pages.SelectedCoursePage.verifySumbitInquiry(SelectedCoursePage.java:104)
+	at com.edureka.registration.VerifySignupShouldAllowWithSameIdUsedInInquiry.test_033VerifySignupShouldAllowWithSameIdUsedInInquiry(VerifySignupShouldAllowWithSameIdUsedInInquiry.java:44)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1268701597", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1268701597'><pre>java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:496)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at com.edureka.pages.SelectedCoursePage.verifySumbitInquiry(SelectedCoursePage.java:104)
+	at com.edureka.registration.VerifySignupShouldAllowWithSameIdUsedInInquiry.test_033VerifySignupShouldAllowWithSameIdUsedInInquiry(VerifySignupShouldAllowWithSameIdUsedInInquiry.java:44)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.TestNG.privateMain(TestNG.java:1325)
+	at org.testng.TestNG.main(TestNG.java:1294)
+</pre></div></td>
+<td>844</td>
+<td>com.edureka.registration.VerifySignupShouldAllowWithSameIdUsedInInquiry@148080bb</td></tr>
+<tr>
+<td title='com.edureka.registration.CreateUserForForgotPassword.test_CreateUserForForgotPassword()'><b>test_CreateUserForForgotPassword</b><br>Test class: com.edureka.registration.CreateUserForForgotPassword<br/>
+<a href="#Output-2000689527" onClick='toggleBox("Output-2000689527", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2000689527" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2000689527">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+<a href= 'file://D:/workspace/Edureka_Automation/screenshots/test_CreateUserForForgotPassword2016-07-26.jpg'target='_blank' ><img src='file://D:/workspace/Edureka_Automation/screenshots/test_CreateUserForForgotPassword2016-07-26.jpg' height="42" width="42" >test_CreateUserForForgotPassword2016-07-26</a><br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 9 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP042&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=43.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: d35f026e-d0cd-4629-b3b4-d6f05391cb28
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.clear(RemoteWebElement.java:139)
+	at com.edureka.util.DriverHelper.sendKeys(DriverHelper.java:328)
+	at com.edureka.pages.SignInModalPage.signUp(SignInModalPage.java:46)
+	at com.edureka.registration.CreateUserForForgotPassword.test_CreateUserForForgotPassword(CreateUserForForgotPassword.java:42)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP042&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous1836776505570173165webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous1836776505570173165webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous1836776505570173165webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous1836776505570173165webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous1836776505570173165webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2000689527", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2000689527'><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 9 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP042&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=43.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: d35f026e-d0cd-4629-b3b4-d6f05391cb28
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.clear(RemoteWebElement.java:139)
+	at com.edureka.util.DriverHelper.sendKeys(DriverHelper.java:328)
+	at com.edureka.pages.SignInModalPage.signUp(SignInModalPage.java:46)
+	at com.edureka.registration.CreateUserForForgotPassword.test_CreateUserForForgotPassword(CreateUserForForgotPassword.java:42)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.TestNG.privateMain(TestNG.java:1325)
+	at org.testng.TestNG.main(TestNG.java:1294)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP042&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous1836776505570173165webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous1836776505570173165webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous1836776505570173165webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous1836776505570173165webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous1836776505570173165webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+</pre></div></td>
+<td>23</td>
+<td>com.edureka.registration.CreateUserForForgotPassword@dc24521</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_002VerifyUserNotAbleToSignupIfMandatoryFieldISEmpty()'><b>test_002VerifyUserNotAbleToSignupIfMandatoryFieldISEmpty</b><br>Test class: com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty<br/>
+<a href="#Output-58890945" onClick='toggleBox("Output-58890945", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-58890945" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-58890945">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Enter user name, email and phone number in to the sing up field<br><br/>
+ Verify manadatory fields are required<br><br/>
+</div>
+</td>
+<td></td>
+<td>19</td>
+<td>com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@2d928643</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_005VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets()'><b>test_005VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets</b><br>Test class: com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets<br/>
+<a href="#Output-2144496344" onClick='toggleBox("Output-2144496344", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2144496344" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2144496344">
+Enter username, email and PhoneNumber<br><br/>
+Enter Password<br><br/>
+Verify User is not able to signup if mobile number is in alphabets<br><br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@5025a98f</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_007VerifyAllTextBoxesContainsrelevantPlaceholderText()'><b>test_007VerifyAllTextBoxesContainsrelevantPlaceholderText</b><br>Test class: com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets<br/>
+<a href="#Output-793808700" onClick='toggleBox("Output-793808700", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-793808700" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-793808700">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Verify all the text boxes should contains relevant placeholder text.<br><br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@5025a98f</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_008VerifyClickingOnShowTextPasswordBecomeUnmasked()'><b>test_008VerifyClickingOnShowTextPasswordBecomeUnmasked</b><br>Test class: com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty<br/>
+<a href="#Output-546886525" onClick='toggleBox("Output-546886525", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-546886525" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-546886525">
+Close sign in module<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Enter Password<br><br/>
+Verify that on clicking 'show' text in password text box the password characters become unmasked.<br><br/>
+</div>
+</td>
+<td></td>
+<td>22</td>
+<td>com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@2d928643</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_009VerifyClickingTCRedirectTermsAndConditionsPage()'><b>test_009VerifyClickingTCRedirectTermsAndConditionsPage</b><br>Test class: com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty<br/>
+<a href="#Output-1171672359" onClick='toggleBox("Output-1171672359", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1171672359" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1171672359">
+Click on T&C link<br><br/>
+Verify that 'T&C' text is hyperlink and on clicking redirects to 'Terms and Conditions' page. <br><br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@2d928643</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_010VerifyClickingHyperlinkOnClickingRedirectToPrivacyPolicyPage()'><b>test_010VerifyClickingHyperlinkOnClickingRedirectToPrivacyPolicyPage</b><br>Test class: com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets<br/>
+<a href="#Output-158995547" onClick='toggleBox("Output-158995547", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-158995547" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-158995547">
+Click on SignIn Navigation header<br><br/>
+Click on Privacy Policy link<br><br/>
+Verify that ' Privacy Policy' text is hyperlink and on clicking redirects to ' Privacy Policy' page.<br><br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@5025a98f</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_011VerifyCrossClosedSignupPopop()'><b>test_011VerifyCrossClosedSignupPopop</b><br>Test class: com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets<br/>
+<a href="#Output-1518868172" onClick='toggleBox("Output-1518868172", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1518868172" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1518868172">
+Click on cross button<br><br/>
+Verify Signup has been closed<br><br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@5025a98f</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyLoginWithCorrectEmailAndCorrectPassword.test_012VerifyLoginWithCorrectEmailAndCorrectPassword()'><b>test_012VerifyLoginWithCorrectEmailAndCorrectPassword</b><br>Test class: com.edureka.registration.VerifyLoginWithCorrectEmailAndCorrectPassword<br/>
+<a href="#Output-278166606" onClick='toggleBox("Output-278166606", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-278166606" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-278166606">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+ Login Application<br><br/>
+User has logged in successfully and Verify User Home Page<br><br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>com.edureka.registration.VerifyLoginWithCorrectEmailAndCorrectPassword@49993335</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword.test_013UserCannotLoggedInWithIncorrectEmailAndCorrectPassword()'><b>test_013UserCannotLoggedInWithIncorrectEmailAndCorrectPassword</b><br>Test class: com.edureka.registration.VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword<br/>
+<a href="#Output-380394805" onClick='toggleBox("Output-380394805", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-380394805" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-380394805">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter incorrect email and correct password<br><br/>
+Verify user is not able to Logged in if entered email is incorrect<br><br/>
+</div>
+</td>
+<td></td>
+<td>16</td>
+<td>com.edureka.registration.VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword@20322d26</td></tr>
+<tr>
+<td title='com.edureka.registration.LoginWithEmailAndWithoutPassword.test_014LoginWithEmailAndWithoutPassword()'><b>test_014LoginWithEmailAndWithoutPassword</b><br>Test class: com.edureka.registration.LoginWithEmailAndWithoutPassword<br/>
+<a href="#Output-1885991030" onClick='toggleBox("Output-1885991030", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1885991030" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1885991030">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter email<br><br/>
+Verify user is not able to Logged in if user login without password<br><br/>
+</div>
+</td>
+<td></td>
+<td>38</td>
+<td>com.edureka.registration.LoginWithEmailAndWithoutPassword@192b07fd</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword.test_014serCannotLoggedInWithoutPassword()'><b>test_014serCannotLoggedInWithoutPassword</b><br>Test class: com.edureka.registration.VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword<br/>
+<a href="#Output-386153220" onClick='toggleBox("Output-386153220", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-386153220" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-386153220">
+Close sign in module<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter email<br><br/>
+Verify user is not able to Logged in if password is not entered<br><br/>
+</div>
+</td>
+<td></td>
+<td>57</td>
+<td>com.edureka.registration.VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword@20322d26</td></tr>
+<tr>
+<td title='com.edureka.registration.LoginWithEmailAndWithoutPassword.test_015LoginWithoutEmail()'><b>test_015LoginWithoutEmail</b><br>Test class: com.edureka.registration.LoginWithEmailAndWithoutPassword<br/>
+<a href="#Output-1132189701" onClick='toggleBox("Output-1132189701", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1132189701" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1132189701">
+Close sign in module<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter password<br><br/>
+Verify user is not able to Logged in if user login without email<br><br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>com.edureka.registration.LoginWithEmailAndWithoutPassword@192b07fd</td></tr>
+<tr>
+<td title='com.edureka.registration.LoginWithEmailAndWithoutPassword.test_016LoginWithoutEmailAndWithoutPassword()'><b>test_016LoginWithoutEmailAndWithoutPassword</b><br>Test class: com.edureka.registration.LoginWithEmailAndWithoutPassword<br/>
+<a href="#Output-1460298405" onClick='toggleBox("Output-1460298405", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1460298405" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1460298405">
+Close sign in module<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enterl null in email and password fields<br><br/>
+Verify user is not able to Logged in if user login without email and without password  beacuse Start Learning button is disbaled<br><br/>
+</div>
+</td>
+<td></td>
+<td>20</td>
+<td>com.edureka.registration.LoginWithEmailAndWithoutPassword@192b07fd</td></tr>
+<tr>
+<td title='com.edureka.registration.LoginWithEmailAndWithoutPassword.test_017LoginWithCorrectEmailAndIncorrectPassword()'><b>test_017LoginWithCorrectEmailAndIncorrectPassword</b><br>Test class: com.edureka.registration.LoginWithEmailAndWithoutPassword<br/>
+<a href="#Output-894844492" onClick='toggleBox("Output-894844492", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-894844492" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-894844492">
+Close sign in module<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter correct email and incorrect password<br><br/>
+Verify user is not able to Logged in if user login with correct email and incorrect password<br><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>com.edureka.registration.LoginWithEmailAndWithoutPassword@192b07fd</td></tr>
+<tr>
+<td title='com.edureka.registration.LoginWithEmailAndWithoutPassword.test_018LoginWithIncorrectEmailAndIncorrectPassword()'><b>test_018LoginWithIncorrectEmailAndIncorrectPassword</b><br>Test class: com.edureka.registration.LoginWithEmailAndWithoutPassword<br/>
+<a href="#Output-975214872" onClick='toggleBox("Output-975214872", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-975214872" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-975214872">
+Close sign in module<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter correct email and incorrect password<br><br/>
+Verify user is not able to Logged in if user login with incorrect email and incorrect password<br><br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>com.edureka.registration.LoginWithEmailAndWithoutPassword@192b07fd</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserAbleToSuccessfullyChangeThePassword.test_019VerifyUserAbleToSuccessfullyChangeThePassword()'><b>test_019VerifyUserAbleToSuccessfullyChangeThePassword</b><br>Test class: com.edureka.registration.VerifyUserAbleToSuccessfullyChangeThePassword<br/>
+<a href="#Output-1152281446" onClick='toggleBox("Output-1152281446", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1152281446" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1152281446">
+Change Password<br><br/>
+Verify Password has been changed successfully<br><br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>com.edureka.registration.VerifyUserAbleToSuccessfullyChangeThePassword@55d56113</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifySignUpFromNavigationHeader.test_01VerifySignUpFromNavigationHeader()'><b>test_01VerifySignUpFromNavigationHeader</b><br>Test class: com.edureka.registration.VerifySignUpFromNavigationHeader<br/>
+<a href="#Output-769132147" onClick='toggleBox("Output-769132147", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-769132147" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-769132147">
+Sign up user<br><br/>
+Verify User Home Page<br><br/>
+Verify Course ID is set default<br><br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>com.edureka.registration.VerifySignUpFromNavigationHeader@13805618</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_021VerifyForgotPasswordFeatureIsWorking()'><b>test_021VerifyForgotPasswordFeatureIsWorking</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-4121176" onClick='toggleBox("Output-4121176", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-4121176" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-4121176">
+Close sign in module<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter correct email and incorrect password<br><br/>
+Click on forgot password link<br><br/>
+Verify the form when verification code has been sent on given email Id<br><br/>
+</div>
+</td>
+<td></td>
+<td>10</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@64bf3bbf</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_022ValidationOnForgotPasswordLinkWhenEmailIsBlank()'><b>test_022ValidationOnForgotPasswordLinkWhenEmailIsBlank</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-1119149914" onClick='toggleBox("Output-1119149914", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1119149914" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1119149914">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Click on forgot password link<br><br/>
+Verify the validation on click of Forgot passowrd when email field is blank<br><br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@64bf3bbf</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_023ValidationOnForgotPasswordLinkWhenEmailNotRegistered()'><b>test_023ValidationOnForgotPasswordLinkWhenEmailNotRegistered</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-1456299382" onClick='toggleBox("Output-1456299382", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1456299382" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1456299382">
+Close sign in module<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter correct email and incorrect password<br><br/>
+Click on forgot password link<br><br/>
+Verify the validation on click of Forgot passowrd when email field has incorrect/not registered email id<br><br/>
+</div>
+</td>
+<td></td>
+<td>22</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@64bf3bbf</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_024VerificationAndPasswordFieldShowAfterVerificationCodeSent()'><b>test_024VerificationAndPasswordFieldShowAfterVerificationCodeSent</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-84324483" onClick='toggleBox("Output-84324483", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-84324483" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-84324483">
+Verify Email Field has been disabled<br><br/>
+Verify Verification code field and New password field is display<br><br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@64bf3bbf</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_028VerifyResendOfVerificationCodeFunctionality()'><b>test_028VerifyResendOfVerificationCodeFunctionality</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-969253125" onClick='toggleBox("Output-969253125", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-969253125" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-969253125">
+Click on Resend Password Link<br><br/>
+Verify Verification code field and New password field is display<br><br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@64bf3bbf</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_032VerifySupportEmailLink()'><b>test_032VerifySupportEmailLink</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-1290804289" onClick='toggleBox("Output-1290804289", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1290804289" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1290804289">
+Verify Email link 'support@edureka.co<br><br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@64bf3bbf</td></tr>
+<tr>
+<td title='com.edureka.registration.ClickPasswordResetAndDontResetPassword.test_036ClickPasswordResetAndDontResetPassword()'><b>test_036ClickPasswordResetAndDontResetPassword</b><br>Test class: com.edureka.registration.ClickPasswordResetAndDontResetPassword<br/>
+<a href="#Output-495885630" onClick='toggleBox("Output-495885630", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-495885630" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-495885630">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Click on forgot password link<br><br/>
+Verify Login is selected as default<br><br/>
+Enter correct email and incorrect password<br><br/>
+Click on forgot password link<br><br/>
+Verify the form when verification code has been sent on given email Id<br><br/>
+Close sign in module<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+ Login Application<br><br/>
+User has logged in successfully and Verify User Home Page<br><br/>
+</div>
+</td>
+<td></td>
+<td>124</td>
+<td>com.edureka.registration.ClickPasswordResetAndDontResetPassword@64bfbc86</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect()'><b>test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect</b><br>Test class: com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty<br/>
+<a href="#Output-1635772897" onClick='toggleBox("Output-1635772897", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1635772897" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1635772897">
+Close sign in module<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Enter user name, email and phone number in to the sing up field<br><br/>
+Verify user is not able to sign up if entered email is incorrect<br><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@2d928643</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters()'><b>test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters</b><br>Test class: com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty<br/>
+<a href="#Output-1019348343" onClick='toggleBox("Output-1019348343", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1019348343" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1019348343">
+Close sign in module<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Enter user name, email and phone number in to the sing up field<br><br/>
+Verify user is not able to sign up if entered email is incorrect<br><br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@2d928643</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters()'><b>test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters</b><br>Test class: com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets<br/>
+<a href="#Output-27971761" onClick='toggleBox("Output-27971761", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-27971761" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-27971761">
+Close sign in module<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Enter user name, email and phone number in to the sing up field<br><br/>
+Verify user is not able to sign up if entered email is incorrect<br><br/>
+</div>
+</td>
+<td></td>
+<td>15</td>
+<td>com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@5025a98f</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifyUserAbleToSuccessfullyChangeThePassword.test_20VerifyErrorForWrongExistingPasswordAndCorrectNewPassword()'><b>test_20VerifyErrorForWrongExistingPasswordAndCorrectNewPassword</b><br>Test class: com.edureka.registration.VerifyUserAbleToSuccessfullyChangeThePassword<br/>
+<a href="#Output-142568117" onClick='toggleBox("Output-142568117", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-142568117" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-142568117">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+ Login Application<br><br/>
+User has logged in successfully and Verify User Home Page<br><br/>
+Click on Profile Dropdown<br><br/>
+Click on Change Password Link<br><br/>
+Verify Change Password Page<br><br/>
+Enter wrong existing Password and correct new password<br><br/>
+Verify Error message for Enter wrong existing Password and correct new password<br><br/>
+</div>
+</td>
+<td></td>
+<td>28</td>
+<td>com.edureka.registration.VerifyUserAbleToSuccessfullyChangeThePassword@55d56113</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_30VerifyShowFuncationlityForNewPassword()'><b>test_30VerifyShowFuncationlityForNewPassword</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-1835622084" onClick='toggleBox("Output-1835622084", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1835622084" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1835622084">
+Enter new password<br><br/>
+Verify Show functionlity for new Password<br><br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@64bf3bbf</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifySignUpFromNavigationHeader.test_35SignUpDisabledWhenNoDataIsEntered()'><b>test_35SignUpDisabledWhenNoDataIsEntered</b><br>Test class: com.edureka.registration.VerifySignUpFromNavigationHeader<br/>
+<a href="#Output-1703696921" onClick='toggleBox("Output-1703696921", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1703696921" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1703696921">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Verify Create Account button is disabled before entering any data in singup fields<br><br/>
+</div>
+</td>
+<td></td>
+<td>31</td>
+<td>com.edureka.registration.VerifySignUpFromNavigationHeader@13805618</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_38VerifyErrorMessageInRedAndSuccessMessageInGreen()'><b>test_38VerifyErrorMessageInRedAndSuccessMessageInGreen</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-891193010" onClick='toggleBox("Output-891193010", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-891193010" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-891193010">
+Close sign in module<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter correct email and incorrect password<br><br/>
+Click on forgot password link<br><br/>
+Verify Error Message is displayed in red<br><br/>
+Enter correct email and incorrect password<br><br/>
+Click on forgot password link<br><br/>
+Verify Error Message is displayed in green<br><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@64bf3bbf</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.edureka.registration.VerifySubjectLineOfVerification.test_026VerifyCorrectVerificationCode()'><b>test_026VerifyCorrectVerificationCode</b><br>Test class: com.edureka.registration.VerifySubjectLineOfVerification</td>
+<td><div><pre>java.lang.Throwable: Method VerifySubjectLineOfVerification.test_026VerifyCorrectVerificationCode()[pri:0, instance:com.edureka.registration.VerifySubjectLineOfVerification@10bdf5e5] depends on not successfully finished methods
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1481617469", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1481617469'><pre>java.lang.Throwable: Method VerifySubjectLineOfVerification.test_026VerifyCorrectVerificationCode()[pri:0, instance:com.edureka.registration.VerifySubjectLineOfVerification@10bdf5e5] depends on not successfully finished methods
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1040)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.TestNG.privateMain(TestNG.java:1325)
+	at org.testng.TestNG.main(TestNG.java:1294)
+</pre></div></td>
+<td>0</td>
+<td>null</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifySubjectLineOfVerification.test_027VerifyErrorMsgForIncorrectVeirficationCode()'><b>test_027VerifyErrorMsgForIncorrectVeirficationCode</b><br>Test class: com.edureka.registration.VerifySubjectLineOfVerification</td>
+<td><div><pre>java.lang.Throwable: Method VerifySubjectLineOfVerification.test_027VerifyErrorMsgForIncorrectVeirficationCode()[pri:0, instance:com.edureka.registration.VerifySubjectLineOfVerification@10bdf5e5] depends on not successfully finished methods
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace2136962865", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace2136962865'><pre>java.lang.Throwable: Method VerifySubjectLineOfVerification.test_027VerifyErrorMsgForIncorrectVeirficationCode()[pri:0, instance:com.edureka.registration.VerifySubjectLineOfVerification@10bdf5e5] depends on not successfully finished methods
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1040)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.TestNG.privateMain(TestNG.java:1325)
+	at org.testng.TestNG.main(TestNG.java:1294)
+</pre></div></td>
+<td>0</td>
+<td>null</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifySubjectLineOfVerification.test_029VerifyNewPasswordShouldNotBeLessThan8Characters()'><b>test_029VerifyNewPasswordShouldNotBeLessThan8Characters</b><br>Test class: com.edureka.registration.VerifySubjectLineOfVerification</td>
+<td><div><pre>java.lang.Throwable: Method VerifySubjectLineOfVerification.test_029VerifyNewPasswordShouldNotBeLessThan8Characters()[pri:0, instance:com.edureka.registration.VerifySubjectLineOfVerification@10bdf5e5] depends on not successfully finished methods
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1783594007", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1783594007'><pre>java.lang.Throwable: Method VerifySubjectLineOfVerification.test_029VerifyNewPasswordShouldNotBeLessThan8Characters()[pri:0, instance:com.edureka.registration.VerifySubjectLineOfVerification@10bdf5e5] depends on not successfully finished methods
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1040)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.TestNG.privateMain(TestNG.java:1325)
+	at org.testng.TestNG.main(TestNG.java:1294)
+</pre></div></td>
+<td>0</td>
+<td>null</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifySubjectLineOfVerification.test_031VerifyCompleteForgotPasswordFunctionality()'><b>test_031VerifyCompleteForgotPasswordFunctionality</b><br>Test class: com.edureka.registration.VerifySubjectLineOfVerification</td>
+<td><div><pre>java.lang.Throwable: Method VerifySubjectLineOfVerification.test_031VerifyCompleteForgotPasswordFunctionality()[pri:0, instance:com.edureka.registration.VerifySubjectLineOfVerification@10bdf5e5] depends on not successfully finished methods
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1446220517", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1446220517'><pre>java.lang.Throwable: Method VerifySubjectLineOfVerification.test_031VerifyCompleteForgotPasswordFunctionality()[pri:0, instance:com.edureka.registration.VerifySubjectLineOfVerification@10bdf5e5] depends on not successfully finished methods
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1040)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.TestNG.privateMain(TestNG.java:1325)
+	at org.testng.TestNG.main(TestNG.java:1294)
+</pre></div></td>
+<td>0</td>
+<td>null</td></tr>
+</table><p>
+</body>
+</html>

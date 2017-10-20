@@ -1,0 +1,216 @@
+package com.edureka.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.Database;
+import com.edureka.util.DriverHelper;
+
+public class UserHomePage extends DriverHelper {
+
+    //Case 1
+    String tableName = "users";
+    String columnNameToBeFetched = "id";
+    String columnNameToBeMatched = "email";
+
+    //Case 2
+    String tableName1 = "user_leads";
+    String columnNameToBeFetched1 = "course_id";
+    String columnNameToBeMatched1 = "user_id";
+
+    //Case 3
+    String tableName2 = "user_events";
+    String columnNameToBeFetched2 = "event_type";
+    String columnNameToBeMatched2 = "user_id";
+
+    //Case 4
+    String columnNameToBeFetched3 = "event_context";
+
+    //Case 5
+    String tableName3 = "pre_orders";
+    String columnNameToBeFetched4 = "priceinr";
+    String columnNameToBeFetched5 = "servicetaxinr";
+    String columnNameToBeFetched6 = "discountinr";
+    String columnNameToBeFetched7 = "totalinr";
+    String columnNameToBeMatched3 = "userid";
+
+    //Case 6
+    String columnNameToBeFetched8 = "servicetaxusd";
+
+
+    private LocatorReader userHomePageLocator;
+
+    public UserHomePage(WebDriver driver) {
+        super(driver);
+
+        userHomePageLocator = new LocatorReader("UserHome.xml");
+
+    }
+
+    /**
+     *  Verify User Page
+     * @param user : User Name
+     * @return
+     */
+    public UserHomePage verifyUserPage() {
+        String pageName =userHomePageLocator.getLocator("HomePage.PageHeader");
+        WaitForElementPresent(pageName,20);
+        WebElement userNameHeader = driver.findElement(By.xpath(pageName));
+        String tBuserName = propertyReader.readRunTimeData("UserName");
+        String pageheaderText = userNameHeader.getText();
+        Assert.assertTrue(pageheaderText.equalsIgnoreCase(tBuserName));
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+    /**
+     * Select Course 
+     * @param course
+     * @return
+     */
+    public SelectedCoursePage selectCourse(String course) {
+        List<WebElement> courses = driver.findElements(By.xpath(userHomePageLocator.getLocator("HomePage.Courses")));
+        int rows = courses.size();
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h4";
+            WaitForElementPresent(coursesList, getTimeOut());
+            String coursesName= getText(coursesList);
+            if (coursesName.contains(course)) {
+                clickOn(coursesList);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     *  Refresh browser
+     * @return
+     */
+    public DashboardPage refreshBrowser() {
+        driver.navigate().refresh();
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    public UserHomePage clickOnProfileDropdown(String userName){
+        String dropdown ="//span[contains(text(),'"+userName+"')]";
+        WaitForElementPresent(dropdown, getTimeOut());
+        clickOn(dropdown);
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+    
+    /**
+     *  Click on Change Password link
+     * @return
+     */
+    public ChangePasswordPage clickOnchangePasswordLink(){
+        String changePassword=userHomePageLocator.getLocator("ProfileDropdown.LTChangePassword");;
+        WaitForElementPresent(changePassword, getTimeOut());
+        mouseOver(changePassword);
+        clickOn(changePassword);
+        return PageFactory.initElements(driver, ChangePasswordPage.class);
+    }
+
+    /**
+     *  Logout application
+     * @return
+     */
+    public UserHomePage logout(){
+        String logout=userHomePageLocator.getLocator("ProfileDropdown.LTLogout");;
+        WaitForElementPresent(logout, getTimeOut());
+        mouseOver(logout);
+        clickOn(logout);
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+    //Scenario -1   
+    public UserHomePage verifyDefaultCourseId() throws Exception{
+
+        String tBuserEmailId = propertyReader.readRunTimeData("Email_Id");
+        String tBuserCourseId = propertyReader.readRunTimeData("Course_ID");
+
+
+        Database dbObject = new Database();
+
+        String userId = dbObject.getRecord(tableName, columnNameToBeFetched, columnNameToBeMatched, tBuserEmailId);
+        String userCourseId = dbObject.getRecord(tableName1, columnNameToBeFetched1, columnNameToBeMatched1, userId);
+
+
+        if(tBuserCourseId.equals(userCourseId)){
+            System.out.println("Default Course ID is 100");
+        }
+
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+
+    //Scenario -2
+    public UserHomePage verifyCourseIdFromSpecificCourse() throws Exception{
+
+        String tBuserEmailId = propertyReader.readRunTimeData("Email_Id");
+        String tBuserCourseId = propertyReader.readRunTimeData("Course_ID_BigData");
+
+
+        Database dbObject = new Database();
+
+        String userId = dbObject.getRecord(tableName, columnNameToBeFetched, columnNameToBeMatched, tBuserEmailId);
+        String userCourseId = dbObject.getRecord(tableName1, columnNameToBeFetched1, columnNameToBeMatched1, userId);
+
+
+        if(tBuserCourseId.equals(userCourseId)){
+            System.out.println("Course ID of Big Data Is 166");
+        }
+
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+
+    //Scenario -3
+    public UserHomePage verifyEventContextViaClassRecording() throws Exception{
+
+        String tBuserEmailId = propertyReader.readRunTimeData("Email_Id");
+        String tEventContext = propertyReader.readRunTimeData("Event_Context");
+
+
+        Database dbObject = new Database();
+
+        String userId = dbObject.getRecord(tableName, columnNameToBeFetched, columnNameToBeMatched, tBuserEmailId);
+
+        String userEventText = dbObject.getRecord(tableName1, columnNameToBeFetched3, columnNameToBeMatched1, userId);
+
+
+        if(tEventContext.equals(userEventText)){
+            System.out.println("Event Context is Watch Sample Class Recording");
+        }
+
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+
+
+    //Scenario -4
+    public UserHomePage verifyEventTypeViaAddToWishlist() throws Exception{
+
+        String tBuserEmailId = propertyReader.readRunTimeData("Email_Id");
+        String tEventType = propertyReader.readRunTimeData("Event_Type_ADD");
+
+
+        Database dbObject = new Database();
+
+        String userId = dbObject.getRecord(tableName, columnNameToBeFetched, columnNameToBeMatched, tBuserEmailId);
+        String userEventType = dbObject.getRecord(tableName2, columnNameToBeFetched2, columnNameToBeMatched2, userId);
+
+
+        if(tEventType.equals(userEventType)){
+            System.out.println("Event Type Is TR For Sign Up Via Add To Wishlist");
+        }
+
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+
+}

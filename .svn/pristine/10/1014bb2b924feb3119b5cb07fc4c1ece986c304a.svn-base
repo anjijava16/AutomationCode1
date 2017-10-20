@@ -1,0 +1,341 @@
+package com.edureka.offerFramework;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.AdminAddOfferPage;
+import com.edureka.pages.AdminDashboard;
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.OrderSummaryPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class VerifyCouponCodeDiscount extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private SignInModalPage signInModalPage;
+    private AdminDashboard adminDashboard;
+    private UserHomePage userHomePage;
+    private AdminAddOfferPage adminAddOfferPage;
+    private SelectedCoursePage selectedCoursePage;
+    private OrderSummaryPage orderSummaryPage;
+
+    static String email;
+    static String password;
+    static String campaignSource;
+    static String campaignName;
+    static String campaignMedium;
+
+    @Test
+    public void test_007VerifyCouponCodeDiscount() throws Exception {
+
+        try {
+
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // Login Application through Admin credentials
+            email = propertyReader.readApplicationFile("Admin_UserName");
+            password = propertyReader.readApplicationFile("Admin_Password");
+            addLog("Login Application through Admin credentials");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on Start Learning Course button
+            addLog("Click on Start Learning Course button");
+            userHomePage=signInModalPage.clickStartLearningButton(UserHomePage.class);
+
+            // Verify Admin User Home page
+            addLog("Verify Admin User Home page");
+            userHomePage=userHomePage.verifyAdminUserPage();
+
+            // Click on Profile dropdown
+            String userName = propertyReader.readTestData("Admin_UserName");
+            addLog("Click on Profile dropdown");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Select Admin from Prfile Dropdown
+            addLog("Select Admin from Profile dropdown");
+            adminDashboard=userHomePage.selectAdmin();
+
+            // Verify Admin Dashboard
+            addLog("Verify Admin Dashboard");
+            adminDashboard= adminDashboard.verifyAdminDashboard();
+
+            // Select Menu Tab
+            String menuTab = propertyReader.readTestData("AdminDashboard");
+            addLog("Select Menu Tab " +menuTab);
+            adminDashboard=adminDashboard.selectMenuTab(menuTab);
+
+            String sub_Menu_changeSiteSettings = propertyReader.readTestData("ChangeSiteSettings");
+            addLog("Select submnu "+sub_Menu_changeSiteSettings+" from Dashboard dropdown");
+            adminDashboard=adminDashboard.selectDashoardMenu(sub_Menu_changeSiteSettings);
+
+            // Active Coupon code 
+            String activeCouponCodeValue= propertyReader.readTestData("ActiveCouponCodeValue");
+            addLog("Enter value in Order Summary text box to activate coupon discount");
+            adminDashboard=adminDashboard.changeOfferCouponSettings(activeCouponCodeValue);
+
+            // Select Menu Tab
+            menuTab = propertyReader.readTestData("Tab_Offer_Admin");
+            addLog("Select Menu Tab " +menuTab);
+            adminDashboard=adminDashboard.selectMenuTab(menuTab);
+
+            // Select Create Offer from Offer Admin
+            String createOffer= propertyReader.readTestData("Create_Offer");
+            addLog("Select Create Offer from offer Admin");
+            adminAddOfferPage=adminDashboard.selectOptionFromAdminOfferTab(createOffer);
+
+            // Verify Admin Add Offer page
+            addLog("Verify Admin Add Offer Page");
+            adminAddOfferPage = adminAddOfferPage.verifyAdminAddOfferPage();
+
+            // Enter Offer Code
+            String offerCode="Testing_Atumation" + randomString(4);
+            addLog("Enter Offer Code");
+            adminAddOfferPage=adminAddOfferPage.enterOfferCode(offerCode);
+
+            // Create Flat Discount
+            String offerType = propertyReader.readTestData("Flat_Discount_Type");
+            String discountTitle= propertyReader.readTestData("Title_Discount");
+            String discountType = propertyReader.readTestData("Discount_Type_Percentage");
+            String percentageValue = propertyReader.readTestData("OfferCodeDiscountValue");
+            addLog("Create Flat Discount");
+            adminAddOfferPage=adminAddOfferPage.createDiscount(offerType, discountTitle);
+
+            // Get Offer Code URL
+            addLog("Get Offer Code URL");
+            String offerCodeUrl=adminAddOfferPage.getOfferCodeUrl();
+            System.out.println("offerCodeUrl :::::  " +offerCodeUrl);
+            String couponCode= offerCodeUrl.replace("http://test.edureka.in/?offercode=", "").trim();
+            System.out.println("couponCode:::: " +couponCode);
+
+            // Check Coupon code checkbox
+            addLog("Check Coupon code checkbox");
+            adminAddOfferPage=adminAddOfferPage.checkCouponCode();
+
+            // Check User, Customer and Repeat Customer check boxes
+            addLog("Check User, Customer and Repeat Customer check boxes");
+            adminAddOfferPage=adminAddOfferPage.checkUser_Customer_RepeatCustomer();
+
+            // Enter Discount Values
+            addLog("Enter Discount Values");
+            adminAddOfferPage=adminAddOfferPage.enterDiscountValues(discountType,percentageValue);
+
+            // Click on Submit Button
+            addLog("Click on Submit Button");
+            adminAddOfferPage=adminAddOfferPage.clickSubmitButton();
+
+            // Select Status
+            String status = propertyReader.readTestData("Active_Status");
+            addLog("select "+status+" from status dropdown");
+            adminAddOfferPage= adminAddOfferPage.selectStatus(status);
+
+            // Click on Edureka Logo
+            addLog("Click on Edureka Logo");
+            userHomePage=adminAddOfferPage.clickOnLogo();
+
+            // Click on Profile dropdown
+            addLog("Click on Profile dropdown");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Logout Application
+            addLog("Logout Application");
+            dashboardPage=userHomePage.logout();
+
+            // Navigate to offer code url
+            addLog("Verify Dashboard") ;
+            dashboardPage=dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // click on Sign up link
+            addLog("click on Sign up link");
+            signInModalPage=signInModalPage.clickSignUp();
+
+            String edurekaDomain = propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            userHomePage= signInModalPage.signUp(UserHomePage.class, edurekaDomain);
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            userHomePage=userHomePage.verifyUserPage();
+
+            // Select Course
+            String courseName = propertyReader.readTestData("BigData&Hadoop");
+            addLog("Select Course " + courseName);
+            selectedCoursePage=userHomePage.selectCourse(courseName);
+
+            // Verify Selected course should be open.
+            addLog("Verify Selected course should be open");
+            selectedCoursePage=selectedCoursePage.verifySelectedPopularCoursePage(courseName);
+
+            // Click on Enroll Button
+            addLog("Click on Enroll Button");
+            orderSummaryPage=selectedCoursePage.clickOnEnrollButton(OrderSummaryPage.class);
+
+            // Verify Order Summary Page
+            addLog("Verify Order Summary Page");
+            orderSummaryPage=orderSummaryPage.verifyPage();
+
+            // Enter coupon Code
+            addLog("Enter coupon Code");
+            orderSummaryPage=orderSummaryPage.enterCouponCode(couponCode);
+
+            // Verify Coupon Code is applied
+            addLog("Verify Coupon Code is applied");
+            orderSummaryPage=orderSummaryPage.verifyCouponCodeIsApplied(couponCode);
+
+            // Change Currency
+            String currency= propertyReader.readTestData("INRCurrency");
+            addLog("Select currecnt" +currency +" from currnecy table");
+            orderSummaryPage=orderSummaryPage.changeCurrency(currency);
+
+            // Verify coupon discount 
+            addLog("Verify coupon discount for " +currency);
+            orderSummaryPage=orderSummaryPage.verifyDiscountForCouponCode(percentageValue, currency);
+
+            // Change Currency
+            currency= propertyReader.readTestData("USDCurrency");
+            addLog("Select currecnt" +currency +" from currnecy table");
+            orderSummaryPage=orderSummaryPage.changeCurrency(currency);
+
+            // Verify coupon discount 
+            addLog("Verify coupon discount for " +currency);
+            orderSummaryPage=orderSummaryPage.verifyDiscountForCouponCode(percentageValue, currency);
+
+            // Change Currency
+            currency= propertyReader.readTestData("Currency_GBP");
+            addLog("Select "+currency+" from currency dropdown");
+            orderSummaryPage= orderSummaryPage.changeCurrency(currency);
+
+            // Verify coupon discount 
+            addLog("Verify coupon discount for " +currency);
+            orderSummaryPage=orderSummaryPage.verifyDiscountForCouponCode(percentageValue, currency);
+
+            // Change Currency
+            currency= propertyReader.readTestData("Currency_CD");
+            addLog("Select "+currency+" from currency dropdown");
+            orderSummaryPage= orderSummaryPage.changeCurrency(currency);
+
+            // Verify coupon discount 
+            addLog("Verify coupon discount for " +currency);
+            orderSummaryPage=orderSummaryPage.verifyDiscountForCouponCode(percentageValue, currency);
+
+            // Change Currency
+            currency= propertyReader.readTestData("Currency_SG");
+            addLog("Select "+currency+" from currency dropdown");
+            orderSummaryPage= orderSummaryPage.changeCurrency(currency);
+
+            // Verify coupon discount 
+            addLog("Verify coupon discount for " +currency);
+            orderSummaryPage=orderSummaryPage.verifyDiscountForCouponCode(percentageValue, currency);
+
+            // Change Currency
+            currency= propertyReader.readTestData("Currency_AU");
+            addLog("Select "+currency+" from currency dropdown");
+            orderSummaryPage= orderSummaryPage.changeCurrency(currency);
+
+            // Verify coupon discount 
+            addLog("Verify coupon discount for " +currency);
+            orderSummaryPage=orderSummaryPage.verifyDiscountForCouponCode(percentageValue, currency);
+
+            // Change Currency
+            currency= propertyReader.readTestData("Currency_EU");
+            addLog("Select "+currency+" from currency dropdown");
+            orderSummaryPage= orderSummaryPage.changeCurrency(currency);
+
+            // Verify coupon discount 
+            addLog("Verify coupon discount for " +currency);
+            orderSummaryPage=orderSummaryPage.verifyDiscountForCouponCode(percentageValue, currency);
+            
+            // Click on Profile Dropdown
+            userName= propertyReader.readRunTimeData("UserName");
+            addLog("Click on Profile Dropdown");
+            orderSummaryPage=orderSummaryPage.clickOnProfileDropdown(userName);            
+
+            // Logout user 
+            addLog("Logout user");
+            dashboardPage=orderSummaryPage.logout();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // Login Application through Admin credentials
+            email = propertyReader.readApplicationFile("Admin_UserName");
+            password = propertyReader.readApplicationFile("Admin_Password");
+            addLog("Login Application through Admin credentials");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on Start Learning Course button
+            addLog("Click on Start Learning Course button");
+            userHomePage=signInModalPage.clickStartLearningButton(UserHomePage.class);
+
+            // Verify Admin User Home page
+            addLog("Verify Admin User Home page");
+            userHomePage=userHomePage.verifyAdminUserPage();
+
+            // Click on Profile dropdown
+            userName = propertyReader.readTestData("Admin_UserName");
+            addLog("Click on Profile dropdown");
+            userHomePage= userHomePage.clickOnProfileDropdown(userName);
+
+            // Select Admin from Prfile Dropdown
+            addLog("Select Admin from Profile dropdown");
+            adminDashboard=userHomePage.selectAdmin();
+
+            // Verify Admin Dashboard
+            addLog("Verify Admin Dashboard");
+            adminDashboard= adminDashboard.verifyAdminDashboard();
+
+            // Select Menu Tab
+            menuTab = propertyReader.readTestData("AdminDashboard");
+            addLog("Select Menu Tab " +menuTab);
+            adminDashboard=adminDashboard.selectMenuTab(menuTab);
+
+            sub_Menu_changeSiteSettings = propertyReader.readTestData("ChangeSiteSettings");
+            addLog("Select submnu "+sub_Menu_changeSiteSettings+" from Dashboard dropdown");
+            adminDashboard=adminDashboard.selectDashoardMenu(sub_Menu_changeSiteSettings);
+
+            // Dactive Coupon code 
+            String dctiveCouponCodeValue= propertyReader.readTestData("DactiveCouponCodeValue");
+            addLog("Enter value in Order Summary text box to dactive coupon discount");
+            adminDashboard=adminDashboard.changeOfferCouponSettings(dctiveCouponCodeValue);
+        }
+
+        catch (final Error e) {
+            captureScreenshot("test_007VerifyCouponCodeDiscount");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_007VerifyCouponCodeDiscount");
+            throw e;
+        }
+    }
+}

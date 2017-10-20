@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+        <PageHeader><![CDATA[//h1[contains(text(),'Pay with PayPal')]]]></PageHeader>
+    
+    <Login>
+        <TBEmail><![CDATA[//input[@id='email']]]></TBEmail>
+        <TBPassword><![CDATA[//input[@id='password']]]></TBPassword>
+        <BTNLogin><![CDATA[//button[@id='btnLogin']]]></BTNLogin>
+        <Frame><![CDATA[//iframe[contains(@title,'PayPal - Log In')]]]></Frame>
+        <BTNContinue><![CDATA[//input[@id='confirmButtonTop']]]></BTNContinue>
+    </Login>
+</Locators>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//a[text()='Profile']]]></PageHeader>
+	<MessagePaymentSuccess><![CDATA[//div[@class='alert alert-success alert-dismissible fade in successalert']]]></MessagePaymentSuccess>
+	<TabCourses><![CDATA[//a[contains(text(),'Courses ')]]]></TabCourses>
+	<DDCommunity><![CDATA[//a[contains(text(),'Community ')]]]></DDCommunity>
+	<LTLogout><![CDATA[//a[@href='http://test.edureka.in/signout']]]></LTLogout>
+
+	<RefferralProcess>
+		<EarnCredit><![CDATA[//p[contains(text(),'Credits Available')]/preceding-sibling::p[1]]]></EarnCredit>
+		<TabReferral><![CDATA[//a[@data-target='#referral']]]></TabReferral>
+		<BTNReferFriend><![CDATA[//a[@id='referTop']]]></BTNReferFriend>
+		<ReferralLink><![CDATA[//span[@class='refLink copylinkadd']]]></ReferralLink>
+		<RefferralForm><![CDATA[//form[@id='referralForm']]]></RefferralForm>
+		<TBEmail><![CDATA[//div[@class='bootstrap-tagsinput']/input[@placeholder='Enter email ids seperated by comma..']]]></TBEmail>
+		<BTNSendInvitation><![CDATA[//a[@id='btnSendReferrerMail']]]></BTNSendInvitation>
+		<SuccessMessage><![CDATA[//div[contains(text(),'Referral mail successfully sent. Keep referring.')]]]></SuccessMessage>
+		<BTNClose><![CDATA[//span[@class='ref-pop-close']]]></BTNClose>
+	</RefferralProcess>
+</Locators>

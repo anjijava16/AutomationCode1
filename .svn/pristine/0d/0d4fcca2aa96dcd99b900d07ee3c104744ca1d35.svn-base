@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+
+	<HomePage>
+		<PageHeader><![CDATA[//div[@class='navbar-header']/a/img]]></PageHeader>
+		<LTsignIn><![CDATA[//a[text()='Sign In']]]></LTsignIn>
+		<Courses><![CDATA[//div[@class='owl-stage-outer']/div/div]]></Courses>
+		<PopupSignup><![CDATA[//div[@class='md-modal md-effect-1 newsigninsignup md-show']]]></PopupSignup>
+		<TabCourses><![CDATA[//a[text()='Courses']]]></TabCourses>
+	</HomePage>
+</Locators>

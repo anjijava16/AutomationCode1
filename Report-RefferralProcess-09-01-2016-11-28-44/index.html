@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <br/>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-RefferralActivities">
+              <span class="suite-name border-failed">RefferralActivities</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-RefferralActivities">
+                    <span>D:\workspace\Edureka_Automation\testngsuite\RefferralProcess\RefferralActivities.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-RefferralActivities">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-RefferralActivities">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-RefferralActivities">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-RefferralActivities">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-RefferralActivities">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-RefferralActivities">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">1 method, 1 failed,   </span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-RefferralActivities" class="hide-methods failed suite-RefferralActivities"> (hide)</a> <!-- hide-methods failed suite-RefferralActivities -->
+                      <a href="#" panel-name="suite-RefferralActivities" class="show-methods failed suite-RefferralActivities"> (show)</a> <!-- show-methods failed suite-RefferralActivities -->
+                    </span>
+                    <div class="method-list-content failed suite-RefferralActivities">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-RefferralActivities" title="com.edureka.refferralProcess.RefferralActivities" hash-for-method="test_002RefferralActivities">test_002RefferralActivities</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-RefferralActivities -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-RefferralActivities" class="panel RefferralActivities">
+          <div class="suite-RefferralActivities-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.edureka.refferralProcess.RefferralActivities</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="test_002RefferralActivities">
+                  </a> <!-- test_002RefferralActivities -->
+                  <span class="method-name">test_002RefferralActivities</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[@class=&apos;webinar-profile-name&apos;]&quot;}
+Command duration or timeout: 75 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP048&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=43.0.1, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 44d60b30-a6be-4b04-afd4-8521420e4960
+*** Element info: {Using=xpath, value=//span[@class=&apos;webinar-profile-name&apos;]}
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:490)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:345)
+	at com.edureka.pages.UserHomePage.verifyUserPage(UserHomePage.java:70)
+	at com.edureka.refferralProcess.RefferralActivities.test_002RefferralActivities(RefferralActivities.java:63)
+Caused by: org.openqa.selenium.NoSuchElementException: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//span[@class=&apos;webinar-profile-name&apos;]&quot;}
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP048&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/ADMINI~1.360/AppData/Local/Temp/anonymous8644227588513468669webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10659)
+	at &lt;anonymous class&gt;.FirefoxDriver.prototype.findElement(file:///C:/Users/ADMINI~1.360/AppData/Local/Temp/anonymous8644227588513468669webdriver-profile/extensions/fxdriver@googlecode.com/components/driver-component.js:10668)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/ADMINI~1.360/AppData/Local/Temp/anonymous8644227588513468669webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/ADMINI~1.360/AppData/Local/Temp/anonymous8644227588513468669webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/ADMINI~1.360/AppData/Local/Temp/anonymous8644227588513468669webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+... Removed 26 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-RefferralActivities-class-failed -->
+        </div> <!-- panel RefferralActivities -->
+        <div panel-name="test-xml-RefferralActivities" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">D:\workspace\Edureka_Automation\testngsuite\RefferralProcess\RefferralActivities.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;RefferralActivities&quot;&gt;
+  &lt;test name=&quot;RefferralActivities&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;com.edureka.refferralProcess.RefferralActivities&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- RefferralActivities --&gt;
+&lt;/suite&gt; &lt;!-- RefferralActivities --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-RefferralActivities" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for RefferralActivities</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">RefferralActivities (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-RefferralActivities" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for RefferralActivities</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-RefferralActivities" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for RefferralActivities</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_RefferralActivities');
+function tableData_RefferralActivities() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(1);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'test_002RefferralActivities')
+data.setCell(0, 2, 'com.edureka.refferralProcess.RefferralActivities')
+data.setCell(0, 3, 49216);
+window.suiteTableData['RefferralActivities']= { tableData: data, tableDiv: 'times-div-RefferralActivities'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 49 seconds</span>
+              <div id="times-div-RefferralActivities">
+              </div> <!-- times-div-RefferralActivities -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-RefferralActivities" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for RefferralActivities</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">test_002RefferralActivities</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Navigate to the Edureka application url<br></span>
+                <span class="reporter-method-output">Verify Edureka Dashboard Page<br></span>
+                <span class="reporter-method-output">Click on SignIn Navigation header<br></span>
+                <span class="reporter-method-output">Verify LogIn Is Default<br></span>
+                <span class="reporter-method-output">click on Sign up link<br></span>
+                <span class="reporter-method-output">Sign up user B who is refferrad by A in TC_001<br></span>
+                <span class="reporter-method-output">Click on Sign create Account button<br></span>
+                <span class="reporter-method-output">Verify User Home Page<br></span>
+                <span class="reporter-method-output"><a href= 'file://D:/workspace/Edureka_Automation/screenshots/test_002RefferralActivities2016-09-01.jpg'target='_blank' ><img src='file://D:/workspace/Edureka_Automation/screenshots/test_002RefferralActivities2016-09-01.jpg' height="42" width="42" >test_002RefferralActivities2016-09-01</a></span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-RefferralActivities" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-RefferralActivities" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.edureka.refferralProcess.RefferralActivities</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">test_002RefferralActivities</span>
+                <span class="method-start">12550 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">61780 ms</span>
+              </div> <!-- configuration-class after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+</html>

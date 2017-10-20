@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [InquiryFromCourseLandingPage]">
+  <test name="InquiryFromCourseLandingPage(failed)">
+    <classes>
+      <class name="com.edureka.leadProcess.InquiryFromCourseLandingPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_020InquiryFromCourseLandingPage"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.InquiryFromCourseLandingPage -->
+    </classes>
+  </test> <!-- InquiryFromCourseLandingPage(failed) -->
+</suite> <!-- Failed suite [InquiryFromCourseLandingPage] -->

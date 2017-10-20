@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//h1[text()='Dashboard']]]></PageHeader>
+	<Gateway><![CDATA[//*[@id='SettingValue']]]></Gateway>
+	<ChangePaymentGatewayButton><![CDATA[//*[@id='SettingAdminChangePaymentGatewayForm']/div[2]/input]]></ChangePaymentGatewayButton>
+</Locators>

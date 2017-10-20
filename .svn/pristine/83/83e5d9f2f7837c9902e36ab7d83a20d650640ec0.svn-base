@@ -1,0 +1,452 @@
+<html>
+<head>
+<title>TestNG:  TestSuiteRegistrationProcess</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>TestSuiteRegistrationProcess</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>7/2/2</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Jul 05 15:27:04 IST 2016</td>
+</tr>
+<tr><td>Total time:</td><td>154 seconds (154910 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.edureka.scripts.VerifySignUpFromNavigationHeader.test_01VerifySignUpFromNavigationHeader()'><b>test_01VerifySignUpFromNavigationHeader</b><br>Test class: com.edureka.scripts.VerifySignUpFromNavigationHeader<br/>
+<a href="#Output-573200870" onClick='toggleBox("Output-573200870", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-573200870" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-573200870">
+Navigate to the Edureka application url<br><br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP040&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:641)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:311)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.to(RemoteWebDriver.java:927)
+	at com.edureka.util.DriverTestCase.applicationSetup(DriverTestCase.java:337)
+	at com.edureka.scripts.VerifySignUpFromNavigationHeader.test_01VerifySignUpFromNavigationHeader(VerifySignUpFromNavigationHeader.java:22)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:7055 [/127.0.0.1] failed: Connection refused: connect
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:151)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:353)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:71)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.openqa.selenium.remote.internal.ApacheHttpClient.fallBackExecute(ApacheHttpClient.java:161)
+	at org.openqa.selenium.remote.internal.ApacheHttpClient.execute(ApacheHttpClient.java:89)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:142)
+	at org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.execute(NewProfileExtensionConnection.java:170)
+	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:380)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:620)
+	... 27 more
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:74)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:134)
+	... 42 more
+... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace573200870", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace573200870'><pre>org.openqa.selenium.remote.UnreachableBrowserException: Error communicating with the remote browser. It may have died.
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP040&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: driver.version: RemoteWebDriver
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:641)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:311)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.to(RemoteWebDriver.java:927)
+	at com.edureka.util.DriverTestCase.applicationSetup(DriverTestCase.java:337)
+	at com.edureka.scripts.VerifySignUpFromNavigationHeader.test_01VerifySignUpFromNavigationHeader(VerifySignUpFromNavigationHeader.java:22)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.TestNG.privateMain(TestNG.java:1325)
+	at org.testng.TestNG.main(TestNG.java:1294)
+Caused by: org.apache.http.conn.HttpHostConnectException: Connect to 127.0.0.1:7055 [/127.0.0.1] failed: Connection refused: connect
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:151)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:353)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:380)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:184)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:88)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:184)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:71)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:55)
+	at org.openqa.selenium.remote.internal.ApacheHttpClient.fallBackExecute(ApacheHttpClient.java:161)
+	at org.openqa.selenium.remote.internal.ApacheHttpClient.execute(ApacheHttpClient.java:89)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:142)
+	at org.openqa.selenium.firefox.internal.NewProfileExtensionConnection.execute(NewProfileExtensionConnection.java:170)
+	at org.openqa.selenium.firefox.FirefoxDriver$LazyCommandExecutor.execute(FirefoxDriver.java:380)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:620)
+	... 27 more
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at org.apache.http.conn.socket.PlainConnectionSocketFactory.connectSocket(PlainConnectionSocketFactory.java:74)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:134)
+	... 42 more
+</pre></div></td>
+<td>19</td>
+<td>com.edureka.scripts.VerifySignUpFromNavigationHeader@2344fc66</td></tr>
+<tr>
+<td title='com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect()'><b>test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect</b><br>Test class: com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty<br/>
+<a href="#Output-1423016050" onClick='toggleBox("Output-1423016050", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1423016050" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1423016050">
+Close sign in module<br><br/>
+<a href= 'file://D:/workspace/Edureka_Automation/screenshots/test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect2016-07-05.jpg'target='_blank' ><img src='file://D:/workspace/Edureka_Automation/screenshots/test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect2016-07-05.jpg' height="42" width="42" >test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect2016-07-05</a><br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 17 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP040&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=38.0.6, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 05c4a1fd-62c5-45f2-9aca-69c3b6b46324
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at com.edureka.util.DriverHelper.clickOn(DriverHelper.java:312)
+	at com.edureka.pages.SignInModalPage.closeSignInModule(SignInModalPage.java:168)
+	at com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect(VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.java:69)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP040&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous7182030510135467994webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous7182030510135467994webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous7182030510135467994webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous7182030510135467994webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous7182030510135467994webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1423016050", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1423016050'><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 17 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP040&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=38.0.6, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 05c4a1fd-62c5-45f2-9aca-69c3b6b46324
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at com.edureka.util.DriverHelper.clickOn(DriverHelper.java:312)
+	at com.edureka.pages.SignInModalPage.closeSignInModule(SignInModalPage.java:168)
+	at com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect(VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.java:69)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.TestNG.privateMain(TestNG.java:1325)
+	at org.testng.TestNG.main(TestNG.java:1294)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP040&apos;, ip: &apos;192.168.3.81&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_91&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous7182030510135467994webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous7182030510135467994webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous7182030510135467994webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous7182030510135467994webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/brajrajs/AppData/Local/Temp/anonymous7182030510135467994webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+</pre></div></td>
+<td>3</td>
+<td>com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_002VerifyUserNotAbleToSignupIfMandatoryFieldISEmpty()'><b>test_002VerifyUserNotAbleToSignupIfMandatoryFieldISEmpty</b><br>Test class: com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty<br/>
+<a href="#Output-114818087" onClick='toggleBox("Output-114818087", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-114818087" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-114818087">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Enter user name, email and phone number in to the sing up field<br><br/>
+ Verify manadatory fields are required<br><br/>
+</div>
+</td>
+<td></td>
+<td>36</td>
+<td>com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67</td></tr>
+<tr>
+<td title='com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_005VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets()'><b>test_005VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets</b><br>Test class: com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets<br/>
+<a href="#Output-2002790740" onClick='toggleBox("Output-2002790740", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2002790740" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2002790740">
+Enter username, email and PhoneNumber<br><br/>
+Enter Password<br><br/>
+Verify User is not able to signup if mobile number is in alphabets<br><br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4</td></tr>
+<tr>
+<td title='com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_007VerifyAllTextBoxesContainsrelevantPlaceholderText()'><b>test_007VerifyAllTextBoxesContainsrelevantPlaceholderText</b><br>Test class: com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets<br/>
+<a href="#Output-1078262677" onClick='toggleBox("Output-1078262677", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1078262677" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1078262677">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Verify all the text boxes should contains relevant placeholder text.<br><br/>
+</div>
+</td>
+<td></td>
+<td>12</td>
+<td>com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4</td></tr>
+<tr>
+<td title='com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_009VerifyClickingTCRedirectTermsAndConditionsPage()'><b>test_009VerifyClickingTCRedirectTermsAndConditionsPage</b><br>Test class: com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty<br/>
+<a href="#Output-1858015030" onClick='toggleBox("Output-1858015030", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1858015030" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1858015030">
+Click on T&C link<br><br/>
+Verify that 'T&C' text is hyperlink and on clicking redirects to 'Terms and Conditions' page. <br><br/>
+</div>
+</td>
+<td></td>
+<td>5</td>
+<td>com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67</td></tr>
+<tr>
+<td title='com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_010VerifyClickingHyperlinkOnClickingRedirectToPrivacyPolicyPage()'><b>test_010VerifyClickingHyperlinkOnClickingRedirectToPrivacyPolicyPage</b><br>Test class: com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets<br/>
+<a href="#Output-291651850" onClick='toggleBox("Output-291651850", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-291651850" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-291651850">
+Click on SignIn Navigation header<br><br/>
+Click on Privacy Policy link<br><br/>
+Verify that ' Privacy Policy' text is hyperlink and on clicking redirects to ' Privacy Policy' page.<br><br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4</td></tr>
+<tr>
+<td title='com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_011VerifyCrossClosedSignupPopop()'><b>test_011VerifyCrossClosedSignupPopop</b><br>Test class: com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets<br/>
+<a href="#Output-1090695601" onClick='toggleBox("Output-1090695601", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1090695601" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1090695601">
+Click on cross button<br><br/>
+Verify Signup has been closed<br><br/>
+</div>
+</td>
+<td></td>
+<td>23</td>
+<td>com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4</td></tr>
+<tr>
+<td title='com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters()'><b>test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters</b><br>Test class: com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets<br/>
+<a href="#Output-2079961240" onClick='toggleBox("Output-2079961240", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-2079961240" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-2079961240">
+Close sign in module<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Enter user name, email and phone number in to the sing up field<br><br/>
+Verify user is not able to sign up if entered email is incorrect<br><br/>
+</div>
+</td>
+<td></td>
+<td>16</td>
+<td>com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_008VerifyClickingOnShowTextPasswordBecomeUnmasked()'><b>test_008VerifyClickingOnShowTextPasswordBecomeUnmasked</b><br>Test class: com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty</td>
+<td><div><pre>java.lang.Throwable: Method VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_008VerifyClickingOnShowTextPasswordBecomeUnmasked()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67] depends on not successfully finished methods
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1539947037", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1539947037'><pre>java.lang.Throwable: Method VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_008VerifyClickingOnShowTextPasswordBecomeUnmasked()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67] depends on not successfully finished methods
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1040)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.TestNG.privateMain(TestNG.java:1325)
+	at org.testng.TestNG.main(TestNG.java:1294)
+</pre></div></td>
+<td>0</td>
+<td>null</td></tr>
+<tr>
+<td title='com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters()'><b>test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters</b><br>Test class: com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty</td>
+<td><div><pre>java.lang.Throwable: Method VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67] depends on not successfully finished methods
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace94830685", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace94830685'><pre>java.lang.Throwable: Method VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67] depends on not successfully finished methods
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1040)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.TestNG.privateMain(TestNG.java:1325)
+	at org.testng.TestNG.main(TestNG.java:1294)
+</pre></div></td>
+<td>0</td>
+<td>null</td></tr>
+</table><p>
+</body>
+</html>

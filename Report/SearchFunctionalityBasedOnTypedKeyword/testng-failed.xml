@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [SearchFunctionalityBasedOnTypedKeyword]">
+  <test name="SearchFunctionalityBasedOnTypedKeyword(failed)">
+    <classes>
+      <class name="com.edureka.searchFunctionality.SearchFunctionalityBasedOnTypedKeyword">
+        <methods>
+          <include name="test_002SearchFunctionalityBasedOnTypedKeyword"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.searchFunctionality.SearchFunctionalityBasedOnTypedKeyword -->
+    </classes>
+  </test> <!-- SearchFunctionalityBasedOnTypedKeyword(failed) -->
+</suite> <!-- Failed suite [SearchFunctionalityBasedOnTypedKeyword] -->

@@ -1,0 +1,28 @@
+package com.edureka.util;
+
+public class Timer {
+    private long startTime = 0;
+    private long endTime = 0;
+    private long timeDiff = 0;
+
+    public void start() {
+        this.startTime = System.currentTimeMillis();
+    }
+
+    public void end() {
+        this.endTime = System.currentTimeMillis();
+    }
+
+    public long getStartTime() {
+        return this.startTime;
+    }
+
+    public long getEndTime() {
+        return this.endTime;
+    }
+
+    public long getTotalTime() {
+    	timeDiff = (this.endTime - this.startTime)/1000;
+    	return timeDiff;
+    }
+}

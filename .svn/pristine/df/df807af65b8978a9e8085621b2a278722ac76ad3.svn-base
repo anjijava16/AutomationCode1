@@ -1,0 +1,186 @@
+package com.edureka.util;
+
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import org.testng.Reporter;
+import com.sun.rowset.CachedRowSetImpl;
+
+public final class SqlUtils {
+
+	/**
+	 * Returns data as a String by checking on column's Sql data type
+	 *
+	 * @param SqlColumnType
+	 * @param rs
+	 * @param dataColIndex
+	 * @return
+	 * @throws Exception
+	 */
+	private static final String _GetDataAsPerColumnType(final ResultSet rs, final int dataColIndex) throws Exception {
+		String value = null;
+
+		int SqlColumnType = rs.getMetaData().getColumnType(dataColIndex);
+		String SqlColumnTypeName = rs.getMetaData().getColumnTypeName(dataColIndex);
+
+		switch (SqlColumnType) {
+		case java.sql.Types.CLOB:
+			throw new Exception("Not Implemented");
+		case java.sql.Types.VARCHAR:
+		case java.sql.Types.DATE:
+		case java.sql.Types.CHAR:
+		case java.sql.Types.NUMERIC:
+			value = rs.getString(dataColIndex);
+
+			break;
+		default:
+			throw new Exception("Sql Type of type[" + SqlColumnType + " -> " + SqlColumnTypeName + "] can not be converted to String");
+		}
+
+		return value;
+	}
+
+	/**
+	 * Converts a provided ResultSet to an 2-d Array
+	 *
+	 * @param rs
+	 * @return
+	 * @throws Exception
+	 */
+	public static final String[][] to2dArray(final ResultSet rs) throws Exception {
+		String[][] dbRow = null;
+
+		int noOfRows = 0;
+		int noOfCols = 0;
+
+		ResultSetMetaData rsm = null;
+		Exception e_throw = null;
+
+		try {
+			// Returns the meta data from the retrieved ResultSet
+			rsm = rs.getMetaData();
+			if (rsm == null) {
+				throw new Exception("Resultset meta data not built up");
+			}
+
+			// moves the record pointer to the last record
+			rs.last();
+			// returns the row number of the record where the pointer is present
+			noOfRows = rs.getRow();
+			// moves the record pointer before the first record
+			rs.beforeFirst();
+			// returns the number of columns
+			noOfCols = rsm.getColumnCount();
+			Reporter.log("This query returned " + noOfRows + " Rows and " + noOfCols + " Columns.");
+
+			dbRow = new String[noOfRows][noOfCols];
+			Reporter.log("2-d array initialized.");
+
+			for (int row = 0; row <= (noOfRows - 1); row++) {
+				rs.next();
+				for (int col = 0; col <= (noOfCols - 1); col++) {
+					String data = SqlUtils._GetDataAsPerColumnType(rs, col + 1);
+					if (data == null) {
+						data = "";
+					}
+					dbRow[row][col] = data;
+				}
+			}
+		} catch (final SQLException se) {
+			Reporter.log(se.getMessage());
+
+			e_throw = se;
+		} catch (final Exception e) {
+			Reporter.log(e.getMessage());
+
+			e_throw = e;
+		} finally {
+			rsm = null;
+		}
+
+		if (e_throw != null) {
+			throw e_throw;
+		}
+
+		return dbRow;
+	}
+
+	/**
+	 * Converts ResultSet in CachedRowSet form.
+	 *
+	 * @param ResultSet
+	 *
+	 * @return CachedRowSet having all the records is returned<br>
+	 *         NULL is returned in case of no records.
+	 *
+	 * @throws SQLException
+	 * @throws Exception
+	 */
+	public static final CachedRowSetImpl toCachedRowSet(final ResultSet rs) throws SQLException, Exception {
+
+		CachedRowSetImpl crs = null;
+		Exception e_throw = null;
+
+		try {
+			if (rs != null) {
+				rs.beforeFirst();
+				crs = new CachedRowSetImpl();
+				crs.populate(rs);
+				crs.beforeFirst();
+			}
+		} catch (final SQLException se) {
+			Reporter.log(se.getMessage());
+			e_throw = se;
+		} catch (final Exception e) {
+			Reporter.log(e.getMessage());
+
+			e_throw = e;
+		}
+
+		if (e_throw != null) {
+			throw e_throw;
+		}
+
+		return crs;
+	}
+
+	public static final String toHtmlTable(final ResultSet rs) throws SQLException, Exception {
+
+		String Html = "";
+
+		Html = Html + " <P ALIGN='left'><TABLE BORDER=1 class='csstable'><TR>";
+		int rowCount = 0;
+
+		if (rs == null) {
+			Html = Html + "</TABLE></P>";
+			return Html;
+		}
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int columnCount = rsmd.getColumnCount();
+		// table header
+		for (int i = 0; i < columnCount; i++) {
+			Html = Html + "<TH>" + rsmd.getColumnLabel(i + 1) + "</TH>";
+		}
+		Html = Html + "</TR>";
+
+		rs.beforeFirst();
+		// the data
+		while (rs.next()) {
+			rowCount++;
+			Html = Html + "<TR>";
+			for (int i = 0; i < columnCount; i++) {
+				if (rs.getString(i + 1) != null) {
+					Html = Html + "<TD>" + rs.getString(i + 1) + "</TD>";
+				} else {
+					Html = Html + "<TD> </TD>";
+				}
+
+			}
+			Html = Html + "</TR>";
+		}
+
+		Html = Html + "</TABLE></P>";
+
+		return Html;
+	}
+}

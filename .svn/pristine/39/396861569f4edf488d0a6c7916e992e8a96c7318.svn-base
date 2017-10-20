@@ -1,0 +1,272 @@
+package com.edureka.community;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.ForumsPage;
+import com.edureka.pages.MyProfilePage;
+import com.edureka.pages.OrderSummaryPage;
+import com.edureka.pages.QuestionPage;
+import com.edureka.pages.RazorPayPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class VerifyOnlyEnrolledUserCanAcessFourm  extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private UserHomePage userHomePage;
+    private SelectedCoursePage selectedCoursePage;
+    private OrderSummaryPage orderSummaryPage;
+    private SignInModalPage signInModalPage;
+    private RazorPayPage razorPayPage;
+    private MyProfilePage myProfilePage;
+    private ForumsPage fourmsPage;
+    private QuestionPage questionPage;
+
+    static String courseName;
+    static String questionTitle;
+
+    @Test
+    public void test_001VerifyOnlyEnrolledUserCanAcessFourm() throws Exception {
+
+        try {
+
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify LogIn Is Default
+            addLog("Verify LogIn Is Default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // click on Sign up link
+            addLog("click on Sign up link");
+            signInModalPage=signInModalPage.clickSignUp();
+
+            // Sign up User
+            String edurekaDomain = propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            userHomePage= signInModalPage.signUp(UserHomePage.class, edurekaDomain);
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            userHomePage=userHomePage.verifyUserPage();
+
+            // Select Course
+            courseName = propertyReader.readTestData("BigData&Hadoop");
+            addLog("Select Course" +courseName);
+            selectedCoursePage=dashboardPage.selectCourse(courseName);
+
+            // Verify Selected course should be open.
+            addLog("Verify Selected course should be open");
+            selectedCoursePage=selectedCoursePage.verifySelectedCoursePage(courseName);
+
+            // Click on Enroll Button
+            addLog("Click on Enroll Button");
+            orderSummaryPage=selectedCoursePage.clickOnEnrollButton(OrderSummaryPage.class);
+
+            // Verify Order Summary Page
+            addLog("Verify Order Summary Page");
+            orderSummaryPage=orderSummaryPage.verifyPage();
+
+            // Change Currency
+            String currency= propertyReader.readTestData("INRCurrency");
+            addLog("Select currecnt" +currency +" from currnecy table");
+            orderSummaryPage=orderSummaryPage.changeCurrency(currency);
+
+            // Verify total Amount for USD is equal to Net price
+            addLog("verify Total amount");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmount(currency);
+
+            // Click on Razor pay securely button
+            addLog("Click on Razor pay securely button");
+            razorPayPage= orderSummaryPage.clickOnRazorPaySecurelyButton();
+
+            // Verify Razor page
+            addLog("Verify Razor page");
+            razorPayPage=razorPayPage.verifyPage();
+
+            // Click on Net Banking tab
+            addLog("Click on Net Banking tab");
+            razorPayPage=razorPayPage.clickOnNetBankingTab();
+
+            // Select bank
+            String bankName = propertyReader.readTestData("Bank");
+            addLog("Select Bank" +bankName +" from bank table ");
+            razorPayPage=razorPayPage.selectBank(bankName);
+
+            // Click on pay button
+            addLog("Click on pay button");
+            razorPayPage=razorPayPage.clickOnPayButton();
+
+            // Get Parent window Id
+            addLog("Get Parent Window ID");
+            String parentWidnow = getParentWindowHandle();
+
+            // Switch Child Window and Click on Succss button
+            addLog("Switch Child Window and Click on Succss button");
+            switchPreviewWindow();
+            myProfilePage=razorPayPage.clickOnSuccessButton();
+
+            // Switch to Parent Window and verify my Profile page
+            addLog("Switch to Parent Window and verify my Profile page");
+            switchParentWindow(parentWidnow);
+            myProfilePage= myProfilePage.verifyPage();
+
+            // Verify Payment success message
+            addLog("Verify payment success message 'Thank you for making payment !'");
+            myProfilePage= myProfilePage.verifySuccessPaymentMessage();
+
+            // Select Forum from Community dropdown
+            String forum = propertyReader.readTestData("Forum");
+            addLog("Select "+forum+ " from Community dropdown");
+            fourmsPage= myProfilePage.selectOptionFromCommunity(ForumsPage.class, forum);
+
+            // Verify  Forums page
+            addLog("Verify Forums page");
+            fourmsPage= fourmsPage.verifyPage();
+
+        }
+        catch (Error e) {
+            captureScreenshot("test_001VerifyOnlyEnrolledUserCanAcessFourm");
+            throw e;
+        } catch (Exception e) {
+            captureScreenshot("test_001VerifyOnlyEnrolledUserCanAcessFourm");
+            throw e;
+        }
+    }
+
+    @Test(dependsOnMethods={"test_001VerifyOnlyEnrolledUserCanAcessFourm"})
+    public void test009VerifyDifferentFilters() throws Exception {
+
+        try {
+
+            // Verify Different Filters on Posted Questions
+            addLog("Verify Different Filters on Posted Questions");
+            fourmsPage=fourmsPage.verifyFilters();
+
+        }
+        catch (Error e) {
+            captureScreenshot("test009VerifyDifferentFilters");
+            throw e;
+        } catch (Exception e) {
+            captureScreenshot("test009VerifyDifferentFilters");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test009VerifyDifferentFilters"})
+    public void test_002PostAQuestionOnForumPage() throws Exception {
+
+        try {
+            // Verify and Click on Post Question button
+            addLog("Verify and Click on Post Question button");
+            questionPage= fourmsPage.verifyAndClickOnPostQuestionButton();
+
+        }
+        catch (Error e) {
+            captureScreenshot("test_002PostAQuestionOnForumPage");
+            throw e;
+        } catch (Exception e) {
+            captureScreenshot("test_002PostAQuestionOnForumPage");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_002PostAQuestionOnForumPage"})
+    public void test_006VerifyFunctionalityOfAttachedFile() throws Exception {
+
+        try {
+
+            // Verify Question page
+            addLog("Verify Question page");
+            questionPage =questionPage.verifyPage();
+
+            // Verify Attached file link
+            addLog("Verify Attached file link");
+            questionPage =questionPage.verifyAttachedFileLink();
+
+        }
+        catch (Error e) {
+            captureScreenshot("test_006VerifyFunctionalityOfAttachedFile");
+            throw e;
+        } catch (Exception e) {
+            captureScreenshot("test_006VerifyFunctionalityOfAttachedFile");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_006VerifyFunctionalityOfAttachedFile"})
+    public void test_005VerifyPostQuestionFunctionality() throws Exception {
+
+        try {
+
+
+            // Post Question
+            String category=propertyReader.readTestData("Category");
+            questionTitle=propertyReader.readTestData("Question_Title_Forum_Creation");
+            String question=propertyReader.readTestData("Question");
+            addLog("Post Question");
+            fourmsPage=questionPage.postQuestion(courseName, category, questionTitle, question);
+
+            // Verify Question is posted successfully
+            addLog("Verify Question is posted successfully");
+            fourmsPage=fourmsPage.verifySuccessMsgPostQuestion();
+
+        }
+        catch (Error e) {
+            captureScreenshot("test_005VerifyPostQuestionFunctionality");
+            throw e;
+        } catch (Exception e) {
+            captureScreenshot("test_005VerifyPostQuestionFunctionality");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_005VerifyPostQuestionFunctionality"})
+    public void test_008VerifyModerationStatusOfQuestion() throws Exception {
+
+        try {
+
+            // Close Posted Question success message
+            addLog("Close Posted Question success message");
+            fourmsPage=fourmsPage.closeSuccessMessage();
+
+            // Verify Moderation status of Question
+            addLog("Verify By default the status of the recently posted question will be showing as 'Under Moderation' on the Forum page");
+            fourmsPage=fourmsPage.verifyModerationStatusOfQuestion();
+
+        }
+        catch (Error e) {
+            captureScreenshot("test_008VerifyModerationStatusOfQuestion");
+            throw e;
+        } catch (Exception e) {
+            captureScreenshot("test_008VerifyModerationStatusOfQuestion");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_008VerifyModerationStatusOfQuestion"})
+    public void test_010VerifySearchFunctionalityForForum() throws Exception {
+
+        try {
+
+            // Verify Searched Functionality for Forums
+            String search_Data = propertyReader.readTestData("Searched_Data");
+            addLog("Verify Searched Functionality for Forums");
+            fourmsPage=fourmsPage.verifySearchFunctionality(search_Data);
+
+        }
+        catch (Error e) {
+            captureScreenshot("test_010VerifySearchFunctionalityForForum");
+            throw e;
+        } catch (Exception e) {
+            captureScreenshot("test_010VerifySearchFunctionalityForForum");
+            throw e;
+        }
+    }
+}

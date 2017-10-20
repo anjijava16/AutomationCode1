@@ -1,0 +1,10 @@
+<h2>Reporter output</h2><table><tr><td>Navigate to the Edureka application url<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Click on SignIn Navigation header<br></td></tr>
+<tr><td>Verify Login is selected as default<br></td></tr>
+<tr><td>click on Sign up link<br></td></tr>
+<tr><td>Enter Password<br></td></tr>
+<tr><td>Verify that on clicking 'show' text in password text box the password characters become unmasked.<br></td></tr>
+<tr><td>Click on T&C link<br></td></tr>
+<tr><td>Verify that 'T&C' text is hyperlink and on clicking redirects to 'Terms and Conditions' page. <br></td></tr>
+</table>

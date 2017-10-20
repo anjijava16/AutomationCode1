@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [OfferCodeForCorporate]">
+  <test name="OfferCodeForCorporate(failed)">
+    <classes>
+      <class name="com.edureka.offerFramework.OfferCodeForCorporate">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_006OfferCodeForCorporate"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.offerFramework.OfferCodeForCorporate -->
+    </classes>
+  </test> <!-- OfferCodeForCorporate(failed) -->
+</suite> <!-- Failed suite [OfferCodeForCorporate] -->

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestSuiteEdurekaPOC" verbose="1" thread-count="1">
+	<test name="TestSuiteEdurekaPOC" preserve-order="true">
+		<classes>
+			<class name="com.edureka.scripts.VerifySignUpFromNavigationHeader" />
+			<class name="com.edureka.scripts.VerifySignUpFromAddToWishlist" />
+			<class name="com.edureka.scripts.VerifySignUpFromClassRecording" />
+			<class name="com.edureka.scripts.VerifySignUpFromEnrollNow" />
+			<class name="com.edureka.scripts.VerifyCourseAmountOnOrderSummaryForForeignCurrency" />
+			<class name="com.edureka.scripts.VerifyCourseAmountOnOrderSummaryForINR" />
+			<class name="com.edureka.scripts.VerifyCreatingLeadUsingDropUsQuery" />
+		</classes>
+	</test>
+</suite> 

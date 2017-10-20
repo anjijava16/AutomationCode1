@@ -1,0 +1,1021 @@
+package com.edureka.pages;
+
+import java.util.ArrayList;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.util.Database;
+import com.edureka.util.DriverHelper;
+
+public class DatabaseVerifications extends DriverHelper {
+
+    String emailId = propertyReader.readRunTimeData("Email_Id");
+    String phone = propertyReader.readTestData("PhoneNumber");
+    String userName = propertyReader.readRunTimeData("UserName");
+
+    public DatabaseVerifications(WebDriver driver) {
+        super(driver);
+    }
+
+    /**
+     * Verify
+     * 
+     * @param className
+     * @param course_Id
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T currencyVerificationInDatabase_For_OfferFramework(@SuppressWarnings("rawtypes") Class className) throws Exception {
+        Database dbObject = new Database();
+
+        String offer_Id = propertyReader.readRunTimeData("Offer_Id");
+        ArrayList<String> currency = dbObject.getRecords("offer_discounts", "currency", "offer_id", offer_Id);
+        ArrayList<String> currencyList = new ArrayList<>();
+        currencyList.add("currency=0");
+        currencyList.add("currency=1");
+        currencyList.add("currency=2");
+        currencyList.add("currency=3");
+        currencyList.add("currency=4");
+        currencyList.add("currency=5");
+        currencyList.add("currency=6");
+        Assert.assertTrue(currency.equals(currencyList));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Verify Data in
+     * 
+     * @param className
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerification_For_ClassRecordingVideo(@SuppressWarnings("rawtypes") Class className, String course_Id) throws Exception {
+        Database dbObject = new Database();
+
+        String user_ID = propertyReader.readRunTimeData("User_ID");
+        String last_Module_Watched = dbObject.getRecord("user_courses", "last_module_watched", "user_id", user_ID);
+        Assert.assertTrue(!(last_Module_Watched.equals(null)));
+
+        String userId = dbObject.getRecord("post_orders", "courseid", "user_id", user_ID);
+        Assert.assertTrue(userId.contains(user_ID));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Data Verifyfication for LMS
+     * 
+     * @param className
+     * @param batchID
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerification_For_LMS(@SuppressWarnings("rawtypes") Class className) throws Exception {
+        Database dbObject = new Database();
+
+        String user_ID = propertyReader.readRunTimeData("User_ID");
+        String batch_Id = dbObject.getRecord("user_courses", "batch_id", "user_id", user_ID);
+        Assert.assertTrue(!(batch_Id.equals(null)));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Database verification for offer framework in offers Tables
+     * 
+     * @param className
+     * @param course_Id
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerification_For_OfferFramework(@SuppressWarnings("rawtypes") Class className, String discount_Description) throws Exception {
+        Database dbObject = new Database();
+
+        String offer_Id = propertyReader.readRunTimeData("Offer_Id");
+        String offer_StartDate = dbObject.getRecord("offers", "start_date", "id", offer_Id);
+        Assert.assertTrue(offer_StartDate.contains(presenttDate()));
+
+        String offer_EndDate = dbObject.getRecord("offers", "end_date", "id", offer_Id);
+        Assert.assertTrue(offer_EndDate.contains(nexDayDate()));
+
+        String description = dbObject.getRecord("offers", "description", "id", offer_Id);
+        Assert.assertTrue(description.contains(discount_Description));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Data verification for Inquiry
+     * 
+     * @param className
+     * @param courseId
+     * @param webSiteAction
+     * @param event_context
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationFor_Inquiry(@SuppressWarnings("rawtypes") Class className, String courseId, String webSiteAction, String event_context, String utm_campaign,String courseGroup,String eventType,String level_id) throws Exception {
+
+        Database dbObject = new Database();
+
+        String inquiry_Email = propertyReader.readRunTimeData("QueryEmail_Id");
+        String user_Name = propertyReader.readRunTimeData("QueryUserName");
+
+        String user_Id = dbObject.getRecord("user_leads", "user_id", "email", inquiry_Email);
+
+        String course_Id = dbObject.getRecord("user_courses", "course_id", "user_id", user_Id);
+        Assert.assertTrue(course_Id.contains(courseId));
+
+        String isPaid = dbObject.getRecord("user_courses", "is_paid", "user_id", user_Id);
+        Assert.assertTrue(isPaid.contains(isPaid));
+
+        String course_Group = dbObject.getRecord("user_courses", "course_group", "user_id", user_Id);
+        Assert.assertTrue(course_Group.contains(courseGroup));
+
+        String startedFrom = dbObject.getRecord("user_courses", "started_from", "user_id", user_Id);
+        Assert.assertTrue(startedFrom.contains(presenttDate()));
+
+        String endOn = dbObject.getRecord("user_courses", "ends_on", "user_id", user_Id);
+        Assert.assertTrue(endOn.contains(endDate()));
+
+
+        String phoneNumber = dbObject.getRecord("users", "mobile", "email", inquiry_Email);
+        Assert.assertTrue(phoneNumber.contains(phone));
+
+        String email = dbObject.getRecord("users", "email", "first_name", user_Name);
+        System.out.println("DB EMail :"+email);
+        System.out.println("Expected : "+inquiry_Email);
+        Assert.assertTrue(email.contains(inquiry_Email));
+
+        String status = dbObject.getRecord("users", "status", "email", inquiry_Email);
+        Assert.assertTrue(status.contains("1"));
+
+        String password = dbObject.getRecord("users", "password", "email", inquiry_Email);
+        Assert.assertTrue(!(password.equals(null)));
+
+        String zohoLead_Id = dbObject.getRecord("user_leads", "zoholead_id", "email", inquiry_Email);
+        Assert.assertTrue(!(zohoLead_Id.equals(null)));
+
+        user_Id = dbObject.getRecord("user_leads", "user_id", "email", inquiry_Email);
+        Assert.assertTrue(!(user_Id.equals(null)));
+
+        //String course_Id = dbObject.getRecord("user_leads", "course_id", "email", inquiry_Email);
+        Assert.assertTrue(course_Id.contains(courseId));
+
+        String website_action = dbObject.getRecord("user_leads", "website_action", "email", inquiry_Email);
+        Assert.assertTrue(website_action.contains(webSiteAction));
+
+        String event_Context = dbObject.getRecord("user_events", "event_context", "user_id", user_Id);
+        Assert.assertTrue(event_Context.contains(event_context));
+
+        String utm_Campaign = dbObject.getRecord("user_events", "utm_campaign", "user_id", user_Id);
+        System.out.println("Db utm_Campaign"+utm_Campaign);
+        System.out.println("Expected "+utm_campaign);
+        Assert.assertTrue(utm_Campaign.contains(utm_campaign));
+
+        //Verify in User Event Table
+        course_Id = dbObject.getRecord("user_events", "course_id", "user_id", user_Id);
+        Assert.assertTrue(course_Id.contains(courseId));
+
+        event_Context = dbObject.getRecord("user_events", "event_context", "user_id", user_Id);
+        Assert.assertTrue(event_Context.contains(event_context));
+
+        utm_Campaign = dbObject.getRecord("user_events", "utm_campaign", "user_id", user_Id);
+        System.out.println("utm_Campaign" + utm_Campaign);
+        System.out.println("Expected" + utm_campaign);
+        Assert.assertTrue(utm_Campaign.contains(utm_campaign));
+
+        String event_Type = dbObject.getRecord("user_events", "event_type", "user_id", user_Id);
+        Assert.assertTrue(event_Type.contains(eventType));
+
+        //Verify data in Ambassdor table
+        String level_Id = dbObject.getRecord("ambassadors", "level_id", "user_id", user_Id);
+        Assert.assertTrue(level_Id.contains(level_id));
+
+        String email_Url = dbObject.getRecord("ambassadors", "email_url", "user_id", user_Id);
+        Assert.assertTrue(!(email_Url.equals(null)));
+
+        String facebook_Url = dbObject.getRecord("ambassadors", "facebook_url", "user_id", user_Id);
+        Assert.assertTrue(!(facebook_Url.equals(null)));
+
+        String linkdln_Url = dbObject.getRecord("ambassadors", "linkedin_url", "user_id", user_Id);
+        Assert.assertTrue(!(linkdln_Url.equals(null)));
+
+        String twitter_url = dbObject.getRecord("ambassadors", "twitter_url", "user_id", user_Id);
+        Assert.assertTrue(!(twitter_url.equals(null)));
+
+        String mobile_url = dbObject.getRecord("ambassadors", "mobile_url", "user_id", user_Id);
+        Assert.assertTrue(!(mobile_url.equals(null)));
+
+        //Verify data in Completed_Queue_Jobs Table
+        String courseStatus = propertyReader.readTestData("Status");
+        String courseProperty =propertyReader.readTestData("Priority");
+        status = dbObject.getRecord("completed_queue_jobs", "status", "id", user_Id);
+        Assert.assertTrue(status.contains(courseStatus));
+
+        String priority = dbObject.getRecord("completed_queue_jobs", "priority", "id", user_Id);
+        Assert.assertTrue(priority.contains(courseProperty));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+    /**
+     * Database verification for Referral Prcoess
+     * 
+     * @param className
+     * @param fName
+     * @param referralLink
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationFor_ReferredUser(@SuppressWarnings("rawtypes") Class className, String email, String fName, String referralLink) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("users ambassador_activities", "id", "email", email);
+        Assert.assertTrue(!(user_Id.equals(null)));
+        propertyReader.updatePropertyTestData("Referral_User_ID", user_Id);
+
+        String firstName = dbObject.getRecord("users ambassador_activities", "first_name", "email", email);
+        Assert.assertTrue(firstName.equalsIgnoreCase(fName));
+
+        String facebook_Url = dbObject.getRecord("ambassadors", "facebook_url", "user_id", user_Id);
+        Assert.assertTrue(!(facebook_Url.equals(null)));
+
+        String linkdln_Url = dbObject.getRecord("ambassadors", "linkedin_url", "user_id", user_Id);
+        Assert.assertTrue(!(linkdln_Url.equals(null)));
+
+        String twitter_url = dbObject.getRecord("ambassadors", "twitter_url", "user_id", user_Id);
+        Assert.assertTrue(!(twitter_url.equals(null)));
+
+        String mobile_url = dbObject.getRecord("ambassadors", "mobile_url", "user_id", user_Id);
+        Assert.assertTrue(!(mobile_url.equals(null)));
+
+        String referLink = dbObject.getRecord("ambassadors", "email_url", "user_id", user_Id);
+        Assert.assertTrue(referLink.contains(referralLink));
+
+        String ambassadorDate = dbObject.getRecord("ambassadors", "ambassador_date", "user_id", user_Id);
+        Assert.assertTrue(ambassadorDate.contains(presenttDate()));
+
+        String master_url = dbObject.getRecord("ambassadors", "master_url", "user_id", user_Id);
+        Assert.assertTrue(!(master_url.equals(null)));
+
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationForNotification(@SuppressWarnings("rawtypes") Class className, String courseId, String webSiteAction) throws Exception {
+
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("user_leads", "user_id", "email", emailId);
+        Assert.assertTrue(!(user_Id.equals(null)));
+        propertyReader.updatePropertyTestData("User_ID", user_Id);
+
+        String notification_Id = dbObject.getRecord("ne_users_notifications", "notification_id", "user_id", user_Id);
+        Assert.assertTrue((notification_Id.equals(null)));
+
+        String email = dbObject.getRecord("user_leads", "email", "first_name", userName);
+        Assert.assertTrue(email.contains(emailId));
+
+        String website_action = dbObject.getRecord("user_leads", "website_action", "email", emailId);
+        Assert.assertTrue(website_action.contains(webSiteAction));
+
+        String created = dbObject.getRecord("user_leads", "created", "email", emailId);
+        Assert.assertTrue(created.contains(presenttDate()));
+
+        String modified = dbObject.getRecord("user_leads", "modified", "email", emailId);
+        Assert.assertTrue(modified.contains(presenttDate()));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Database verification for Referral Process
+     * @param className
+     * @param email
+     * @param fName
+     * @param referralLink
+     * @param levelId
+     * @param welcomemail
+     * @param ambassador_Campaign_Id
+     * @param ambassador_Level_Id
+     * @param source
+     * @param page_Url
+     * @param campaign_id
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationForReferralProcess(@SuppressWarnings("rawtypes") Class className, String email,String referralLink, String levelId, String welcomemail, String ambassador_Campaign_Id, String ambassador_Level_Id, String source, String page_Url, String campaign_id) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("users ambassador_activities", "id", "email", email);
+        Assert.assertTrue(!(user_Id.equals(null)));
+        propertyReader.updatePropertyTestData("Referral_User_ID", user_Id);
+
+        String facebook_Url = dbObject.getRecord("ambassadors", "facebook_url", "user_id", user_Id);
+        Assert.assertTrue(!(facebook_Url.equals(null)));
+
+        String level_Id = dbObject.getRecord("ambassadors", "level_id", "user_id", user_Id);
+        Assert.assertTrue(level_Id.contains(levelId));
+
+        String linkdln_Url = dbObject.getRecord("ambassadors", "linkedin_url", "user_id", user_Id);
+        Assert.assertTrue(!(linkdln_Url.equals(null)));
+
+        String twitter_url = dbObject.getRecord("ambassadors", "twitter_url", "user_id", user_Id);
+        Assert.assertTrue(!(twitter_url.equals(null)));
+
+        String mobile_url = dbObject.getRecord("ambassadors", "mobile_url", "user_id", user_Id);
+        Assert.assertTrue(!(mobile_url.equals(null)));
+
+        String referLink = dbObject.getRecord("ambassadors", "email_url", "user_id", user_Id);
+        Assert.assertTrue(referLink.contains(referralLink));
+
+        String ambassadorDate = dbObject.getRecord("ambassadors", "ambassador_date", "user_id", user_Id);
+        Assert.assertTrue(ambassadorDate.contains(presenttDate()));
+
+        String welcome_Email = dbObject.getRecord("ambassadors", "welcomemail", "user_id", user_Id);
+        Assert.assertTrue( welcome_Email.contains(welcomemail));
+
+        String ambassador_Campaign = dbObject.getRecord("ambassadors", "ambassador_campaign_id", "user_id", user_Id);
+        Assert.assertTrue( ambassador_Campaign.trim().contains(ambassador_Campaign_Id));
+
+        String ambassadorLevelId = dbObject.getRecord("ambassadors", "ambassador_level_id", "user_id", user_Id);
+        Assert.assertTrue(ambassadorLevelId.trim().contains(ambassador_Level_Id));
+
+        String activity = dbObject.getRecord("ambassador_activities", "activity_type", "user_id", user_Id);
+        Assert.assertTrue(activity.contains(source));
+
+        String referredDate = dbObject.getRecord("ambassador_activities", "created", "user_id", user_Id);
+        Assert.assertTrue(referredDate.contains(presenttDate()));
+
+        String pageUrl = dbObject.getRecord("ambassador_activities", "page_url", "user_id", user_Id);
+        Assert.assertTrue(pageUrl.contains(page_Url));
+
+        String levelID = dbObject.getRecord("ambassador_activities", "id", "user_id", user_Id);
+        Assert.assertTrue(!(levelID.equals(null)));
+
+        String campaign_ID = dbObject.getRecord("ambassador_activities", "campaign_id", "user_id", user_Id);
+        Assert.assertTrue(campaign_ID.contains(campaign_id));
+
+        String master_url = dbObject.getRecord("ambassadors", "master_url", "user_id", user_Id);
+        Assert.assertTrue(!(master_url.equals(null)));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Verify Data in Ambassadors table
+     * 
+     * @param className
+     * @param level_id
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationInAmbassadors(@SuppressWarnings("rawtypes") Class className, String level_id) throws Exception {
+        Database dbObject = new Database();
+
+        String user_ID = propertyReader.readRunTimeData("User_ID");
+
+        String level_Id = dbObject.getRecord("ambassadors", "level_id", "user_id", user_ID);
+        Assert.assertTrue(level_Id.contains(level_id));
+
+        String email_Url = dbObject.getRecord("ambassadors", "email_url", "user_id", user_ID);
+        Assert.assertTrue(!(email_Url.equals(null)));
+
+        String facebook_Url = dbObject.getRecord("ambassadors", "facebook_url", "user_id", user_ID);
+        Assert.assertTrue(!(facebook_Url.equals(null)));
+
+        String linkdln_Url = dbObject.getRecord("ambassadors", "linkedin_url", "user_id", user_ID);
+        Assert.assertTrue(!(linkdln_Url.equals(null)));
+
+        String twitter_url = dbObject.getRecord("ambassadors", "twitter_url", "user_id", user_ID);
+        Assert.assertTrue(!(twitter_url.equals(null)));
+
+        String mobile_url = dbObject.getRecord("ambassadors", "mobile_url", "user_id", user_ID);
+        Assert.assertTrue(!(mobile_url.equals(null)));
+
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Database verification in Post Order table
+     * 
+     * @param className
+     * @param course_id
+     * @param batchTitle
+     * @param paymentGatway
+     * @param currency
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationInPostOrderTable(@SuppressWarnings("rawtypes") Class className, String course_id, String batchTitle, String paymentGatway, String currency) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("user_leads", "user_id", "email", emailId);
+        Assert.assertTrue(!(user_Id.equals(null)));
+        propertyReader.updatePropertyTestData("User_ID", user_Id);
+
+        String course_Id = dbObject.getRecord("post_orders", "courseid", "userid", user_Id);
+        Assert.assertTrue(course_Id.contains(course_id));
+
+        String order_Id = dbObject.getRecord("post_orders", "orderid", "userid", user_Id);
+        Assert.assertTrue(!(order_Id.equals(null)));
+
+        String batch_Id = dbObject.getRecord("post_orders", "batchid", "userid", user_Id);
+        Assert.assertTrue(!(batch_Id.equals(null)));
+
+        String batch_Title = dbObject.getRecord("post_orders", "batchtitle", "userid", user_Id);
+        Assert.assertTrue(batch_Title.contains(batchTitle));
+
+        String price = propertyReader.readRunTimeData("PriceValue");
+        System.out.println("Expected Price :"+price);
+
+        if (currency.equals("USD")) {
+            String price_USD = dbObject.getRecord("post_orders", "priceusd", "userid", user_Id);
+            System.out.println("Price Usd :"+price);
+            Assert.assertTrue(price_USD.trim().contains(price_USD.trim()));
+
+            String serviceTax_INR = dbObject.getRecord("post_orders", "servicetaxusd", "userid", user_Id);
+            Assert.assertTrue(serviceTax_INR.contains("0"));
+
+            String currency_Id = dbObject.getRecord("post_orders", "currency_id", "userid", user_Id);
+            Assert.assertTrue(currency_Id.contains("0"));
+        } else if (currency.equals("INR")) {
+            System.out.println("I am in else");
+            String price_INR = dbObject.getRecord("pre_orders", "priceinr", "userid", user_Id);
+            Assert.assertTrue(price_INR.trim().contains(price.trim()));
+
+            String serviceTax = propertyReader.readRunTimeData("ServiceTax");
+            String serviceTax_INR = dbObject.getRecord("pre_orders", "servicetaxinr", "userid", user_Id);
+            Assert.assertTrue(serviceTax_INR.contains(serviceTax));
+
+            String currency_Id = dbObject.getRecord("pre_orders", "currency_id", "userid", user_Id);
+            Assert.assertTrue(currency_Id.contains("1"));
+
+        }
+        String paymentGateway = dbObject.getRecord("post_orders", "gateway", "userid", user_Id);
+        Assert.assertTrue(paymentGateway.contains(paymentGatway));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Data verification in Pre_Order Table for INR currency
+     * 
+     * @param className
+     * @param course_id
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationInPreOrderTableForINR(@SuppressWarnings("rawtypes") Class className, String course_id, String batchTitle) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("user_leads", "user_id", "email", emailId);
+        Assert.assertTrue(!(user_Id.equals(null)));
+        propertyReader.updatePropertyTestData("User_ID", user_Id);
+
+        String course_Id = dbObject.getRecord("pre_orders", "courseid", "userid", user_Id);
+        Assert.assertTrue(course_Id.contains(course_id));
+
+        String order_Id = dbObject.getRecord("pre_orders", "orderid", "userid", user_Id);
+        Assert.assertTrue(!(order_Id.equals(null)));
+
+        String batch_Id = dbObject.getRecord("pre_orders", "batchid", "userid", user_Id);
+        Assert.assertTrue(!(batch_Id.equals(null)));
+
+        String batch_Title = dbObject.getRecord("pre_orders", "batchtitle", "userid", user_Id);
+        Assert.assertTrue(batch_Title.contains(batchTitle));
+
+
+        String price = propertyReader.readRunTimeData("PriceValue"); 
+        String price_INR = dbObject.getRecord("pre_orders", "priceinr", "userid",user_Id); 
+        Assert.assertTrue(price_INR.contains(price));
+
+
+        String serviceTax = propertyReader.readRunTimeData("ServiceTax");
+        String serviceTax_INR = dbObject.getRecord("pre_orders", "servicetaxinr", "userid", user_Id);
+        Assert.assertTrue(serviceTax_INR.contains(serviceTax));
+
+        String currency_Id = dbObject.getRecord("pre_orders", "currency_id", "userid", user_Id);
+        Assert.assertTrue(currency_Id.contains("1"));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Data verification in Pre-order table for USD
+     * 
+     * @param className
+     * @param course_id
+     * @param batchTitle
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationInPreOrderTableForUSD(@SuppressWarnings("rawtypes") Class className, String course_id, String batchTitle) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("user_leads", "user_id", "email", emailId);
+        Assert.assertTrue(!(user_Id.equals(null)));
+        propertyReader.updatePropertyTestData("User_ID", user_Id);
+
+        String course_Id = dbObject.getRecord("pre_orders", "courseid", "userid", user_Id);
+        Assert.assertTrue(course_Id.contains(course_id));
+
+        String order_Id = dbObject.getRecord("pre_orders", "orderid", "userid", user_Id);
+        Assert.assertTrue(!(order_Id.equals(null)));
+
+        String batch_Id = dbObject.getRecord("pre_orders", "batchid", "userid", user_Id);
+        Assert.assertTrue(!(batch_Id.equals(null)));
+
+        String batch_Title = dbObject.getRecord("pre_orders", "batchtitle", "userid", user_Id);
+        Assert.assertTrue(batch_Title.contains(batchTitle));
+
+        /*
+         * String price = propertyReader.readRunTimeData("PriceValue"); String
+         * price_USD = dbObject.getRecord("pre_orders", "priceus", "userid",
+         * user_Id); Assert.assertTrue(price.contains(price_USD));
+         */
+
+        String serviceTax_INR = dbObject.getRecord("pre_orders", "servicetaxusd", "userid", user_Id);
+        Assert.assertTrue(serviceTax_INR.contains("0"));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * verify Data in User_Course_Table
+     * 
+     * @param className
+     * @param courseId
+     * @param isPaidValue
+     * @param courseGroup
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationInUser_Course_Table(@SuppressWarnings("rawtypes") Class className, String courseId, String isPaidValue, String courseGroup) throws Exception {
+
+        Database dbObject = new Database();
+
+        String user_ID = propertyReader.readRunTimeData("User_ID");
+
+        String course_Id = dbObject.getRecord("user_courses", "course_id", "user_id", user_ID);
+        Assert.assertTrue(course_Id.contains(courseId));
+
+        String isPaid = dbObject.getRecord("user_courses", "is_paid", "user_id", user_ID);
+        Assert.assertTrue(isPaid.contains(isPaid));
+
+        String course_Group = dbObject.getRecord("user_courses", "course_group", "user_id", user_ID);
+        Assert.assertTrue(course_Group.contains(courseGroup));
+
+        String startedFrom = dbObject.getRecord("user_courses", "started_from", "user_id", user_ID);
+        Assert.assertTrue(startedFrom.contains(presenttDate()));
+
+        String endOn = dbObject.getRecord("user_courses", "ends_on", "user_id", user_ID);
+        Assert.assertTrue(endOn.contains(endDate()));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Verify Data in User Events table
+     * 
+     * @param className
+     * @param courseId
+     * @param event_context
+     * @param utm_source
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationInUser_Events_Table(@SuppressWarnings("rawtypes") Class className, String courseId, String event_context, String utm_campaign, String event) throws Exception {
+
+        Database dbObject = new Database();
+
+        String user_ID = propertyReader.readRunTimeData("User_ID");
+
+        String course_Id = dbObject.getRecord("user_events", "course_id", "user_id", user_ID);
+        Assert.assertTrue(course_Id.contains(courseId));
+
+        String event_Context = dbObject.getRecord("user_events", "event_context", "user_id", user_ID);
+        Assert.assertTrue(event_Context.contains(event_context));
+
+        String utm_Campaign = dbObject.getRecord("user_events", "utm_campaign", "user_id", user_ID);
+        System.out.println("utm_Campaign" + utm_Campaign);
+        System.out.println("Expected" + utm_campaign);
+        Assert.assertTrue(utm_Campaign.contains(utm_campaign));
+
+        String event_Type = dbObject.getRecord("user_events", "event_type", "user_id", user_ID);
+        Assert.assertTrue(event_Type.contains(event));
+
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Verify Data in user leads table
+     * 
+     * @param className
+     * @param courseId
+     * @param webSiteAction
+     * @param country
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationInUserLeadTable(@SuppressWarnings("rawtypes") Class className, String courseId, String webSiteAction, String country, String campaignSource, String campaignName, String campaignMedium) throws Exception {
+
+        Database dbObject = new Database();
+
+        String zohoLead_Id = dbObject.getRecord("user_leads", "zoholead_id", "email", emailId);
+        Assert.assertTrue(!(zohoLead_Id.equals(null)));
+
+        String user_Id = dbObject.getRecord("user_leads", "user_id", "email", emailId);
+        Assert.assertTrue(!(user_Id.equals(null)));
+        propertyReader.updatePropertyTestData("User_ID", user_Id);
+
+        String course_Id = dbObject.getRecord("user_leads", "course_id", "email", emailId);
+        Assert.assertTrue(course_Id.contains(courseId));
+
+        String email = dbObject.getRecord("user_leads", "email", "first_name", userName);
+        Assert.assertTrue(email.contains(emailId));
+
+        String website_action = dbObject.getRecord("user_leads", "website_action", "email", emailId);
+        System.out.println("DB WebAction :"+website_action);
+        System.out.println("webSiteAction :"+webSiteAction);
+        Assert.assertTrue(website_action.contains(webSiteAction));
+
+        String ip = dbObject.getRecord("user_leads", "user_ip", "email", emailId);
+        Assert.assertTrue(!(ip.equals(null)));
+
+        String potential_Id = dbObject.getRecord("user_leads", "zoho_potential_id", "email", emailId);
+        Assert.assertTrue(!(potential_Id.equals(null)));
+
+        String created = dbObject.getRecord("user_leads", "created", "email", emailId);
+        Assert.assertTrue(created.contains(presenttDate()));
+
+        String modified = dbObject.getRecord("user_leads", "modified", "email", emailId);
+        Assert.assertTrue(modified.contains(presenttDate()));
+
+        String countryName = dbObject.getRecord("user_leads", "country", "email", emailId);
+        Assert.assertTrue(countryName.toLowerCase().contains(country.toLowerCase()));
+
+        String lead_Id = dbObject.getRecord("user_leads", "id", "email", emailId);
+        Assert.assertTrue(!(lead_Id.equals(null)));
+
+        String campaign_Source = dbObject.getRecord("utm_params", "campaign_source", "lead_id", lead_Id);
+        Assert.assertTrue(campaign_Source.contains(campaignSource));
+
+        String campaign_Name = dbObject.getRecord("utm_params", "campaign_name", "lead_id", lead_Id);
+        Assert.assertTrue(campaign_Name.contains(campaignName));
+
+        String campaign_Medium = dbObject.getRecord("utm_params", "campaign_medium", "lead_id", lead_Id);
+        Assert.assertTrue(campaign_Medium.contains(campaignMedium));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     * Verify Data in user Table
+     * 
+     * @param className
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationInUserTable(@SuppressWarnings("rawtypes") Class className) throws Exception {
+
+        Database dbObject = new Database();
+
+        String phoneNumber = dbObject.getRecord("users", "mobile", "email", emailId);
+        Assert.assertTrue(phoneNumber.contains(phone));
+
+        String customerStatus = dbObject.getRecord("users", "customer_status", "email", emailId);
+        Assert.assertTrue(!(customerStatus.equals(null)));
+
+        String user = dbObject.getRecord("users", "first_name", "email", emailId);
+        Assert.assertTrue(user.contains(userName));
+
+        String email = dbObject.getRecord("users", "email", "first_name", userName);
+        Assert.assertTrue(email.contains(emailId));
+
+        String status = dbObject.getRecord("users", "status", "email", emailId);
+        Assert.assertTrue(status.contains("1"));
+
+        String password = dbObject.getRecord("users", "password", "email", emailId);
+        Assert.assertTrue(!(password.equals(null)));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+    /**
+     * Verify Data in User Events table
+     * 
+     * @param className
+     * @param courseId
+     * @param event_context
+     * @param utm_source
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationInCompleted_Queue_Jobs_Table(@SuppressWarnings("rawtypes") Class className,String courseStatus, String coursePriority, String event) throws Exception {
+
+        Database dbObject = new Database();
+
+        String user_ID = propertyReader.readRunTimeData("User_ID");
+
+        String status = dbObject.getRecord("completed_queue_jobs", "status", "id", user_ID);
+        Assert.assertTrue(status.contains(courseStatus));
+
+        String priority = dbObject.getRecord("completed_queue_jobs", "priority", "id", user_ID);
+        Assert.assertTrue(priority.contains(coursePriority));
+
+
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     *  Verify Credit Point in Ambaassadors table
+     * @param className
+     * @param email
+     * @param points
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T _VerificationCreditPointsInAmbassadorsTableReferralProcess(@SuppressWarnings("rawtypes") Class className, String email, String points) throws Exception {
+        Database dbObject = new Database();
+        String email_Id = dbObject.getRecord("users", "email", "first_name", userName);
+        Assert.assertTrue(email_Id.contains(emailId));
+
+        String user_Id = dbObject.getRecord("users ambassador_activities", "id", "email", email);
+        Assert.assertTrue(!(user_Id.equals(null)));
+        propertyReader.updatePropertyTestData("Referral_User_ID", user_Id);
+        String status = dbObject.getRecord("users", "status", "email", emailId);
+        Assert.assertTrue(status.contains("1"));
+
+        String crdeitPoints = dbObject.getRecord("ambassadors", "available_points", "user_id", user_Id);
+        System.out.println("crdeitPoints::::::::::" +crdeitPoints);
+        Assert.assertTrue(crdeitPoints.contains(points));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     *  Verify Redeemption points in Referral Redemptions table
+     * @param className
+     * @param email
+     * @param points
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T _VerificationRedeemptionPointsIn_Referral_redemptions(@SuppressWarnings("rawtypes") Class className, String email, String points) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("users ambassador_activities", "id", "email", email);
+        Assert.assertTrue(!(user_Id.equals(null)));
+        propertyReader.updatePropertyTestData("Referral_User_ID", user_Id);
+
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     *  Verify Referral Link in Ambassdor Table
+     * @param className
+     * @param email
+     * @param referralLink
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T verifyReferralLinkIn_AmbassdorTable(@SuppressWarnings("rawtypes") Class className, String email,String referralLink) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("users ambassador_activities", "id", "email", email);
+        Assert.assertTrue(!(user_Id.equals(null)));
+
+        String referLink = dbObject.getRecord("ambassadors", "email_url", "user_id", user_Id);
+        Assert.assertTrue(referLink.contains(referralLink));
+
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+
+    /**
+     *  Verify Data in Ambassador_Transaction Table
+     * @param className
+     * @param email
+     * @param referralLink
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T verifyDataIn_AmbassadorTransactionTable(@SuppressWarnings("rawtypes") Class className, String email) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("users ambassador_activities", "id", "email", email);
+        Assert.assertTrue(!(user_Id.equals(null)));
+
+        String order_Id = dbObject.getRecord("ambassador_transactions", "order_id", "user_id", user_Id);
+        Assert.assertTrue(!(order_Id.equals(null)));
+
+        String medium = dbObject.getRecord("ambassador_transactions", "medium", "user_id", user_Id);
+        Assert.assertTrue(medium.contains("REFERRAL"));
+
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     *  Verify Data in Referral Redemption table
+     * @param className
+     * @param email
+     * @param redeemption_Points
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T verifyDataIn_Referral_redemptionsTable(@SuppressWarnings("rawtypes") Class className, String email, String redeemption_Points) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("users ambassador_activities", "id", "email", email);
+        Assert.assertTrue(!(user_Id.equals(null)));
+
+        String value = dbObject.getRecord("referral_redemptions", "value", "user_id", user_Id);
+        System.out.println("value:::::::" +value);
+        Assert.assertTrue(value.contains(redeemption_Points));
+
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     *  Verify Refer Source in Ambassador Activities Table 
+     * @param className
+     * @param email
+     * @param source
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T verifyReferSourceIn_Ambassador_activitiesTable(@SuppressWarnings("rawtypes") Class className,String email, String source) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("users ambassador_activities", "id", "email", email);
+        Assert.assertTrue(!(user_Id.equals(null)));
+
+        String activity = dbObject.getRecord("ambassador_activities", "activity_type", "user_id", user_Id);
+        Assert.assertTrue(activity.contains(source));
+
+        String referredDate = dbObject.getRecord("ambassador_activities", "created", "user_id", user_Id);
+        Assert.assertTrue(referredDate.contains(presenttDate()));
+
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     *  Verify Referred Date in Ambassador Activities Table
+     *  email
+     * @param className
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T verifyReferDateIn_Ambassador_activitiesTable(@SuppressWarnings("rawtypes") Class className, String email) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("users ambassador_activities", "id", "email", email);
+        Assert.assertTrue(!(user_Id.equals(null)));
+
+        String referredDate = dbObject.getRecord("ambassador_activities", "created", "user_id", user_Id);
+        Assert.assertTrue(referredDate.contains(presenttDate()));
+
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     *  Check user exist or not
+     * @param email
+     * @return
+     * @throws Exception
+     */
+    public String checkUserIsRegistered(String email) throws Exception{
+        Database dbObject = new Database();
+        String firstName = dbObject.getRecord("users", "first_name", "email", email);
+        return firstName;
+    }
+    /**
+     * Data verification in Pre_Order Table for INR currency
+     * 
+     * @param className
+     * @param course_id
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationInPreOrderTableForAllCurrency(@SuppressWarnings("rawtypes") Class className, String course_id, String batchTitle) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("user_leads", "user_id", "email", emailId);
+        Assert.assertTrue(!(user_Id.equals(null)));
+        propertyReader.updatePropertyTestData("User_ID", user_Id);
+
+        String course_Id = dbObject.getRecord("pre_orders", "courseid", "userid", user_Id);
+        Assert.assertTrue(course_Id.contains(course_id));
+
+        String order_Id = dbObject.getRecord("pre_orders", "orderid", "userid", user_Id);
+        Assert.assertTrue(!(order_Id.equals(null)));
+
+        //batch id 
+        String batch_Id = dbObject.getRecord("pre_orders", "batchid", "userid", user_Id);
+        Assert.assertTrue(!(batch_Id.equals(null)));
+
+        //batch title
+        String batch_Title = dbObject.getRecord("pre_orders", "batchtitle", "userid", user_Id);
+        Assert.assertTrue(batch_Title.contains(batchTitle));
+
+        //cart status
+        String cartStatus = dbObject.getRecord("pre_orders", "cart_status", "userid", user_Id);
+        Assert.assertTrue(cartStatus.equals(null));
+
+        //
+
+        String price = propertyReader.readRunTimeData("PriceValue"); 
+        String price_INR = dbObject.getRecord("pre_orders", "priceinr", "userid",user_Id); 
+        Assert.assertTrue(price_INR.contains(price));
+
+
+        String serviceTax = propertyReader.readRunTimeData("ServiceTax");
+        String serviceTax_INR = dbObject.getRecord("pre_orders", "servicetaxinr", "userid", user_Id);
+        Assert.assertTrue(serviceTax_INR.contains(serviceTax));
+
+        String currency_Id = dbObject.getRecord("pre_orders", "currency_id", "userid", user_Id);
+        Assert.assertTrue(currency_Id.contains("1"));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+
+    /**
+     *  Database verirication for Referred user
+     * @param className
+     * @param email
+     * @param levelId
+     * @param welcomemail
+     * @param ambassador_Campaign_Id
+     * @param ambassador_Level_Id
+     * @param source
+     * @param campaign_id
+     * @return
+     * @throws Exception
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T dataVerificationForReferredUser(@SuppressWarnings("rawtypes") Class className, String email, String levelId, String welcomemail, String ambassador_Campaign_Id, String ambassador_Level_Id, String source, String campaign_id) throws Exception {
+        Database dbObject = new Database();
+
+        String user_Id = dbObject.getRecord("users ambassador_activities", "id", "email", email);
+        Assert.assertTrue(!(user_Id.equals(null)));
+        propertyReader.updatePropertyTestData("Referral_User_ID", user_Id);
+
+        String facebook_Url = dbObject.getRecord("ambassadors", "facebook_url", "user_id", user_Id);
+        Assert.assertTrue(!(facebook_Url.equals(null)));
+
+        String level_Id = dbObject.getRecord("ambassadors", "level_id", "user_id", user_Id);
+        Assert.assertTrue(level_Id.contains(levelId));
+
+        String linkdln_Url = dbObject.getRecord("ambassadors", "linkedin_url", "user_id", user_Id);
+        Assert.assertTrue(!(linkdln_Url.equals(null)));
+
+        String twitter_url = dbObject.getRecord("ambassadors", "twitter_url", "user_id", user_Id);
+        Assert.assertTrue(!(twitter_url.equals(null)));
+
+        String mobile_url = dbObject.getRecord("ambassadors", "mobile_url", "user_id", user_Id);
+        Assert.assertTrue(!(mobile_url.equals(null)));
+
+        String ambassadorDate = dbObject.getRecord("ambassadors", "ambassador_date", "user_id", user_Id);
+        Assert.assertTrue(ambassadorDate.contains(presenttDate()));
+
+        String welcome_Email = dbObject.getRecord("ambassadors", "welcomemail", "user_id", user_Id);
+        Assert.assertTrue( welcome_Email.contains(welcomemail));
+
+        String ambassador_Campaign = dbObject.getRecord("ambassadors", "ambassador_campaign_id", "user_id", user_Id);
+        Assert.assertTrue( ambassador_Campaign.trim().contains(ambassador_Campaign_Id));
+
+        String ambassadorLevelId = dbObject.getRecord("ambassadors", "ambassador_level_id", "user_id", user_Id);
+        Assert.assertTrue(ambassadorLevelId.trim().contains(ambassador_Level_Id));
+
+        String activity = dbObject.getRecord("ambassador_activities", "activity_type", "user_id", user_Id);
+        Assert.assertTrue(activity.contains(source));
+
+        String referred_Id = dbObject.getRecord("ambassador_activities", "referrer_id", "user_id", user_Id);
+        Assert.assertTrue(!(referred_Id.equals(null)));
+
+        String levelID = dbObject.getRecord("ambassador_activities", "id", "user_id", user_Id);
+        Assert.assertTrue(!(levelID.equals(null)));
+
+        String campaign_ID = dbObject.getRecord("ambassador_activities", "campaign_id", "user_id", user_Id);
+        Assert.assertTrue(campaign_ID.contains(campaign_id));
+
+        String master_url = dbObject.getRecord("ambassadors", "master_url", "user_id", user_Id);
+        Assert.assertTrue(!(master_url.equals(null)));
+        return (T) PageFactory.initElements(DriverHelper.driver, className);
+    }
+}

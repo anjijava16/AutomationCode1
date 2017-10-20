@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+        <PageHeader><![CDATA[//div[@class='ordersummdeatil whitebg clearfix']/div[1]]]></PageHeader>
+        <Price><![CDATA[//span[@id='org_price']]]></Price>
+        <Discount><![CDATA[//span[@id='disc_price']]]></Discount>
+        <NetPrice><![CDATA[(//div[contains(text(),' Net price :')])[2]/following::div/span[@id='net_price']]]></NetPrice>
+        <ServiceTax><![CDATA[//span[@id='service-tax']]]></ServiceTax>
+        <TotalAmount><![CDATA[//span[@id='total_price']]]></TotalAmount>
+        
+        <ProfileDropdown>
+        <UserName><![CDATA[(//span[@class='webinar-profile-name'])[1]]]></UserName>
+        <!-- <LTLogout><![CDATA[(//a[text()='Log Out'])]]></LTLogout>  -->
+        <LTChangePassword><![CDATA[//a[@href='http://test.edureka.in/users/change_password']]]></LTChangePassword>
+        <LTLogout><![CDATA[//a[@href='http://test.edureka.in/signout']]]></LTLogout>
+    </ProfileDropdown>
+</Locators>

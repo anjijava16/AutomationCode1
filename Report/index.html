@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <br/>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-CreateUserForForgotPassword">
+              <span class="suite-name border-failed">CreateUserForForgotPassword</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-CreateUserForForgotPassword">
+                    <span>D:\Projects\Edureka_Automation\testngsuite\Registration\CreateUserForForgotPassword.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-CreateUserForForgotPassword">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-CreateUserForForgotPassword">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-CreateUserForForgotPassword">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-CreateUserForForgotPassword">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-CreateUserForForgotPassword">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-CreateUserForForgotPassword">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">1 method, 1 failed,   </span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-CreateUserForForgotPassword" class="hide-methods failed suite-CreateUserForForgotPassword"> (hide)</a> <!-- hide-methods failed suite-CreateUserForForgotPassword -->
+                      <a href="#" panel-name="suite-CreateUserForForgotPassword" class="show-methods failed suite-CreateUserForForgotPassword"> (show)</a> <!-- show-methods failed suite-CreateUserForForgotPassword -->
+                    </span>
+                    <div class="method-list-content failed suite-CreateUserForForgotPassword">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-CreateUserForForgotPassword" title="com.edureka.registration.CreateUserForForgotPassword" hash-for-method="test_CreateUserForForgotPassword">test_CreateUserForForgotPassword</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-CreateUserForForgotPassword -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-CreateUserForForgotPassword" class="panel CreateUserForForgotPassword">
+          <div class="suite-CreateUserForForgotPassword-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">com.edureka.registration.CreateUserForForgotPassword</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="test_CreateUserForForgotPassword">
+                  </a> <!-- test_CreateUserForForgotPassword -->
+                  <span class="method-name">test_CreateUserForForgotPassword</span>
+                  <div class="stack-trace">org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 180 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP039&apos;, ip: &apos;192.168.3.60&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_101&apos;
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{applicationCacheEnabled=true, rotatable=false, handlesAlerts=true, databaseEnabled=true, version=42.0, platform=WINDOWS, nativeEvents=false, acceptSslCerts=true, webStorageEnabled=true, locationContextEnabled=true, browserName=firefox, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true}]
+Session ID: 7cff8bbc-1060-45ea-aa04-397356b6392f
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at com.edureka.util.DriverHelper.clickOn(DriverHelper.java:327)
+	at com.edureka.pages.DashboardPage.clickSignInHeader(DashboardPage.java:33)
+	at com.edureka.registration.CreateUserForForgotPassword.test_CreateUserForForgotPassword(CreateUserForForgotPassword.java:29)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360LP039&apos;, ip: &apos;192.168.3.60&apos;, os.name: &apos;Windows 8.1&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.3&apos;, java.version: &apos;1.8.0_101&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///C:/Users/dhruvt/AppData/Local/Temp/anonymous2243202223349154511webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///C:/Users/dhruvt/AppData/Local/Temp/anonymous2243202223349154511webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///C:/Users/dhruvt/AppData/Local/Temp/anonymous2243202223349154511webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///C:/Users/dhruvt/AppData/Local/Temp/anonymous2243202223349154511webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///C:/Users/dhruvt/AppData/Local/Temp/anonymous2243202223349154511webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+... Removed 27 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-CreateUserForForgotPassword-class-failed -->
+        </div> <!-- panel CreateUserForForgotPassword -->
+        <div panel-name="test-xml-CreateUserForForgotPassword" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">D:\Projects\Edureka_Automation\testngsuite\Registration\CreateUserForForgotPassword.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;CreateUserForForgotPassword&quot;&gt;
+  &lt;test name=&quot;CreateUserForForgotPassword&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;com.edureka.registration.CreateUserForForgotPassword&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- CreateUserForForgotPassword --&gt;
+&lt;/suite&gt; &lt;!-- CreateUserForForgotPassword --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-CreateUserForForgotPassword" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for CreateUserForForgotPassword</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">CreateUserForForgotPassword (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-CreateUserForForgotPassword" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for CreateUserForForgotPassword</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-CreateUserForForgotPassword" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for CreateUserForForgotPassword</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_CreateUserForForgotPassword');
+function tableData_CreateUserForForgotPassword() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(1);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'test_CreateUserForForgotPassword')
+data.setCell(0, 2, 'com.edureka.registration.CreateUserForForgotPassword')
+data.setCell(0, 3, 41625);
+window.suiteTableData['CreateUserForForgotPassword']= { tableData: data, tableDiv: 'times-div-CreateUserForForgotPassword'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 41 seconds</span>
+              <div id="times-div-CreateUserForForgotPassword">
+              </div> <!-- times-div-CreateUserForForgotPassword -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-CreateUserForForgotPassword" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for CreateUserForForgotPassword</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">test_CreateUserForForgotPassword</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Navigate to the Edureka application url<br></span>
+                <span class="reporter-method-output">Verify Edureka Dashboard Page<br></span>
+                <span class="reporter-method-output">Click on SignIn Navigation header<br></span>
+                <span class="reporter-method-output"><a href= 'file://D:/Projects/Edureka_Automation/screenshots/test_CreateUserForForgotPassword2016-11-23.jpg'target='_blank' ><img src='file://D:/Projects/Edureka_Automation/screenshots/test_CreateUserForForgotPassword2016-11-23.jpg' height="42" width="42" >test_CreateUserForForgotPassword2016-11-23</a></span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-CreateUserForForgotPassword" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-CreateUserForForgotPassword" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">com.edureka.registration.CreateUserForForgotPassword</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-class before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">test_CreateUserForForgotPassword</span>
+                <span class="method-start">21834 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-class after">
+                <span class="method-name">tearDown</span>
+                <span class="method-start">64976 ms</span>
+              </div> <!-- configuration-class after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+</html>

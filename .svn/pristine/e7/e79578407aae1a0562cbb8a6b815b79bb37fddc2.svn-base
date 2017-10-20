@@ -1,0 +1,129 @@
+package com.edureka.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class MyProfilePage extends DriverHelper{
+
+    private LocatorReader myProfile;
+    private DatabaseVerifications databaseVerification;
+    public MyProfilePage(WebDriver driver) {
+        super(driver);
+        myProfile = new LocatorReader("MyProfile.xml");
+        databaseVerification= new DatabaseVerifications(getWebDriver());
+    }
+
+    /**
+     *  Verify My Profile Page
+     * @return
+     */
+    public MyProfilePage verifyPage(){
+        String pageHeader = myProfile.getLocator("PageHeader");
+        WaitForElementPresent(pageHeader, getTimeOut());
+        Assert.assertTrue(isElementPresent(pageHeader));
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    public MyProfilePage verifySuccessPaymentMessage(){
+        String msgPaymentSuccess = myProfile.getLocator("MessagePaymentSuccess");
+        WaitForElementPresent(msgPaymentSuccess, getTimeOut());
+        Assert.assertTrue(isElementPresent(msgPaymentSuccess));
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Select Community
+     * @param className
+     * @param option
+     * @return
+     */
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public <T> T selectOptionFromCommunity(Class className,String option) {
+        String ddCommunity = myProfile.getLocator("DDCommunity");
+        WaitForElementPresent(ddCommunity, 30);
+        clickOn(ddCommunity);
+        
+        String communityOption = "//ul[@class='dropdown-menu']//li/a[contains(text(),'"+option+"')]";
+        WaitForElementPresent(communityOption, getTimeOut());
+        clickOn(communityOption);
+        return (T) PageFactory.initElements(driver, className);
+    }
+
+    
+    /**
+     *  Verify Data in user Table
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage dataVerificationInUserTable() throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInUserTable(MyProfilePage.class);
+        return myProfile;
+    }
+
+
+    /**
+     *  Database verification in Pre_Order table When currency is INR
+     * @param course_Id
+     * @param courseTitle
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage dataVerificationInUser_PreOrderTableForINR(String course_Id, String courseTitle) throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInPreOrderTableForINR(MyProfilePage.class, course_Id, courseTitle);
+        return myProfile;
+    }
+
+    /**
+     *  Database verification in Pre_Order table When currency is USD
+     * @param course_Id
+     * @param courseTitle
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage dataVerificationInUser_PreOrderTableForUSD(String course_Id, String courseTitle) throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInPreOrderTableForUSD(MyProfilePage.class, course_Id, courseTitle);
+        return myProfile;
+    }
+
+    /**
+     *  Verify Data in User Courses Table
+     * @param courseId
+     * @param isPaidValue
+     * @param courseGroup
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage dataVerificationInUser_CoursedTable(String courseId, String isPaidValue, String courseGroup) throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInUser_Course_Table(MyProfilePage.class, courseId, isPaidValue, courseGroup);
+        return myProfile;
+    }
+
+    /**
+     * Select Course option from course Dropdown
+     * @param className
+     * @param courseOption : My Course
+     *                       All Course
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T selectCourseOption(@SuppressWarnings("rawtypes") Class className, String courseOption) {
+        String tabCourses =myProfile.getLocator("TabCourses");
+        WaitForElementPresent(tabCourses, getTimeOut());
+        Assert.assertTrue(isElementPresent(tabCourses));
+        clickOn(tabCourses);
+        
+        String option ="//ul[@class='dropdown-menu']//li/a[contains(text(),'"+courseOption+"')]";
+        WaitForElementPresent(option, getTimeOut());
+        Assert.assertTrue(isElementPresent(option));
+        clickOn(option);
+        return (T) PageFactory.initElements(driver, className);
+    }
+}

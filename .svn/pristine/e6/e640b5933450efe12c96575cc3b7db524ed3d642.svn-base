@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="5" verbose="1" name="VerifyRefferringFlow"
+    annotations="JDK">
+    <test name="VerifyRefferringFlow" junit="false"
+        preserve-order="true">
+        <classes>
+            <class name="com.edureka.refferralProcess.VerifyRefferringFlow" />
+        </classes>
+    </test>
+</suite>

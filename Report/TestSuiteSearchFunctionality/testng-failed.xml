@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [TestSuiteSearchFunctionality]">
+  <test name="TestSuiteSearchFunctionality(failed)">
+    <classes>
+      <class name="com.edureka.searchFunctionality.SearchBasedOnBatchType">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_003SearchBasedOnBatchType"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.searchFunctionality.SearchBasedOnBatchType -->
+      <class name="com.edureka.searchFunctionality.SearchBasedOnTrainingType">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.searchFunctionality.SearchBasedOnTrainingType -->
+      <class name="com.edureka.searchFunctionality.SearchAnythingWithLogin">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.searchFunctionality.SearchAnythingWithLogin -->
+      <class name="com.edureka.searchFunctionality.SearchFunctionalityBasedOnTypedKeyword">
+        <methods>
+          <include name="test_002SearchFunctionalityBasedOnTypedKeyword"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.searchFunctionality.SearchFunctionalityBasedOnTypedKeyword -->
+      <class name="com.edureka.searchFunctionality.SearchBasedOnCategory">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.searchFunctionality.SearchBasedOnCategory -->
+    </classes>
+  </test> <!-- TestSuiteSearchFunctionality(failed) -->
+</suite> <!-- Failed suite [TestSuiteSearchFunctionality] -->

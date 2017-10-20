@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+
+        <PageHeader><![CDATA[//h2[contains(text(),'Change password')]]]></PageHeader>
+    
+    
+    <ChangePassword>
+        <TBExistingPassword><![CDATA[//input[@name='data[User][existing_password]']]]></TBExistingPassword>
+        <TBNewPassword><![CDATA[//input[@name='data[User][new_password]']]]></TBNewPassword>
+        <TBConfirmNewPassword><![CDATA[//input[@name='data[User][confirm_new_password]']]]></TBConfirmNewPassword>
+        <BTNSubmit><![CDATA[//button[@type='submit']]]></BTNSubmit>
+        <SuccessMessage><![CDATA[//div[text()='Your password has been successfully updated.']]]></SuccessMessage>
+    </ChangePassword>
+</Locators>

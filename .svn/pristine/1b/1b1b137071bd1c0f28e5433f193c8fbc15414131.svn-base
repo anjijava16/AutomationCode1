@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestSuitePaymentProcess" verbose="1"
+	thread-count="1">
+	<test name="TestSuitePaymentProcess" preserve-order="true">
+		<classes>
+			<class
+				name="com.edureka.paymentProcess.BatchTableValidationOnChangeOfTimeZone_Currency" />
+			<class
+				name="com.edureka.paymentProcess.CalculateAndValidatePricesOnChangeOfCurrency" />
+			<class name="com.edureka.paymentProcess.MakePaymentThroughPaypal" />
+			<class name="com.edureka.paymentProcess.MakePaymentThroughRazorPay" />
+			<class name="com.edureka.paymentProcess.PriceCalculationInBatchTable" />
+			<class name="com.edureka.paymentProcess.ValidateAllElementsPresentOnOrderSummaryPage" />
+			
+		</classes>
+	</test>
+</suite> 

@@ -1,0 +1,14 @@
+package com.edureka.community;
+
+import com.edureka.util.Database;
+import com.edureka.util.database.AmDatabase;
+
+public class tet {
+	public static void main(String[] args) throws Exception {
+		Database dbObject = new Database();
+		AmDatabase.SetSqlConnection(dbObject.getConnInfoObj());
+		String[][] values = AmDatabase.GetAllRecords("select mobile from users where email = 'testTAE@tech.edureka.in'");
+		System.out.println("values::::::" + values.length);
+
+	}
+}

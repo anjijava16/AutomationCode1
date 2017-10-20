@@ -1,0 +1,22 @@
+#
+<<<<<<< .mine
+#Mon Jul 11 19:49:01 IST 2016
+=======
+#Wed Jul 13 19:02:55 IST 2016
+>>>>>>> .r52
+Total_USD=0
+Course_ID_BigData=166
+Event_Type_DROP=IN
+<<<<<<< .mine
+Email_Id=testYIB@tech.edureka.in
+=======
+Email_Id=testXSZ@tech.edureka.in
+>>>>>>> .r52
+Course_ID=100
+<<<<<<< .mine
+UserName=UserQW
+=======
+UserName=UserMM
+>>>>>>> .r52
+Event_Context=Watch Sample Class Recording-Sign Up
+Event_Type_ADD=TR

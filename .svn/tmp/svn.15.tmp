@@ -1,0 +1,101 @@
+package com.edureka.util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+
+public class Database {
+
+	static Connection connectionSource;
+	
+  
+	
+	//////////////////
+
+	static String url = "jdbc:mysql://52.26.225.168:3306/";
+	static String databaseName = "edureka-test";
+	static String username = "testQA";
+	static String pwd = "testQA-123";
+	static String dbClass = "com.mysql.jdbc.Driver";
+
+	public static Connection getDatabaseConnection() throws Exception {
+		Class.forName(Database.dbClass);
+		return DriverManager.getConnection(Database.url + Database.databaseName, Database.username, Database.pwd);
+	}
+
+	public Database() throws Exception {
+		Database.connectionSource = Database.getDatabaseConnection();
+	}
+
+	public String getRecord(String tableName, String columnNameToBeFetched, String columnNameToBeMatched, String valueToBeMatched) throws SQLException {
+		// select mobile, first, lsaast, from users where email = 'asdf';
+		String resultvar = "";
+		
+		try {
+		    int count = 0;
+			String sqlQuery = "SELECT " + columnNameToBeFetched + " from " + tableName + " where " + columnNameToBeMatched + " = \"" + valueToBeMatched + "\"";
+			try (PreparedStatement selectStmt = Database.connectionSource.prepareStatement(sqlQuery);
+
+			ResultSet rs = selectStmt.executeQuery()) {
+				if (!rs.isBeforeFirst()) {
+					System.out.println("no rows found");
+				} else {
+				    
+					while (rs.next()) {
+						resultvar =resultvar+"##"+ rs.getObject(1).toString();
+						count=count+1;
+					}
+				}
+			}
+		}
+		// }
+		catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (Database.connectionSource == null) {
+				Database.connectionSource.close();
+			}
+		}
+
+		return resultvar;
+	}
+
+	public ArrayList<String> getRecords(String tableName, String columnNameToBeFetched, String columnNameToBeMatched, String valueToBeMatched) {
+
+		ArrayList<String> al = new ArrayList<String>();
+		String resultvar = null;
+		try {
+
+			String sqlQuery = "SELECT " + columnNameToBeFetched + " from " + tableName + " where " + columnNameToBeMatched + " = \"" + valueToBeMatched + "\"";
+			try (PreparedStatement selectStmt = Database.connectionSource.prepareStatement(sqlQuery); ResultSet rs = selectStmt.executeQuery()) {
+				if (!rs.isBeforeFirst()) {
+					System.out.println("no rows found");
+				} else {
+					while (rs.next()) {
+						for (int i = 1; i < (rs.getMetaData().getColumnCount() + 1); i++) {
+							System.out.print(rs.getMetaData().getColumnName(i) + "=" + rs.getObject(i));
+							resultvar = rs.getMetaData().getColumnName(i) + "=" + rs.getObject(i);
+							al.add(resultvar);
+						}
+					}
+				}
+			}
+		}
+
+		catch (Exception e) {
+			System.out.println(e);
+		}
+
+		finally {
+			if (Database.connectionSource != null) {
+				Database.connectionSource = null;
+			}
+		}
+		return al;
+	}
+
+}

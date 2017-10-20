@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//h3[text()='Have a Question?']]]></PageHeader>
+
+	<PostQuestion>
+		<DDSelectCourse><![CDATA[//span[text()='Select Course']]]></DDSelectCourse>
+		<DDSelectCategory><![CDATA[//span[text()='Select Category']]]></DDSelectCategory>
+		<TBQuestionTitle><![CDATA[//textarea[@id='question']]]></TBQuestionTitle>
+		<TextAreaQuestion><![CDATA[//div[contains(@data-placeholder,'Add some description here...')]]]></TextAreaQuestion>
+		<BTNSubmit><![CDATA[//button[@id='postinforum']]]></BTNSubmit>
+		<MsgSubmitInquiry><![CDATA[//p[contains(text(),'Thanks for inquiring with us.')]]]></MsgSubmitInquiry>
+		<ListSelectedCourse><![CDATA[//div[@id='community_chosen']/div/ul/li]]></ListSelectedCourse>
+		<WrongQuestionTitleClass><![CDATA[//div[@class='form-group has-feedback has-error']]]></WrongQuestionTitleClass>
+	</PostQuestion>
+</Locators>
