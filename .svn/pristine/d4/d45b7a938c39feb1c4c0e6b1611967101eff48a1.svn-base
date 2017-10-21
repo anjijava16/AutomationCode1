@@ -1,0 +1,104 @@
+package com.edureka.leadProcess;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.AllCoursesPage;
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.util.DriverTestCase;
+
+public class SignupFromAllCoursesPage extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private AllCoursesPage allCoursesPage;
+    private SignInModalPage signInModalPage;
+    static String campaignSource;
+    static String campaignName;
+    static String campaignMedium;
+    static String event_Type;
+
+    @Test
+    public void test_028SignupFromAllCoursesPage() throws Exception {
+
+        try {
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetupForLead();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Course Tab
+            addLog("Click on Course Tab");
+            allCoursesPage= dashboardPage.clickOnCoursesTab();
+
+            // Verify All Courses page
+            addLog("Verify All Courses page");
+            allCoursesPage= allCoursesPage.verifyAllCoursesPage();
+            
+            // Click on Sign in Header
+            addLog("Click on Sign in Header");
+            signInModalPage = allCoursesPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+            
+            // click on Sign up link
+            addLog("click on Sign up link");
+            signInModalPage=signInModalPage.clickSignUp();
+            
+            // Sign up user
+            String edurekaDomain = propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            allCoursesPage= signInModalPage.signUp(AllCoursesPage.class, edurekaDomain);
+
+            // Verify User Sign up successfully
+            addLog("Verify User Sign up successfully");
+            allCoursesPage=allCoursesPage.verifySignUpSuccessfully();
+            
+            // Verify Data in User Table
+            addLog("Verify Data in User Table");
+            allCoursesPage= allCoursesPage.dataVerificationInUserTable("1");
+
+            // Verify Data in User Lead Table
+            String course__Id = propertyReader.readTestData("HomePage_Signup_Course_ID");
+            String webSiteAction = propertyReader.readTestData("HomePage_Signup_WebSite_Action");
+            String country= propertyReader.readTestData("CountryIndia");
+            campaignSource= propertyReader.readTestData("LeadCampaignSource");
+            campaignName= propertyReader.readTestData("LeadCampaignName");
+            campaignMedium= propertyReader.readTestData("LeadCampaignMedium");
+            addLog("Verify Data in User Lead Table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_LeadsTable(course__Id,webSiteAction,country,campaignSource, campaignName, campaignMedium);
+
+            // Verify Data in User Course table
+            String isPaidValue= propertyReader.readTestData("HomePage_Signup_Is_Paid_Value");
+            addLog("Verify Data in User Course table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_CoursedTable(course__Id,isPaidValue,course__Id);
+
+            // Verify Data in User Event Table
+            event_Type=propertyReader.readTestData("EventType");
+            addLog("Verify Data in User Event Table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_EventTable(course__Id,webSiteAction,campaignName,event_Type);
+
+            // Veriy Data in Ambassadors table
+            String level_id = propertyReader.readTestData("HomePage_Signup_level_id");
+            addLog("Veriy Data in Ambassadors table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_AmbassadorsTable(level_id);
+            
+         // Verify Data in Completed Queue Jobs table
+            String courseStatus = this.propertyReader.readTestData("Status");
+            String courseProperty = this.propertyReader.readTestData("Priority");
+           allCoursesPage = allCoursesPage.dataVerificationInCompleted_Queue_Jobs_Table(courseStatus, courseProperty, event_Type);
+
+
+
+        }   catch (final Error e) {
+            captureScreenshot("test_028SignupFromAllCoursesPage");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_028SignupFromAllCoursesPage");
+            throw e;
+        }
+    }
+}

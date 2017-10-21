@@ -1,0 +1,125 @@
+package com.edureka.leadProcess;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.AllCoursesPage;
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class WishListInListViewAllCoursePage extends DriverTestCase {
+
+    private DashboardPage dashboardPage;
+    private SignInModalPage signInModalPage;
+    private AllCoursesPage allCoursesPage;
+    private UserHomePage userHomePage;
+
+    static String email;
+    static String password;
+    static String userName;
+    static String coursename;
+    static String course__Id ;
+    static String webSiteAction;
+    static String course_Group;
+    static String isPaidValue;
+    static String campaign_Values;
+    static String level_id;
+    static String event;
+    static String country;
+    static String campaignSource;
+    static String campaignName;
+    static String campaignMedium;
+    static String event_Type;
+
+    @Test
+    public void test025WishListInListViewAllCoursePage() throws Exception {
+
+        try {
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetupForLead();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Course Tab
+            addLog("Click on Course Tab");
+            signInModalPage= dashboardPage.clickSignInHeader();
+
+            signInModalPage=signInModalPage.clickSignUp();
+
+            // Sign up user
+            String domainName= propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            userHomePage= signInModalPage.signUp(UserHomePage.class, domainName);
+
+            // Verify User Home Page
+            addLog("Verify sign up successfully");
+            userHomePage=userHomePage.verifyUserPage();
+
+            // Click on Course Tab
+            String allCourse = propertyReader.readTestData("AllCourse");
+            addLog("Click on Course Tab");
+            allCoursesPage= userHomePage.selectCourseOption(AllCoursesPage.class, allCourse);
+
+            // Verify All Courses page
+            addLog("Verify All Courses page");
+            allCoursesPage= allCoursesPage.verifyAllCoursesPage();
+
+            // Click on List view Icon
+            addLog("Click on List view Icon");
+            allCoursesPage=allCoursesPage.clickOnListViewIcon();
+
+            // Select Course From List View
+            coursename = propertyReader.readTestData("BigData&Hadoop");
+            addLog("Select Course From List View");
+            allCoursesPage= allCoursesPage.clickOnAddToWishListFromListCourses(AllCoursesPage.class, coursename);
+
+            // Verify Data in user table
+            addLog("Verify Data in user table");
+            allCoursesPage = allCoursesPage.dataVerificationInUserTable("1");
+
+            // Verify Data in User Lead Table
+            webSiteAction = propertyReader.readTestData("WebSite_Action_AddToWishList");
+            country= propertyReader.readTestData("CountryIndia");
+            campaignSource= propertyReader.readTestData("LeadCampaignSource");
+            campaignName= propertyReader.readTestData("LeadCampaignName");
+            campaignMedium= propertyReader.readTestData("LeadCampaignMedium");
+            course__Id= propertyReader.readTestData("Course_ID_BigData");
+            addLog("Verify Data in User Lead Table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_LeadsTable(course__Id,webSiteAction,country,campaignSource, campaignName, campaignMedium);
+
+            // Verify Data in User Course table
+            course_Group = propertyReader.readTestData("Course_Group_BigData");
+            addLog("Verify Data in User Course table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_CoursedTable(course__Id,isPaidValue,course_Group);
+
+            // Verify Data in User Event Table
+            event_Type= propertyReader.readTestData("EventType");
+            campaign_Values= propertyReader.readTestData("LeadCampaignName");
+            addLog("Verify Data in User Event Table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_EventTable(course__Id,webSiteAction,campaign_Values, event_Type);
+
+            // Veriy Data in Ambassadors table
+            level_id = propertyReader.readTestData("HomePage_Signup_level_id");
+            addLog("Veriy Data in Ambassadors table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_AmbassadorsTable(level_id);
+            
+         // Verify Data in Completed Queue Jobs table
+            String courseStatus = this.propertyReader.readTestData("Status");
+            String courseProperty = this.propertyReader.readTestData("Priority");
+            this.allCoursesPage = this.allCoursesPage.dataVerificationInCompleted_Queue_Jobs_Table(courseStatus, courseProperty, event_Type);
+
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test025WishListInListViewAllCoursePage");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test025WishListInListViewAllCoursePage");
+            throw e;
+        }
+    }
+}

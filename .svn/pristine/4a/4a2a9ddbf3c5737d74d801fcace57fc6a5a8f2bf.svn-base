@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+        <PageHeader><![CDATA[//a[text()='Profile']]]></PageHeader>
+        <MessagePaymentSuccess><![CDATA[//div[@class='alert alert-success alert-dismissible fade in successalert']]]></MessagePaymentSuccess>
+        <TabCourses><![CDATA[//a[contains(text(),'Courses ')]]]></TabCourses>
+        <DDCommunity><![CDATA[//a[contains(text(),'Community ')]]]></DDCommunity>
+</Locators>

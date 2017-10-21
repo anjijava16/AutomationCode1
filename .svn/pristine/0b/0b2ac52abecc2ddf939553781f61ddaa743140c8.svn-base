@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+        <PageHeader><![CDATA[//a[text()='Profile']]]></PageHeader>
+        <MessagePaymentSuccess><![CDATA[//div[@class='alert alert-success alert-dismissible fade in successalert']]]></MessagePaymentSuccess>
+</Locators>

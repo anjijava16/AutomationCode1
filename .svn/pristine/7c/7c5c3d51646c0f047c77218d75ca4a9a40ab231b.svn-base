@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="5" verbose="1"
+	name="VerifyResendOfVerificationCodeFunctionality" annotations="JDK">
+	<test name="VerifyResendOfVerificationCodeFunctionality" junit="false"
+		preserve-order="true">
+		<classes>
+			<class
+				name="com.edureka.registration.VerifyResendOfVerificationCodeFunctionality" />
+		</classes>
+	</test>
+</suite>

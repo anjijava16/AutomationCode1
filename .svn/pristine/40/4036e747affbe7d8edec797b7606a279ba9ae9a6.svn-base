@@ -1,0 +1,381 @@
+package com.edureka.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+
+public class DashboardPage extends DriverHelper{
+
+    private LocatorReader dashboardLocator;
+    private DatabaseVerifications databaseVerification;
+    public DashboardPage(WebDriver driver) {
+        super(driver);
+        dashboardLocator = new LocatorReader("Dashboard.xml");
+        databaseVerification = new DatabaseVerifications(driver);
+    }
+
+    /**
+     *  Click on Sign In Link
+     * @return
+     */
+    public SignInModalPage clickSignInHeader() {
+        String lTsignIn =dashboardLocator.getLocator("HomePage.LTsignIn");
+        WaitForElementPresent(lTsignIn, getTimeOut());
+        Assert.assertTrue(isElementPresent(lTsignIn));
+        clickOn(lTsignIn);
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     *  Verify Dashboard Page
+     * @return
+     */
+    public DashboardPage verifyDashboard() {
+        String pageheader=dashboardLocator.getLocator("HomePage.PageHeader");
+        WaitForElementPresent(pageheader, getTimeOut());
+        Assert.assertTrue(isElementPresent(pageheader));
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     * Select Course 
+     * @param course
+     * @return
+     */
+    public SelectedCoursePage selectCourse(String course) {
+        List<WebElement> courses = driver.findElements(By.xpath(dashboardLocator.getLocator("HomePage.Courses")));
+        int rows = courses.size();
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h4";
+            WaitForElementPresent(coursesList, getTimeOut());
+            String coursesName= getText(coursesList);
+            if (coursesName.contains(course)) {
+                String courseLink = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a";
+                String loc = getAttribute(courseLink, "href");
+                driver.get(loc);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+    /**
+     * Select Course 
+     * @param course
+     * @return
+     */
+    public SelectedCoursePage selectTrendingCoursesNext(String course) {
+        scrollWindow(0, 100);
+        for(int i=0;i<3;i++){
+            driver.findElement(By.xpath("//div[@id='trending']/section/div/div[2]/div/div[2]/img")).click();
+        }
+        List<WebElement> courses = driver.findElements(By.xpath(dashboardLocator.getLocator("HomePage.Courses")));
+        int rows = courses.size();
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h4";
+            WaitForElementPresent(coursesList, getTimeOut());
+            String coursesName= getText(coursesList);
+            if (coursesName.contains(course)) {
+                String courseLink = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a";
+                String loc = getAttribute(courseLink, "href");
+                driver.get(loc);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+    /**
+     * Select Course 
+     * @param course
+     * @return
+     */
+    public SelectedCoursePage selectCourse_Popular(String course) {
+        List<WebElement> courses = driver.findElements(By.xpath(dashboardLocator.getLocator("HomePage.PopularCourses")));
+        int rows = courses.size();
+        System.out.println("rows"+rows);
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//div[@id='popular']/section/div/div/div/div["+i+"]/div/ul/a/li/h4";
+
+            WaitForElementPresent(coursesList, getTimeOut());
+            String coursesName= getText(coursesList);
+            System.out.println("coursesName"+coursesName);
+            if (coursesName.contains(course)) {
+                String courseLink = "//div[@id='popular']/section/div/div/div/div["+i+"]/div/ul/a";
+                String loc = getAttribute(courseLink, "href");
+                driver.get(loc);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+    /**
+     * Select Course 
+     * @param course
+     * @return
+     */
+    public SelectedCoursePage selectCourse_NewAdd(String course) {
+
+        scrollWindow(0, 500);
+        System.out.println("Course"+course);
+        List<WebElement> courses = driver.findElements(By.xpath(dashboardLocator.getLocator("HomePage.Courses_New")));
+        int rows = courses.size();
+        System.out.println("rows"+rows);
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//*[@id='new-not']/section/div/div[1]/div/div["+i+"]/div/ul/a/li/h4";
+            WaitForElementPresent(coursesList, getTimeOut());
+            String coursesName= getText(coursesList);
+            System.out.println("New Course : "+coursesName);
+            if (coursesName.contains(course)) {
+                System.out.println("I am in If");
+                String courseLink = "//*[@id='new-not']/section/div/div[1]/div/div["+i+"]/div/ul/a";
+                String loc = getAttribute(courseLink, "href");
+                driver.get(loc);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+
+    }
+    /**
+     *  Verify Sign up pop has been closed 
+     * @return
+     */
+    public DashboardPage verifySignUpNotPresent() {
+        String popUpSignup=dashboardLocator.getLocator("HomePage.PopupSignup");
+        WaitForElementNotVisible(popUpSignup, 20);
+        Assert.assertFalse(isElementPresent(popUpSignup));
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     *  Click on Course Tab
+     * @return
+     */
+    public AllCoursesPage clickOnCoursesTab() {
+        String tabCourses =dashboardLocator.getLocator("HomePage.TabCourses");
+        WaitForElementPresent(tabCourses, getTimeOut());
+        Assert.assertTrue(isElementPresent(tabCourses));
+        clickOn(tabCourses);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     *  Click on Query box
+     * @return
+     * @throws InterruptedException
+     */
+    public DashboardPage clickOnQueryBox() throws InterruptedException{
+        scrollWindow(0, 1000);
+        String queryBox= dashboardLocator.getLocator("QueryBox.HeaderQueryBox");
+        Thread.sleep(5000);
+        mouseClickByLocator(queryBox, "Click on QuerBox");
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     * Drop query
+     * @param query
+     * @param phNumber
+     * @return
+     */
+    public DashboardPage sendQuery(){
+        String userName= "User"+randomString(2);
+        String email = "test" + randomString(3)+ "@tech.edureka.in";
+        propertyReader.updatePropertyTestData("QueryEmail_Id", email);
+        propertyReader.updatePropertyTestData("QueryUserName", userName);
+        String query = propertyReader.readTestData("Query");
+
+        String phNumber= propertyReader.readTestData("PhoneNumber");
+        String tbQueryName = dashboardLocator.getLocator("QueryBox.TBQueryName");
+        WaitForElementVisible(tbQueryName, getTimeOut());
+        sendKeys(tbQueryName, userName);
+
+        String tbQueryEmail= dashboardLocator.getLocator("QueryBox.TBQueryEmail");
+        WaitForElementVisible(tbQueryEmail, getTimeOut());
+        sendKeys(tbQueryEmail, email);
+
+
+        String tbQueryPhNumberString= dashboardLocator.getLocator("QueryBox.TBQueryPhNumber");
+        WaitForElementVisible(tbQueryPhNumberString, getTimeOut());
+        sendKeys(tbQueryPhNumberString, phNumber);
+
+        String tbInquiry = dashboardLocator.getLocator("QueryBox.TBInquiry");
+        WaitForElementVisible(tbInquiry, getTimeOut());
+        sendKeys(tbInquiry, query);
+
+        String btnSubmit= dashboardLocator.getLocator("QueryBox.BTNSubmit");
+        WaitForElementVisible(btnSubmit, getTimeOut());
+        clickOn(btnSubmit);
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     * Verify Submit Inquiry Message
+     * @return
+     */
+    public DashboardPage verifySumbitInquiry(){
+        String messageSubmitInquiry= dashboardLocator.getLocator("QueryBox.MsgSubmitInquiry");
+        WaitForElementPresent(messageSubmitInquiry, 5);
+        Assert.assertTrue(isElementPresent(messageSubmitInquiry));
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     *  Verify Banner
+     * @return
+     */
+    public DashboardPage verifyBanner(String bannerImg){
+        getWebDriver().navigate().refresh();
+        String banner= "//img[contains(@src,'img/creative/"+bannerImg+".png')]";
+        WaitForElementPresent(banner, getTimeOut());
+        Assert.assertTrue(isElementPresent(banner));
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     *  Verify Data for Offer Framework
+     * @param discount_Description
+     * @return
+     * @throws Exception
+     */
+    public DashboardPage verifyDataForOfferFramework(String discount_Description) throws Exception {
+        DashboardPage dashboard;
+        dashboard = (DashboardPage)databaseVerification.dataVerification_For_OfferFramework(DashboardPage.class, discount_Description);
+        return dashboard;
+    }
+
+    /**
+     *  Navigate to the Offer code URL
+     * @param url
+     * @return
+     */
+    public DashboardPage naviateToOfferCde(String url) {
+        getWebDriver().navigate().to(url);
+        return PageFactory.initElements(driver, DashboardPage.class);
+
+    }
+
+    /**
+     *  Currency Verification in Offer framework
+     * @return
+     * @throws Exception
+     */
+    public DashboardPage currencyVerificationInDatabase_For_OfferFramework() throws Exception {
+        DashboardPage dashboard;
+        dashboard = (DashboardPage)databaseVerification.currencyVerificationInDatabase_For_OfferFramework(DashboardPage.class);
+        return dashboard;
+    }
+
+
+    /**
+     *  Verify Discount of offer code
+     * @param course
+     * @param discountValue
+     * @return
+     */
+    public DashboardPage verifyDiscountOfOfferCode(String course, String discountValue){
+        List<WebElement> courses = driver.findElements(By.xpath(dashboardLocator.getLocator("HomePage.Courses")));
+        int rows = courses.size();
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h4";
+            WaitForElementPresent(coursesList, getTimeOut());
+            String coursesName= getText(coursesList);
+            if (coursesName.contains(course)) {
+                String actualCoursePrice = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h5/span/b";
+                String actualCoursePriceText = getText(actualCoursePrice);
+                String actualCoursePriceText_1 = actualCoursePriceText.replace("\u20B9", "");
+                String actualCoursePriceText_2 = actualCoursePriceText_1.replace(",", "");
+                String actualCoursePriceText_3= actualCoursePriceText_2.trim();
+                float actualCoursePriceValue = Integer.parseInt(actualCoursePriceText_3);
+
+                String coursePrice = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h5/span/small";
+                String coursePriceText= getText(coursePrice);
+                String coursePriceText_1 = coursePriceText.replace("\u20B9", "");
+                String coursePriceText_2 = coursePriceText_1.replace(",", "");
+                String coursePriceText_3 = coursePriceText_2.trim();
+                int coursePriceValue = Integer.parseInt(coursePriceText_3);
+                int discountPercentage = Integer.parseInt(discountValue);
+                float discountAmount = (int)(coursePriceValue*(discountPercentage/100.0f));
+                float priceAfterDiscount= coursePriceValue-discountAmount;
+                Assert.assertEquals(priceAfterDiscount, actualCoursePriceValue);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     *  Change Url
+     * @param url
+     * @return
+     */
+    public DashboardPage changeUrl(String url){
+        getWebDriver().get(url);
+        String currentUrl= driver.getCurrentUrl();
+        String current_Url= currentUrl.replace("www", "test");
+        String current_Url_2= current_Url.replace(".co",".in");
+        System.out.println("current_Url_2::::" +current_Url_2);
+        getWebDriver().get(current_Url_2);
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     *  Verify Banner for Addtional Disocunt 
+     * @return
+     */
+    public DashboardPage verifyAdditonalDiscountBanner(){
+        String messageSubmitInquiry= dashboardLocator.getLocator("Banners.AddtionalDiscountBanner");
+        WaitForElementPresent(messageSubmitInquiry, 5);
+        Assert.assertTrue(isElementPresent(messageSubmitInquiry));
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     *  Verify course price after discount value and referral value
+     * @param course
+     * @param discountValue
+     * @param referral_Disocunt
+     * @return
+     */
+    public DashboardPage verifyCoursePriceAfterReferralAndOfferDiscount(String course, String discountValue, String referral_Disocunt){
+        List<WebElement> courses = driver.findElements(By.xpath(dashboardLocator.getLocator("HomePage.Courses")));
+        int rows = courses.size();
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h4";
+            WaitForElementPresent(coursesList, getTimeOut());
+            String coursesName= getText(coursesList);
+            if (coursesName.contains(course)) {
+                String actualCoursePrice = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h5/span/b";
+                String actualCoursePriceText = getText(actualCoursePrice);
+                String actualCoursePriceText_1 = actualCoursePriceText.replace("\u20B9", "");
+                String actualCoursePriceText_2 = actualCoursePriceText_1.replace(",", "");
+                String actualCoursePriceText_3= actualCoursePriceText_2.trim();
+                int actualCoursePriceValue = Integer.parseInt(actualCoursePriceText_3);
+
+                String coursePrice = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h5/span/small";
+                String coursePriceText= getText(coursePrice);
+                String coursePriceText_1 = coursePriceText.replace("\u20B9", "");
+                String coursePriceText_2 = coursePriceText_1.replace(",", "");
+                String coursePriceText_3 = coursePriceText_2.trim();
+                int referralDisocunt = Integer.parseInt(referral_Disocunt);
+                int coursePriceValue = Integer.parseInt(coursePriceText_3);
+                int discountPercentage = Integer.parseInt(discountValue);
+                double discountAmount =round((coursePriceValue*(discountPercentage/100.0f)),2);
+                double discountAmount_1= coursePriceValue-discountAmount;
+                double discountAmount_2=round((discountAmount_1*(referralDisocunt/100.0f)),2);
+                int discountAmount_3 = (int)(discountAmount_1-discountAmount_2);
+                Assert.assertEquals(discountAmount_3, actualCoursePriceValue);
+                break;
+            }
+
+        }
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+}

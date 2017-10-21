@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//div[@class='ordersummdeatil whitebg clearfix']/div[1]]]></PageHeader>
+	<BTNEnroll><![CDATA[//span[@class='btn btn-primary custbtn']]]></BTNEnroll>
+	<LTWishlst><![CDATA[//i[@class='fa fa-heart-o btn-link']]]></LTWishlst>
+	<BTNPlayVideo><![CDATA[//span[@id='playiconvideo']]]></BTNPlayVideo>
+	<LTsignIn><![CDATA[//a[text()='Sign In']]]></LTsignIn>
+
+	<QueryBox>
+		<HeaderQueryBox><![CDATA[//div[@class='container clearfix']/div/span/i]]></HeaderQueryBox>
+		<TBQueryName><![CDATA[//input[@id='inquiry_name-modal']]]></TBQueryName>
+		<TBQueryEmail><![CDATA[//input[@id='inquiry_email-modal']]]></TBQueryEmail>
+		<TBQueryPhNumber><![CDATA[//input[@id='inquiry_mobile-modal']]]></TBQueryPhNumber>
+		<TBInquiry><![CDATA[//textarea[@id='inquiry_query-modal']]]></TBInquiry>
+		<BTNSubmit><![CDATA[//button[@id='drop-query-new-modal']]]></BTNSubmit>
+		<MsgSubmitInquiry><![CDATA[//p[contains(text(),'Thanks for inquiring with us.')]]]></MsgSubmitInquiry>
+	</QueryBox>
+
+	<Currency>
+		<LTCurrency><![CDATA[//div[@id='web_view']/div/article/span[2]/a]]></LTCurrency>
+		<CurrencyList><![CDATA[//ul[@id='currency-select-item']/li]]></CurrencyList>
+		<BTNApply><![CDATA[//button[text()='Apply']]]></BTNApply>
+		<CurrencyPopUp><![CDATA[//div[@id='country-modal-currency']]]></CurrencyPopUp>
+	</Currency>
+	
+	<ProfileDropdown>
+        <UserName><![CDATA[(//span[@class='webinar-profile-name'])[1]]]></UserName>
+        <!-- <LTLogout><![CDATA[(//a[text()='Log Out'])]]></LTLogout>  -->
+        <LTChangePassword><![CDATA[//a[@href='http://test.edureka.in/users/change_password']]]></LTChangePassword>
+        <LTLogout><![CDATA[//a[@href='http://test.edureka.in/signout']]]></LTLogout>
+    </ProfileDropdown>
+</Locators>

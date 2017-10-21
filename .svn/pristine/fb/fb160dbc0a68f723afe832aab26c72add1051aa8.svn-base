@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//div[contains(@class,'Free Public Email')]]]></PageHeader>
+
+
+	<Mail>
+		<TBMail><![CDATA[//input[@id='inboxfield']]]></TBMail>
+		<BTNSearch><![CDATA[//button[@class='btn btn-dark']]]></BTNSearch>
+		<MailLink><![CDATA[//div[contains(text(),'is your verification code for secure access')]]]></MailLink>
+		<MailSubject><![CDATA[//td[contains(text(),'Subject:')]//following-sibling::td[1]]]></MailSubject>
+		<ChkMail><![CDATA[//label[contains(@for,'box1_public_')]]]></ChkMail>
+		<BTNDelete><![CDATA[//button[@id='public_delete_button']]]></BTNDelete>
+		<VerificationCode><![CDATA[//div[@id='div_footer']//p[contains(text(),'OTP :')]/strong]]></VerificationCode>
+	</Mail>
+</Locators>

@@ -1,0 +1,1162 @@
+<html>
+<head>
+<title>TestNG:  TestSuiteLeadProcess</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>TestSuiteLeadProcess</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>18/6/2</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Feb 01 11:32:37 IST 2017</td>
+</tr>
+<tr><td>Total time:</td><td>1875 seconds (1875478 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.edureka.leadProcess.VerifySignupFromCourseLandingPage.test_002VerifySignupFromCourseLandingPage()'><b>test_002VerifySignupFromCourseLandingPage</b><br>Test class: com.edureka.leadProcess.VerifySignupFromCourseLandingPage<br/>
+<a href="#Output-1536413366" onClick='toggleBox("Output-1536413366", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1536413366" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1536413366">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on Signin<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+<a href= 'file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_002VerifySignupFromCourseLandingPage2017-02-01.jpg'target='_blank' ><img src='file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_002VerifySignupFromCourseLandingPage2017-02-01.jpg' height="42" width="42" >test_002VerifySignupFromCourseLandingPage2017-02-01</a><br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 5 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: 440fdf1c-4b92-4582-8c90-25b097fcda92
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at com.edureka.util.DriverHelper.clickOn(DriverHelper.java:357)
+	at com.edureka.pages.SignInModalPage.clickSignUp(SignInModalPage.java:181)
+	at com.edureka.leadProcess.VerifySignupFromCourseLandingPage.test_002VerifySignupFromCourseLandingPage(VerifySignupFromCourseLandingPage.java:65)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous2430966326349179457webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous2430966326349179457webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous2430966326349179457webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous2430966326349179457webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous2430966326349179457webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1536413366", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1536413366'><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 5 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: 440fdf1c-4b92-4582-8c90-25b097fcda92
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at com.edureka.util.DriverHelper.clickOn(DriverHelper.java:357)
+	at com.edureka.pages.SignInModalPage.clickSignUp(SignInModalPage.java:181)
+	at com.edureka.leadProcess.VerifySignupFromCourseLandingPage.test_002VerifySignupFromCourseLandingPage(VerifySignupFromCourseLandingPage.java:65)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous2430966326349179457webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous2430966326349179457webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous2430966326349179457webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous2430966326349179457webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous2430966326349179457webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+</pre></div></td>
+<td>70</td>
+<td>com.edureka.leadProcess.VerifySignupFromCourseLandingPage@4638733c</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.VerifySignupFromHeaderOnAnyCourseLandingPage.test_011SignInFromHeaderOnAnyCourseLandingPage()'><b>test_011SignInFromHeaderOnAnyCourseLandingPage</b><br>Test class: com.edureka.leadProcess.VerifySignupFromHeaderOnAnyCourseLandingPage<br/>
+<a href="#Output-583523163" onClick='toggleBox("Output-583523163", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-583523163" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-583523163">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Select Course<br><br/>
+Click on Signin<br><br/>
+click on Sign up link<br><br/>
+<a href= 'file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_011SignInFromHeaderOnAnyCourseLandingPage2017-02-01.jpg'target='_blank' ><img src='file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_011SignInFromHeaderOnAnyCourseLandingPage2017-02-01.jpg' height="42" width="42" >test_011SignInFromHeaderOnAnyCourseLandingPage2017-02-01</a><br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 9 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: f6cbf430-996d-4d63-aabb-aefbc395e3bb
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at com.edureka.util.DriverHelper.clickOn(DriverHelper.java:357)
+	at com.edureka.pages.SignInModalPage.clickSignUp(SignInModalPage.java:181)
+	at com.edureka.leadProcess.VerifySignupFromHeaderOnAnyCourseLandingPage.test_011SignInFromHeaderOnAnyCourseLandingPage(VerifySignupFromHeaderOnAnyCourseLandingPage.java:64)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous3187858119987267538webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous3187858119987267538webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous3187858119987267538webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous3187858119987267538webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous3187858119987267538webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace583523163", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace583523163'><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 9 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: f6cbf430-996d-4d63-aabb-aefbc395e3bb
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at com.edureka.util.DriverHelper.clickOn(DriverHelper.java:357)
+	at com.edureka.pages.SignInModalPage.clickSignUp(SignInModalPage.java:181)
+	at com.edureka.leadProcess.VerifySignupFromHeaderOnAnyCourseLandingPage.test_011SignInFromHeaderOnAnyCourseLandingPage(VerifySignupFromHeaderOnAnyCourseLandingPage.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous3187858119987267538webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous3187858119987267538webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous3187858119987267538webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous3187858119987267538webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous3187858119987267538webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+</pre></div></td>
+<td>67</td>
+<td>com.edureka.leadProcess.VerifySignupFromHeaderOnAnyCourseLandingPage@5c4a9e8e</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.VerifySignupFromWatchSampleClassRecording.test_013SignInFromVerifyWatchSimpleRecording()'><b>test_013SignInFromVerifyWatchSimpleRecording</b><br>Test class: com.edureka.leadProcess.VerifySignupFromWatchSampleClassRecording<br/>
+<a href="#Output-571201483" onClick='toggleBox("Output-571201483", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-571201483" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-571201483">
+Verify Edureka Dashboard Page<br><br/>
+Select course<br><br/>
+Click on Play Button of Video<br><br/>
+Verify default SignUp is selected<br><br/>
+Sign in user<br><br/>
+<a href= 'file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_013SignInFromVerifyWatchSimpleRecording2017-02-01.jpg'target='_blank' ><img src='file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_013SignInFromVerifyWatchSimpleRecording2017-02-01.jpg' height="42" width="42" >test_013SignInFromVerifyWatchSimpleRecording2017-02-01</a><br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 8 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: e956d38f-cc60-4a34-867e-8ad2419e346f
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.clear(RemoteWebElement.java:139)
+	at com.edureka.util.DriverHelper.sendKeys(DriverHelper.java:372)
+	at com.edureka.pages.SignInModalPage.enterEmailAndPassword(SignInModalPage.java:554)
+	at com.edureka.leadProcess.VerifySignupFromWatchSampleClassRecording.test_013SignInFromVerifyWatchSimpleRecording(VerifySignupFromWatchSampleClassRecording.java:158)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous743286784947094865webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous743286784947094865webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous743286784947094865webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous743286784947094865webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous743286784947094865webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace571201483", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace571201483'><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 8 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: e956d38f-cc60-4a34-867e-8ad2419e346f
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.clear(RemoteWebElement.java:139)
+	at com.edureka.util.DriverHelper.sendKeys(DriverHelper.java:372)
+	at com.edureka.pages.SignInModalPage.enterEmailAndPassword(SignInModalPage.java:554)
+	at com.edureka.leadProcess.VerifySignupFromWatchSampleClassRecording.test_013SignInFromVerifyWatchSimpleRecording(VerifySignupFromWatchSampleClassRecording.java:158)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous743286784947094865webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous743286784947094865webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous743286784947094865webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous743286784947094865webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous743286784947094865webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+</pre></div></td>
+<td>3</td>
+<td>com.edureka.leadProcess.VerifySignupFromWatchSampleClassRecording@83917d1</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.SignInEnrollOnAnyCourse.test_014SignInEnrollOnAnyCourse()'><b>test_014SignInEnrollOnAnyCourse</b><br>Test class: com.edureka.leadProcess.SignInEnrollOnAnyCourse<br/>
+<a href="#Output-40142963" onClick='toggleBox("Output-40142963", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-40142963" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-40142963">
+Navigate to the Edureka application url<br><br/>
+Click on Sign in button<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+Verify User Home Page<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout Application<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Select Course<br><br/>
+Click on Play Button of Video<br><br/>
+Verify default SignUp is selected<br><br/>
+Sign in user<br><br/>
+<a href= 'file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_014SignInEnrollOnAnyCourse2017-02-01.jpg'target='_blank' ><img src='file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_014SignInEnrollOnAnyCourse2017-02-01.jpg' height="42" width="42" >test_014SignInEnrollOnAnyCourse2017-02-01</a><br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 15 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: b52385d8-2ced-4fea-9030-d4c5d162db62
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.clear(RemoteWebElement.java:139)
+	at com.edureka.util.DriverHelper.sendKeys(DriverHelper.java:372)
+	at com.edureka.pages.SignInModalPage.enterEmailAndPassword(SignInModalPage.java:554)
+	at com.edureka.leadProcess.SignInEnrollOnAnyCourse.test_014SignInEnrollOnAnyCourse(SignInEnrollOnAnyCourse.java:99)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous2753826592437379622webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous2753826592437379622webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous2753826592437379622webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous2753826592437379622webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous2753826592437379622webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace40142963", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace40142963'><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 15 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: b52385d8-2ced-4fea-9030-d4c5d162db62
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.clear(RemoteWebElement.java:139)
+	at com.edureka.util.DriverHelper.sendKeys(DriverHelper.java:372)
+	at com.edureka.pages.SignInModalPage.enterEmailAndPassword(SignInModalPage.java:554)
+	at com.edureka.leadProcess.SignInEnrollOnAnyCourse.test_014SignInEnrollOnAnyCourse(SignInEnrollOnAnyCourse.java:99)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous2753826592437379622webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous2753826592437379622webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous2753826592437379622webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous2753826592437379622webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous2753826592437379622webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+</pre></div></td>
+<td>54</td>
+<td>com.edureka.leadProcess.SignInEnrollOnAnyCourse@57177af9</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.SignUpFromAddToWishlistInGridView.test_016SignInAddToWishlistInGridView()'><b>test_016SignInAddToWishlistInGridView</b><br>Test class: com.edureka.leadProcess.SignUpFromAddToWishlistInGridView<br/>
+<a href="#Output-70341469" onClick='toggleBox("Output-70341469", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-70341469" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-70341469">
+Verify Edureka Dashboard Page<br><br/>
+Click on Course Tab<br><br/>
+Click on Grid view Icon<br><br/>
+Click on Add To Wishlist Icon<br><br/>
+Verify default SignUp is selected<br><br/>
+Sign in user<br><br/>
+<a href= 'file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_016SignInAddToWishlistInGridView2017-02-01.jpg'target='_blank' ><img src='file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_016SignInAddToWishlistInGridView2017-02-01.jpg' height="42" width="42" >test_016SignInAddToWishlistInGridView2017-02-01</a><br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 5 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: 05fe06a1-15b4-4446-b8e9-4fbdad2a3160
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.clear(RemoteWebElement.java:139)
+	at com.edureka.util.DriverHelper.sendKeys(DriverHelper.java:372)
+	at com.edureka.pages.SignInModalPage.enterEmailAndPassword(SignInModalPage.java:554)
+	at com.edureka.leadProcess.SignUpFromAddToWishlistInGridView.test_016SignInAddToWishlistInGridView(SignUpFromAddToWishlistInGridView.java:175)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous6170316302474798843webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous6170316302474798843webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous6170316302474798843webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous6170316302474798843webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous6170316302474798843webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace70341469", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace70341469'><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 5 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: 05fe06a1-15b4-4446-b8e9-4fbdad2a3160
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.clear(RemoteWebElement.java:139)
+	at com.edureka.util.DriverHelper.sendKeys(DriverHelper.java:372)
+	at com.edureka.pages.SignInModalPage.enterEmailAndPassword(SignInModalPage.java:554)
+	at com.edureka.leadProcess.SignUpFromAddToWishlistInGridView.test_016SignInAddToWishlistInGridView(SignUpFromAddToWishlistInGridView.java:175)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous6170316302474798843webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous6170316302474798843webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous6170316302474798843webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous6170316302474798843webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous6170316302474798843webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+</pre></div></td>
+<td>36</td>
+<td>com.edureka.leadProcess.SignUpFromAddToWishlistInGridView@56488f87</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.SingupFromEnrollInListView.test_017SignInFromEnrollInListView()'><b>test_017SignInFromEnrollInListView</b><br>Test class: com.edureka.leadProcess.SingupFromEnrollInListView<br/>
+<a href="#Output-1694957099" onClick='toggleBox("Output-1694957099", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1694957099" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1694957099">
+Verify Edureka Dashboard Page<br><br/>
+Click on Course Tab<br><br/>
+Click on List view Icon<br><br/>
+Select Course From Trending Courses<br><br/>
+Verify default SignUp is selected<br><br/>
+<a href= 'file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_017SignInFromEnrollInListView2017-02-01.jpg'target='_blank' ><img src='file:///home/logica/Desktop/test_workspace/Edureka_Automation/screenshots/test_017SignInFromEnrollInListView2017-02-01.jpg' height="42" width="42" >test_017SignInFromEnrollInListView2017-02-01</a><br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 5 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: b478fb93-29f9-4de4-b98e-b716ac7e89fb
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at com.edureka.util.DriverHelper.clickOn(DriverHelper.java:357)
+	at com.edureka.pages.SignInModalPage.clickOnLoginTab(SignInModalPage.java:191)
+	at com.edureka.leadProcess.SingupFromEnrollInListView.test_017SignInFromEnrollInListView(SingupFromEnrollInListView.java:185)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous8588277297297615578webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous8588277297297615578webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous8588277297297615578webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous8588277297297615578webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous8588277297297615578webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1694957099", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1694957099'><pre>org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Command duration or timeout: 5 milliseconds
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Session ID: b478fb93-29f9-4de4-b98e-b716ac7e89fb
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=LINUX, acceptSslCerts=true, javascriptEnabled=true, cssSelectorsEnabled=true, databaseEnabled=true, browserName=firefox, handlesAlerts=true, nativeEvents=false, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=41.0.2}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:206)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:158)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:647)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:326)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at com.edureka.util.DriverHelper.clickOn(DriverHelper.java:357)
+	at com.edureka.pages.SignInModalPage.clickOnLoginTab(SignInModalPage.java:191)
+	at com.edureka.leadProcess.SingupFromEnrollInListView.test_017SignInFromEnrollInListView(SingupFromEnrollInListView.java:185)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
+Caused by: org.openqa.selenium.ElementNotVisibleException: Element is not currently visible and so may not be interacted with
+Build info: version: &apos;2.48.1&apos;, revision: &apos;d80083d&apos;, time: &apos;2015-10-08 21:11:00&apos;
+System info: host: &apos;360pc011&apos;, ip: &apos;127.0.1.1&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;4.2.0-27-generic&apos;, java.version: &apos;1.7.0_111&apos;
+Driver info: driver.version: unknown
+	at &lt;anonymous class&gt;.fxdriver.preconditions.visible(file:///tmp/anonymous8588277297297615578webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:9981)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.checkPreconditions_(file:///tmp/anonymous8588277297297615578webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12517)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_/h(file:///tmp/anonymous8588277297297615578webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12534)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.executeInternal_(file:///tmp/anonymous8588277297297615578webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12539)
+	at &lt;anonymous class&gt;.DelayedCommand.prototype.execute/&lt;(file:///tmp/anonymous8588277297297615578webdriver-profile/extensions/fxdriver@googlecode.com/components/command-processor.js:12481)
+</pre></div></td>
+<td>13</td>
+<td>com.edureka.leadProcess.SingupFromEnrollInListView@1fa83e7e</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.edureka.leadProcess.WishListInListViewAllCoursePage.test025WishListInListViewAllCoursePage()'><b>test025WishListInListViewAllCoursePage</b><br>Test class: com.edureka.leadProcess.WishListInListViewAllCoursePage<br/>
+<a href="#Output-1069997165" onClick='toggleBox("Output-1069997165", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1069997165" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1069997165">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on Course Tab<br><br/>
+Sign up user<br><br/>
+Verify sign up successfully<br><br/>
+Click on Course Tab<br><br/>
+Verify All Courses page<br><br/>
+Click on List view Icon<br><br/>
+Select Course From List View<br><br/>
+Verify Data in user table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+</div>
+</td>
+<td></td>
+<td>55</td>
+<td>com.edureka.leadProcess.WishListInListViewAllCoursePage@1467056e</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.VerifySignupFromHeaderHomePage.test_001VerifySignupFromHeaderHomePage()'><b>test_001VerifySignupFromHeaderHomePage</b><br>Test class: com.edureka.leadProcess.VerifySignupFromHeaderHomePage<br/>
+<a href="#Output-456514415" onClick='toggleBox("Output-456514415", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-456514415" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-456514415">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+Verify Data in User Table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+</div>
+</td>
+<td></td>
+<td>83</td>
+<td>com.edureka.leadProcess.VerifySignupFromHeaderHomePage@2a4a89a</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage.test_003VerifySignupFromAddToWishlistOnAnyCourseLandingPage()'><b>test_003VerifySignupFromAddToWishlistOnAnyCourseLandingPage</b><br>Test class: com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage<br/>
+<a href="#Output-1496919724" onClick='toggleBox("Output-1496919724", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1496919724" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1496919724">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Select Course From Trending Courses<br><br/>
+Click on Add To Wishlist Icon<br><br/>
+Sign up user<br><br/>
+Verify sign up successfully<br><br/>
+Verify Data in user table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+Verify Data in User Course table<br><br/>
+</div>
+</td>
+<td></td>
+<td>128</td>
+<td>com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage@5cb42b</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.VerifySignupFromWatchSampleClassRecording.test_004VerifySignUpFromWatchSampleClassRecording()'><b>test_004VerifySignUpFromWatchSampleClassRecording</b><br>Test class: com.edureka.leadProcess.VerifySignupFromWatchSampleClassRecording<br/>
+<a href="#Output-249358461" onClick='toggleBox("Output-249358461", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-249358461" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-249358461">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Select Course<br><br/>
+Play class recording video<br><br/>
+Verify default SignUp is selected<br><br/>
+Sign up user<br><br/>
+Verify sign up successfully<br><br/>
+Verify Data in user Table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout from the application.<br><br/>
+</div>
+</td>
+<td></td>
+<td>91</td>
+<td>com.edureka.leadProcess.VerifySignupFromWatchSampleClassRecording@83917d1</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.VerifySignupFromEnrollOnAnyCourse.test_005VerifySignupFromEnroll()'><b>test_005VerifySignupFromEnroll</b><br>Test class: com.edureka.leadProcess.VerifySignupFromEnrollOnAnyCourse<br/>
+<a href="#Output-1857649655" onClick='toggleBox("Output-1857649655", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1857649655" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1857649655">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Select Course<br><br/>
+Click on Enroll Now Button<br><br/>
+Sign up user<br><br/>
+Verify sign up successfully<br><br/>
+Verify Data in User Table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+</div>
+</td>
+<td></td>
+<td>133</td>
+<td>com.edureka.leadProcess.VerifySignupFromEnrollOnAnyCourse@24158c28</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.SingupFromWishListInListView.test_006SingupFromWishListInListView()'><b>test_006SingupFromWishListInListView</b><br>Test class: com.edureka.leadProcess.SingupFromWishListInListView<br/>
+<a href="#Output-1549748531" onClick='toggleBox("Output-1549748531", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1549748531" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1549748531">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on Course Tab<br><br/>
+Verify All Courses page<br><br/>
+Click on List view Icon<br><br/>
+Click on Add To Wishlist Icon<br><br/>
+Sign up user<br><br/>
+Verify sign up successfully<br><br/>
+Verify Data in user table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout from the application.<br><br/>
+</div>
+</td>
+<td></td>
+<td>78</td>
+<td>com.edureka.leadProcess.SingupFromWishListInListView@5e9ed26e</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.SignUpFromAddToWishlistInGridView.test_007SignUpFromAddToWishlistInGridView()'><b>test_007SignUpFromAddToWishlistInGridView</b><br>Test class: com.edureka.leadProcess.SignUpFromAddToWishlistInGridView<br/>
+<a href="#Output-805363256" onClick='toggleBox("Output-805363256", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-805363256" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-805363256">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on Course Tab<br><br/>
+Verify All Courses page<br><br/>
+Click on Grid view Icon<br><br/>
+Click on Add To Wishlist Icon<br><br/>
+Sign up user<br><br/>
+Verify sign up successfully<br><br/>
+Verify Data in user table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout from the application.<br><br/>
+</div>
+</td>
+<td></td>
+<td>143</td>
+<td>com.edureka.leadProcess.SignUpFromAddToWishlistInGridView@56488f87</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.SingupFromEnrollInListView.test_008SingupFromEnrollInListView()'><b>test_008SingupFromEnrollInListView</b><br>Test class: com.edureka.leadProcess.SingupFromEnrollInListView<br/>
+<a href="#Output-540924623" onClick='toggleBox("Output-540924623", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-540924623" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-540924623">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on Course Tab<br><br/>
+Verify All Courses page<br><br/>
+Click on List view Icon<br><br/>
+Select Course From Trending Courses<br><br/>
+Sign up user<br><br/>
+Verify sign up successfully<br><br/>
+Database verification in User Table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout from the application.<br><br/>
+</div>
+</td>
+<td></td>
+<td>98</td>
+<td>com.edureka.leadProcess.SingupFromEnrollInListView@1fa83e7e</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.VerifySignInLeadProcessNavigationHeader.test_010VerifySignInLeadProcessNavigationHeader()'><b>test_010VerifySignInLeadProcessNavigationHeader</b><br>Test class: com.edureka.leadProcess.VerifySignInLeadProcessNavigationHeader<br/>
+<a href="#Output-1854775044" onClick='toggleBox("Output-1854775044", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1854775044" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1854775044">
+Navigate to the Edureka application url<br><br/>
+Click on Sign in button<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+Verify User Home Page<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout Application<br><br/>
+Click on Sign in button<br><br/>
+Sign in user<br><br/>
+Click on Start Learning button<br><br/>
+Verify User Page<br><br/>
+Verify Data in user Table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+</div>
+</td>
+<td></td>
+<td>169</td>
+<td>com.edureka.leadProcess.VerifySignInLeadProcessNavigationHeader@6657968b</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.SignInFromAddToWishlistOnAnyCourseLandingPage.test_012SignInFromAddToWishlistOnAnyCourseLandingPage()'><b>test_012SignInFromAddToWishlistOnAnyCourseLandingPage</b><br>Test class: com.edureka.leadProcess.SignInFromAddToWishlistOnAnyCourseLandingPage<br/>
+<a href="#Output-1928663623" onClick='toggleBox("Output-1928663623", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1928663623" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1928663623">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on Add To Wishlist Icon<br><br/>
+Verify default SignUp is selected<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+Verify User Home Page<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout Application<br><br/>
+Click on Sign in button<br><br/>
+Sign in user<br><br/>
+Click on Start Learning button<br><br/>
+Verify User Home Page<br><br/>
+Verify Data in user table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+</div>
+</td>
+<td></td>
+<td>80</td>
+<td>com.edureka.leadProcess.SignInFromAddToWishlistOnAnyCourseLandingPage@63973cf5</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.SignInFromAddToWishListInListViewOnAllCoursesPage.test_015SignInFromAddToWishListInListViewOnAllCoursesPage()'><b>test_015SignInFromAddToWishListInListViewOnAllCoursesPage</b><br>Test class: com.edureka.leadProcess.SignInFromAddToWishListInListViewOnAllCoursesPage<br/>
+<a href="#Output-92116599" onClick='toggleBox("Output-92116599", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-92116599" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-92116599">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on Course Tab<br><br/>
+Click on List view Icon<br><br/>
+Verify default SignUp is selected<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+Verify User Home Page<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout Application<br><br/>
+Click on Sign in button<br><br/>
+Sign in user<br><br/>
+Click on Start Learning button<br><br/>
+Verify User Home Page<br><br/>
+Verify Data in user table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout from the application.<br><br/>
+</div>
+</td>
+<td></td>
+<td>112</td>
+<td>com.edureka.leadProcess.SignInFromAddToWishListInListViewOnAllCoursesPage@d09644a</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.CheckForInquiryFromAllCoursePage.test_019CheckForInquiryFromAllCoursePage()'><b>test_019CheckForInquiryFromAllCoursePage</b><br>Test class: com.edureka.leadProcess.CheckForInquiryFromAllCoursePage<br/>
+<a href="#Output-511295781" onClick='toggleBox("Output-511295781", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-511295781" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-511295781">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+Click on Course Tab<br><br/>
+Verify All Courses page<br><br/>
+Click on Query Box<br><br/>
+Submit inquiry in drop query box<br><br/>
+Verify Inquiry has been submitted<br><br/>
+Verify Data for Inquiry<br><br/>
+</div>
+</td>
+<td></td>
+<td>62</td>
+<td>com.edureka.leadProcess.CheckForInquiryFromAllCoursePage@26efabf8</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.InquiryFromCourseLandingPage.test_020InquiryFromCourseLandingPage()'><b>test_020InquiryFromCourseLandingPage</b><br>Test class: com.edureka.leadProcess.InquiryFromCourseLandingPage<br/>
+<a href="#Output-887648604" onClick='toggleBox("Output-887648604", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-887648604" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-887648604">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Select course<br><br/>
+Verify Selected Course Page Is Open<br><br/>
+Click on Query Box<br><br/>
+Submit inquiry in drop query box<br><br/>
+Verify Inquiry has been submitted<br><br/>
+Database verification in user table<br><br/>
+Verify Data for Inquiry<br><br/>
+</div>
+</td>
+<td></td>
+<td>55</td>
+<td>com.edureka.leadProcess.InquiryFromCourseLandingPage@41033ac0</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.AddToWishListOnAnyCourseLandingPage.test_021AddToWishListOnAnyCourseLandingPage()'><b>test_021AddToWishListOnAnyCourseLandingPage</b><br>Test class: com.edureka.leadProcess.AddToWishListOnAnyCourseLandingPage<br/>
+<a href="#Output-281440961" onClick='toggleBox("Output-281440961", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-281440961" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-281440961">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+Verify User Home Page<br><br/>
+Select Course<br><br/>
+Click on Add on Wish List link<br><br/>
+ Verify Data in User Table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout from the application.<br><br/>
+</div>
+</td>
+<td></td>
+<td>87</td>
+<td>com.edureka.leadProcess.AddToWishListOnAnyCourseLandingPage@3b063498</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.EnrollOnAnyCourseLandingPage.test_023EnrollOnAnyCourseLandingPage()'><b>test_023EnrollOnAnyCourseLandingPage</b><br>Test class: com.edureka.leadProcess.EnrollOnAnyCourseLandingPage<br/>
+<a href="#Output-1944085389" onClick='toggleBox("Output-1944085389", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1944085389" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1944085389">
+Navigate to the Edureka application url<br><br/>
+Click on Sign in button<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+Verify User Home Page<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout Application<br><br/>
+Click on Sign in button<br><br/>
+Sign in user<br><br/>
+Click on Start Learning button<br><br/>
+Verify User Page<br><br/>
+Select Course<br><br/>
+Click on Play Button of Video<br><br/>
+Verify Order Summary Page<br><br/>
+Verify Data in User Table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+</div>
+</td>
+<td></td>
+<td>71</td>
+<td>com.edureka.leadProcess.EnrollOnAnyCourseLandingPage@78da0edd</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.EnrollInListViewAllCoursePage.test_026EnrollInListViewAllCoursePage()'><b>test_026EnrollInListViewAllCoursePage</b><br>Test class: com.edureka.leadProcess.EnrollInListViewAllCoursePage<br/>
+<a href="#Output-389766476" onClick='toggleBox("Output-389766476", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-389766476" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-389766476">
+Navigate to the Edureka application url<br><br/>
+Click on Sign in button<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+Verify User Home Page<br><br/>
+Click on Profile Dropdown<br><br/>
+Logout Application<br><br/>
+Click on Sign in button<br><br/>
+Sign in user<br><br/>
+Click on Start Learning button<br><br/>
+Verify User Page<br><br/>
+Click on Course Tab<br><br/>
+Verify All Courses page<br><br/>
+Click on List view Icon<br><br/>
+Select Course From List View<br><br/>
+Verify Selected Course Page Is Open<br><br/>
+Click on Add To Wishlist Icon<br><br/>
+Verify Order Summary Page<br><br/>
+Verify Data in user table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+</div>
+</td>
+<td></td>
+<td>74</td>
+<td>com.edureka.leadProcess.EnrollInListViewAllCoursePage@77958338</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.EnrollInListViewAllCoursePage.test_027VerifyEachAndEveryElementOnOrderSummaryPage()'><b>test_027VerifyEachAndEveryElementOnOrderSummaryPage</b><br>Test class: com.edureka.leadProcess.EnrollInListViewAllCoursePage</td>
+<td></td>
+<td>0</td>
+<td>com.edureka.leadProcess.EnrollInListViewAllCoursePage@77958338</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.SignupFromAllCoursesPage.test_028SignupFromAllCoursesPage()'><b>test_028SignupFromAllCoursesPage</b><br>Test class: com.edureka.leadProcess.SignupFromAllCoursesPage<br/>
+<a href="#Output-726680545" onClick='toggleBox("Output-726680545", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-726680545" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-726680545">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on Course Tab<br><br/>
+Verify All Courses page<br><br/>
+Click on Sign in Header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+Verify User Sign up successfully<br><br/>
+Verify Data in User Table<br><br/>
+Verify Data in User Lead Table<br><br/>
+Verify Data in User Course table<br><br/>
+Verify Data in User Event Table<br><br/>
+Veriy Data in Ambassadors table<br><br/>
+</div>
+</td>
+<td></td>
+<td>75</td>
+<td>com.edureka.leadProcess.SignupFromAllCoursesPage@5e232be7</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.edureka.leadProcess.SignInEnrollOnAnyCourse.test_023EnrollOnAnyCourseLandingPage()'><b>test_023EnrollOnAnyCourseLandingPage</b><br>Test class: com.edureka.leadProcess.SignInEnrollOnAnyCourse</td>
+<td><div><pre>java.lang.Throwable: Method SignInEnrollOnAnyCourse.test_023EnrollOnAnyCourseLandingPage()[pri:0, instance:com.edureka.leadProcess.SignInEnrollOnAnyCourse@57177af9] depends on not successfully finished methods
+... Removed 17 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace627519224", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace627519224'><pre>java.lang.Throwable: Method SignInEnrollOnAnyCourse.test_023EnrollOnAnyCourseLandingPage()[pri:0, instance:com.edureka.leadProcess.SignInEnrollOnAnyCourse@57177af9] depends on not successfully finished methods
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1040)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
+</pre></div></td>
+<td>0</td>
+<td>null</td></tr>
+<tr>
+<td title='com.edureka.leadProcess.SignUpFromAddToWishlistInGridView.test_024WishListInGridViewAllCoursePage()'><b>test_024WishListInGridViewAllCoursePage</b><br>Test class: com.edureka.leadProcess.SignUpFromAddToWishlistInGridView</td>
+<td><div><pre>java.lang.Throwable: Method SignUpFromAddToWishlistInGridView.test_024WishListInGridViewAllCoursePage()[pri:0, instance:com.edureka.leadProcess.SignUpFromAddToWishlistInGridView@56488f87] depends on not successfully finished methods
+... Removed 17 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace806469633", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace806469633'><pre>java.lang.Throwable: Method SignUpFromAddToWishlistInGridView.test_024WishListInGridViewAllCoursePage()[pri:0, instance:com.edureka.leadProcess.SignUpFromAddToWishlistInGridView@56488f87] depends on not successfully finished methods
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1040)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+	at org.testng.TestRunner.privateRun(TestRunner.java:773)
+	at org.testng.TestRunner.run(TestRunner.java:623)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:357)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:352)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:310)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:259)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1185)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1110)
+	at org.testng.TestNG.run(TestNG.java:1018)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
+</pre></div></td>
+<td>0</td>
+<td>null</td></tr>
+</table><p>
+</body>
+</html>

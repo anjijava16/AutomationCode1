@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//div[@id='signin-modal']]]></PageHeader>
+
+	<SignIn>
+		<LTSignUp><![CDATA[//a[@href='#SignUp']]]></LTSignUp>
+		<TBUserName><![CDATA[//input[@id='signupname']]]></TBUserName>
+		<TBEmail><![CDATA[//input[@id='signupemail']]]></TBEmail>
+		<TBPhNumber><![CDATA[//input[@id='mobnum']]]></TBPhNumber>
+		<TBUserPassword><![CDATA[//input[@id='pwd3']]]></TBUserPassword>
+		<BTNCreateAccount><![CDATA[//button[text()='Create an account']]]></BTNCreateAccount>
+		<TxtError><![CDATA[//span[@id='signup_error_message']]]></TxtError>
+		<PlaceholderName><![CDATA[//input[@placeholder='Name*']]]></PlaceholderName>
+		<PlaceholderEmail><![CDATA[//input[@placeholder='Email*']]]></PlaceholderEmail>
+		<PlaceholderPhNumber><![CDATA[//input[@placeholder='Mobile Number*']]]></PlaceholderPhNumber>
+		<PlaceholderPassword><![CDATA[//input[@placeholder='Password more than 8 characters*']]]></PlaceholderPassword>
+		<CloseIcon><![CDATA[//span[@id='signin_signup_cancel']]]></CloseIcon>
+		<ErrorExistingIDSignup><![CDATA[//form[@id='signupForm']/div/span]]></ErrorExistingIDSignup>
+		<BTNShow><![CDATA[//div[@id='eye3']]]></BTNShow>
+		<UnMaskedPassword><![CDATA[//input[@type='text']]]></UnMaskedPassword>
+		<LTTAndC><![CDATA[//a[text()='T&C']]]></LTTAndC>
+		<LTPrivateAndPolicy><![CDATA[//a[text()='Privacy Policy']]]></LTPrivateAndPolicy>
+		<BTNClose><![CDATA[//span[@id='signin_signup_cancel']]]></BTNClose>
+	</SignIn>
+
+	<Login>
+		<TBLoginEmail><![CDATA[//input[@id='inputName']]]></TBLoginEmail>
+		<TBLoginPassword><![CDATA[//input[@id='pwd']]]></TBLoginPassword>
+		<BTNStartLearning><![CDATA[//button[text()='Start Learning']]]></BTNStartLearning>
+	</Login>
+	
+	<TermsAndConditions>
+		<PageHeader><![CDATA[//h4[text()='Terms and Conditions']]]></PageHeader>
+	</TermsAndConditions>
+
+	<PrivateAndPolicy>
+		<PageHeader><![CDATA[//h4[text()='Privacy Policy']]]></PageHeader>
+	</PrivateAndPolicy>
+
+</Locators>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+  <title>Edureka_Automation - VerifySignupFromHeaderHomePage</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="description" content="TestNG unit test results." />
+  <link href="reportng.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="reportng.js"></script>
+</head>
+<body>
+<h1>VerifySignupFromHeaderHomePage</h1>
+<p>
+  Test duration: 135.592s
+</p>
+
+
+
+
+
+  <table class="resultsTable">
+    <tr><th colspan="3" class="header passed">Passed Tests</th></tr>
+          <tr>
+        <td colspan="3" class="group">com.edureka.leadProcess.VerifySignupFromHeaderHomePage</td>
+      </tr>
+            
+<tr>
+  <td class="method">
+                  test_001VerifySignupFromHeaderHomePage
+      </td>
+  <td class="duration">
+    52.756s
+  </td>
+  <td class="result">
+        
+    
+            <div class="testOutput">
+                        Navigate to the Edureka application url<br>
+                                Verify Edureka Dashboard Page<br>
+                                Click on SignIn Navigation header<br>
+                                Verify Login is selected as default<br>
+                                click on Sign up link<br>
+                                Sign up user<br>
+                                Verify User Home Page<br>
+                                Verify Data in User Table<br>
+                                Verify Data in User Lead Table<br>
+                                Verify Data in User Course table<br>
+                                Verify Data in User Event Table<br>
+                                Veriy Data in Ambassadors table<br>
+                                Click on Profile Dropdown<br>
+                                Logout from the application.<br>
+                  </div>
+    
+
+      </td>
+</tr>
+<tr>
+  <td class="method">
+                  test_011SignInFromHeaderOnAnyCourseLandingPage
+      </td>
+  <td class="duration">
+    71.702s
+  </td>
+  <td class="result">
+        
+    
+            <div class="testOutput">
+                        Verify Edureka Dashboard Page<br>
+                                Verify Selected Course Page Is Open<br>
+                                Click on Signin<br>
+                                 Login Application<br>
+                                Verify User Home Page<br>
+                  </div>
+    
+
+      </td>
+</tr>
+      </table>
+  
+</body>
+</html>

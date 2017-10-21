@@ -1,0 +1,357 @@
+package com.edureka.util;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Random;
+import java.util.Set;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.Reporter;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
+import com.edureka.pages.DashboardPage;
+
+
+/**
+ * This class is used for initialize the webdriver's drivers for the browsers s
+ * 
+ * @author 360logica
+ * 
+ */
+public abstract class DriverTestCase {
+    enum DriverType {
+        Firefox, IE, Chrome
+    }
+    String browser = getBrowser();
+    String os = getOSName();
+
+    /**
+     * Define objects
+     */
+    private WebDriver driver;
+    /**
+     * Initialize objects
+     */
+    private static Logger logger = LoggerFactory
+            .getLogger(DriverTestCase.class);
+    public PropertyReader propertyReader = new PropertyReader();
+    private Runtime runtime = Runtime.getRuntime();
+    private static final long MEGABYTE = 1024L * 1024L;
+    /**
+     * Define variables
+     */
+    protected String applicationUrl = propertyReader.readApplicationFile("Edureka-URL");
+    public static String Pbrowser;
+
+    @BeforeClass
+    public void setUp() throws IOException {
+        if (("firefox").equalsIgnoreCase(browser)) {
+
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+
+            driver = new FirefoxDriver();
+        }
+        else if (("IE").equalsIgnoreCase(browser)) {
+
+            String path = getPath();
+
+            File file = new File(path
+                    + "//IEWebdriver//IEDriverServer.exe");
+            System.setProperty("webdriver.ie.driver",
+                    file.getAbsolutePath());
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS,
+                    true);
+            capabilities
+            .setCapability(
+                    InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
+                    true);
+            capabilities.setCapability(
+                    InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, false);
+            driver = new InternetExplorerDriver(capabilities);
+        }else if (("chrome").equalsIgnoreCase(browser) && (os.equalsIgnoreCase("window"))) {
+            final String path = getPath();
+            final File file = new File(path
+                    + "//ChromeWebdriver//chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver",
+                    file.getAbsolutePath());
+            final DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS,
+                    true);
+
+            driver = new ChromeDriver(capabilities);
+        }
+        else if (("chrome").equalsIgnoreCase(browser) && (os.equalsIgnoreCase("linux"))) {
+            final String path = getPath();
+            final File file = new File(path
+                    + "//ChromeWebdriver//chromedriver");
+            System.setProperty("webdriver.chrome.driver",
+                    file.getAbsolutePath());
+            final DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability(CapabilityType.ACCEPT_SSL_CERTS,
+                    true);
+            driver = new ChromeDriver(capabilities);
+        }
+
+
+        // Maximize window
+        driver.manage().window().maximize();
+
+        // Delete cookies
+        driver.manage().deleteAllCookies();
+    }
+
+    public WebDriver getWebDriver() {
+        return driver;
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void tearDown() throws IOException {
+        logger.debug("Execution completed for test\n");
+        logger.debug("*****************************************************************************");
+
+        logger.debug("Memory after execution (in MB) " + runtime.totalMemory()
+                / MEGABYTE);
+
+        // Run the garbage collector
+        runtime.gc();
+
+        logger.debug("Memory freed after execution (in MB) "
+                + runtime.freeMemory() / MEGABYTE);
+
+        // Calculate the used memory
+        final long memory = runtime.totalMemory() - runtime.freeMemory();
+        logger.debug("Used memory (in MB) " + memory / MEGABYTE);
+
+        try {
+
+          if (!(driver == null))
+            driver.quit();
+        } catch (final Exception e) {   }
+
+    }
+
+    public void addLog(String message) {
+        Reporter.log(message + "<br>");
+    }
+
+    /**
+     * Handle child windows
+     * 
+     * @return
+     */
+    public String switchPreviewWindow() {
+        Set<String> windows = getWebDriver().getWindowHandles();
+        Iterator<String> iter = windows.iterator();
+        String parent = iter.next();
+        getWebDriver().switchTo().window(iter.next());
+        return parent;
+    }
+
+    /**
+     * Get random integer
+     * 
+     * @param aStart
+     * @param aEnd
+     * @return
+     */
+    public int getRandomInteger(int aStart, int aEnd) {
+        Random aRandom = new Random();
+        if (aStart > aEnd) {
+            throw new IllegalArgumentException("Start cannot exceed End.");
+        }
+        // get the range, casting to long to avoid overflow problems
+        long range = (long) aEnd - (long) aStart + 1;
+        // compute a fraction of the range, 0 <= frac < range
+        long fraction = (long) (range * aRandom.nextDouble());
+        int randomNumber = (int) (fraction + aStart);
+        return randomNumber;
+    }
+
+    /**
+     * Get random string
+     * 
+     * @param len
+     * @return
+     */
+    public String randomString(int len) {
+        String AB = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder(len);
+        for (int i = 0; i < len; i++)
+            sb.append(AB.charAt(rnd.nextInt(AB.length())));
+        return sb.toString();
+    }
+
+    /**
+     * Get absolute path
+     * 
+     * @return
+     */
+    public String getPath() {
+        String path = "";
+        File file = new File("");
+        String absolutePathOfFirstFile = file.getAbsolutePath();
+        path = absolutePathOfFirstFile.replaceAll("\\\\+", "/");
+        return path;
+    }
+
+    /**
+     * Get absolute path
+     * 
+     * @return
+     */
+    public String getPathUpload() {
+        String path = "";
+        File file = new File("");
+        String absolutePathOfFirstFile = file.getAbsolutePath();
+        path = absolutePathOfFirstFile.replaceAll("/", "//");
+        return path;
+    }
+
+    /**
+     * Switch frame
+     * 
+     * @param arr
+     */
+    public void switchFrame(String[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            getWebDriver().switchTo().frame(arr[i]);
+        }
+    }
+
+    /**
+     * capturing screenshot
+     * 
+     * @param fileName
+     */
+    public void captureScreenshot(String fileName) {
+        try {
+            String screenshotName = this.getFileName(fileName);
+            FileOutputStream out = new FileOutputStream("screenshots//"
+                    + screenshotName + ".jpg");
+            out.write(((TakesScreenshot) driver)
+                    .getScreenshotAs(OutputType.BYTES));
+            out.close();
+            String path = getPath();
+            String screen = "file://" + path + "/screenshots/" + screenshotName
+                    + ".jpg";
+            Reporter.log("<a href= '" + screen + "'target='_blank' ><img src='"
+                    + screen + "' height=\"42\" width=\"42\" >"
+                    + screenshotName + "</a>");
+        } catch (Exception e) {
+
+        }
+    }
+
+    /**
+     * Creating file name
+     * 
+     * @param file
+     * @return
+     */
+    public String getFileName(String file) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        String fileName = file + dateFormat.format(cal.getTime());
+        return fileName;
+
+    }
+
+    /**
+     * Check running processes
+     * 
+     * @return
+     */
+    public boolean CheckProcessRunning() {
+        try {
+            String line;
+            Process p = Runtime.getRuntime().exec("tasklist");
+            BufferedReader input = new BufferedReader(new InputStreamReader(
+                    p.getInputStream()));
+            while ((line = input.readLine()) != null) {
+                if (line.toLowerCase().contains("iexplore"))
+                    return true;
+            }
+            input.close();
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+        return false;
+    }
+
+    /**
+     * Get Random Number
+     * @return
+     */
+    public String getRandomNumber() {
+        DateFormat format = new SimpleDateFormat("ddMMyyHHmmSS");
+        Date date = new Date();
+        String randomInteger = format.format(date);
+        return randomInteger;
+    }
+
+    /**
+     * Navigate to the application
+     * 
+     */
+    public DashboardPage applicationSetup() {
+        getWebDriver().navigate().to(applicationUrl);
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     *  Get browser
+     * @return
+     */
+    public String getBrowser() {
+        return System.getProperty("browser");
+    }
+
+    /**
+     * Get Parend Windows Handles
+     * @return
+     * @throws Exception
+     */
+    public String getParentWindowHandle() throws Exception {
+        String window = getWebDriver().getWindowHandle();
+        return window;
+    }
+
+    /**
+     *  Switch Parent window
+     * @param window
+     * @throws Exception
+     */
+    public void switchParentWindow(String window) throws Exception {
+        getWebDriver().switchTo().window(window);
+    }
+
+    /**
+     *  Get OS name
+     * @return
+     */
+    public String getOSName(){
+        return System.getProperty("os.name");
+    }
+}

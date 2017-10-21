@@ -1,0 +1,28 @@
+#Login to application with this test data
+UserName=userabc
+PhoneNumber=9897989798
+Password=123456789
+Query=ABCDEF
+PhNumberInAlphabets=abcdefghid
+InCorrectPassword=1234567
+InCorrectEmail=testDAQ@tech.edureka
+NotRegisteredEmail=tes_1111Q@tech.edureka
+CorrectEmail=testing@tech.edureka.in
+
+#Currency
+INRCurrency=INR
+USDCurrency=USD
+
+#Course Names
+BigData&Haddop= Big Data and Hadoop
+ApacheSpark&Sacla=Apache Spark and Sacla
+DataScienceCourse=Data Science
+
+#Database Info
+Table_Name=users
+Column_Name=first_name
+
+#ForgotPassword
+NotRegisteredEmail=tes_1111Q@tech.edureka
+BlankEmailMessage=Please enter your email id to reset password
+NotRegisteredEmailMessage=This email id is not registered.

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//div[contains(@class,'lms-title-mycourses')]/h4]]></PageHeader>
+	<TabGoToCourse><![CDATA[//a[text()='Go To Course']]]></TabGoToCourse>
+
+	<CourseContent>
+		<ClassRecording><![CDATA[//a[@href='#pre-recorded-session']]]></ClassRecording>
+		<LTRefer><![CDATA[//p[text()='Your unique referral link']/following::p[contains(text(),'http://goo')]]]></LTRefer>
+		<Guide><![CDATA[(//h5[contains(text(),'Guide for your Learning Management System')])[1]]]></Guide>
+		<TabCourseContent><![CDATA[//a[@href='#course-content']]]></TabCourseContent>
+		<TabGettingStarted><![CDATA[//a[text()='Getting Started']]]></TabGettingStarted>
+		<GettingStarted><![CDATA[//div[@id='getting-started']/div/ul[2]/ul]]></GettingStarted>
+		<PPTViewLink><![CDATA[//a[@data-module-tab-type='getting-started']/ul/li[2]/h5]]></PPTViewLink>
+	</CourseContent>
+
+	<ClassRecording>
+		<Videos><![CDATA[//div[@id='pre-recorded-session']/div/ul/div/a]]></Videos>
+		<BTNPlay><![CDATA[//div[@id='pre-recorded-session']/div/ul/div/a[1]]]></BTNPlay>
+		<BTNVideoPlaying><![CDATA[//div[contains(@class,'wistia_romulus_control playing')]]]></BTNVideoPlaying>
+		<BTNVideoPause><![CDATA[//div[contains(@class,'wistia_romulus_control paused')]]]></BTNVideoPause>
+	</ClassRecording>
+	
+	<SearchFunctionality>
+        <ImgSearch><![CDATA[//button[@id='dosearch']]]></ImgSearch>
+        <TBSearch><![CDATA[//input[@id='searchinlms']]]></TBSearch>
+        <Content><![CDATA[//div[@class='hidden-lms-block courseContentTab']]]></Content>
+    </SearchFunctionality>
+</Locators>

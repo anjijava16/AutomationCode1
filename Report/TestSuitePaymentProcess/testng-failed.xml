@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [TestSuitePaymentProcess]">
+  <test name="TestSuitePaymentProcess(failed)">
+    <classes>
+      <class name="com.edureka.paymentProcess.BatchTableValidationOnChangeOfTimeZone_Currency">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_001BatchTableValidationOnChangeOfTimeZone_Currency"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.BatchTableValidationOnChangeOfTimeZone_Currency -->
+      <class name="com.edureka.paymentProcess.MakePaymentThroughPaypal">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_004MakePaymentThroughPaypal"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentThroughPaypal -->
+      <class name="com.edureka.paymentProcess.PriceCalculationInBatchTable">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_002PriceCalculationInBatchTable"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.PriceCalculationInBatchTable -->
+      <class name="com.edureka.paymentProcess.CalculateAndValidatePricesOnChangeOfCurrency">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_003CalculateAndValidatePricesOnChange"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.CalculateAndValidatePricesOnChangeOfCurrency -->
+      <class name="com.edureka.paymentProcess.MakePaymentThroughRazorPay">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentThroughRazorPay -->
+    </classes>
+  </test> <!-- TestSuitePaymentProcess(failed) -->
+</suite> <!-- Failed suite [TestSuitePaymentProcess] -->

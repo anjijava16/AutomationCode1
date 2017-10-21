@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [TestSuiteRegistrationProcess]">
+  <test name="TestSuiteRegistrationProcess(failed)">
+    <classes>
+      <class name="com.edureka.registration.VerifySignUpFromNavigationHeader">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.registration.VerifySignUpFromNavigationHeader -->
+      <class name="com.edureka.registration.VerifySubjectLineOfVerification">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_027VerifyErrorMsgForIncorrectVeirficationCode"/>
+          <include name="test_031VerifyCompleteForgotPasswordFunctionality"/>
+          <include name="test_025VerifySubjectLineOfVerification"/>
+          <include name="test_026VerifyCorrectVerificationCode"/>
+          <include name="tearDown"/>
+          <include name="test_029VerifyNewPasswordShouldNotBeLessThan8Characters"/>
+        </methods>
+      </class> <!-- com.edureka.registration.VerifySubjectLineOfVerification -->
+      <class name="com.edureka.registration.ClickPasswordResetAndDontResetPassword">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.registration.ClickPasswordResetAndDontResetPassword -->
+      <class name="com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.registration.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets -->
+      <class name="com.edureka.registration.VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.registration.VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword -->
+      <class name="com.edureka.registration.CreateUserForForgotPassword">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_CreateUserForForgotPassword"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.registration.CreateUserForForgotPassword -->
+      <class name="com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty -->
+      <class name="com.edureka.registration.VerifySignupShouldAllowWithSameIdUsedInInquiry">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_033VerifySignupShouldAllowWithSameIdUsedInInquiry"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.registration.VerifySignupShouldAllowWithSameIdUsedInInquiry -->
+      <class name="com.edureka.registration.VerifyUserAbleToSuccessfullyChangeThePassword">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.registration.VerifyUserAbleToSuccessfullyChangeThePassword -->
+      <class name="com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank -->
+      <class name="com.edureka.registration.VerifyLoginWithCorrectEmailAndCorrectPassword">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.registration.VerifyLoginWithCorrectEmailAndCorrectPassword -->
+      <class name="com.edureka.registration.LoginWithEmailAndWithoutPassword">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.registration.LoginWithEmailAndWithoutPassword -->
+    </classes>
+  </test> <!-- TestSuiteRegistrationProcess(failed) -->
+</suite> <!-- Failed suite [TestSuiteRegistrationProcess] -->

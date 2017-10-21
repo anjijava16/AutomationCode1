@@ -1,0 +1,54 @@
+package com.edureka.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class ForumsPage extends DriverHelper{
+
+    private LocatorReader forumsLocator;
+    public ForumsPage(WebDriver driver) {
+        super(driver);
+
+        forumsLocator = new LocatorReader("Forums.xml");
+    }
+
+    /**
+     *  Verify Fourms Page
+     * @return
+     */
+    public ForumsPage verifyPage(){
+        String pageHeader = forumsLocator.getLocator("PageHeader");
+        WaitForElementPresent(pageHeader, getTimeOut());
+        String fourmsPage = getAttribute(pageHeader, "placeholder");
+        Assert.assertTrue(fourmsPage.contains("Forum"));
+        return PageFactory.initElements(driver, ForumsPage.class);
+    }
+
+    /**
+     *  Verify and Click on Post Question button
+     * @return
+     */
+
+    public QuestionPage verifyAndClickOnPostQuestionButton(){
+        String btnPostQuestion = forumsLocator.getLocator("BTNPostQuestion");
+        WaitForElementPresent(btnPostQuestion, getTimeOut());
+        Assert.assertTrue(isElementPresent(btnPostQuestion));
+        clickOn(btnPostQuestion);
+        return PageFactory.initElements(driver, QuestionPage.class);
+    }
+
+    /**
+     *  Verify Question is successfully posted
+     * @return
+     */
+    public ForumsPage verifySuccessMsgPostQuestion(){
+        String successMessagePostQuestion = forumsLocator.getLocator("SuccessMsgPostQuestion");
+        WaitForElementPresent(successMessagePostQuestion, getTimeOut());
+        Assert.assertTrue(isElementPresent(successMessagePostQuestion));
+        return PageFactory.initElements(driver, ForumsPage.class);
+    }
+}

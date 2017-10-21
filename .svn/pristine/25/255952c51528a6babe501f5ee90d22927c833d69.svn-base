@@ -1,0 +1,335 @@
+package com.edureka.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.Database;
+import com.edureka.util.DriverHelper;
+
+public class SelectedCoursePage extends DriverHelper{
+
+    //Case 1
+    String tableName = "users";
+    String columnNameToBeFetched = "id";
+    String columnNameToBeMatched = "email";
+
+
+    //Case 2
+    String tableName2 = "user_events";
+    String columnNameToBeFetched2 = "event_type";
+    String columnNameToBeMatched2 = "user_id";
+
+    private LocatorReader selectedCoursesLocator;
+    private DatabaseVerifications databaseVerification;
+
+    public SelectedCoursePage(WebDriver driver) {
+        super(driver);
+        databaseVerification = new DatabaseVerifications(driver);
+        selectedCoursesLocator = new LocatorReader("SelectedCourse.xml");
+    }
+
+    /**
+     * Verify Selected Course page is open
+     * @param selectCourse
+     * @return
+     */
+    public SelectedCoursePage verifySelectedCoursePage(String selectCourse){
+        String course= "//h4[contains(text(),'"+selectCourse+"')]";
+        WaitForElementPresent(course, getTimeOut());
+        Assert.assertTrue(isElementPresent(course));
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     *  Click on Query box
+     * @return
+     * @throws InterruptedException 
+     */
+    public SelectedCoursePage clickOnQueryBox() throws InterruptedException{
+        scrollWindow(0, 1000);
+        String queryBox= selectedCoursesLocator.getLocator("QueryBox.HeaderQueryBox");
+        Thread.sleep(5000);
+        mouseClickByLocator(queryBox, "Click on QuerBox");
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     * Drop query
+     * @param query
+     * @param phNumber
+     * @return
+     */
+    public SelectedCoursePage sendQuery(){
+        String userName= "User"+randomString(2);
+        String email = "test" + randomString(3)+ "@tech.edureka.in";
+        propertyReader.updatePropertyTestData("QueryEmail_Id", email);
+        propertyReader.updatePropertyTestData("QueryUserName", userName);
+        String query = propertyReader.readTestData("Query");
+
+        String phNumber= propertyReader.readTestData("PhoneNumber");
+        String tbQueryName = selectedCoursesLocator.getLocator("QueryBox.TBQueryName");
+        WaitForElementVisible(tbQueryName, getTimeOut());
+        sendKeys(tbQueryName, userName);
+
+        String tbQueryEmail= selectedCoursesLocator.getLocator("QueryBox.TBQueryEmail");
+        WaitForElementVisible(tbQueryEmail, getTimeOut());
+        sendKeys(tbQueryEmail, email);
+
+
+        String tbQueryPhNumberString= selectedCoursesLocator.getLocator("QueryBox.TBQueryPhNumber");
+        WaitForElementVisible(tbQueryPhNumberString, getTimeOut());
+        sendKeys(tbQueryPhNumberString, phNumber);
+
+        String tbInquiry = selectedCoursesLocator.getLocator("QueryBox.TBInquiry");
+        WaitForElementVisible(tbInquiry, getTimeOut());
+        sendKeys(tbInquiry, query);
+
+        String btnSubmit= selectedCoursesLocator.getLocator("QueryBox.BTNSubmit");
+        WaitForElementVisible(btnSubmit, getTimeOut());
+        clickOn(btnSubmit);
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     * Verify Submit Inquiry Message
+     * @return
+     */
+    public SelectedCoursePage verifySumbitInquiry(){
+        String messageSubmitInquiry= selectedCoursesLocator.getLocator("QueryBox.MsgSubmitInquiry");
+        WaitForElementPresent(messageSubmitInquiry, 5);
+        Assert.assertTrue(isElementPresent(messageSubmitInquiry));
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     * Select Currency
+     * @param currency
+     * @return
+     */
+    public SelectedCoursePage selectCurrency(String currency){
+        WebElement lTChange = driver.findElement(By.xpath(selectedCoursesLocator.getLocator("Currency.LTCurrency")));
+        lTChange.click();
+        List<WebElement> currencyList = driver.findElements(By.xpath(selectedCoursesLocator.getLocator("Currency.CurrencyList")));
+        int totalCurrency= currencyList.size();
+        for(int i=1;i<=totalCurrency;i++){
+            String lTcurrency= "//ul[@id='currency-select-item']/li["+i+"]/a";
+            String currencyName= getText(lTcurrency);
+            if(currencyName.contains(currency)){
+                clickOn(lTcurrency);
+                break;
+            }
+        }
+        WebElement btnApply = driver.findElement(By.xpath(selectedCoursesLocator.getLocator("Currency.BTNApply")));
+        btnApply.click();
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     * Click on Enroll Button
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T clickOnEnrollButton(@SuppressWarnings("rawtypes") Class className){
+        String currencyPopUp = selectedCoursesLocator.getLocator("Currency.CurrencyPopUp");
+        WebElement btnEnroll = driver.findElement(By.xpath(selectedCoursesLocator.getLocator("BTNEnroll")));
+        WaitForElementNotVisible(currencyPopUp, 3);
+        waitForWebElementPresent(btnEnroll);
+        btnEnroll.click();
+        return (T) PageFactory.initElements(driver, className);
+    }
+
+    /**
+     * Click on Add To Wishlist Link
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T clickOnAddToWishlistIcon(@SuppressWarnings("rawtypes") Class className){
+        WebElement lTwishlst = driver.findElement(By.xpath(selectedCoursesLocator.getLocator("LTWishlst")));
+        waitForWebElementPresent(lTwishlst);
+        lTwishlst.click();
+        return (T) PageFactory.initElements(driver, className);
+    }
+
+    /**
+     * Click on Play Button of Video
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T playClassRecording(@SuppressWarnings("rawtypes") Class className){
+        WebElement btnPlayVideo = driver.findElement(By.xpath(selectedCoursesLocator.getLocator("BTNPlayVideo")));
+        waitForWebElementPresent(btnPlayVideo);
+        btnPlayVideo.click();
+        return (T) PageFactory.initElements(driver, className);
+    }
+
+    /**
+     * Verify Event Type is IN, when User Drop a Query.
+     * @return
+     * @throws Exception
+     */
+    public SelectedCoursePage verifyEventTypeViaDropQuery() throws Exception{
+
+        String tBuserEmailId = propertyReader.readRunTimeData("Email_Id");
+        String tEventType = propertyReader.readRunTimeData("Event_Type_DROP");
+
+        Database dbObject = new Database();
+
+        String userId = dbObject.getRecord(tableName, columnNameToBeFetched, columnNameToBeMatched, tBuserEmailId);
+        String userEventType = dbObject.getRecord(tableName2, columnNameToBeFetched2, columnNameToBeMatched2, userId);
+
+
+        if(tEventType.equals(userEventType)){
+            System.out.println("Event Type Is IN For Sign Up Via Drop Us a Query");
+        }
+
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }  
+
+    /**
+     *  Click on Sign In Link
+     * @return
+     * @throws InterruptedException 
+     */
+    public SignInModalPage clickSignInHeader() throws InterruptedException {
+        String lTsignIn =selectedCoursesLocator.getLocator("LTsignIn");
+        Thread.sleep(5000);
+        Assert.assertTrue(isElementPresent(lTsignIn));
+        clickOn(lTsignIn);
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     *  Refresh browser
+     */
+    public SelectedCoursePage referhBrowser(){
+        driver.navigate().refresh();
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     *  Verify User name
+     * @return
+     */
+    public SelectedCoursePage verifySignUpSuccessfully() {
+        String pageName =selectedCoursesLocator.getLocator("ProfileDropdown.UserName");
+        WaitForElementPresent(pageName,20);
+        WebElement userNameHeader = driver.findElement(By.xpath(pageName));
+        String tBuserName = propertyReader.readRunTimeData("UserName");
+        String pageheaderText = userNameHeader.getText();
+        Assert.assertTrue(pageheaderText.equalsIgnoreCase(tBuserName));
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     *  Verify Data in user Table
+     * @return
+     * @throws Exception
+     */
+    public SelectedCoursePage dataVerificationInUserTable() throws Exception {
+        SelectedCoursePage selectedCourse;
+        selectedCourse = (SelectedCoursePage)databaseVerification.dataVerificationInUserTable(SelectedCoursePage.class);
+        return selectedCourse;
+    }
+
+    /**
+     *  Verify Data in User_Leads Table
+     * @param courseID
+     * @param webSiteAction
+     * @return
+     * @throws Exception
+     */
+    public SelectedCoursePage dataVerificationInUser_LeadsTable(String courseId, String webSiteAction) throws Exception {
+        SelectedCoursePage selectedCourse;
+        selectedCourse = (SelectedCoursePage)databaseVerification.dataVerificationInUserLeadTable(SelectedCoursePage.class, courseId, webSiteAction);
+        return selectedCourse;
+    }
+
+    /**
+     *  Verify Data in User Courses Table
+     * @param courseId
+     * @param isPaidValue
+     * @param courseGroup
+     * @return
+     * @throws Exception
+     */
+    public SelectedCoursePage dataVerificationInUser_CoursedTable(String courseId, String isPaidValue, String courseGroup) throws Exception {
+        SelectedCoursePage selectedCourse;
+        selectedCourse = (SelectedCoursePage)databaseVerification.dataVerificationInUser_Course_Table(SelectedCoursePage.class, courseId, isPaidValue, courseGroup);
+        return selectedCourse;
+    }
+
+    /**
+     *  Verify Data in user Events Table
+     * @param courseId
+     * @param event_context
+     * @param utm_source
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    public SelectedCoursePage dataVerificationInUser_EventTable(String courseId, String event_context,String utm_campaign) throws Exception {
+        SelectedCoursePage selectedCourse;
+        selectedCourse = (SelectedCoursePage)databaseVerification.dataVerificationInUser_Events_Table(SelectedCoursePage.class, courseId, event_context, utm_campaign);
+        return selectedCourse;
+    }
+
+    /**
+     *  Verify Data in Ambassadors Table
+     * @param level_id
+     * @return
+     * @throws Exception
+     */
+    public SelectedCoursePage dataVerificationInUser_AmbassadorsTable(String level_id) throws Exception {
+        SelectedCoursePage selectedCourse;
+        selectedCourse = (SelectedCoursePage)databaseVerification.dataVerificationInAmbassadors(SelectedCoursePage.class, level_id);
+        return selectedCourse;
+    }
+
+    /**
+     *  Click on Profile Dropdown
+     * @param userName
+     * @return
+     */
+    public SelectedCoursePage clickOnProfileDropdown(String userName){
+        String dropdown ="//span[contains(text(),'"+userName+"')]";
+        WaitForElementPresent(dropdown, getTimeOut());
+        clickOn(dropdown);
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     *  Logout application
+     * @return
+     */
+    public DashboardPage logout(){
+        String logout=selectedCoursesLocator.getLocator("ProfileDropdown.LTLogout");;
+        WaitForElementPresent(logout, getTimeOut());
+        mouseOver(logout);
+        clickOn(logout);
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+    
+    
+    /**
+     *  Verify Data for inquiry
+     * @param courseId
+     * @param webSiteAction
+     * @param event_context
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    public SelectedCoursePage verifyDataForInquiry(String courseId, String webSiteAction,String event_context, String utm_campaign) throws Exception {
+        SelectedCoursePage selectCourse;
+        selectCourse = (SelectedCoursePage)databaseVerification.dataVerificationFor_Inquiry(SelectedCoursePage.class, courseId, webSiteAction,event_context, utm_campaign);
+        return selectCourse;
+    }
+
+}
+

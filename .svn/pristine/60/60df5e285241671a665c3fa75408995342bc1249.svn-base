@@ -1,0 +1,105 @@
+package com.edureka.leadProcess;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class VerifySignupFromCourseLandingPage extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private UserHomePage userHomePage;
+    private SelectedCoursePage selectedCoursePage;
+    private SignInModalPage signInModalPage;
+
+    @Test
+    public void test_002VerifySignupFromCourseLandingPage() throws Exception {
+
+        try {
+
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            //Select a course
+            String course= propertyReader.readTestData("BigData&Hadoop");
+            selectedCoursePage= dashboardPage.selectCourse(course);
+
+            // Verify Selected Course Page Is Open
+            addLog("Verify Selected Course Page Is Open");
+            selectedCoursePage=selectedCoursePage.verifySelectedCoursePage(course);
+
+            // Click on Signin 
+            addLog("Click on Signin");
+            signInModalPage = selectedCoursePage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // click on Sign up link
+            addLog("click on Sign up link");
+            signInModalPage=signInModalPage.clickSignUp();
+
+            // Sign up user
+            String domainName= propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            selectedCoursePage= signInModalPage.signUp(SelectedCoursePage.class, domainName);
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            selectedCoursePage=selectedCoursePage.verifySignUpSuccessfully();
+
+            // Verify Data in User Table
+            addLog("Verify Data in User Table");
+            selectedCoursePage= selectedCoursePage.veryDataInUserTable();
+
+            // Verify Data in User Lead Table
+            String course__Id = propertyReader.readTestData("Course_ID_BigData");
+            String webSiteAction = propertyReader.readTestData("HomePage_Signup_WebSite_Action");
+            addLog("Verify Data in User Lead Table");
+            selectedCoursePage= selectedCoursePage.veryDataInUser_LeadsTable(course__Id,webSiteAction);
+
+            // Verify Data in User Course table
+            String course_Group = propertyReader.readTestData("Course_Group_BigData");
+            String isPaidValue= propertyReader.readTestData("HomePage_Signup_Is_Paid_Value");
+            addLog("Verify Data in User Course table");
+            selectedCoursePage= selectedCoursePage.veryDataInUser_CoursedTable(course__Id,isPaidValue,course_Group);
+
+            // Verify Data in User Event Table
+            String campaign_Values= propertyReader.readTestData("UTM_campaign");
+            addLog("Verify Data in User Event Table");
+            selectedCoursePage= selectedCoursePage.veryDataInUser_EventTable(course__Id,webSiteAction,campaign_Values);
+
+            // Veriy Data in Ambassadors table
+            String level_id = propertyReader.readTestData("HomePage_Signup_level_id");
+            addLog("Veriy Data in Ambassadors table");
+            selectedCoursePage= selectedCoursePage.veryDataInUser_AmbassadorsTable(level_id);
+            
+            // Click on Profile Dropdown
+            String userName = propertyReader.readRunTimeData("UserName");
+            addLog("Click on Profile Dropdown");
+            selectedCoursePage=selectedCoursePage.clickOnProfileDropdown(userName);  
+            
+            // Logout from the application
+            addLog("Logout from the application.");
+            dashboardPage = selectedCoursePage.logout();            
+
+        }
+
+        catch (final Error e) {
+            captureScreenshot("test_002VerifySignupFromCourseLandingPage");
+            throw e;
+        } 
+        catch (final Exception e) {
+            captureScreenshot("test_002VerifySignupFromCourseLandingPage");
+            throw e;
+        }
+    }
+}

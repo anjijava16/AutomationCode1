@@ -1,0 +1,157 @@
+<html>
+<head>
+<title>TestNG:  VerifySubjectLineOfVerification</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>VerifySubjectLineOfVerification</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>4/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Sep 20 19:22:14 IST 2016</td>
+</tr>
+<tr><td>Total time:</td><td>120 seconds (120340 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.edureka.registration.VerifySubjectLineOfVerification.test_025VerifySubjectLineOfVerification()'><b>test_025VerifySubjectLineOfVerification</b><br>Test class: com.edureka.registration.VerifySubjectLineOfVerification<br/>
+<a href="#Output-997850486" onClick='toggleBox("Output-997850486", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-997850486" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-997850486">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+click on Sign up link<br><br/>
+Sign up user<br><br/>
+Verify User Home Page<br><br/>
+Click on Profile dropdown<br><br/>
+Logout Application<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Verify Enter email<br><br/>
+Click on forgot password<br><br/>
+Verify Message Verification code sent to email testOWA@mailinator.com<br><br/>
+Navigate to mailnator<br><br/>
+Enter email<br><br/>
+open Email<br><br/>
+Verify Mail subject is correct<br><br/>
+</div>
+</td>
+<td></td>
+<td>76</td>
+<td>com.edureka.registration.VerifySubjectLineOfVerification@e45f292</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifySubjectLineOfVerification.test_026VerifyCorrectVerificationCode()'><b>test_026VerifyCorrectVerificationCode</b><br>Test class: com.edureka.registration.VerifySubjectLineOfVerification<br/>
+<a href="#Output-1739555643" onClick='toggleBox("Output-1739555643", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1739555643" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1739555643">
+Enter Verification code, enter new password and click on Password reset button<br><br/>
+Verify message password has reset<br><br/>
+Navigate to mailnator<br><br/>
+Enter email<br><br/>
+open Email<br><br/>
+Verify Mail subject is correct<br><br/>
+Navigate to Edureka<br><br/>
+Verify error message The reset password link has expired<br><br/>
+</div>
+</td>
+<td></td>
+<td>27</td>
+<td>com.edureka.registration.VerifySubjectLineOfVerification@e45f292</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifySubjectLineOfVerification.test_027VerifyErrorMsgForIncorrectVeirficationCode()'><b>test_027VerifyErrorMsgForIncorrectVeirficationCode</b><br>Test class: com.edureka.registration.VerifySubjectLineOfVerification<br/>
+<a href="#Output-1598898814" onClick='toggleBox("Output-1598898814", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1598898814" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1598898814">
+Get Verification Code<br><br/>
+Navigate to Edureka<br><br/>
+Verify Message 'Verification code sent to email testOWA@mailinator.com<br><br/>
+Enter Incorrect Verification code, enter new password and click on Password reset button<br><br/>
+Verify Error message for incorrect verification code <br><br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>com.edureka.registration.VerifySubjectLineOfVerification@e45f292</td></tr>
+<tr>
+<td title='com.edureka.registration.VerifySubjectLineOfVerification.test_029VerifyNewPasswordShouldNotBeLessThan8Characters()'><b>test_029VerifyNewPasswordShouldNotBeLessThan8Characters</b><br>Test class: com.edureka.registration.VerifySubjectLineOfVerification<br/>
+<a href="#Output-659937029" onClick='toggleBox("Output-659937029", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-659937029" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-659937029">
+Enter Verification code, enter new password and click on Password reset button<br><br/>
+Verify Error message when new password is less than 8 characters<br><br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>com.edureka.registration.VerifySubjectLineOfVerification@e45f292</td></tr>
+</table><p>
+</body>
+</html>

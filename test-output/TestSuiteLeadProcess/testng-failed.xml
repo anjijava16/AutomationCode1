@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [TestSuiteLeadProcess]">
+  <test name="TestSuiteLeadProcess(failed)">
+    <classes>
+      <class name="com.edureka.leadProcess.VerifySignupFromCourseLandingPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_002VerifySignupFromCourseLandingPage"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.VerifySignupFromCourseLandingPage -->
+      <class name="com.edureka.leadProcess.EnrollOnAnyCourseLandingPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.EnrollOnAnyCourseLandingPage -->
+      <class name="com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage -->
+      <class name="com.edureka.leadProcess.VerifySignInLeadProcessNavigationHeader">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.VerifySignInLeadProcessNavigationHeader -->
+      <class name="com.edureka.leadProcess.EnrollInListViewAllCoursePage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.EnrollInListViewAllCoursePage -->
+      <class name="com.edureka.leadProcess.VerifySignupFromHeaderOnAnyCourseLandingPage">
+        <methods>
+          <include name="test_011SignInFromHeaderOnAnyCourseLandingPage"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.VerifySignupFromHeaderOnAnyCourseLandingPage -->
+      <class name="com.edureka.leadProcess.AddToWishListOnAnyCourseLandingPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.AddToWishListOnAnyCourseLandingPage -->
+      <class name="com.edureka.leadProcess.SignupFromAllCoursesPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.SignupFromAllCoursesPage -->
+      <class name="com.edureka.leadProcess.VerifySignupFromEnrollOnAnyCourse">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.VerifySignupFromEnrollOnAnyCourse -->
+      <class name="com.edureka.leadProcess.SignInEnrollOnAnyCourse">
+        <methods>
+          <include name="test_014SignInEnrollOnAnyCourse"/>
+          <include name="test_023EnrollOnAnyCourseLandingPage"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.SignInEnrollOnAnyCourse -->
+      <class name="com.edureka.leadProcess.InquiryFromCourseLandingPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.InquiryFromCourseLandingPage -->
+      <class name="com.edureka.leadProcess.SingupFromEnrollInListView">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_008SingupFromEnrollInListView"/>
+          <include name="test_017SignInFromEnrollInListView"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.SingupFromEnrollInListView -->
+      <class name="com.edureka.leadProcess.WishListInListViewAllCoursePage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.WishListInListViewAllCoursePage -->
+      <class name="com.edureka.leadProcess.SignUpFromAddToWishlistInGridView">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_024WishListInGridViewAllCoursePage"/>
+          <include name="test_016SignInAddToWishlistInGridView"/>
+          <include name="test_007SignUpFromAddToWishlistInGridView"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.SignUpFromAddToWishlistInGridView -->
+      <class name="com.edureka.leadProcess.VerifySignupFromHeaderHomePage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.VerifySignupFromHeaderHomePage -->
+      <class name="com.edureka.leadProcess.VerifySignupFromWatchSampleClassRecording">
+        <methods>
+          <include name="test_013SignInFromVerifyWatchSimpleRecording"/>
+          <include name="test_004VerifySignUpFromWatchSampleClassRecording"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.VerifySignupFromWatchSampleClassRecording -->
+      <class name="com.edureka.leadProcess.CheckForInquiryFromAllCoursePage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.CheckForInquiryFromAllCoursePage -->
+      <class name="com.edureka.leadProcess.SingupFromWishListInListView">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.SingupFromWishListInListView -->
+      <class name="com.edureka.leadProcess.SignInFromAddToWishListInListViewOnAllCoursesPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.SignInFromAddToWishListInListViewOnAllCoursesPage -->
+      <class name="com.edureka.leadProcess.SignInFromAddToWishlistOnAnyCourseLandingPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.SignInFromAddToWishlistOnAnyCourseLandingPage -->
+    </classes>
+  </test> <!-- TestSuiteLeadProcess(failed) -->
+</suite> <!-- Failed suite [TestSuiteLeadProcess] -->

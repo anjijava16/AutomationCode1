@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+
+<project name="Edureka_Automation" default="" basedir=".">
+    <!-- ====== Initialize Properties ====== -->
+	<property environment="env" />
+    <property name="ws.home" value="." />
+    <property name="test.dest" value="${ws.home}/build" />
+    <property name="test.lib" value="${ws.home}/libs" />
+    <property name="test.src" value="${ws.home}/src/com/edureka" />
+    <property name="test.result" value="${ws.home}/Report" />
+	<property name="timeStamp" value="${date}-${time}" />
+
+    <!-- ====== Include required jar files and set classpath ====== -->
+    <target name="setClassPath" unless="test.classpath">
+        <path id="classpath_jars">
+            <fileset dir="${test.lib}" includes="*.jar" />
+        </path>
+        <pathconvert pathsep=":" property="test.classpath" refid="classpath_jars" />
+    </target>
+
+    <target name="init" depends="setClassPath">
+        <tstamp>
+            <format property="start.time" pattern="MM/dd/yyyy hh:mm aa" />
+        </tstamp>
+        <!--<condition property="ANT" value="${env.ANT_HOME}/bin/ant.bat" else="${env.ANT_HOME}/bin/ant">-->
+        <!--<os family="windows" />-->
+        <!--</condition>-->
+        <taskdef name="testng" classpath="${test.classpath}" classname="org.testng.TestNGAntTask" />
+    </target>
+
+    <!-- ====== Check for ANT setup ====== -->
+    <tstamp>
+        <format property="date" pattern="MMddyyyy" />
+        <format property="time" pattern="hhmmss" />
+    </tstamp>
+
+    <!-- ====== Delete old compiled classes ====== -->
+    <target name="clean">
+        <delete dir="${test.dest}" />
+        <delete dir="${ws.home}/test-output" />
+        <delete dir="${ws.home}/test-outputFailed" />
+        <mkdir dir="${test.result}" />
+    </target>
+
+    <!-- ====== Compile all java files ====== -->
+    <!-- compile -->
+    <target name="compile" depends="init, clean">
+        <delete includeemptydirs="true" quiet="true">
+            <fileset dir="${test.dest}" includes="**/*" />
+        </delete>
+        <echo message="making directory..." />
+        <mkdir dir="${test.dest}" />
+        <!-- <echo message="classpath: ${test.classpath}"/> -->
+        <echo message="compiling..." />
+        <javac debug="true" destdir="${test.dest}" includes="**/*.java, scripts/*/*.java" srcdir="${test.src}" target="1.7" classpath="${test.classpath}">
+        </javac>
+    </target>
+
+    <target name="run-tests-by-pattern" depends="compile">
+        <run-tests-by-pattern pattern="${pattern}" module="${module}" browser="${browser}"/>
+    </target>
+
+    <!--macrodef name="run-tests-by-pattern">
+        <attribute name="pattern" />
+    	<attribute name="module" />
+    	<attribute name="browser" />
+        <sequential>
+            <testng classpath="${test.classpath}:${test.dest}" suitename="@{pattern}" outputdir="${test.result}" haltonfailure="false" useDefaultListeners="true" listeners="org.uncommons.reportng.HTMLReporter">
+                <xmlfileset dir="${ws.home}/testngsuite/@{module}" includes="@{pattern}.xml" />
+                <sysproperty key="org.uncommons.reportng.escape-output" value="false" />
+                <sysproperty key="org.uncommons.reportng.title" value="Edureka_Automation" />
+            	<sysproperty key="module" value="${module}"/>
+            	<sysproperty key="browser" value="${browser}"/>
+            	<sysproperty key="env" value="${environment}"/>
+                <jvmarg value="-Xms256m" />
+                <jvmarg value="-Xmx512m" />
+                <jvmarg value="-XX:MaxPermSize=512m" />
+            </testng>
+        </sequential>
+    </macrodef--> 
+	
+
+	
+	 <macrodef name="run-tests-by-pattern">
+        <attribute name="pattern" />
+    	<attribute name="module" />
+    	<attribute name="browser" />
+		
+        <sequential>
+		
+		
+		<testng classpath="${test.classpath}:${test.dest}" suitename="@{pattern}"  >
+                <xmlfileset dir="${ws.home}/testngsuite/@{module}" includes="@{pattern}.xml" />
+            	<sysproperty key="module" value="${module}"/>
+            	<sysproperty key="browser" value="${browser}"/>
+            	<sysproperty key="env" value="${environment}"/>
+				
+                <jvmarg value="-Xms256m" />
+                <jvmarg value="-Xmx512m" />
+                <jvmarg value="-XX:MaxPermSize=512m" />
+            </testng>
+		
+			<xslt in="${ws.home}/test-output/testng-results.xml" style="${ws.home}/testng-results.xsl" out="${ws.home}/Report-${module}-${date}-${time}/index.html" classpathref="classpath_jars"  processor="SaxonLiaison">
+  
+             <param expression="${basedir}/Report-${module}-${date}-${time}/" name="testNgXslt.outputDir" />
+            <param expression="true" name="testNgXslt.sortTestCaseLinks" />
+            <param expression="FAIL,SKIP,PASS,CONF,BY_CLASS" name="testNgXslt.testDetailsFilter" />
+            <param expression="true" name="testNgXslt.showRuntimeTotals" />   
+			<classpath refid="classpath_jars"></classpath>			
+        </xslt>
+        </sequential>
+    </macrodef>
+
+    <target name="setClass">
+        <path id="classpath_jars">
+            <pathelement path="${basedir}/" />
+            <fileset dir="${test.lib}" includes="*.jar" />
+        </path>
+        <pathconvert pathsep=":" property="test.classpath" refid="classpath_jars" />
+    </target>
+    
+    
+    <target name="runAll" depends="compile">
+      <testng classpath="${test.classpath}:${test.dest}" suitename="All" outputdir="${test.result}" haltonfailure="true" useDefaultListeners="false" listeners="org.uncommons.reportng.HTMLReporter">
+       <xmlfileset dir="${ws.home}/config" includes="TestSuiteEdurekaPOC.xml" />
+       <sysproperty key="org.uncommons.reportng.escape-output" value="false" />
+       <sysproperty key="org.uncommons.reportng.title" value="My Test Report" />
+       <jvmarg value="-Xms256m" />
+       <jvmarg value="-Xmx512m" />
+       <jvmarg value="-XX:MaxPermSize=512m" />
+  </testng>
+
+ </target>
+    
+</project>
+

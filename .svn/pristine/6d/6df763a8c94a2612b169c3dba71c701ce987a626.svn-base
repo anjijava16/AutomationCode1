@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+        <PageHeader><![CDATA[//div[@class='ordersummdeatil whitebg clearfix']/div[1]]]></PageHeader>
+        <Price><![CDATA[//span[@id='org_price']]]></Price>
+        <Discount><![CDATA[//span[@id='disc_price']]]></Discount>
+        <NetPrice><![CDATA[//span[@id='net_price']]]></NetPrice>
+        <ServiceTax><![CDATA[//span[@id='service-tax']]]></ServiceTax>
+       
+        <TotalAmount><![CDATA[//span[@id='total_price']]]></TotalAmount>
+        <TimeZone><![CDATA[//div[contains(@class,'order-batch-time')]]]></TimeZone>>
+        <PaymentModeDebitAndCreditCard><![CDATA[//a[@href='#cddccard']]]></PaymentModeDebitAndCreditCard>>
+        <BTNRazorPaySecurely><![CDATA[//button[@class='btn btn-block paybtn']]]></BTNRazorPaySecurely>
+        <PaymentModeNetBanking><![CDATA[//img[contains(@src,'net-banking.png')]]]></PaymentModeNetBanking>
+        <ImgLoading><![CDATA[.//*[@id='preloaderSpinner']]]></ImgLoading>
+        <UrlTechTeam><![CDATA[//a[contains(@class,'emaillink') and contains(text(),'teamtech+test@edureka.in')]]]></UrlTechTeam>
+        <EdurekaLogo><![CDATA[//img[contains(@alt,'edureka!') and contains(@src,'http://cdn.test.edureka.in/imgver.')]]]></EdurekaLogo>
+        <CreditDebitTab><![CDATA[ //a[contains(text(),'Credit card / Debit card')]]]></CreditDebitTab>
+        
+        <VisaImage><![CDATA[//*[@id='cddccard']/div[1]/span[1]/img]]></VisaImage>
+        <MasterImage><![CDATA[//*[@id='cddccard']/div[1]/span[2]/img]]></MasterImage>
+        <AmericanExpressImage><![CDATA[//*[@id='cddccard']/div[1]/span[3]/img]]></AmericanExpressImage>
+        <DiscoverImage><![CDATA[//*[@id='cddccard']/div[1]/span[4]/img]]></DiscoverImage>
+        
+        <VisaImage_USSD><![CDATA[//*[@id='cddccard']/div[1]/span[1]/img]]></VisaImage_USSD>
+        <MasterImage_USSD><![CDATA[//*[@id='cddccard']/div[1]/span[2]/img]]></MasterImage_USSD>
+        <AmericanExpressImage_USSD><![CDATA[//*[@id='cddccard']/div[1]/span[3]/img]]></AmericanExpressImage_USSD>
+        <DiscoverImage_USSD><![CDATA[//*[@id='cddccard']/div[1]/span[4]/img]]></DiscoverImage_USSD>
+        
+        <Transaction256Encrypted_INR><![CDATA[.//*[@id='payment-inr-button']/article]]></Transaction256Encrypted_INR>
+        <Transaction256Encrypted_USSD><![CDATA[.//*[@id='payment-paypal-button']/article]]></Transaction256Encrypted_USSD>
+        
+        <StartLearningText><![CDATA[//div[2]/div/h4/span]]></StartLearningText>
+        <StartLearningText1><![CDATA[//div[2]/div/ul/li]]></StartLearningText1>
+        <StartLearningText2><![CDATA[//div[2]/div/ul/li[2]]]></StartLearningText2>
+        <StartLearningText3><![CDATA[//div[2]/div/ul/li[3]]]></StartLearningText3>
+        <StartLearningText4><![CDATA[//div[2]/div/ul/li[4]]]></StartLearningText4>
+        <StartLearningText5><![CDATA[//div[2]/div/ul/li[5]]]></StartLearningText5>
+        <CreditDebitTab1><![CDATA[.//*[@id='payment-paypal-button']/ul/li[1]/a]]></CreditDebitTab1>
+        <PaypalTab><![CDATA[.//*[@id='payment-paypal-button']/ul/li[2]/a]]></PaypalTab>
+        <CourseLogo><![CDATA[//a[@class='orderimg']]]></CourseLogo>
+        <CourseName><![CDATA[//a[@class='ordcourdetailh4']]]></CourseName>
+        <NeedAssitance><![CDATA[//h4[@class='clearfix']/span]]></NeedAssitance>
+        <TollFreeNo><![CDATA[html/body/div[1]/section/div[3]/div/div[2]/div[2]/div[1]/p]]></TollFreeNo>
+        <MobileNo><![CDATA[html/body/div[1]/section/div[3]/div/div[2]/div[2]/div[2]/p]]></MobileNo> 
+             
+    <ProfileDropdown>
+        <UserName><![CDATA[(//span[@class='webinar-profile-name'])[1]]]></UserName>
+        <LTChangePassword><![CDATA[//a[contains(text(),'Change Password')]]]></LTChangePassword>
+        <LTLogout><![CDATA[//a[contains(text(),'Log Out')]]]></LTLogout>
+    </ProfileDropdown>
+    
+     <Paypal>
+        <PaymentModePaypal><![CDATA[//a[text()='Paypal']]]></PaymentModePaypal>
+        <BTNPaypalPaymentSecurely><![CDATA[xpath=(//button[@onclick='submit_paypal_form();'])[2]]]></BTNPaypalPaymentSecurely>
+    </Paypal>
+    
+     <Country>
+        <DDCountry><![CDATA[//button[@class='btn dropdown-toggle btn-default']]]></DDCountry>
+        <TBCountry><![CDATA[//div[@class='bs-searchbox']/input]]></TBCountry>
+        <DDCurrency><![CDATA[//a[@class='currency-btn res-popup']]]></DDCurrency>
+        <CountryTimeZone><![CDATA[//div[contains(@class,'no-padding borderrightord batchdetailsmob order-batch-time')]/span[2]/span[2]]]></CountryTimeZone>
+    </Country>
+</Locators>

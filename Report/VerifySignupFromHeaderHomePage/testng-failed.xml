@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifySignupFromHeaderHomePage]">
+  <test name="VerifySignupFromHeaderHomePage(failed)">
+    <classes>
+      <class name="com.edureka.leadProcess.VerifySignupFromHeaderHomePage">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_001VerifySignupFromHeaderHomePage"/>
+          <include name="tearDown"/>
+          <include name="test_011SignInFromHeaderOnAnyCourseLandingPage"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.VerifySignupFromHeaderHomePage -->
+    </classes>
+  </test> <!-- VerifySignupFromHeaderHomePage(failed) -->
+</suite> <!-- Failed suite [VerifySignupFromHeaderHomePage] -->

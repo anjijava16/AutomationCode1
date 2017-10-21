@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [ValidateTheImagesPresentInsideReferralTab]">
+  <test name="ValidateTheImagesPresentInsideReferralTab(failed)">
+    <classes>
+      <class name="com.edureka.referralProcess.ValidateTheImagesPresentInsideReferralTab">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_008ValidateTheImagesPresentInsideReferralTab"/>
+          <include name="test_009VerifyReferralLinkPresentOnMyProfilePage"/>
+        </methods>
+      </class> <!-- com.edureka.referralProcess.ValidateTheImagesPresentInsideReferralTab -->
+    </classes>
+  </test> <!-- ValidateTheImagesPresentInsideReferralTab(failed) -->
+</suite> <!-- Failed suite [ValidateTheImagesPresentInsideReferralTab] -->

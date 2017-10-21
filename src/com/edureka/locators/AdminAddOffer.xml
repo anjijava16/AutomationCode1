@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//h1[text()='Admin Add Offer']]]></PageHeader>
+	<LTLogout><![CDATA[//a[@href='/signout']/img]]></LTLogout>
+	<ImgEdureka><![CDATA[//img[@alt='Edureka.co']]]></ImgEdureka>
+	<TBOfferId><![CDATA[//input[@id='OfferOfferId']]]></TBOfferId>
+	<BtnSearch><![CDATA[//input[@type='submit']]]></BtnSearch>
+	<EditOffer><![CDATA[//img[@title='edit offer']]]></EditOffer>
+
+	<Discount>
+		<DDOfferType><![CDATA[//select[@id='offer_type']]]></DDOfferType>
+		<CHKCouponCode><![CDATA[//input[@id='coupon_code']]]></CHKCouponCode>
+		<TBOfferTitle><![CDATA[//input[@id='OfferDescription']]]></TBOfferTitle>
+		<TBStartDate><![CDATA[//input[@id='OfferStartDate']]]></TBStartDate>
+		<TBEndDate><![CDATA[//input[@id='OfferEndDate']]]></TBEndDate>
+		<TBOfferPriority><![CDATA[//input[@id='OfferPriority']]]></TBOfferPriority>
+		<MaxPriorityPriorityValue><![CDATA[//strong[contains(text(),'Max Priority value of live offer :')]/following::td[1]/strong]]></MaxPriorityPriorityValue>
+		<CHKUser><![CDATA[//strong[text()='User']/following::input[@id='OfferUser']]]></CHKUser>
+		<CHKFirstVisit><![CDATA[//strong[text()='FirstVisit']/following::input[@id='OfferFirstVisit']]]></CHKFirstVisit>
+		<CHKSecondVisit><![CDATA[//strong[text()='SecondVisit']/following::input[@id='OfferSecondVisit']]]></CHKSecondVisit>
+		<CHKThirdAbove><![CDATA[//strong[text()='ThirdAbove']/following::input[@id='OfferThirdAbove']]]></CHKThirdAbove>
+		<DDDiscountType><![CDATA[//select[@id='discount_type']]]></DDDiscountType>
+		<TBDiscountValue><![CDATA[//input[@id='common_discount_value']]]></TBDiscountValue>
+		<BTNSubmit><![CDATA[//input[@value='Submit']]]></BTNSubmit>
+		<DDStatus><![CDATA[//select[@id='OfferStatus']]]></DDStatus>
+		<OfferId><![CDATA[//div[@id='flashMessage']]]></OfferId>
+		<TBSelectCourse><![CDATA[//input[@placeholder='Select a course']]]></TBSelectCourse>
+		<CHKBatchSpecific><![CDATA[//input[@id='batch_discount']]]></CHKBatchSpecific>
+		<CHKUser><![CDATA[//input[@id='OfferUser']]]></CHKUser>
+		<CHKCustomer><![CDATA[//input[@id='OfferCustomer']]]></CHKCustomer>
+		<CHKRepeatCustomer><![CDATA[//input[@id='OfferRepeatCustomer']]]></CHKRepeatCustomer>
+		<BatchCourse><![CDATA[//select[@id='course_batch']/option[1]]]></BatchCourse>
+		<TBOfferCode><![CDATA[//input[@id='offer_code']]]></TBOfferCode>
+		<URLOfferCode><![CDATA[//td[@id='offercode_url']]]></URLOfferCode>
+		<CHKCorporate><![CDATA[//input[@id='corporate_coupon']]]></CHKCorporate>
+		<DDCorporate><![CDATA[//span[contains(text(),'Select a corporate type')]]]></DDCorporate>
+	</Discount>
+
+	<Banner>
+		<LTChangeSelectBanner><![CDATA[//strong[text()='Top Banner above the header']/following::a[1]]]></LTChangeSelectBanner>
+		<banner><![CDATA[//strong[text()='Top Banner above the header']/following::a[1]]]></banner>
+		<DoubleDelightBanner><![CDATA[//td[contains(text(),'double delight')]/following::td[2]/a]]></DoubleDelightBanner>
+		<BTNSubmit><![CDATA[//input[@value='Apply Banner']]]></BTNSubmit>
+
+		<BannerUpcomingBactchesText><![CDATA[//strong[text()='Message near "Upcoming Batches" text']/following::a[1]]]></BannerUpcomingBactchesText>
+		<TBBannerText><![CDATA[//input[@id='offerCreativeTextMessage']]]></TBBannerText>
+		<BTNApplyBanner><![CDATA[//input[@value='Apply Banner']]]></BTNApplyBanner>
+	</Banner>
+
+</Locators>

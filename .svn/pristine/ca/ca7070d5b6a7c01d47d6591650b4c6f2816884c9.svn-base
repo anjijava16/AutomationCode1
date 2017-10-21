@@ -1,0 +1,36 @@
+<h2>Methods run, sorted chronologically</h2><h3>&gt;&gt; means before, &lt;&lt; means after</h3><p/><br/><em>TestSuiteRegistrationProcess</em><p/><small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table border="1">
+<tr><th>Time</th><th>Delta (ms)</th><th>Suite<br>configuration</th><th>Test<br>configuration</th><th>Class<br>configuration</th><th>Groups<br>configuration</th><th>Method<br>configuration</th><th>Test<br>method</th><th>Thread</th><th>Instances</th></tr>
+<tr bgcolor="969fbe">  <td>16/07/05 15:29:40</td>   <td>0</td> <td title="&lt;&lt;DriverTestCase.afterMainMethod()[pri:0, instance:com.edureka.scripts.VerifySignUpFromNavigationHeader@2344fc66]">&lt;&lt;afterMainMethod</td> 
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="969fbe">  <td>16/07/05 15:27:04</td>   <td>-155206</td> <td>&nbsp;</td><td>&nbsp;</td><td title="&gt;&gt;DriverTestCase.setUp()[pri:0, instance:com.edureka.scripts.VerifySignUpFromNavigationHeader@2344fc66]">&gt;&gt;setUp</td> 
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="969fbe">  <td>16/07/05 15:27:35</td>   <td>-124367</td> <td>&nbsp;</td><td>&nbsp;</td><td title="&gt;&gt;DriverTestCase.setUp()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67]">&gt;&gt;setUp</td> 
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="969fbe">  <td>16/07/05 15:28:28</td>   <td>-71316</td> <td>&nbsp;</td><td>&nbsp;</td><td title="&gt;&gt;DriverTestCase.setUp()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4]">&gt;&gt;setUp</td> 
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="969fbe">  <td>16/07/05 15:27:32</td>   <td>-127223</td> <td>&nbsp;</td><td>&nbsp;</td><td title="&lt;&lt;DriverTestCase.tearDown()[pri:0, instance:com.edureka.scripts.VerifySignUpFromNavigationHeader@2344fc66]">&lt;&lt;tearDown</td> 
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="969fbe">  <td>16/07/05 15:28:27</td>   <td>-72319</td> <td>&nbsp;</td><td>&nbsp;</td><td title="&lt;&lt;DriverTestCase.tearDown()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67]">&lt;&lt;tearDown</td> 
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="969fbe">  <td>16/07/05 15:29:38</td>   <td>-1485</td> <td>&nbsp;</td><td>&nbsp;</td><td title="&lt;&lt;DriverTestCase.tearDown()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4]">&lt;&lt;tearDown</td> 
+<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="cfb7e3">  <td>16/07/05 15:27:41</td>   <td>-118691</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_002VerifyUserNotAbleToSignupIfMandatoryFieldISEmpty()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67]">test_002VerifyUserNotAbleToSignupIfMandatoryFieldISEmpty</td> 
+  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="6e6dbe">  <td>16/07/05 15:28:48</td>   <td>-51752</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_005VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4]">test_005VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets</td> 
+  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="6e6dbe">  <td>16/07/05 15:28:35</td>   <td>-64461</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_007VerifyAllTextBoxesContainsrelevantPlaceholderText()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4]">test_007VerifyAllTextBoxesContainsrelevantPlaceholderText</td> 
+  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="cfb7e3">  <td>16/07/05 15:28:18</td>   <td>-81914</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_009VerifyClickingTCRedirectTermsAndConditionsPage()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67]">test_009VerifyClickingTCRedirectTermsAndConditionsPage</td> 
+  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="6e6dbe">  <td>16/07/05 15:29:31</td>   <td>-8045</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_010VerifyClickingHyperlinkOnClickingRedirectToPrivacyPolicyPage()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4]">test_010VerifyClickingHyperlinkOnClickingRedirectToPrivacyPolicyPage</td> 
+  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="6e6dbe">  <td>16/07/05 15:29:08</td>   <td>-31205</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_011VerifyCrossClosedSignupPopop()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4]">test_011VerifyCrossClosedSignupPopop</td> 
+  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="72cbfa">  <td>16/07/05 15:27:13</td>   <td>-146440</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="VerifySignUpFromNavigationHeader.test_01VerifySignUpFromNavigationHeader()[pri:0, instance:com.edureka.scripts.VerifySignUpFromNavigationHeader@2344fc66]">test_01VerifySignUpFromNavigationHeader</td> 
+  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="cfb7e3">  <td>16/07/05 15:28:24</td>   <td>-76013</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty.test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty@548b7f67]">test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect</td> 
+  <td>main@1551870003</td>   <td></td> </tr>
+<tr bgcolor="6e6dbe">  <td>16/07/05 15:28:52</td>   <td>-47357</td> <td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td title="VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets.test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters()[pri:0, instance:com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets@7ac7a4e4]">test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters</td> 
+  <td>main@1551870003</td>   <td></td> </tr>
+</table>

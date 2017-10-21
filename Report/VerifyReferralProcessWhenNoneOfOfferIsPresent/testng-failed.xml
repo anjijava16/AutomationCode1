@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyReferralProcessWhenNoneOfOfferIsPresent]">
+  <test name="VerifyReferralProcessWhenNoneOfOfferIsPresent(failed)">
+    <classes>
+      <class name="com.edureka.referralProcess.VerifyReferralProcessWhenNoneOfOfferIsPresent">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_022VerifyReferralProcessWhenNoneOfOfferIsPresent"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.referralProcess.VerifyReferralProcessWhenNoneOfOfferIsPresent -->
+    </classes>
+  </test> <!-- VerifyReferralProcessWhenNoneOfOfferIsPresent(failed) -->
+</suite> <!-- Failed suite [VerifyReferralProcessWhenNoneOfOfferIsPresent] -->

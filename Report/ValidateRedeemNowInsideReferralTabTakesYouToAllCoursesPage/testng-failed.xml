@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [ValidateRedeemNowInsideReferralTabTakesYouToAllCoursesPage]">
+  <test name="ValidateRedeemNowInsideReferralTabTakesYouToAllCoursesPage(failed)">
+    <classes>
+      <class name="com.edureka.referralProcess.ValidateRedeemNowInsideReferralTabTakesYouToAllCoursesPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_018VerifySourceByWhichUserAReferredToUserB"/>
+          <include name="test_011VerifyValueOfCreditAvailableInsideReferralTab"/>
+          <include name="test_019VerifyReferredDate"/>
+          <include name="test_010ValidateRedeemNowInsideReferralTabTakesYouToAllCoursesPage"/>
+          <include name="tearDown"/>
+          <include name="test_015VerifyReferralDetailsTableWhichOpenClickOfViewReferralDetails"/>
+          <include name="test_012VerifyCreditRedeemedInsideReferralTabs"/>
+        </methods>
+      </class> <!-- com.edureka.referralProcess.ValidateRedeemNowInsideReferralTabTakesYouToAllCoursesPage -->
+    </classes>
+  </test> <!-- ValidateRedeemNowInsideReferralTabTakesYouToAllCoursesPage(failed) -->
+</suite> <!-- Failed suite [ValidateRedeemNowInsideReferralTabTakesYouToAllCoursesPage] -->

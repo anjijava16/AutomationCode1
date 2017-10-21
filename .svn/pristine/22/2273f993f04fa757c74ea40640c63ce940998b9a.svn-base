@@ -1,0 +1,17 @@
+<h2>Reporter output</h2><table><tr><td>Navigate to the Edureka application url<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Verify Data in User Lead Table<br></td></tr>
+<tr><td>Verify Data in User Course table<br></td></tr>
+<tr><td>Verify Data in User Event Table<br></td></tr>
+<tr><td>Veriy Data in Ambassadors table<br></td></tr>
+<tr><td>Click on Profile Dropdown<br></td></tr>
+<tr><td>Logout from the application.<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Sign up user<br></td></tr>
+<tr><td>Select course<br></td></tr>
+<tr><td>Verify Selected Course Page Is Open<br></td></tr>
+<tr><td>Click on Play Button of Video<br></td></tr>
+<tr><td>Verify Data in User Lead Table<br></td></tr>
+<tr><td>Verify Data in User Course table<br></td></tr>
+<tr><td>Veriy Data in Ambassadors table<br></td></tr>
+</table>

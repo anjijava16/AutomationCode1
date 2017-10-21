@@ -1,0 +1,183 @@
+package com.edureka.leadProcess;
+
+import org.testng.annotations.Test;
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class AddToWishListOnAnyCourseLandingPage extends DriverTestCase {
+
+    private DashboardPage dashboardPage;
+    private SelectedCoursePage selectedCoursePage;
+    private SignInModalPage signInModalPage;
+    private UserHomePage userHomePage;
+
+    static String coursename;
+    static String course__Id ;
+    static String webSiteAction;
+    static String course_Group;
+    static String isPaidValue;
+    static String campaign_Values;
+    static String level_id;
+    static String event;
+
+    @Test
+    public void test_021AddToWishListOnAnyCourseLandingPage() throws Exception {
+
+        try {
+
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // click on Sign up link
+            addLog("click on Sign up link");
+            signInModalPage=signInModalPage.clickSignUp();
+
+            // Sign up user
+            String edurekaDomain = propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            userHomePage= signInModalPage.signUp(UserHomePage.class, edurekaDomain);
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            userHomePage=userHomePage.verifyUserPage();
+
+            // Select Course 
+            coursename= propertyReader.readTestData("ApacheSpark&Scala");
+            addLog("Select Course");
+            selectedCoursePage=userHomePage.selectCourse(coursename);
+
+            // Verify Course Landing page
+            addLog("Verify Course Landing page");
+            selectedCoursePage = selectedCoursePage.verifySelectedCoursePage(coursename);
+
+            // Click on Add on Wish List link 
+            addLog("Click on Add on Wish List link");
+            selectedCoursePage=selectedCoursePage.clickOnAddToWishlistIcon(SelectedCoursePage.class);
+
+            // Verify Data in User Table
+            addLog(" Verify Data in User Table");
+            selectedCoursePage= selectedCoursePage.dataVerificationInUserTable();
+
+            // Verify Data in User Lead Table
+            course__Id = propertyReader.readTestData("Course_ID_ApacheSpark&Scala");
+            webSiteAction = propertyReader.readTestData("WebSite_Action_AddToWishList");
+            addLog("Verify Data in User Lead Table");
+            selectedCoursePage= selectedCoursePage.dataVerificationInUser_LeadsTable(course__Id,webSiteAction);
+
+            // Verify Data in User Course table
+            course_Group = propertyReader.readTestData("Course_Group_ApacheSpark&Scala");
+            isPaidValue= propertyReader.readTestData("HomePage_Signup_Is_Paid_Value");
+            addLog("Verify Data in User Course table");
+            selectedCoursePage= selectedCoursePage.dataVerificationInUser_CoursedTable(course__Id,isPaidValue,course_Group);
+
+            // Verify Data in User Event Table
+            campaign_Values= propertyReader.readTestData("UTM_campaign");
+            addLog("Verify Data in User Event Table");
+            selectedCoursePage= selectedCoursePage.dataVerificationInUser_EventTable(course__Id,webSiteAction,campaign_Values);
+
+            // Veriy Data in Ambassadors table
+            level_id = propertyReader.readTestData("Level_Id_AddToWishList");
+            addLog("Veriy Data in Ambassadors table");
+            selectedCoursePage= selectedCoursePage.dataVerificationInUser_AmbassadorsTable(level_id);
+
+            // Click on Profile Dropdown
+            String userName = propertyReader.readRunTimeData("UserName");
+            addLog("Click on Profile Dropdown");
+            selectedCoursePage=selectedCoursePage.clickOnProfileDropdown(userName);  
+
+            // Logout from the application
+            addLog("Logout from the application.");
+            dashboardPage = selectedCoursePage.logout(); 
+            
+        }
+        catch (final Error e) {
+            captureScreenshot("test_021AddToWishListOnAnyCourseLandingPage");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_021AddToWishListOnAnyCourseLandingPage");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_021AddToWishListOnAnyCourseLandingPage"})
+    public void test_022WatchSampleClassRecordingOnAnyCourseLandingPage() throws Exception {
+
+        try {
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Sign in button
+            addLog("Click on Sign in button");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Sign up user
+            String email = propertyReader.readRunTimeData("Email_Id");
+            String password = propertyReader.readTestData("Password");
+            addLog("Sign up user");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on Start Learning button
+            addLog("Click on Start Learning button");
+            userHomePage = signInModalPage.clickStartLearningButton(UserHomePage.class);
+
+            // Verify User Page
+            addLog("Verify User Page");
+            userHomePage=userHomePage.verifyUserPage();
+
+            //Select a course
+            addLog("Select course");
+            selectedCoursePage= userHomePage.selectCourse(coursename);
+
+            // Verify Selected Course Page Is Open
+            addLog("Verify Selected Course Page Is Open");
+            selectedCoursePage= selectedCoursePage.verifySelectedCoursePage(coursename);
+
+            // Click on Play Button of Video
+            addLog("Click on Play Button of Video");
+            selectedCoursePage=selectedCoursePage.playClassRecording(SelectedCoursePage.class);
+
+            // Verify Data in User Table
+            addLog("Verify Data in User Table");
+            selectedCoursePage=selectedCoursePage.dataVerificationInUserTable();
+
+            // Verify Data in User Lead Table
+            course__Id = propertyReader.readTestData("Course_ID_ApacheSpark&Scala");
+            addLog("Verify Data in User Lead Table");
+            selectedCoursePage= selectedCoursePage.dataVerificationInUser_LeadsTable(course__Id,webSiteAction);
+
+            // Verify Data in User Course table
+            addLog("Verify Data in User Course table");
+            selectedCoursePage= selectedCoursePage.dataVerificationInUser_CoursedTable(course__Id,isPaidValue,course_Group);
+
+            // Veriy Data in Ambassadors table
+            addLog("Veriy Data in Ambassadors table");
+            selectedCoursePage= selectedCoursePage.dataVerificationInUser_AmbassadorsTable(level_id);
+
+        }
+
+        catch (final Error e) {
+            captureScreenshot("test_022WatchSampleClassRecordingOnAnyCourseLandingPage");
+            throw e;
+        } 
+        catch (final Exception e) {
+            captureScreenshot("test_022WatchSampleClassRecordingOnAnyCourseLandingPage");
+            throw e;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyCreatingLeadUsingDropUsQuery]">
+  <test name="VerifyCreatingLeadUsingDropUsQuery(failed)">
+    <classes>
+      <class name="com.edureka.scripts.VerifyCreatingLeadUsingDropUsQuery">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="afterMainMethod"/>
+          <include name="test_05VerifyCreatingLeadUsingDropUsQuery"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifyCreatingLeadUsingDropUsQuery -->
+    </classes>
+  </test> <!-- VerifyCreatingLeadUsingDropUsQuery(failed) -->
+</suite> <!-- Failed suite [VerifyCreatingLeadUsingDropUsQuery] -->

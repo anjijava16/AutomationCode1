@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+    <HomePage>
+        <PageHeader><![CDATA[//span[text()='All Courses']]]></PageHeader>
+        <LTsignIn><![CDATA[//a[text()='Sign In']]]></LTsignIn>
+        <GridViewCourses><![CDATA[//div[@class='owl-stage-outer']/div/div]]></GridViewCourses>
+        <ListViewCourses><![CDATA[//ul[@id='product-wrap']/li/div]]></ListViewCourses>
+        <ImgListView><![CDATA[//img[@id='list-view-select']]]></ImgListView>
+        <ImgGridView><![CDATA[//img[@alt='grid-view']]]></ImgGridView>
+    </HomePage>
+    
+    <QueryBox>
+        <HeaderQueryBox><![CDATA[//div[@class='container clearfix']/div/span/i]]></HeaderQueryBox>
+        <TBQueryName><![CDATA[//input[@id='inquiry_name']]]></TBQueryName>
+        <TBQueryEmail><![CDATA[//input[@id='inquiry_email']]]></TBQueryEmail>
+        <TBQueryPhNumber><![CDATA[//input[@id='inquiry_mobile']]]></TBQueryPhNumber>
+        <TBInquiry><![CDATA[//textarea[@id='inquiry_query']]]></TBInquiry>
+        <BTNSubmit><![CDATA[//button[@id='drop-query-new']]]></BTNSubmit>
+        <MsgSubmitInquiry><![CDATA[//p[contains(text(),'Thanks for inquiring with us.')]]]></MsgSubmitInquiry>
+    </QueryBox>
+    
+    <ProfileDropdown>
+        <UserName><![CDATA[(//span[@class='webinar-profile-name'])[1]]]></UserName>
+        <LTChangePassword><![CDATA[//a[@href='http://test.edureka.in/users/change_password']]]></LTChangePassword>
+        <LTLogout><![CDATA[//a[@href='http://test.edureka.in/signout']]]></LTLogout>
+    </ProfileDropdown>
+</Locators>

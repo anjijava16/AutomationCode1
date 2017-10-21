@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty]">
+  <test name="VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty(failed)">
+    <classes>
+      <class name="com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty">
+        <methods>
+          <include name="test_002VerifyUserNotAbleToSignupIfMandatoryFieldISEmpty"/>
+          <include name="setUp"/>
+          <include name="test_009VerifyClickingTCRedirectTermsAndConditionsPage"/>
+          <include name="test_008VerifyClickingOnShowTextPasswordBecomeUnmasked"/>
+          <include name="tearDown"/>
+          <include name="test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect"/>
+          <include name="test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters"/>
+        </methods>
+      </class> <!-- com.edureka.registration.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty -->
+    </classes>
+  </test> <!-- VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty(failed) -->
+</suite> <!-- Failed suite [VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty] -->

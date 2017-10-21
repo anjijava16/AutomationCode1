@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyExisting_Customer_Remind_Earned_CreditInReferral]">
+  <test name="VerifyExisting_Customer_Remind_Earned_CreditInReferral(failed)">
+    <classes>
+      <class name="com.edureka.referralProcess.VerifyExisting_Customer_Remind_Earned_CreditInReferral">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_021VerifyExisting_Customer_Remind_Earned_CreditInReferral"/>
+        </methods>
+      </class> <!-- com.edureka.referralProcess.VerifyExisting_Customer_Remind_Earned_CreditInReferral -->
+    </classes>
+  </test> <!-- VerifyExisting_Customer_Remind_Earned_CreditInReferral(failed) -->
+</suite> <!-- Failed suite [VerifyExisting_Customer_Remind_Earned_CreditInReferral] -->

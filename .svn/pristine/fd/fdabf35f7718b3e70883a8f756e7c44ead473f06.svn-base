@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [CheckForInquiryFromAllCoursePage]">
+  <test name="CheckForInquiryFromAllCoursePage(failed)">
+    <classes>
+      <class name="com.edureka.leadProcess.CheckForInquiryFromAllCoursePage">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_019CheckForInquiryFromAllCoursePage"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.CheckForInquiryFromAllCoursePage -->
+    </classes>
+  </test> <!-- CheckForInquiryFromAllCoursePage(failed) -->
+</suite> <!-- Failed suite [CheckForInquiryFromAllCoursePage] -->

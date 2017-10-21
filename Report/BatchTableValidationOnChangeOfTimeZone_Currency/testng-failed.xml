@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [BatchTableValidationOnChangeOfTimeZone_Currency]">
+  <test name="BatchTableValidationOnChangeOfTimeZone_Currency(failed)">
+    <classes>
+      <class name="com.edureka.paymentProcess.BatchTableValidationOnChangeOfTimeZone_Currency">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_001BatchTableValidationOnChangeOfTimeZone_Currency"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.BatchTableValidationOnChangeOfTimeZone_Currency -->
+    </classes>
+  </test> <!-- BatchTableValidationOnChangeOfTimeZone_Currency(failed) -->
+</suite> <!-- Failed suite [BatchTableValidationOnChangeOfTimeZone_Currency] -->

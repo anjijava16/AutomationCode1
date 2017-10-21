@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+        <PageHeader><![CDATA[//div[@class='ordersummdeatil whitebg clearfix']/div[1]]]></PageHeader>
+        <Price><![CDATA[//span[@id='org_price']]]></Price>
+        <Discount><![CDATA[//span[@id='disc_price']]]></Discount>
+        <NetPrice><![CDATA[//span[@id='net_price']]]></NetPrice>
+        <ServiceTax><![CDATA[//span[@id='service-tax']]]></ServiceTax>
+        <TotalAmount><![CDATA[//span[@id='total_price']]]></TotalAmount>
+        <TimeZone><![CDATA[//div[contains(@class,'order-batch-time')]]]></TimeZone>>
+        <PaymentModeDebitAndCreditCard><![CDATA[//a[@href='#cddccard']]]></PaymentModeDebitAndCreditCard>>
+        <BTNRazorPaySecurely><![CDATA[//button[@class='btn btn-block paybtn']]]></BTNRazorPaySecurely>
+        <PaymentModeNetBanking><![CDATA[//img[contains(@src,'net-banking.png')]]]></PaymentModeNetBanking>
+        <ImgLoading><![CDATA[.//*[@id='preloaderSpinner']]]></ImgLoading>
+        <UrlTechTeam><![CDATA[//a[contains(@class,'emaillink') and contains(text(),'teamtech+test@edureka.in')]]]></UrlTechTeam>
+        <EdurekaLogo><![CDATA[//img[contains(@alt,'edureka!') and contains(@src,'http://cdn.test.edureka.in/imgver.')]]]></EdurekaLogo>
+        
+    <ProfileDropdown>
+        <UserName><![CDATA[(//span[@class='webinar-profile-name'])[1]]]></UserName>
+        <LTChangePassword><![CDATA[//a[@href='http://test.edureka.in/users/change_password']]]></LTChangePassword>
+        <LTLogout><![CDATA[//a[@href='http://test.edureka.in/signout']]]></LTLogout>
+    </ProfileDropdown>
+    
+     <Paypal>
+        <PaymentModePaypal><![CDATA[//a[text()='Paypal']]]></PaymentModePaypal>
+        <BTNPaypalPaymentSecurely><![CDATA[//button[@class='btn btn-block paybtn paypal-btn']]]></BTNPaypalPaymentSecurely>
+    </Paypal>
+    
+     <Country>
+        <DDCountry><![CDATA[//button[@class='btn dropdown-toggle btn-default']]]></DDCountry>
+        <TBCountry><![CDATA[//div[@class='bs-searchbox']/input]]></TBCountry>
+        <DDCurrency><![CDATA[//a[@class='currency-btn res-popup']]]></DDCurrency>
+        <CountryTimeZone><![CDATA[//div[contains(@class,'no-padding borderrightord batchdetailsmob order-batch-time')]/span[2]/span[2]]]></CountryTimeZone>
+    </Country>
+</Locators>

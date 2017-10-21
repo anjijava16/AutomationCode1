@@ -1,0 +1,298 @@
+package com.edureka.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.Database;
+import com.edureka.util.DriverHelper;
+
+public class OrderSummaryPage extends DriverHelper {
+
+
+    //Case 1
+    String tableName = "users";
+    String columnNameToBeFetched = "id";
+    String columnNameToBeMatched = "email";
+
+    //Case 2
+    String tableName3 = "pre_orders";
+    String columnNameToBeFetched4 = "priceinr";
+    String columnNameToBeFetched5 = "servicetaxinr";
+    String columnNameToBeFetched6 = "discountinr";
+    String columnNameToBeFetched7 = "totalinr";
+
+    String columnNameToBeMatched3 = "userid";
+
+    //Case 6
+    String columnNameToBeFetched8 = "servicetaxusd";
+
+    private LocatorReader oderSummaryLocator;
+    private DatabaseVerifications databaseVerification;
+
+    public OrderSummaryPage(WebDriver driver) {
+        super(driver);
+        oderSummaryLocator = new LocatorReader("OrderSummary.xml");
+        databaseVerification = new DatabaseVerifications(driver);
+    }
+
+    /**
+     *  Verify Order Summary page
+     * @return
+     */
+    public OrderSummaryPage verifyPage(){
+        String pageHeader =oderSummaryLocator.getLocator("PageHeader");
+        WaitForElementPresent(pageHeader, getTimeOut());
+        String pageName = getText(pageHeader);
+        Assert.assertTrue(pageName.contains("Order Summary"));
+        return PageFactory.initElements(driver, OrderSummaryPage.class);
+
+    }
+
+    /**
+     *  Verify total Amount for INR is equal to Net price + Service Tax
+     * @return
+     */
+    public OrderSummaryPage verifyTotalAmount(String currency){
+        String price = oderSummaryLocator.getLocator("Price");
+        String totalAmount = oderSummaryLocator.getLocator("TotalAmount");
+        String netPrice = oderSummaryLocator.getLocator("NetPrice");
+        String discount =oderSummaryLocator.getLocator("Discount");
+        String serviceTax = oderSummaryLocator.getLocator("ServiceTax");
+        String discountRate = oderSummaryLocator.getLocator("Discount");
+
+        int netPriceValue = 0;
+        int totalAmountValue=0;
+        int serviceTaxValue=0;
+        int priceAfterDiscont=0;
+        WaitForElementPresent(price, getTimeOut());
+        String priceAmount= getText(price);
+        String priceVal= priceAmount.replace(",", "");
+        int pirceValue = Integer.parseInt(priceVal);
+
+        if (isElementPresent(discountRate)){
+            String discountAmount= getText(discount);
+            String discountVal_1= discountAmount.replace(",", "");
+            String discountVal_2= discountVal_1.replace("-", "");
+            String discountVal_3=discountVal_2.trim();
+            int discountValue = Integer.parseInt(discountVal_3);
+
+            priceAfterDiscont= pirceValue-discountValue;
+
+            String netPriceAmount = getText(netPrice);
+            String netPriceaVal= netPriceAmount.replace(",", "");
+            netPriceValue = Integer.parseInt(netPriceaVal);
+            Assert.assertEquals(priceAfterDiscont, netPriceValue);
+        }
+        if (currency.equalsIgnoreCase("INR")){
+            String serviceTaxAmount= getText(serviceTax);
+            String serviceTaxVal_1= serviceTaxAmount.replace(",","");
+            String serviceTaxVal_2=serviceTaxVal_1.trim();
+            serviceTaxValue= Integer.parseInt(serviceTaxVal_2);
+            if (isElementPresent(discountRate)){
+                totalAmountValue= netPriceValue+serviceTaxValue;
+
+            }
+            else{
+                totalAmountValue= pirceValue+serviceTaxValue;
+            }
+        }
+        WaitForElementPresent(totalAmount, getTimeOut());
+        String amount= getText(totalAmount);
+        String totalAmountVal_1= amount.replace(",","");
+        String totalAmountVal_2 =totalAmountVal_1.trim();
+        int totalAmountVal_3= Integer.parseInt(totalAmountVal_2);
+
+        if (currency.equalsIgnoreCase("INR")){
+            Assert.assertEquals(totalAmountValue, totalAmountVal_3);
+        }
+        else  {
+            if (isElementPresent(discountRate)){
+                Assert.assertEquals(priceAfterDiscont, totalAmountVal_3);
+            }
+            else{
+                Assert.assertEquals(pirceValue, totalAmountVal_3);
+            }
+        }
+        return PageFactory.initElements(driver, OrderSummaryPage.class);
+
+    }
+
+    /**
+     *  Verifying INR Currency has Service Tax Column
+     * @return
+     * @throws Exception
+     */
+
+    public OrderSummaryPage verifyINRCurrency() throws Exception{
+
+        String tBuserEmailId = propertyReader.readRunTimeData("Email_Id");
+
+
+        Database dbObject = new Database();
+
+        String userId = dbObject.getRecord(tableName, columnNameToBeFetched, columnNameToBeMatched, tBuserEmailId);
+
+        //Fetching Total Price
+        String userTotalPrice = dbObject.getRecord(tableName3, columnNameToBeFetched4, columnNameToBeMatched3, userId);
+        //Converting To Int for Computation
+        int totalPriceInINT = Integer.parseInt(userTotalPrice);
+
+        //Fetching Service Tax
+        String userServiceTax = dbObject.getRecord(tableName3, columnNameToBeFetched5, columnNameToBeMatched3, userId);
+        //Converting To Int for Computation
+        int serviceTaxInINT = Integer.parseInt(userServiceTax);
+
+        //Fetching Discount Price
+        String userDiscountPrice = dbObject.getRecord(tableName3, columnNameToBeFetched6, columnNameToBeMatched3, userId);
+        //Converting To Int for Computation
+        int discountPriceInINT = Integer.parseInt(userDiscountPrice);
+
+        //Fetching Price After Subtracting Discount And Adding Service Tax
+        String userFinalPriceToPay = dbObject.getRecord(tableName3, columnNameToBeFetched7, columnNameToBeMatched3, userId);
+
+        int finalPriceToPayInINT = ( (totalPriceInINT-discountPriceInINT) + (serviceTaxInINT) );
+
+        String  finalPriceToPayInString = String.valueOf(finalPriceToPayInINT);
+
+
+
+
+        if(finalPriceToPayInString.equals(userFinalPriceToPay)){
+            System.out.println("Verified Currency From INR");
+        }
+
+        return PageFactory.initElements(driver, OrderSummaryPage.class);
+    }
+
+
+
+   /**
+    *  Verifying USD Currency without Service Tax Column
+    */
+    public OrderSummaryPage verifyUSDCurrency() throws Exception{
+
+        String tBuserEmailId = propertyReader.readRunTimeData("Email_Id");
+        String tUSDCurrency = propertyReader.readRunTimeData("Total_USD");
+
+
+        Database dbObject = new Database();
+
+        String userId = dbObject.getRecord(tableName, columnNameToBeFetched, columnNameToBeMatched, tBuserEmailId);
+
+        //Fetching Service Tax
+        String userServiceTaxInUSD = dbObject.getRecord(tableName3, columnNameToBeFetched8, columnNameToBeMatched3, userId);
+
+        if(tUSDCurrency.equals(userServiceTaxInUSD)){
+            System.out.println("Verified Currency From USD");
+        }
+
+        return PageFactory.initElements(driver, OrderSummaryPage.class);
+    }
+    /**
+     *  Verify User name
+     * @return
+     */
+    public OrderSummaryPage verifySignUpSuccessfully() {
+        String pageName =oderSummaryLocator.getLocator("ProfileDropdown.UserName");
+        WaitForElementPresent(pageName,20);
+        WebElement userNameHeader = driver.findElement(By.xpath(pageName));
+        String tBuserName = propertyReader.readRunTimeData("UserName");
+        String pageheaderText = userNameHeader.getText();
+        Assert.assertTrue(pageheaderText.equalsIgnoreCase(tBuserName));
+        return PageFactory.initElements(driver, OrderSummaryPage.class);
+    }
+
+    /**
+     *  Verify Data in user Table
+     * @return
+     * @throws Exception
+     */
+    public OrderSummaryPage veryDataInUserTable() throws Exception {
+        OrderSummaryPage orderSummary;
+        orderSummary = (OrderSummaryPage)databaseVerification.dataVerificationInUserTable(OrderSummaryPage.class);
+        return orderSummary;
+    }
+
+    /**
+     *  Verify Data in User_Leads Table
+     * @param courseID
+     * @param webSiteAction
+     * @return
+     * @throws Exception
+     */
+    public OrderSummaryPage veryDataInUser_LeadsTable(String courseId, String webSiteAction) throws Exception {
+        OrderSummaryPage orderSummary;
+        orderSummary = (OrderSummaryPage)databaseVerification.dataVerificationInUserLeadTable(OrderSummaryPage.class, courseId, webSiteAction);
+        return orderSummary;
+    }
+
+    /**
+     *  Verify Data in User Courses Table
+     * @param courseId
+     * @param isPaidValue
+     * @param courseGroup
+     * @return
+     * @throws Exception
+     */
+    public OrderSummaryPage veryDataInUser_CoursedTable(String courseId, String isPaidValue, String courseGroup) throws Exception {
+        OrderSummaryPage orderSummary;
+        orderSummary = (OrderSummaryPage)databaseVerification.dataVerificationInUser_Course_Table(OrderSummaryPage.class, courseId, isPaidValue, courseGroup);
+        return orderSummary;
+    }
+
+    /**
+     *  Verify Data in user Events Table
+     * @param courseId
+     * @param event_context
+     * @param utm_source
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    public OrderSummaryPage veryDataInUser_EventTable(String courseId, String event_context,String utm_campaign) throws Exception {
+        OrderSummaryPage orderSummary;
+        orderSummary = (OrderSummaryPage)databaseVerification.dataVerificationInUser_Events_Table(OrderSummaryPage.class, courseId, event_context, utm_campaign);
+        return orderSummary;
+    }
+
+    /**
+     *  Verify Data in Ambassadors Table
+     * @param level_id
+     * @return
+     * @throws Exception
+     */
+    public OrderSummaryPage veryDataInUser_AmbassadorsTable(String level_id) throws Exception {
+        OrderSummaryPage orderSummary;
+        orderSummary = (OrderSummaryPage)databaseVerification.dataVerificationInAmbassadors(OrderSummaryPage.class, level_id);
+        return orderSummary;
+    }
+
+    /**
+     *  Click on Profile Dropdown
+     * @param userName
+     * @return
+     */
+    public OrderSummaryPage clickOnProfileDropdown(String userName){
+        String dropdown ="//span[contains(text(),'"+userName+"')]";
+        WaitForElementPresent(dropdown, getTimeOut());
+        clickOn(dropdown);
+        return PageFactory.initElements(driver, OrderSummaryPage.class);
+    }
+    
+    /**
+     *  Logout application
+     * @return
+     */
+    public DashboardPage logout(){
+        String logout=oderSummaryLocator.getLocator("ProfileDropdown.LTLogout");;
+        WaitForElementPresent(logout, getTimeOut());
+        mouseOver(logout);
+        clickOn(logout);
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+}
+

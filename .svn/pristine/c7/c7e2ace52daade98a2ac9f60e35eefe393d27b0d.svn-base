@@ -1,0 +1,61 @@
+<h2>Reporter output</h2><table><tr><td>Navigate to the Edureka application url<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Click on Course Tab<br></td></tr>
+<tr><td>Verify All Courses page<br></td></tr>
+<tr><td>Click on Grid view Icon<br></td></tr>
+<tr><td>Select Course From Grid View<br></td></tr>
+<tr><td>Verify Selected Course Page Is Open<br></td></tr>
+<tr><td>Click on Add To Wishlist Icon<br></td></tr>
+<tr><td>Sign up user<br></td></tr>
+<tr><td>Verify sign up successfully<br></td></tr>
+<tr><td>Verify Data in user table<br></td></tr>
+<tr><td>Verify Data in User Lead Table<br></td></tr>
+<tr><td>Verify Data in User Course table<br></td></tr>
+<tr><td>Verify Data in User Event Table<br></td></tr>
+<tr><td>Veriy Data in Ambassadors table<br></td></tr>
+<tr><td>Click on Profile Dropdown<br></td></tr>
+<tr><td>Logout from the application.<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Click on Course Tab<br></td></tr>
+<tr><td>Click on Grid view Icon<br></td></tr>
+<tr><td>Select Course From Grid View<br></td></tr>
+<tr><td>Verify Selected Course Page Is Open<br></td></tr>
+<tr><td>Click on Add To Wishlist Icon<br></td></tr>
+<tr><td>Verify default SignUp is selected<br></td></tr>
+<tr><td>Sign in user<br></td></tr>
+<tr><td>Click on Start Learning Course button<br></td></tr>
+<tr><td>Verify User Home Page<br></td></tr>
+<tr><td>Verify Data in user table<br></td></tr>
+<tr><td>Verify Data in User Lead Table<br></td></tr>
+<tr><td>Verify Data in User Course table<br></td></tr>
+<tr><td>Verify Data in User Event Table<br></td></tr>
+<tr><td>Veriy Data in Ambassadors table<br></td></tr>
+<tr><td>Click on Profile Dropdown<br></td></tr>
+<tr><td>Logout from the application.<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Click on Sign in button<br></td></tr>
+<tr><td>Sign up user<br></td></tr>
+<tr><td>Click on Start Learning button<br></td></tr>
+<tr><td>Verify User Page<br></td></tr>
+<tr><td>Click on Course Tab<br></td></tr>
+<tr><td>Verify All Courses page<br></td></tr>
+<tr><td>Click on Grid view Icon<br></td></tr>
+<tr><td>Select Course From Grid View<br></td></tr>
+<tr><td>Verify Selected Course Page Is Open<br></td></tr>
+<tr><td>Click on Add To Wishlist Icon<br></td></tr>
+<tr><td>Verify Data in user table<br></td></tr>
+<tr><td>Verify Data in User Lead Table<br></td></tr>
+<tr><td>Verify Data in User Course table<br></td></tr>
+<tr><td>Verify Data in User Event Table<br></td></tr>
+<tr><td>Veriy Data in Ambassadors table<br></td></tr>
+<tr><td>Click on Profile Dropdown<br></td></tr>
+<tr><td>Logout from the application.<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Click on Sign in button<br></td></tr>
+<tr><td>Sign up user<br></td></tr>
+<tr><td>Click on Start Learning button<br></td></tr>
+<tr><td>Verify User Page<br></td></tr>
+<tr><td>Click on Course Tab<br></td></tr>
+<tr><td>Verify All Courses page<br></td></tr>
+<tr><td><a href= 'file://D:/workspace/Edureka_Automation/screenshots/test_025WishListInListViewAllCoursePage2016-08-04.jpg'target='_blank' ><img src='file://D:/workspace/Edureka_Automation/screenshots/test_025WishListInListViewAllCoursePage2016-08-04.jpg' height="42" width="42" >test_025WishListInListViewAllCoursePage2016-08-04</a></td></tr>
+</table>

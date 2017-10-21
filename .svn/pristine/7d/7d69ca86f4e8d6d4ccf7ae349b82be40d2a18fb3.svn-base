@@ -1,0 +1,162 @@
+package com.edureka.leadProcess;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.OrderSummaryPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.util.DriverTestCase;
+
+public class VerifySignupFromEnrollOnAnyCourse extends DriverTestCase {
+
+    private DashboardPage dashboardPage;
+    private SelectedCoursePage selectedCoursePage;
+    private SignInModalPage signInModalPage;
+    private OrderSummaryPage orderSummaryPage;
+
+    static String coursename;
+    static String course__Id ;
+    static String webSiteAction;
+    static String course_Group;
+    static String isPaidValue;
+    static String campaign_Values;
+    static String level_id;
+    static String event_Enroll;
+
+    @Test
+    public void test_005VerifySignupFromEnroll() throws Exception {
+
+        try {
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Select Course From Trending Courses
+            coursename = propertyReader.readTestData("BigData&Hadoop");
+            addLog("Select Course From Trending Courses");
+            selectedCoursePage= dashboardPage.selectCourse(coursename);
+
+            // Verify Selected Course Page Is Open
+            addLog("Verify Selected Course Page Is Open");
+            selectedCoursePage= selectedCoursePage.verifySelectedCoursePage(coursename);
+
+            //Click on Enroll Now Button
+            addLog("Click on Enroll Now Button");
+            signInModalPage=selectedCoursePage.clickOnEnrollButton(SignInModalPage.class);
+
+            // Sign up user
+            String domainName= propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            orderSummaryPage= signInModalPage.signUp(OrderSummaryPage.class, domainName);
+
+            // Verify User Home Page
+            addLog("Verify sign up successfully");
+            orderSummaryPage=orderSummaryPage.verifySignUpSuccessfully();
+
+            // Verify Data in User Lead Table
+            course__Id = propertyReader.readTestData("Course_ID_BigData");
+            webSiteAction = propertyReader.readTestData("HomePage_Signup_WebSite_Action");
+            addLog("Verify Data in User Lead Table");
+            orderSummaryPage= orderSummaryPage.veryDataInUser_LeadsTable(course__Id,webSiteAction);
+
+            // Verify Data in User Course table
+            course_Group = propertyReader.readTestData("Course_Group_BigData");
+            isPaidValue= propertyReader.readTestData("HomePage_Signup_Is_Paid_Value");
+            addLog("Verify Data in User Course table");
+            orderSummaryPage= orderSummaryPage.veryDataInUser_CoursedTable(course__Id,isPaidValue,course_Group);
+
+            // Verify Data in User Event Table
+            campaign_Values= propertyReader.readTestData("UTM_campaign");
+            event_Enroll= propertyReader.readTestData("Event_Enroll");
+            addLog("Verify Data in User Event Table");
+            orderSummaryPage= orderSummaryPage.veryDataInUser_EventTable(course__Id,event_Enroll,campaign_Values);
+
+            // Veriy Data in Ambassadors table
+            level_id = propertyReader.readTestData("HomePage_Signup_level_id");
+            addLog("Veriy Data in Ambassadors table");
+            orderSummaryPage= orderSummaryPage.veryDataInUser_AmbassadorsTable(level_id);
+
+            // Click on Profile Dropdown
+            String userName = propertyReader.readRunTimeData("UserName");
+            addLog("Click on Profile Dropdown");
+            orderSummaryPage=orderSummaryPage.clickOnProfileDropdown(userName);            
+
+            // Logout from the application
+            addLog("Logout from the application.");
+            dashboardPage = orderSummaryPage.logout();          
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test_005VerifySignupFromEnroll");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_005VerifySignupFromEnroll");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_005VerifySignupFromEnroll"})
+    public void test_014SignInEnrollOnAnyCourse() throws Exception {
+
+        try {
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            //Select a course
+            addLog("Select Course");
+            selectedCoursePage= dashboardPage.selectCourse(coursename);
+
+            // Verify Selected Course Page Is Open
+            addLog("Verify Selected Course Page Is Open");
+            selectedCoursePage.verifySelectedCoursePage(coursename);
+
+            // Click on Play Button of Video
+            addLog("Click on Play Button of Video");
+            signInModalPage=selectedCoursePage.clickOnEnrollButton(SignInModalPage.class);
+
+            // Verify default SignUp is selected
+            addLog("Verify default SignUp is selected");
+            signInModalPage= signInModalPage.clickOnLoginTab();
+
+            // Sign in user
+            String email = propertyReader.readRunTimeData("Email_Id");
+            String password = propertyReader.readTestData("Password");
+            addLog("Sign in user");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on Start Learning Course button
+            addLog("Click on Start Learning Course button");
+            orderSummaryPage=signInModalPage.clickStartLearningButton(OrderSummaryPage.class);
+
+            // Verify Data in User Lead Table
+            addLog("Verify Data in User Lead Table");
+            orderSummaryPage= orderSummaryPage.veryDataInUser_LeadsTable(course__Id,webSiteAction);
+
+            // Verify Data in User Course table
+            addLog("Verify Data in User Course table");
+            orderSummaryPage= orderSummaryPage.veryDataInUser_CoursedTable(course__Id,isPaidValue,course_Group);
+
+            // Verify Data in User Event Table
+            addLog("Verify Data in User Event Table");
+            orderSummaryPage= orderSummaryPage.veryDataInUser_EventTable(course__Id,event_Enroll,campaign_Values);
+
+            // Veriy Data in Ambassadors table
+            addLog("Veriy Data in Ambassadors table");
+            orderSummaryPage= orderSummaryPage.veryDataInUser_AmbassadorsTable(level_id);
+        }
+
+        catch (final Error e) {
+            captureScreenshot("test_014SignInEnrollOnAnyCourse");
+            throw e;
+        } 
+        catch (final Exception e) {
+            captureScreenshot("test_014SignInEnrollOnAnyCourse");
+            throw e;
+        }
+    }
+}

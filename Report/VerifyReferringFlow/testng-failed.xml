@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyReferringFlow]">
+  <test name="VerifyReferringFlow(failed)">
+    <classes>
+      <class name="com.edureka.referralProcess.VerifyReferringFlow">
+        <methods>
+          <include name="test_002RefferralActivities"/>
+          <include name="setUp"/>
+          <include name="test_005VrifyRedemptionOFCreditPoints"/>
+          <include name="tearDown"/>
+          <include name="test_001VerifyRefferringFlow"/>
+          <include name="test_003VerifyEarningCredtiPoints"/>
+        </methods>
+      </class> <!-- com.edureka.referralProcess.VerifyReferringFlow -->
+    </classes>
+  </test> <!-- VerifyReferringFlow(failed) -->
+</suite> <!-- Failed suite [VerifyReferringFlow] -->

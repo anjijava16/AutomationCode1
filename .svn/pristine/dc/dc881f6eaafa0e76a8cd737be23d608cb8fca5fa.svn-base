@@ -1,0 +1,84 @@
+package com.edureka.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class AllCoursesPage extends DriverHelper{
+
+    private LocatorReader allCoursesLocator;
+
+    public AllCoursesPage(WebDriver driver) {
+        super(driver);
+        allCoursesLocator = new LocatorReader("AllCourses.xml");
+    }
+
+    /**
+     *  Verify All Courses Page
+     * @return
+     */
+    public AllCoursesPage verifyAllCoursesPage() {
+        String pageheader=allCoursesLocator.getLocator("HomePage.PageHeader");
+        WaitForElementPresent(pageheader, getTimeOut());
+        Assert.assertTrue(isElementPresent(pageheader));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Select Course 
+     * @param course
+     * @return
+     */
+    public SelectedCoursePage selectCourseFromGridView(String course) {
+        List<WebElement> courses = driver.findElements(By.xpath(allCoursesLocator.getLocator("HomePage.GridViewCourses")));
+        int rows = courses.size();
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h4";
+            WaitForElementPresent(coursesList, getTimeOut());
+            String coursesName= getText(coursesList);
+            if (coursesName.contains(course)) {
+                String courseLink = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a";
+                String loc = getAttribute(courseLink, "href");
+                driver.get(loc);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+    
+    public SelectedCoursePage selectCourseFromListView(String courseName) {
+        String course="//span[contains(text(),'"+courseName+"')]";
+        WaitForElementPresent(course, getTimeOut());
+        clickOn(course);
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+    
+    /**
+     *  Click on List View Icon  
+     * @return
+     */
+    public AllCoursesPage clickOnListViewIcon() {
+        String imgListView=allCoursesLocator.getLocator("HomePage.ImgListView");
+        WaitForElementPresent(imgListView, getTimeOut());
+        clickOn(imgListView);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+    
+    /**
+     *  Click on Grid View Icon
+     * @return
+     */
+    public AllCoursesPage clickOnGridViewIcon() {
+        String imgListView=allCoursesLocator.getLocator("HomePage.ImgGridView");
+        WaitForElementPresent(imgListView, getTimeOut());
+        clickOn(imgListView);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+}

@@ -1,0 +1,8 @@
+<h2>Reporter output</h2><table><tr><td>Navigate to the Edureka application url<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Select Course<br></td></tr>
+<tr><td>Verify Selected course should be open.<br></td></tr>
+<tr><td>Click on Query Box<br></td></tr>
+<tr><td>Submit inquiry in drop query box<br></td></tr>
+<tr><td>Verify Event Type Via a Drop a Query<br></td></tr>
+</table>

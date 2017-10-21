@@ -1,0 +1,263 @@
+package com.edureka.registration;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.util.DriverTestCase;
+
+public class ValidationOnForgotPasswordLinkWhenEmailInBlank extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private SignInModalPage signInModalPage;
+
+    static String email;
+    static String password;
+    static String errorMessage;
+    @Test
+    public void test_022ValidationOnForgotPasswordLinkWhenEmailIsBlank() throws Exception {
+
+        try {
+
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // Click on forgot password link
+            addLog("Click on forgot password link");
+            signInModalPage=signInModalPage.clickOnForgotPassword();
+
+            //Verify the validation on click of "Forgot password" when email field is blank
+            errorMessage =propertyReader.readTestData("BlankEmailMessage");
+            addLog("Verify the validation on click of Forgot passowrd when email field is blank");
+            signInModalPage=signInModalPage.verifyMessage(errorMessage);
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test_022ValidationOnForgotPasswordLinkWhenEmailIsBlank");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_022ValidationOnForgotPasswordLinkWhenEmailIsBlank");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_022ValidationOnForgotPasswordLinkWhenEmailIsBlank"})
+    public void test_023ValidationOnForgotPasswordLinkWhenEmailNotRegistered() throws Exception {
+
+        try {
+
+            // Close sign in module
+            addLog("Close sign in module");
+            dashboardPage=  signInModalPage.closeSignInModule();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // Enter incorrect email and incorrect password
+            email = propertyReader.readTestData("NotRegisteredEmail");
+            password = null;
+            addLog("Enter correct email and incorrect password");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on forgot password link
+            addLog("Click on forgot password link");
+            signInModalPage=signInModalPage.clickOnForgotPassword();
+
+            //Verify the validation on click of "Forgot password" when email field has incorrect/not registered email id
+            errorMessage =propertyReader.readTestData("NotRegisteredEmailMessage");
+            addLog("Verify the validation on click of Forgot passowrd when email field has incorrect/not registered email id");
+            signInModalPage=signInModalPage.verifyMessage(errorMessage);
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test_023ValidationOnForgotPasswordLinkWhenEmailNotRegistered");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_023ValidationOnForgotPasswordLinkWhenEmailNotRegistered");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_023ValidationOnForgotPasswordLinkWhenEmailNotRegistered"})
+    public void test_021VerifyForgotPasswordFeatureIsWorking() throws Exception {
+
+        try {
+
+            // Close sign in module
+            addLog("Close sign in module");
+            dashboardPage=  signInModalPage.closeSignInModule();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // Enter incorrect email
+            email = propertyReader.readTestData("CorrectEmail");
+            password= null;
+            addLog("Enter correct email and incorrect password");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on forgot password link
+            addLog("Click on forgot password link");
+            signInModalPage=signInModalPage.clickOnForgotPassword();
+
+            //Verify the form when verification code has been sent on given email Id
+            addLog("Verify the form when verification code has been sent on given email Id");
+            signInModalPage=signInModalPage.verifySuccessMsgForCode(email);
+        }
+        catch (final Error e) {
+            captureScreenshot("test_021VerifyForgotPasswordFeatureIsWorking");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_021VerifyForgotPasswordFeatureIsWorking");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_021VerifyForgotPasswordFeatureIsWorking"})
+    public void test_024VerificationAndPasswordFieldShowAfterVerificationCodeSent() throws Exception {
+
+        try {
+
+            // Verify Email Field has been disabled
+            addLog("Verify Email Field has been disabled");
+            signInModalPage=signInModalPage.verifyEmailFieldISDisabled();
+
+            // Verify Verification code field and New password field is display
+            addLog("Verify Verification code field and New password field is display");
+            signInModalPage=signInModalPage.verifyVerificationCodeAndNewPasswordFields();
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test_024VerificationAndPasswordFieldShowAfterVerificationCodeSent");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_024VerificationAndPasswordFieldShowAfterVerificationCodeSent");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_024VerificationAndPasswordFieldShowAfterVerificationCodeSent"})
+    public void test_032VerifySupportEmailLink() throws Exception {
+
+        try {
+
+
+            // Verify Email link 'support@edureka.co".
+            addLog("Verify Email link 'support@edureka.co");
+            signInModalPage=signInModalPage.verifysupportEmailLink();
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test_032VerifySupportEmailLink");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_032VerifySupportEmailLink");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_032VerifySupportEmailLink"})
+    public void test_38VerifyErrorMessageInRedAndSuccessMessageInGreen() throws Exception {
+
+        try {
+
+            // Close sign in module
+            addLog("Close sign in module");
+            dashboardPage=  signInModalPage.closeSignInModule();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // Enter incorrect email
+            email = propertyReader.readTestData("NotRegisteredEmail");
+            password= null;
+            addLog("Enter correct email and incorrect password");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on forgot password link
+            addLog("Click on forgot password link");
+            signInModalPage=signInModalPage.clickOnForgotPassword();
+
+            //Verify Error Message is displayed in red
+            addLog("Verify Error Message is displayed in red");
+            signInModalPage=signInModalPage.verifyErrorMessageInRed();
+
+            // Enter incorrect email
+            email = propertyReader.readTestData("CorrectEmail");
+            password= null;
+            addLog("Enter correct email and incorrect password");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            // Click on forgot password link
+            addLog("Click on forgot password link");
+            signInModalPage=signInModalPage.clickOnForgotPassword();
+
+            //Verify Error Message is displayed in green
+            addLog("Verify Error Message is displayed in green");
+            signInModalPage=signInModalPage.verifySuccessMessageInGreen();
+        }
+        catch (final Error e) {
+            captureScreenshot("test_38VerifyErrorMessageInRedAndSuccessMessageInGreen");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_38VerifyErrorMessageInRedAndSuccessMessageInGreen");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_38VerifyErrorMessageInRedAndSuccessMessageInGreen"})
+    public void test_30VerifyShowFuncationlityForNewPassword() throws Exception {
+        try {
+
+            // Enter new password
+            String newPassword = propertyReader.readTestData("Password");
+            addLog("Enter new password");
+            signInModalPage=signInModalPage.enterNewPassword(newPassword);
+
+            //Verify Show functionlity for new Password
+            addLog("Verify Show functionlity for new Password");
+            signInModalPage=signInModalPage.verifyShowFunctionlityForNewPassword();
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test_30VerifyShowFuncationlityForNewPassword");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_30VerifyShowFuncationlityForNewPassword");
+            throw e;
+        }
+    }
+}

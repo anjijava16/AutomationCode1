@@ -1,0 +1,104 @@
+package com.edureka.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class MyCourses extends DriverHelper{
+
+    private LocatorReader myCourses;
+    private DatabaseVerifications databaseVerification;
+
+    public MyCourses(WebDriver driver) {
+        super(driver);
+        myCourses = new LocatorReader("MyCourses.xml");
+        databaseVerification= new DatabaseVerifications(getWebDriver());
+    }
+
+    /**
+     *  Verify My Courses Page
+     * @return
+     */
+    public MyCourses verifyPage(String myCourseName){
+        String pageHeader = myCourses.getLocator("PageHeader");
+        WaitForElementPresent(pageHeader, getTimeOut());
+        String myCourse = getText(pageHeader);
+        Assert.assertTrue(myCourse.contains(myCourseName));
+        return PageFactory.initElements(driver, MyCourses.class);
+    }
+    
+    /**
+     *  Verify Data in user Table
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataBaseVerificationInUserTable() throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerificationInUserTable(MyCourses.class);
+        return myCourses;
+    }
+
+
+    /**
+     *  Database verification in Pre_Order table When currency is INR
+     * @param course_Id
+     * @param courseTitle
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataBaseVerificationInUser_PreOrderTableForINR(String course_Id, String courseTitle) throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerificationInPreOrderTableForINR(MyCourses.class, course_Id, courseTitle);
+        return myCourses;
+    }
+
+    /**
+     *  Database verification in Pre_Order table When currency is USD
+     * @param course_Id
+     * @param courseTitle
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataBaseVerificationInUser_PreOrderTableForUSD(String course_Id, String courseTitle) throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerificationInPreOrderTableForUSD(MyCourses.class, course_Id, courseTitle);
+        return myCourses;
+    }
+
+    /**
+     *  Verify Data in User Courses Table
+     * @param courseId
+     * @param isPaidValue
+     * @param courseGroup
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataBaseVerificationInUser_CoursedTable(String courseId, String isPaidValue, String courseGroup) throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerificationInUser_Course_Table(MyCourses.class, courseId, isPaidValue, courseGroup);
+        return myCourses;
+    }
+    
+    public MyCourses dataBaseVerificationForLMS(String batchId) throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerification_For_LMS(MyCourses.class, batchId);
+        return myCourses;
+    }
+    
+    /**
+     *  Verify Data in User_Leads Table
+     * @param courseID
+     * @param webSiteAction
+     * @return
+     * @throws Exception
+     */
+    public MyCourses dataVerificationInUser_LeadsTable(String courseId, String webSiteAction) throws Exception {
+        MyCourses myCourses;
+        myCourses = (MyCourses)databaseVerification.dataVerificationInUserLeadTable(MyCourses.class, courseId, webSiteAction);
+        return myCourses;
+    }
+
+}

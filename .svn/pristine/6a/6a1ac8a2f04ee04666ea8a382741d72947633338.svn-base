@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="5" verbose="1" name="VerifyExisting_Customer_Remind_Earned_CreditInReferral"
+    annotations="JDK">
+    <test name="VerifyExisting_Customer_Remind_Earned_CreditInReferral" junit="false"
+        preserve-order="true">
+        <classes>
+            <class name="com.edureka.referralProcess.VerifyExisting_Customer_Remind_Earned_CreditInReferral" />
+        </classes>
+    </test>
+</suite>

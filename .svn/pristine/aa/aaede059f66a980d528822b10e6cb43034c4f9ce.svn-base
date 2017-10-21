@@ -1,0 +1,176 @@
+package com.edureka.searchFunctionality;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.AllCoursesPage;
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class SearchBasedOnCategory extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private AllCoursesPage allCoursesPage;
+    private SignInModalPage signInModalPage;
+    private UserHomePage userHomePage;
+    private SelectedCoursePage selectedCoursesPage;
+
+    private static String allCourse;
+    private static String course_Name;
+    @Test
+    public void test_001SearchBasedOnCategory() throws Exception {
+
+        try {
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify LogIn Is Default
+            addLog("Verify LogIn Is Default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // click on Sign up link
+            addLog("click on Sign up link");
+            signInModalPage=signInModalPage.clickSignUp();
+
+            // Sign up User
+            String edurekaDomain = propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            userHomePage= signInModalPage.signUp(UserHomePage.class, edurekaDomain);
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            userHomePage=userHomePage.verifyUserPage();
+
+            //  Select AllCourse Tab from Courses dropdown
+            allCourse = propertyReader.readTestData("AllCourse");
+            addLog("Select "+allCourse+" Tab from Courses dropdown");
+            allCoursesPage= userHomePage.selectCourseOption(AllCoursesPage.class, allCourse);
+
+            // Verify All Courses page
+            addLog("Verify All Courses page");
+            allCoursesPage= allCoursesPage.verifyAllCoursesPage();
+
+            // Click on View all Link in Search Category
+            addLog("Click on View all Link in Search Category");
+            allCoursesPage= allCoursesPage.clickOnViewAllButton();
+
+            // Verify All Search Categories are visible
+            addLog("Verify All Search Categories are visible");
+            allCoursesPage= allCoursesPage.verifyAllSearchCategoriesVisible();
+
+            // Check Course Check box in Search Category
+            course_Name = propertyReader.readTestData("Big_Data_Analytics");
+            addLog("Check "+course_Name+" Check box in Search Category");
+            allCoursesPage = allCoursesPage.checkCourseCheckBoxinSearch(course_Name);
+
+            // Verify Selected course is appread in Searched Result
+            addLog("Verify Selected "+course_Name+" is appread in Searched Result");
+            allCoursesPage = allCoursesPage.verifySelectFilterAppear(course_Name);
+
+            // Verify Data in user table
+            addLog("Verify Data in User Table");
+            allCoursesPage = allCoursesPage.dataVerificationInUserTable();
+
+        }   catch (final Error e) {
+            captureScreenshot("test_001SearchBasedOnCategory");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_001SearchBasedOnCategory");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_001SearchBasedOnCategory"})
+    public void test_003_SearchBasedOnCourseType() throws Exception {
+
+        try {
+
+            // Enter Course in Search field and search course
+            course_Name= propertyReader.readTestData("Master_Python");
+            addLog("Enter Course in Search field "+course_Name+" and search course");
+            selectedCoursesPage = allCoursesPage.searchData(course_Name);
+
+            // Verify Course Ladning page
+            addLog("Verify "+ course_Name+" page");
+            selectedCoursesPage=selectedCoursesPage.verifySelectedCoursePage(course_Name);
+        }
+        catch (Error e) {
+            captureScreenshot("test_003_SearchBasedOnCourseType");
+            throw e;
+        } catch (Exception e) {
+            captureScreenshot("test_003_SearchBasedOnCourseType");
+            throw e;
+        }
+    }
+    @Test(dependsOnMethods={"test_003_SearchBasedOnCourseType"})
+    public void test_002_SearchFunctionalityBasedOnTypedKeyword() throws Exception {
+
+        try {
+
+            // Select All CoursesTab from Courses dropdown
+            addLog("Select "+allCourse+" Tab from Courses dropdown");
+            allCoursesPage= selectedCoursesPage.selectCourseOption(AllCoursesPage.class, allCourse);
+
+            // Verify All Courses page
+            addLog("Verify All Courses page");
+            allCoursesPage= allCoursesPage.verifyAllCoursesPage();
+
+            // Search Data based on correct keywords
+            String correctKeywords = propertyReader.readTestData("Correct_Keywords");
+            addLog("Search Data based on correct keywords");
+            allCoursesPage= allCoursesPage.searchDataBasedOnKeyword(correctKeywords);
+
+            //  Verify Searched Result
+            addLog("Verify Searched Result");
+            allCoursesPage= allCoursesPage.verifySearchResultBasedOnCorrectKeyword(correctKeywords);
+
+            // Searched Data based on wrong keywords
+            String worngKeywords= propertyReader.readTestData("Wrong_Keywords");
+            addLog("Searched Data based on wrong keywords");
+            allCoursesPage= allCoursesPage.searchDataBasedOnKeyword(worngKeywords);
+
+            // Verify Searched Result 'No Search Result Found'
+            addLog("Verify Searched Result 'No Search Result Found'");
+            allCoursesPage= allCoursesPage.verifySearchResultBasedOnWrongKeyword();
+            
+            // Verify Data in User Lead Table
+            String course__Id = propertyReader.readTestData("HomePage_Signup_Course_ID");
+            String webSiteAction = propertyReader.readTestData("HomePage_Signup_WebSite_Action");
+            addLog("Verify Data in User Lead Table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_LeadsTable(course__Id,webSiteAction);
+            
+            // Verify Data in User Course table
+            String isPaidValue= propertyReader.readTestData("HomePage_Signup_Is_Paid_Value");
+            addLog("Verify Data in User Course table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_CoursedTable(course__Id,isPaidValue,course__Id);
+            
+            // Verify Data in User Event Table
+            String campaign_Values= propertyReader.readTestData("UTM_campaign");
+            addLog("Verify Data in User Event Table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_EventTable(course__Id,webSiteAction,campaign_Values);
+
+            // Veriy Data in Ambassadors table
+            String level_id = propertyReader.readTestData("HomePage_Signup_level_id");
+            addLog("Veriy Data in Ambassadors table");
+            allCoursesPage= allCoursesPage.dataVerificationInUser_AmbassadorsTable(level_id);
+            
+
+        }
+        catch (Error e) {
+            captureScreenshot("test_002_SearchFunctionalityBasedOnTypedKeyword");
+            throw e;
+        } catch (Exception e) {
+            captureScreenshot("test_002_SearchFunctionalityBasedOnTypedKeyword");
+            throw e;
+        }
+    }
+}

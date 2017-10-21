@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//a[text()='Profile']]]></PageHeader>
+	<MessagePaymentSuccess><![CDATA[//div[@class='alert alert-success alert-dismissible fade in successalert']]]></MessagePaymentSuccess>
+	<TabCourses><![CDATA[//a[contains(text(),'Courses ')]]]></TabCourses>
+	<DDCommunity><![CDATA[//a[contains(text(),'Community ')]]]></DDCommunity>
+
+	<RefferralProcess>
+		<BTNReferFriend><![CDATA[//a[text()='Refer a Friend']]]></BTNReferFriend>
+		<RefferralForm><![CDATA[//form[@id='referralForm']]]></RefferralForm>
+		<TBEmail><![CDATA[//div[@class='bootstrap-tagsinput']/input[@placeholder='Enter email ids seperated by comma..']]]></TBEmail>
+		<BTNSendInvitation><![CDATA[//a[@id='btnSendReferrerMail']]]></BTNSendInvitation>
+		<SuccessMessage><![CDATA[//div[contains(text(),'Referral mail successfully sent. Keep referring.')]]]></SuccessMessage>
+	</RefferralProcess>
+</Locators>

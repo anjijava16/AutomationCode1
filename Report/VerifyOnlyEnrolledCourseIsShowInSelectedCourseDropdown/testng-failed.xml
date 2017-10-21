@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyOnlyEnrolledCourseIsShowInSelectedCourseDropdown]">
+  <test name="VerifyOnlyEnrolledCourseIsShowInSelectedCourseDropdown(failed)">
+    <classes>
+      <class name="com.edureka.community.VerifyOnlyEnrolledCourseIsShowInSelectedCourseDropdown">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_003VerifyOnlyEnrolledCourseIsShowInSelectedCourseDropdown"/>
+          <include name="test_004VerifyQuestionTitle"/>
+          <include name="tearDown"/>
+          <include name="test_007VerifyErrorMessageForBlankField"/>
+        </methods>
+      </class> <!-- com.edureka.community.VerifyOnlyEnrolledCourseIsShowInSelectedCourseDropdown -->
+    </classes>
+  </test> <!-- VerifyOnlyEnrolledCourseIsShowInSelectedCourseDropdown(failed) -->
+</suite> <!-- Failed suite [VerifyOnlyEnrolledCourseIsShowInSelectedCourseDropdown] -->

@@ -1,0 +1,90 @@
+package com.edureka.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class MyProfilePage extends DriverHelper{
+
+    private LocatorReader myProfile;
+    private DatabaseVerifications databaseVerification;
+    public MyProfilePage(WebDriver driver) {
+        super(driver);
+        myProfile = new LocatorReader("MyProfile.xml");
+        databaseVerification= new DatabaseVerifications(getWebDriver());
+    }
+
+    /**
+     *  Verify My Profile Page
+     * @return
+     */
+    public MyProfilePage verifyPage(){
+        String pageHeader = myProfile.getLocator("PageHeader");
+        WaitForElementPresent(pageHeader, getTimeOut());
+        Assert.assertTrue(isElementPresent(pageHeader));
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    public MyProfilePage verifySuccessPaymentMessage(){
+        String msgPaymentSuccess = myProfile.getLocator("MessagePaymentSuccess");
+        WaitForElementPresent(msgPaymentSuccess, getTimeOut());
+        Assert.assertTrue(isElementPresent(msgPaymentSuccess));
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Verify Data in user Table
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage veryDataInUserTable() throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInUserTable(MyProfilePage.class);
+        return myProfile;
+    }
+
+
+    /**
+     *  Database verification in Pre_Order table When currency is INR
+     * @param course_Id
+     * @param courseTitle
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage veryDataInUser_PreOrderTableForINR(String course_Id, String courseTitle) throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInPreOrderTableForINR(MyProfilePage.class, course_Id, courseTitle);
+        return myProfile;
+    }
+
+    /**
+     *  Database verification in Pre_Order table When currency is USD
+     * @param course_Id
+     * @param courseTitle
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage veryDataInUser_PreOrderTableForUSD(String course_Id, String courseTitle) throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInPreOrderTableForUSD(MyProfilePage.class, course_Id, courseTitle);
+        return myProfile;
+    }
+
+    /**
+     *  Verify Data in User Courses Table
+     * @param courseId
+     * @param isPaidValue
+     * @param courseGroup
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage veryDataInUser_CoursedTable(String courseId, String isPaidValue, String courseGroup) throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInUser_Course_Table(MyProfilePage.class, courseId, isPaidValue, courseGroup);
+        return myProfile;
+    }
+
+}

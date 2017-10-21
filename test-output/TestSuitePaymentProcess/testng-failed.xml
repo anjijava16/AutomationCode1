@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [TestSuitePaymentProcess]">
+  <test name="TestSuitePaymentProcess(failed)">
+    <classes>
+      <class name="com.edureka.paymentProcess.MakePaymentWhenNoneOfOfferPresent">
+        <methods>
+          <include name="test_013MakePaymentWhenNoDiscountNoB1S2__Paypal"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_013MakePaymentWhenNoDiscountNoB1S2__RP"/>
+          <include name="test_013MakePaymentWhenNoDiscountNoB1S2__CCAvenue"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentWhenNoneOfOfferPresent -->
+      <class name="com.edureka.paymentProcess.CalculateAndValidatePricesOnChangeOfCurrency">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.CalculateAndValidatePricesOnChangeOfCurrency -->
+      <class name="com.edureka.paymentProcess.MakePaymentThroughRazorPay">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentThroughRazorPay -->
+      <class name="com.edureka.paymentProcess.BatchTableValidationOnChangeOfTimeZone_Currency">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.BatchTableValidationOnChangeOfTimeZone_Currency -->
+      <class name="com.edureka.paymentProcess.MakePaymentThroughCCAvenue">
+        <methods>
+          <include name="test_005MakePaymentThroughCCAvenue"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentThroughCCAvenue -->
+      <class name="com.edureka.paymentProcess.PriceCalculationInBatchTable">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.PriceCalculationInBatchTable -->
+      <class name="com.edureka.paymentProcess.MakePaymentThroughPaypal">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_022ValidateMyOrdersDetailsOnMyProfilePage"/>
+          <include name="tearDown"/>
+          <include name="test_004MakePaymentThroughPaypal"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentThroughPaypal -->
+      <class name="com.edureka.paymentProcess.MakePaymentWhenB1S2OfferIsPresent">
+        <methods>
+          <include name="test_016MakePaymentWhenB1S2OfferIsPresent_Paypal"/>
+          <include name="test_016MakePaymentWhenB1S2OfferIsPresent_RP"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_016MakePaymentWhenB1S2OfferIsPresent_CCAvenue"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentWhenB1S2OfferIsPresent -->
+      <class name="com.edureka.paymentProcess.MakePaymentWhenCreditPointsAvailable">
+        <methods>
+          <include name="test_015MakePaymentWhenCreditPointsAvailable_CCAvenue"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_015MakePaymentWhenCreditPointsAvailable_Paypal"/>
+          <include name="test_015MakePaymentWhenCreditPointsAvailable_RP"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentWhenCreditPointsAvailable -->
+      <class name="com.edureka.paymentProcess.ValidateBatchesDetailsSelfPacedCourses">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_010ValidateBatchesDetailsSelfPacedCourses"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.ValidateBatchesDetailsSelfPacedCourses -->
+      <class name="com.edureka.paymentProcess.MakePaymentWhenCreditPointsAvailableAndB1S2OfferIsPresent">
+        <methods>
+          <include name="test_018MakePaymentWhenB1S2OfferIsPresent_CCAvenue"/>
+          <include name="test_018MakePaymentWhenB1S2OfferIsPresent_RP"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_018MakePaymentWhenB1S2OfferIsPresent_Paypal"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentWhenCreditPointsAvailableAndB1S2OfferIsPresent -->
+      <class name="com.edureka.paymentProcess.MakePaymentWhenAnyTypeOfDiscountWithB1S2IsPresent">
+        <methods>
+          <include name="test_017MakePaymentWhenAnyTypeOfDiscountWithB1S2IsPresent_CCAvenue"/>
+          <include name="test_017MakePaymentWhenAnyTypeOfDiscountWithB1S2IsPresent_Paypal"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_017MakePaymentWhenAnyTypeOfDiscountWithB1S2IsPresent_RP"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentWhenAnyTypeOfDiscountWithB1S2IsPresent -->
+      <class name="com.edureka.paymentProcess.ValidateAllElementsPresentOnOrderSummaryPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.ValidateAllElementsPresentOnOrderSummaryPage -->
+      <class name="com.edureka.paymentProcess.MakePaymentWhenAnyTypeOfDiscountNotB1S2">
+        <methods>
+          <include name="test014_MakePaymentWhenAnyTypeOfDiscountNotB1S2_CCAvenue"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_014MakePaymentWhenAnyTypeOfDiscountNotB1S2_RP"/>
+          <include name="test_014MakePaymentWhenAnyTypeOfDiscountNotB1S2_Paypal"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentWhenAnyTypeOfDiscountNotB1S2 -->
+      <class name="com.edureka.paymentProcess.MakePaymentWhenB1S2OfferAndCourseOtherThanIwillChooseLater">
+        <methods>
+          <include name="test_021MakePaymentWhenB1S2OfferAndCourseOtherThanIwillChooseLater_RP"/>
+          <include name="test_021MakePaymentWhenB1S2OfferAndCourseOtherThanIwillChooseLater_CCAvenue"/>
+          <include name="test_021MakePaymentWhenB1S2OfferAndCourseOtherThanIwillChooseLater_Paypal"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentWhenB1S2OfferAndCourseOtherThanIwillChooseLater -->
+      <class name="com.edureka.paymentProcess.ValidateTotalAmountOnChangeOfCurrency">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_001ValidateTotalAmountOnChangeOfCurrency"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.ValidateTotalAmountOnChangeOfCurrency -->
+      <class name="com.edureka.paymentProcess.ValidateBatchesDetailsLiveInstructorLedCourses">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.ValidateBatchesDetailsLiveInstructorLedCourses -->
+    </classes>
+  </test> <!-- TestSuitePaymentProcess(failed) -->
+</suite> <!-- Failed suite [TestSuitePaymentProcess] -->

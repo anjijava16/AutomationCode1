@@ -1,0 +1,80 @@
+package com.edureka.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+
+public class DashboardPage extends DriverHelper{
+
+    private LocatorReader dashboardLocator;
+
+    public DashboardPage(WebDriver driver) {
+        super(driver);
+        dashboardLocator = new LocatorReader("Dashboard.xml");
+    }
+
+    /**
+     *  Click on Sign In Link
+     * @return
+     */
+    public SignInModalPage clickSignInHeader() {
+        String lTsignIn =dashboardLocator.getLocator("HomePage.LTsignIn");
+        WaitForElementPresent(lTsignIn, getTimeOut());
+        Assert.assertTrue(isElementPresent(lTsignIn));
+        clickOn(lTsignIn);
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+
+    /**
+     *  Verify Dashboard Page
+     * @return
+     */
+    public DashboardPage verifyDashboard() {
+        String pageheader=dashboardLocator.getLocator("HomePage.PageHeader");
+        WaitForElementPresent(pageheader, getTimeOut());
+        Assert.assertTrue(isElementPresent(pageheader));
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     * Select Course 
+     * @param course
+     * @return
+     */
+    public SelectedCoursePage selectCourse(String course) {
+        List<WebElement> courses = driver.findElements(By.xpath(dashboardLocator.getLocator("HomePage.Courses")));
+        int rows = courses.size();
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h4";
+            WaitForElementPresent(coursesList, getTimeOut());
+            String coursesName= getText(coursesList);
+            if (coursesName.contains(course)) {
+            	String courseLink = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a";
+            	String loc = getAttribute(courseLink, "href");
+            	driver.get(loc);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     *  Verify Sign up pop has been closed 
+     * @return
+     */
+    public DashboardPage verifySignUpNotPresent() {
+        String popUpSignup=dashboardLocator.getLocator("HomePage.PopupSignup");
+        WaitForElementNotVisible(popUpSignup, 20);
+        Assert.assertFalse(isElementPresent(popUpSignup));
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+}

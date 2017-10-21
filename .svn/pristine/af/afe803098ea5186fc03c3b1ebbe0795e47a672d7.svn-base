@@ -1,0 +1,34 @@
+package com.edureka.scripts;
+
+import org.testng.annotations.Test;
+
+import com.edureka.util.DriverTestCase;
+import com.edureka.util.JMeterFromExistingJMX;
+import com.edureka.util.SpreadsheetOperations;
+
+public class PerformanceTest extends DriverTestCase{
+	 private SpreadsheetOperations spreadsheetOperations;
+	 
+    @Test
+    public void test_02PerformanceTest() throws Exception {
+
+        try {
+        	spreadsheetOperations = new SpreadsheetOperations();
+        	JMeterFromExistingJMX jm= new JMeterFromExistingJMX();
+        	
+        	jm.runJMX("EdurekaHomePage");
+        	
+        	spreadsheetOperations.getPagePerformance("HomePage");
+        	
+            
+            
+        }
+        catch (final Error e) {
+            captureScreenshot("test_02PerformanceTest");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_02PerformanceTest");
+            throw e;
+        }
+    }
+}

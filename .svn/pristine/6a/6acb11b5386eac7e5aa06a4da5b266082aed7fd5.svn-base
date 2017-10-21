@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" guice-stage="DEVELOPMENT" name="Failed suite [TestSuiteRegistrationProcess]">
+  <test name="TestSuiteRegistrationProcess(failed)">
+    <classes>
+      <class name="com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifyUserNotAbleToSignUpIfEnteredPhNumberInAlphabets -->
+      <class name="com.edureka.scripts.VerifySignUpFromNavigationHeader">
+        <methods>
+          <include name="setUp"/>
+          <include name="afterMainMethod"/>
+          <include name="tearDown"/>
+          <include name="test_01VerifySignUpFromNavigationHeader"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifySignUpFromNavigationHeader -->
+      <class name="com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_008VerifyClickingOnShowTextPasswordBecomeUnmasked"/>
+          <include name="test_002VerifyUserNotAbleToSignupIfMandatoryFieldISEmpty"/>
+          <include name="test_03VerifyUserNotAbleTOSignupEnteredEmailIsIncorrect"/>
+          <include name="test_04VerifyUserNotAbleTOSignupEnteredPasswordIsLessThan8Characters"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifyUserNotAbleToSignupIfMandatoryFieldIsEmpty -->
+    </classes>
+  </test> <!-- TestSuiteRegistrationProcess(failed) -->
+</suite> <!-- Failed suite [TestSuiteRegistrationProcess] -->

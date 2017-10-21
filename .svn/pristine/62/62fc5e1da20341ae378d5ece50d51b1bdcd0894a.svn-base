@@ -1,0 +1,98 @@
+package com.edureka.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class Mailnator extends DriverHelper{
+
+    private LocatorReader mailnator;
+
+    public Mailnator(WebDriver driver) {
+        super(driver);
+        mailnator = new LocatorReader("Mailnator.xml");
+    }
+
+    /**
+     * Veify mailnator
+     * @return
+     */
+    public Mailnator verifyMailnator() {
+        String pageHeader =mailnator.getLocator("PageHeader");
+        WaitForElementPresent(pageHeader, getTimeOut());
+        Assert.assertTrue(isElementPresent(pageHeader));
+        return PageFactory.initElements(driver, Mailnator.class);
+    }
+
+    /**
+     *  Enter email for search
+     * @return
+     */
+    public Mailnator enterEmail() {
+        String email = propertyReader.readRunTimeData("Email_Id");
+        String tbEmail =mailnator.getLocator("Mail.TBMail");
+        WaitForElementPresent(tbEmail, getTimeOut());
+        sendKeys(tbEmail, email);
+
+        String btnSearch =mailnator.getLocator("Mail.BTNSearch");
+        WaitForElementPresent(btnSearch, getTimeOut());
+        clickOn(btnSearch);
+        return PageFactory.initElements(driver, Mailnator.class);
+    }
+
+    /**
+     *  Open mail
+     * @return
+     */
+    public Mailnator openMail() {
+        String mail =mailnator.getLocator("Mail.MailLink");
+        WaitForElementPresent(mail, getTimeOut());
+        clickOn(mail);
+        return PageFactory.initElements(driver, Mailnator.class);
+    }
+
+    /**
+     *  Verify Mail subject
+     * @param subject
+     * @return
+     */
+    public Mailnator verifyMailSubject(String subject){
+        String mailSubject ="//td[contains(text(),'Subject:')]//following-sibling::td[contains(text(),'"+subject+"')]";
+        WaitForElementPresent(mailSubject, 20);
+        Assert.assertTrue(isElementPresent(mailSubject));
+        return PageFactory.initElements(driver, Mailnator.class);
+    }
+
+    /**
+     *  Delete mail
+     * @return
+     */
+    public Mailnator deleteMail() {
+        String btnDelete =mailnator.getLocator("Mail.BTNDelete");
+        WaitForElementPresent(btnDelete, getTimeOut());
+        clickOn(btnDelete);
+        return PageFactory.initElements(driver, Mailnator.class);
+    }
+
+    /**
+     *  Get Verification Code
+     * @return
+     */
+    public String getVerificationCode(){
+        getWebDriver().switchTo().frame("publicshowmaildivcontent");
+        String code= mailnator.getLocator("Mail.VerificationCode");
+        String verificationCode= getText(code);
+        return verificationCode;
+    }
+
+    /**
+     *  Navigate To Edureka
+     * @return
+     */
+    public SignInModalPage navigateToEdureka() {
+        switchToTab();
+        return PageFactory.initElements(driver, SignInModalPage.class);
+    }
+}

@@ -1,0 +1,238 @@
+package com.edureka.paymentProcess;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.OrderSummaryPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class ValidateTotalAmountOnChangeOfCurrency extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private SignInModalPage signInModalPage;
+    private UserHomePage userHomePage;
+    private SelectedCoursePage selectedCoursePage;
+    private OrderSummaryPage orderSummaryPage;
+    @Test
+    public void test_001ValidateTotalAmountOnChangeOfCurrency() throws Exception {
+
+        try {
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify LogIn Is Default
+            addLog("Verify LogIn Is Default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // click on Sign up link
+            addLog("click on Sign up link");
+            signInModalPage=signInModalPage.clickSignUp();
+
+            String edurekaDomain = propertyReader.readApplicationFile("EdurekaDomain");
+            addLog("Sign up user");
+            userHomePage= signInModalPage.signUp(UserHomePage.class, edurekaDomain);
+
+            // Verify User Home Page
+            addLog("Verify User Home Page");
+            userHomePage=userHomePage.verifyUserPage();
+
+            // Select Course
+            String courseName = propertyReader.readTestData("BigData&Hadoop");
+            addLog("Select Course" +courseName);
+            selectedCoursePage=dashboardPage.selectCourse(courseName);
+
+            // Verify Selected course should be open.
+            addLog("Verify Selected course should be open");
+            selectedCoursePage=selectedCoursePage.verifySelectedPopularCoursePage(courseName);
+
+            // Click on Enroll Button
+            addLog("Click on Enroll Button");
+            orderSummaryPage=selectedCoursePage.clickOnEnrollButton(OrderSummaryPage.class);
+
+            // Verify Order Summary Page
+            addLog("Verify Order Summary Page");
+            orderSummaryPage=orderSummaryPage.verifyPage();
+
+           // Change conutry as India
+            String country=propertyReader.readTestData("Country_India");
+            String currency= propertyReader.readTestData("INRCurrency");
+            addLog("Select country" +country +" from contry list");
+            orderSummaryPage=orderSummaryPage.changeCountry(country, currency);
+            
+            //Verify Currency as INR
+            addLog("Verify Currency after changing the coutry");
+            orderSummaryPage=orderSummaryPage.verifyCurrencyAfterCountryChange(currency);
+            
+            // Verify total Amount for INR is equal to Net price
+            addLog("verify Total amount");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmountWithoutNetPrice(currency);
+            orderSummaryPage=orderSummaryPage.verifytheElementsWithINRSelection();
+            
+            // Verify Change Time Zone
+            String timeZone= propertyReader.readTestData("IndianTimeZone");
+            addLog("Verify change Time Zone" +timeZone );
+            orderSummaryPage = orderSummaryPage.verifyChangedTimeZoneWithCountry(timeZone);
+            
+         // Change conutry as US CDT
+            country=propertyReader.readTestData("CountryUSCDT");
+            currency= propertyReader.readTestData("USDCurrency");
+            addLog("Select country" +country +" from contry list");
+            orderSummaryPage=orderSummaryPage.changeCountry(country, currency);
+            
+            //Verify Currency as INR
+            addLog("Verify Currency after changing the coutry");
+            orderSummaryPage=orderSummaryPage.verifyCurrencyAfterCountryChange(currency);
+            
+            // Verify total Amount for USD 
+            addLog("verify Total amount");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmountWithoutNetPrice(currency);
+            orderSummaryPage=orderSummaryPage.verifytheElementsWithUSSDSelection();
+            
+            // Verify Change Time Zone
+            timeZone= propertyReader.readTestData("USCDT_TimeZone");
+            addLog("Verify change Time Zone" +timeZone );
+            orderSummaryPage = orderSummaryPage.verifyChangedTimeZoneWithCountry(timeZone);
+            
+           // Change conutry as US(MDT) 
+            country=propertyReader.readTestData("ConutryName_USMDT");
+            currency= propertyReader.readTestData("USDCurrency");
+            addLog("Select country" +country +" from contry list");
+            orderSummaryPage=orderSummaryPage.changeCountry(country, currency);
+            
+            //Verify Currency as USD
+            addLog("Verify Currency after changing the coutry");
+            orderSummaryPage=orderSummaryPage.verifyCurrencyAfterCountryChange(currency);
+            
+            // Verify total Amount for USD 
+            addLog("verify Total amount");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmountWithoutNetPrice(currency);
+            orderSummaryPage=orderSummaryPage.verifytheElementsWithUSSDSelection();
+            
+            // Verify Change Time Zone
+            timeZone= propertyReader.readTestData("USMDT_TimeZone");
+            addLog("Verify change Time Zone" +timeZone );
+            orderSummaryPage = orderSummaryPage.verifyChangedTimeZoneWithCountry(timeZone);
+            
+            // Change conutry as US(PDT) 
+            country=propertyReader.readTestData("ConutryName_USPDT");
+            currency= propertyReader.readTestData("USDCurrency");
+            addLog("Select country" +country +" from contry list");
+            orderSummaryPage=orderSummaryPage.changeCountry(country, currency);
+            
+            //Verify Currency as USD
+            addLog("Verify Currency after changing the coutry");
+            orderSummaryPage=orderSummaryPage.verifyCurrencyAfterCountryChange(currency);
+            
+            // Verify total Amount for USD 
+            addLog("verify Total amount");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmountWithoutNetPrice(currency);
+            orderSummaryPage=orderSummaryPage.verifytheElementsWithUSSDSelection();
+            
+            // Verify Change Time Zone
+            timeZone= propertyReader.readTestData("USPDT_TimeZone");
+            addLog("Verify change Time Zone" +timeZone );
+            orderSummaryPage = orderSummaryPage.verifyChangedTimeZoneWithCountry(timeZone);
+            
+            // Change conutry as United Kingdom
+            country=propertyReader.readTestData("ContryName_UK");
+            currency= propertyReader.readTestData("UKCurrencySign");
+            addLog("Select country" +country +" from contry list");
+            orderSummaryPage=orderSummaryPage.changeCountry(country, currency);
+            
+            //Verify Currency as GBP
+            addLog("Verify Currency after changing the coutry");
+            orderSummaryPage=orderSummaryPage.verifyCurrencyAfterCountryChange(currency);
+            
+            // Verify total Amount for GBP 
+            addLog("verify Total amount");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmountWithoutNetPrice(currency);
+            orderSummaryPage=orderSummaryPage.verifytheElementsWithUSSDSelection();
+            
+            // Verify Change Time Zone
+            timeZone= propertyReader.readTestData("UnitedKingdom_TimeZone");
+            addLog("Verify change Time Zone" +timeZone );
+            orderSummaryPage = orderSummaryPage.verifyChangedTimeZoneWithCountry(timeZone);
+                        
+           
+            // Change conutry as Singapore
+            country=propertyReader.readTestData("ContryName_Singapore");
+            currency= propertyReader.readTestData("SingaporeCurrencySign");
+            addLog("Select country" +country +" from contry list");
+            orderSummaryPage=orderSummaryPage.changeCountry(country, currency);
+            
+            //Verify Currency as SGD
+            addLog("Verify Currency after changing the coutry");
+            orderSummaryPage=orderSummaryPage.verifyCurrencyAfterCountryChange(currency);
+            
+            // Verify total Amount for SGD 
+            addLog("verify Total amount");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmountWithoutNetPrice(currency);
+            orderSummaryPage=orderSummaryPage.verifytheElementsWithUSSDSelection();
+            
+            // Verify Change Time Zone
+            timeZone= propertyReader.readTestData("Singapore_TimeZone");
+            addLog("Verify change Time Zone" +timeZone );
+            orderSummaryPage = orderSummaryPage.verifyChangedTimeZoneWithCountry(timeZone);
+            
+            // Change conutry as Canada
+            country=propertyReader.readTestData("ContryName_Canada");
+            currency= propertyReader.readTestData("CanadaCurrencySign");
+            addLog("Select country" +country +" from contry list");
+            orderSummaryPage=orderSummaryPage.changeCountry(country, currency);
+            
+            //Verify Currency as CAD
+            addLog("Verify Currency after changing the coutry");
+            orderSummaryPage=orderSummaryPage.verifyCurrencyAfterCountryChange(currency);
+            
+            // Verify total Amount for CAD 
+            addLog("verify Total amount");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmountWithoutNetPrice(currency);
+            orderSummaryPage=orderSummaryPage.verifytheElementsWithUSSDSelection();
+            
+            // Verify Change Time Zone
+            timeZone= propertyReader.readTestData("Canada_TimeZone");
+            addLog("Verify change Time Zone" +timeZone );
+            orderSummaryPage = orderSummaryPage.verifyChangedTimeZoneWithCountry(timeZone);
+            
+            // Change conutry as Australia
+            country=propertyReader.readTestData("ContryName_AUS");
+            currency= propertyReader.readTestData("AustralianCurrencySign");
+            addLog("Select country" +country +" from contry list");
+            orderSummaryPage=orderSummaryPage.changeCountry(country, currency);
+            
+            //Verify Currency as AUD
+            addLog("Verify Currency after changing the coutry");
+            orderSummaryPage=orderSummaryPage.verifyCurrencyAfterCountryChange(currency);
+            
+            // Verify total Amount for AUD 
+            addLog("verify Total amount");
+            orderSummaryPage=orderSummaryPage.verifyTotalAmountWithoutNetPrice(currency);
+            orderSummaryPage=orderSummaryPage.verifytheElementsWithUSSDSelection();
+            
+            // Verify Change Time Zone
+            timeZone= propertyReader.readTestData("AustralianTimeZone");
+            addLog("Verify change Time Zone" +timeZone );
+            orderSummaryPage = orderSummaryPage.verifyChangedTimeZoneWithCountry(timeZone);
+           
+
+        }
+        catch (Error e) {
+            captureScreenshot("test_001ValidateTotalAmountOnChangeOfCurrency");
+            throw e;
+        } catch (Exception e) {
+            captureScreenshot("test_001ValidateTotalAmountOnChangeOfCurrency");
+            throw e;
+        }
+    }
+}

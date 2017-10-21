@@ -1,0 +1,57 @@
+package com.edureka.scripts;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.util.DriverTestCase;
+
+public class LoginWithEmailAndWithoutPassword extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private SignInModalPage signInModalPage;
+
+    static  String  phNumber;
+    static String email;
+    static String password;
+
+    @Test
+    public void test_014LoginWithEmailAndWithoutPassword() throws Exception {
+
+        try {
+
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Click on Signin Navigation Header
+            addLog("Click on SignIn Navigation header");
+            signInModalPage = dashboardPage.clickSignInHeader();
+
+            // Verify Login is selected as default
+            addLog("Verify Login is selected as default");
+            signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+            // Enter email 
+            email = "test"+randomString(3)+"@edureka.in";
+            password = null;
+            addLog("Enter email");
+            signInModalPage= signInModalPage.enterEmailAndPassword(email, password);
+
+            //  Verify user is not able to Logged in if user login without password
+            addLog("Verify user is not able to Logged in if user login without password");
+            signInModalPage=  signInModalPage.verifyErrorForLogIn();
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test_014LoginWithEmailAndWithoutPassword");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_014LoginWithEmailAndWithoutPassword");
+            throw e;
+        }
+    }
+}

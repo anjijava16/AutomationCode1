@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="5" verbose="1" name="SignInFromAddToWishListInListViewOnAllCoursesPage"
+    annotations="JDK">
+    <test name="SignInFromAddToWishListInListViewOnAllCoursesPage" junit="false"
+        preserve-order="true">
+        <classes>
+            <class name="com.edureka.leadProcess.SignInFromAddToWishListInListViewOnAllCoursesPage" />
+        </classes>
+    </test>
+</suite>

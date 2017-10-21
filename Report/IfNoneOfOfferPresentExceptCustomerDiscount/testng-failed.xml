@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [IfNoneOfOfferPresentExceptCustomerDiscount]">
+  <test name="IfNoneOfOfferPresentExceptCustomerDiscount(failed)">
+    <classes>
+      <class name="com.edureka.referralProcess.IfNoneOfOfferPresentExceptCustomerDiscount">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_001VerifyRefferringFlow"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.referralProcess.IfNoneOfOfferPresentExceptCustomerDiscount -->
+    </classes>
+  </test> <!-- IfNoneOfOfferPresentExceptCustomerDiscount(failed) -->
+</suite> <!-- Failed suite [IfNoneOfOfferPresentExceptCustomerDiscount] -->

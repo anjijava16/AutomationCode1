@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword]">
+  <test name="VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword(failed)">
+    <classes>
+      <class name="com.edureka.scripts.VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_013UserCannotLoggedInWithIncorrectEmailAndCorrectPassword"/>
+          <include name="afterMainMethod"/>
+          <include name="tearDown"/>
+          <include name="test_014serCannotLoggedInWithoutPassword"/>
+        </methods>
+      </class> <!-- com.edureka.scripts.VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword -->
+    </classes>
+  </test> <!-- VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword(failed) -->
+</suite> <!-- Failed suite [VerifyUserCannotLoggedInWithIncorrectEmailAndCorrectPassword] -->

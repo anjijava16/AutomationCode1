@@ -1,0 +1,386 @@
+package com.edureka.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class UserHomePage extends DriverHelper {
+
+    private final LocatorReader userHomePageLocator;
+    private final DatabaseVerifications databaseVerification;
+
+    public UserHomePage(WebDriver driver) {
+        super(driver);
+        databaseVerification = new DatabaseVerifications(driver);
+        userHomePageLocator = new LocatorReader("UserHome.xml");
+
+    }
+
+    /**
+     *  Verify User Page
+     * @param user : User Name
+     * @return
+     */
+    public UserHomePage verifyUserPage() {
+        String pageName =userHomePageLocator.getLocator("HomePage.PageHeader");
+        WaitForElementPresent(pageName,20);
+        WebElement userNameHeader = driver.findElement(By.xpath(pageName));
+        String tBuserName = propertyReader.readRunTimeData("UserName");
+        String pageheaderText = userNameHeader.getText();
+        Assert.assertTrue(pageheaderText.equalsIgnoreCase(tBuserName));
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+    /**
+     * Select Course 
+     * @param course
+     * @return
+     */
+    public SelectedCoursePage selectCourse(String course) {
+        List<WebElement> courses = driver.findElements(By.xpath(userHomePageLocator.getLocator("HomePage.Courses")));
+        int rows = courses.size();
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a/li/h4";
+            WaitForElementPresent(coursesList, getTimeOut());
+            String coursesName= getText(coursesList);
+            if (coursesName.contains(course)) {
+                String courseLink = "//div[@class='owl-stage-outer']/div/div["+i+"]/div/ul/a";
+                String loc = getAttribute(courseLink, "href");
+                driver.get(loc);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+    /**
+     * Select Course 
+     * @param course
+     * @return
+     */
+    public SelectedCoursePage selectCourse_NewAddition(String course) {
+       scrollWindow(0, 500);
+       System.out.println("Course"+course);
+    	List<WebElement> courses = driver.findElements(By.xpath(userHomePageLocator.getLocator("HomePage.Courses_New")));
+        int rows = courses.size();
+        System.out.println("rows"+rows);
+        for (int i = 1; i < rows; i++) {
+            String coursesList = "//*[@id='new-not']/section/div/div[1]/div/div["+i+"]/div/ul/a/li/h4";
+            WaitForElementPresent(coursesList, getTimeOut());
+            String coursesName= getText(coursesList);
+            System.out.println("New Course : "+coursesName);
+            if (coursesName.contains(course)) {
+            	System.out.println("I am in If");
+                String courseLink = "//*[@id='new-not']/section/div/div[1]/div/div["+i+"]/div/ul/a";
+                String loc = getAttribute(courseLink, "href");
+                driver.get(loc);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+
+    /**
+     *  Refresh browser
+     * @return
+     */
+    public DashboardPage refreshBrowser() {
+        driver.navigate().refresh();
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     *  Click on Profile dropdown
+     * @param userName
+     * @return
+     */
+    public UserHomePage clickOnProfileDropdown(String userName){
+        String dropdown ="//span[contains(text(),'"+userName+"')]";
+        WaitForElementPresent(dropdown, getTimeOut());
+        clickOn(dropdown);
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+    /**
+     *  Click on Change Password link
+     * @return
+     */
+    public ChangePasswordPage clickOnchangePasswordLink(){
+        String changePassword=userHomePageLocator.getLocator("ProfileDropdown.LTChangePassword");;
+        WaitForElementPresent(changePassword, getTimeOut());
+        mouseOver(changePassword);
+        clickOn(changePassword);
+        return PageFactory.initElements(driver, ChangePasswordPage.class);
+    }
+
+    /**
+     *  Logout application
+     * @return
+     */
+    public DashboardPage logout(){
+        String logout=userHomePageLocator.getLocator("ProfileDropdown.LTLogout");;
+        WaitForElementPresent(logout, getTimeOut());
+        mouseOver(logout);
+        clickOn(logout);
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+
+    /**
+     *  Verify Data in user Table
+     * @return
+     * @throws Exception
+     */
+    public UserHomePage dataVerificationInUserTable(String custID) throws Exception {
+        UserHomePage userHomePage;
+        userHomePage = (UserHomePage)databaseVerification.dataVerificationInUserTable(UserHomePage.class,custID);
+        return userHomePage;
+    }
+
+    /**
+     *  Verify Data in User_Leads Table
+     * @param courseID
+     * @param webSiteAction
+     * @return
+     * @throws Exception
+     */
+    public UserHomePage dataVerificationInUser_LeadsTable(String courseId, String webSiteAction, String country,String campaignSource, String campaignName, String campaignMedium) throws Exception {
+        UserHomePage userHomePage;
+        userHomePage = (UserHomePage)databaseVerification.dataVerificationInUserLeadTable(UserHomePage.class, courseId, webSiteAction, country, campaignSource, campaignName,campaignMedium);
+        return userHomePage;
+    }
+
+    /**
+     *  Verify Data in User Courses Table
+     * @param courseId
+     * @param isPaidValue
+     * @param courseGroup
+     * @return
+     * @throws Exception
+     */
+    public UserHomePage dataVerificationInUser_CoursedTable(String courseId, String isPaidValue, String courseGroup) throws Exception {
+        UserHomePage userHomePage;
+        userHomePage = (UserHomePage)databaseVerification.dataVerificationInUser_Course_Table(UserHomePage.class, courseId, isPaidValue, courseGroup);
+        return userHomePage;
+    }
+
+    /**
+     *  Verify Data in user Events Table
+     * @param courseId
+     * @param event_context
+     * @param utm_source
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    public UserHomePage dataVerificationInUser_EventTable(String courseId, String event_context,String utm_campaign, String event_Type) throws Exception {
+        UserHomePage userHomePage;
+        userHomePage = (UserHomePage)databaseVerification.dataVerificationInUser_Events_Table(UserHomePage.class, courseId, event_context, utm_campaign,event_Type);
+        return userHomePage;
+    }
+
+    /**
+     *  Verify Data in Ambassadors Table
+     * @param level_id
+     * @return
+     * @throws Exception
+     */
+    public UserHomePage dataVerificationInUser_AmbassadorsTable(String level_id) throws Exception {
+        UserHomePage userHomePage;
+        userHomePage = (UserHomePage)databaseVerification.dataVerificationInAmbassadors(UserHomePage.class, level_id);
+        return userHomePage;
+    }
+
+
+    /**
+     * Select Course option from course Dropdown
+     * @param className
+     * @param courseOption : My Course
+     *                       All Course
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T selectCourseOption(@SuppressWarnings("rawtypes") Class className, String courseOption) {
+        String tabCourses =userHomePageLocator.getLocator("HomePage.TabCourses");
+        WaitForElementPresent(tabCourses, getTimeOut());
+        Assert.assertTrue(isElementPresent(tabCourses));
+        clickOn(tabCourses);
+
+        String option ="//ul[@class='dropdown-menu']//li/a[contains(text(),'"+courseOption+"')]";
+        WaitForElementPresent(option, getTimeOut());
+        Assert.assertTrue(isElementPresent(option));
+        clickOn(option);
+        return (T) PageFactory.initElements(driver, className);
+    }
+
+    /**
+     *  Select Community
+     * @param className
+     * @param option
+     * @return
+     */
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public <T> T selectOptionFromCommunity(Class className,String option) {
+        String ddCommunity = userHomePageLocator.getLocator("HomePage.DDCommunity");
+        WaitForElementPresent(ddCommunity, 30);
+        clickOn(ddCommunity);
+
+        String communityOption = "//ul[@class='dropdown-menu']//li/a[contains(text(),'"+option+"')]";
+        WaitForElementPresent(communityOption, getTimeOut());
+        clickOn(communityOption);
+        return (T) PageFactory.initElements(driver, className);
+    }
+
+    /**
+     *  Verify Admin User Page
+     * @return
+     */
+    public UserHomePage verifyAdminUserPage() {
+        String pageName =userHomePageLocator.getLocator("HomePage.PageHeader");
+        WaitForElementPresent(pageName,20);
+        WebElement userNameHeader = driver.findElement(By.xpath(pageName));
+        String pageheaderText = userNameHeader.getText();
+        Assert.assertTrue(pageheaderText.equalsIgnoreCase("Admin"));
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+    /**
+     *  Logout application
+     * @return
+     */
+    public AdminDashboard selectAdmin(){
+        String admin=userHomePageLocator.getLocator("ProfileDropdown.LTAdmin");;
+        WaitForElementPresent(admin, getTimeOut());
+        mouseOver(admin);
+        clickOn(admin);
+        return PageFactory.initElements(driver, AdminDashboard.class);
+    }
+
+    /**
+     *  Verify Banner
+     * @return
+     */
+    public UserHomePage verifyBanner(String bannerImg){
+        getWebDriver().navigate().refresh();
+        String banner= "//img[contains(@src,'img/creative/"+bannerImg+".png')]";
+        WaitForElementPresent(banner, getTimeOut());
+        Assert.assertTrue(isElementPresent(banner));
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+    /**
+     *  Currency Verification in Offer framework
+     * @return
+     * @throws Exception
+     */
+    public UserHomePage currencyVerificationInDatabase_For_OfferFramework() throws Exception {
+        UserHomePage userHome;
+        userHome = (UserHomePage)databaseVerification.currencyVerificationInDatabase_For_OfferFramework(UserHomePage.class);
+        return userHome;
+    }
+
+    /**
+     *  Verify Data for Offer Framework
+     * @param discount_Description
+     * @return
+     * @throws Exception
+     */
+    public UserHomePage verifyDataForOfferFramework(String discount_Description) throws Exception {
+        UserHomePage userHome;
+        userHome = (UserHomePage)databaseVerification.dataVerification_For_OfferFramework(UserHomePage.class, discount_Description);
+        return userHome;
+    }
+
+    /**
+     *  Verify Edureka Logo
+     * @return
+     */
+    public UserHomePage verifyEdurekaLogoOnHomePage(){
+        String edurekaLogo = userHomePageLocator.getLocator("EdurekaLogo");
+        WaitForElementPresent(edurekaLogo, getTimeOut());
+        Assert.assertTrue(isElementPresent(edurekaLogo));
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+    /**
+     *  Click on My Profile Link
+     * @return
+     */
+    public MyProfilePage clickOnMyProfile(){
+        String lTMyProfile=userHomePageLocator.getLocator("ProfileDropdown.LTProfile");
+        WaitForElementPresent(lTMyProfile, getTimeOut());
+        clickOn(lTMyProfile);
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Verify Referral Home page
+     * @param referralName
+     * @return
+     */
+    public UserHomePage verifyReferralHomePage(String referralName) {
+        String referralUserName= "//span[contains(text(),'"+referralName+"')]";
+        WaitForElementPresent(referralUserName, getTimeOut());
+        Assert.assertTrue(isElementPresent(referralUserName));
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+
+    /**
+     *  Verify Notifications
+     * @return
+     */
+    public UserHomePage verifyNotification(){
+        String iconBell=userHomePageLocator.getLocator("HomePage.IconBell");;
+        WaitForElementPresent(iconBell, getTimeOut());
+        mouseClickByLocator(iconBell,"");
+
+        String notifications = userHomePageLocator.getLocator("HomePage.Notifications");
+        WaitForElementPresent(notifications, getTimeOut());
+        Assert.assertTrue(isElementPresent(notifications));
+        return PageFactory.initElements(driver, UserHomePage.class);
+    }
+	/**
+	 * Verify Data in user Completed_Queue_Jobs_Table
+	 * 
+	 * @param courseId
+	 * @param event_context
+	 * @param utm_source
+	 * @param utm_campaign
+	 * @return
+	 * @throws Exception
+	 */
+	public  UserHomePage dataVerificationInCompleted_Queue_Jobs_Table(String courseStatus, String courseProperty, String event_Type) throws Exception {
+		UserHomePage userHomePage;
+		userHomePage = ( UserHomePage)databaseVerification.dataVerificationInCompleted_Queue_Jobs_Table(UserHomePage.class,courseStatus, courseProperty, event_Type);
+		return userHomePage;
+	}
+	
+	 /**
+   *  Verify Banner for Addtional Disocunt 
+   * @return
+   */
+  public UserHomePage verifyAdditonalDiscountBanner(){
+      String bannerMessage= userHomePageLocator.getLocator("AddtionalDiscountBanner");
+      WaitForElementPresent(bannerMessage, 5);
+      Assert.assertTrue(isElementPresent(bannerMessage));
+      return PageFactory.initElements(driver, UserHomePage.class);
+  }
+	/**
+	 * Select Training Type
+	 * 
+	 * @param type
+	 * @return
+	 */
+	public UserHomePage selectTrainingType(String type) {
+		String trainingType = "//h5[text()='Training Type']/following::label[contains(text(),'" + type + "')]";
+		WaitForElementPresent(trainingType, getTimeOut());
+		clickOn(trainingType);
+		return PageFactory.initElements(DriverHelper.driver, UserHomePage.class);
+	}
+}

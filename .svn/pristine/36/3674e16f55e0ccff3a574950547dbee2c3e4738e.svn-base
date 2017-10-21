@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestSuitePaymentProcess" verbose="1" thread-count="1">
+	<test name="TestSuitePaymentProcess" preserve-order="true">
+		<classes>
+			<class
+				name="com.edureka.paymentProcess.BatchTableValidationOnChangeOfTimeZone_Currency" />
+			<class
+				name="com.edureka.paymentProcess.CalculateAndValidatePricesOnChangeOfCurrency" />
+			<class name="com.edureka.paymentProcess.MakePaymentThroughPaypal" />
+			<class name="com.edureka.paymentProcess.MakePaymentThroughRazorPay" />
+			<class name="com.edureka.paymentProcess.PriceCalculationInBatchTable" />
+			<class name="com.edureka.paymentProcess.ValidateAllElementsPresentOnOrderSummaryPage" />
+			<class name="com.edureka.paymentProcess.MakePaymentWhenNoneOfOfferPresent"/>
+            <class name="com.edureka.paymentProcess.MakePaymentWhenAnyTypeOfDiscountNotB1S2" />
+            <class name="com.edureka.paymentProcess.MakePaymentWhenAnyTypeOfDiscountWithB1S2IsPresent" />
+            <class name="com.edureka.paymentProcess.MakePaymentWhenB1S2OfferIsPresent" />
+            <class name="com.edureka.paymentProcess.MakePaymentWhenCreditPointsAvailable" />
+             <class name="com.edureka.paymentProcess.ValidateTotalAmountOnChangeOfCurrency" />
+             <class name="com.edureka.paymentProcess.MakePaymentThroughCCAvenue" />
+		</classes>
+	</test>
+</suite> 

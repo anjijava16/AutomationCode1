@@ -1,0 +1,204 @@
+<html>
+<head>
+<title>TestNG:  ValidationOnForgotPasswordLinkWhenEmailInBlank</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>ValidationOnForgotPasswordLinkWhenEmailInBlank</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>8/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Jul 18 20:27:14 IST 2016</td>
+</tr>
+<tr><td>Total time:</td><td>64 seconds (64339 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_021VerifyForgotPasswordFeatureIsWorking()'><b>test_021VerifyForgotPasswordFeatureIsWorking</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-1531182070" onClick='toggleBox("Output-1531182070", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1531182070" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1531182070">
+Close sign in module<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter correct email and incorrect password<br><br/>
+Click on forgot password link<br><br/>
+Verify the form when verification code has been sent on given email Id<br><br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@5f2108b5</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_022ValidationOnForgotPasswordLinkWhenEmailIsBlank()'><b>test_022ValidationOnForgotPasswordLinkWhenEmailIsBlank</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-528591360" onClick='toggleBox("Output-528591360", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-528591360" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-528591360">
+Navigate to the Edureka application url<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Click on forgot password link<br><br/>
+Verify the validation on click of Forgot passowrd when email field is blank<br><br/>
+</div>
+</td>
+<td></td>
+<td>14</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@5f2108b5</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_023ValidationOnForgotPasswordLinkWhenEmailNotRegistered()'><b>test_023ValidationOnForgotPasswordLinkWhenEmailNotRegistered</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-319670866" onClick='toggleBox("Output-319670866", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-319670866" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-319670866">
+Close sign in module<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter correct email and incorrect password<br><br/>
+Click on forgot password link<br><br/>
+Verify the validation on click of Forgot passowrd when email field has incorrect/not registered email id<br><br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@5f2108b5</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_024VerificationAndPasswordFieldShowAfterVerificationCodeSent()'><b>test_024VerificationAndPasswordFieldShowAfterVerificationCodeSent</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-1856093404" onClick='toggleBox("Output-1856093404", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1856093404" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1856093404">
+Verify Email Field has been disabled<br><br/>
+Verify Verification code field and New password field is display<br><br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@5f2108b5</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_028VerifyResendOfVerificationCodeFunctionality()'><b>test_028VerifyResendOfVerificationCodeFunctionality</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-944752500" onClick='toggleBox("Output-944752500", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-944752500" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-944752500">
+Click on Resend Password Link<br><br/>
+Verify Verification code field and New password field is display<br><br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@5f2108b5</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_032VerifySupportEmailLink()'><b>test_032VerifySupportEmailLink</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-1689458432" onClick='toggleBox("Output-1689458432", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1689458432" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1689458432">
+Verify Email link 'support@edureka.co<br><br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@5f2108b5</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_30VerifyShowFuncationlityForNewPassword()'><b>test_30VerifyShowFuncationlityForNewPassword</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-1066582857" onClick='toggleBox("Output-1066582857", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1066582857" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1066582857">
+Enter new password<br><br/>
+Verify Show functionlity for new Password<br><br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@5f2108b5</td></tr>
+<tr>
+<td title='com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank.test_38VerifyErrorMessageInRedAndSuccessMessageInGreen()'><b>test_38VerifyErrorMessageInRedAndSuccessMessageInGreen</b><br>Test class: com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank<br/>
+<a href="#Output-1604616170" onClick='toggleBox("Output-1604616170", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1604616170" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1604616170">
+Close sign in module<br><br/>
+Verify Edureka Dashboard Page<br><br/>
+Click on SignIn Navigation header<br><br/>
+Verify Login is selected as default<br><br/>
+Enter correct email and incorrect password<br><br/>
+Click on forgot password link<br><br/>
+Verify Error Message is displayed in red<br><br/>
+Enter correct email and incorrect password<br><br/>
+Click on forgot password link<br><br/>
+Verify Error Message is displayed in green<br><br/>
+</div>
+</td>
+<td></td>
+<td>14</td>
+<td>com.edureka.registration.ValidationOnForgotPasswordLinkWhenEmailInBlank@5f2108b5</td></tr>
+</table><p>
+</body>
+</html>

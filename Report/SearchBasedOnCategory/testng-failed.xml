@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [SearchBasedOnCategory]">
+  <test name="SearchBasedOnCategory(failed)">
+    <classes>
+      <class name="com.edureka.searchFunctionality.SearchBasedOnCategory">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_001SearchBasedOnCategory"/>
+          <include name="tearDown"/>
+          <include name="test_003_SearchBasedOnCourseType"/>
+          <include name="test_002_SearchFunctionalityBasedOnTypedKeyword"/>
+        </methods>
+      </class> <!-- com.edureka.searchFunctionality.SearchBasedOnCategory -->
+    </classes>
+  </test> <!-- SearchBasedOnCategory(failed) -->
+</suite> <!-- Failed suite [SearchBasedOnCategory] -->

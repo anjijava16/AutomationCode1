@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestSuiteOfferFramework" verbose="1" thread-count="1">
+	<test name="TestSuiteOfferFramework" preserve-order="true">
+		<classes>
+			<class name="com.edureka.offerFramework.FrameworkFlatDiscountOffer" />
+			<class name="com.edureka.offerFramework.VerifyAdminViewForOffer" />
+			<class name="com.edureka.offerFramework.VerifyBatchSpecificDiscount" />
+			<class name="com.edureka.offerFramework.VerifyBuy1Study2Offer" />
+			<class name="com.edureka.offerFramework.VerifyCourseSpecificDiscount" />
+			<class name="com.edureka.offerFramework.VerifyOfferCode" />
+		</classes>
+	</test>
+</suite> 

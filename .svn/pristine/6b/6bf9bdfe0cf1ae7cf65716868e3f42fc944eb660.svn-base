@@ -1,0 +1,12 @@
+<h2>Reporter output</h2><table><tr><td>Navigate to the Edureka application url<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Click on SignIn Navigation header<br></td></tr>
+<tr><td>Verify Login is selected as default<br></td></tr>
+<tr><td>Verify Enter email<br></td></tr>
+<tr><td>Click on forgot password<br></td></tr>
+<tr><td>Verify Message Verification code sent to email testVXF@mailinator.com<br></td></tr>
+<tr><td>Navigate to mailnator<br></td></tr>
+<tr><td>Enter email<br></td></tr>
+<tr><td>open Email<br></td></tr>
+<tr><td><a href= 'file://D:/workspace/Edureka_Automation/screenshots/test_025VerifySubjectLineOfVerification2016-07-26.jpg'target='_blank' ><img src='file://D:/workspace/Edureka_Automation/screenshots/test_025VerifySubjectLineOfVerification2016-07-26.jpg' height="42" width="42" >test_025VerifySubjectLineOfVerification2016-07-26</a></td></tr>
+</table>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [VerifySignupFromAddToWishlistOnAnyCourseLandingPage]">
+  <test name="VerifySignupFromAddToWishlistOnAnyCourseLandingPage(failed)">
+    <classes>
+      <class name="com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_003VerifySignupFromAddToWishlistOnAnyCourseLandingPage"/>
+          <include name="test_012SignInFromAddToWishlistOnAnyCourseLandingPage"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.VerifySignupFromAddToWishlistOnAnyCourseLandingPage -->
+    </classes>
+  </test> <!-- VerifySignupFromAddToWishlistOnAnyCourseLandingPage(failed) -->
+</suite> <!-- Failed suite [VerifySignupFromAddToWishlistOnAnyCourseLandingPage] -->

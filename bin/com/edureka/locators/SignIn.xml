@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//div[@id='signin-modal']]]></PageHeader>
+
+	<SignIn>
+		<LTSignUp><![CDATA[//a[@href='#SignUp']]]></LTSignUp>
+		<TBUserName><![CDATA[//input[@id='signupname']]]></TBUserName>
+		<TBEmail><![CDATA[//input[@id='signupemail']]]></TBEmail>
+//Not in<TBPhNumber><![CDATA[css= .form-control.inputsignup3]]></TBPhNumber>
+		<TBUserPassword><![CDATA[//input[@id='pwd3']]]></TBUserPassword>
+		<BTNCreateAccount><![CDATA[css= .createaccbtn]]></BTNCreateAccount>
+//Not in<TxtError><![CDATA[//form[@id='signupForm']/div/span]]></TxtError>
+//Not in<PlaceholderName><![CDATA[//label[@id='labellogin1']]]></PlaceholderName>
+//Not in		<PlaceholderEmail><![CDATA[//label[@id='labellogin2']]]></PlaceholderEmail>
+//Not in		<PlaceholderPhNumber><![CDATA[//label[@id='labellogin3']]]></PlaceholderPhNumber>
+//Not in		<PlaceholderPassword><![CDATA[//label[@id='labellogin4']]]></PlaceholderPassword>
+//Not in		<CloseIcon><![CDATA[css= .close.modalclose.onclicktab]]></CloseIcon>
+//Not in		<ErrorExistingIDSignup><![CDATA[//form[@id='signupForm']/div/span]]></ErrorExistingIDSignup>
+//Not in		<BTNShow_SignUp><![CDATA[css= .showpass1]]></BTNShow_SignUp>
+                <BTNShow_Login><![CDATA[css= .showpass]]></BTNShow_Login>  
+//Not in		<UnMaskedPassword><![CDATA[//input[@type='text']]]></UnMaskedPassword>
+		<LTTAndC><![CDATA[//a[text()='T&C']]]></LTTAndC>
+		<LTPrivateAndPolicy><![CDATA[//a[text()='Privacy Policy']]]></LTPrivateAndPolicy>
+// Not in  <BTNClose><![CDATA[css= #signin_signup_cancel]]></BTNClose>
+		<LTSignIn><![CDATA[//a[@href='#LogIn']]]></LTSignIn>
+	</SignIn>
+
+	<Login>
+		<TxtError><![CDATA[//form[@id='signinForm']/div/span]]></TxtError>
+		<TBLoginEmail><![CDATA[css= #inputName]]></TBLoginEmail>
+		<TBLoginPassword><![CDATA[css= #pwd1]]></TBLoginPassword>
+		<AdminLoginPassword><![CDATA[css= #pwd]]></AdminLoginPassword>
+		<AdminSubmitButton><![CDATA[css= .bluebtn.pull-right.defdisablesignin.ga-signin]]></AdminSubmitButton>
+		<BTNStartLearning><![CDATA[css= .startlearningbtn.defdisablesignin]]></BTNStartLearning>
+// Not in use <BTNStartLearningDisabled><![CDATA[//button[text()='Start Learning']]]></BTNStartLearningDisabled>
+		<LTLogIn><![CDATA[//a[@href='#LogIn']]]></LTLogIn>
+	</Login>
+	
+	<ForgotPassword>
+        <ltForgotPassword><![CDATA[//*[@id='Forgotnew']]]></ltForgotPassword>
+// Not in use  <TxtError><![CDATA[//form[@id='signinForm']/div/span]]></TxtError>
+// Not in use  <ErrorMessage><![CDATA[//span[text()='This email id is not registered.']]]></ErrorMessage>
+        <MessageSuccess><![CDATA[//span[@id='messages']]]></MessageSuccess>
+// Not in use  <TBVerificationCode><![CDATA[css= .form-control.inputforgotpasspwd.verifycheck]]></TBVerificationCode>
+        <TBNewPassword><![CDATA[css= .form-control.inputforgotpass]]></TBNewPassword>
+        <TBVerificationCode><![CDATA[css= #otpfield]]></TBVerificationCode>
+        <TBEmail><![CDATA[//input[@id='prefilledemail']]]></TBEmail>
+        <SupportEmail><![CDATA[//a[@href='mailto:support@edureka.co']]]></SupportEmail>
+        <LTResend><![CDATA[css= #resendcode]]></LTResend>
+// Not in use  <BTNShow><![CDATA[css= #passshow2]]></BTNShow>
+// ?        <UnMaskedPassword><![CDATA[//input[@type='text']]]></UnMaskedPassword>
+        <BTNReset><![CDATA[//button[@id='passresetbutton']]]></BTNReset>
+    </ForgotPassword>
+
+	<TermsAndConditions>
+// Not in Use		<PageHeader><![CDATA[//h4[text()='Terms and Conditions']]]></PageHeader>
+	</TermsAndConditions>
+
+	<PrivateAndPolicy>
+// Not in Use		<PageHeader><![CDATA[//h4[text()='Privacy Policy']]]></PageHeader>
+	</PrivateAndPolicy>
+	<ErrorMessage>
+		<Name_PleaseEnterValidValue><![CDATA[//*[@id='signupForm']/div[1]/small[1]]]></Name_PleaseEnterValidValue>
+		<Name_PleaseEnterYourName><![CDATA[//*[@id='signupForm']/div[1]/small[2]]]></Name_PleaseEnterYourName>
+		<Name_EnterValidName><![CDATA[//*[@id='signupForm']/div[1]/small[3]]]></Name_EnterValidName>
+		<Email_PleaseEnterValidValue><![CDATA[//*[@id='signupForm']/div[2]/small[1]]]></Email_PleaseEnterValidValue>
+		<Email_EnterAEmail><![CDATA[//*[@id='signupForm']/div[2]/small[2]]]></Email_EnterAEmail>
+		<Email_EnterValidEmail><![CDATA[//*[@id='signupForm']/div[2]/small[3]]]></Email_EnterValidEmail>
+		<Mobile_PleaseEnterValidNumber><![CDATA[css= #signupForm>div:nth-child(6)>small:nth-child(3)]]></Mobile_PleaseEnterValidNumber>
+		<Mobile_EnterAMobile><![CDATA[css= #signupForm>div:nth-child(6)>small:nth-child(4)]]></Mobile_EnterAMobile>
+		<Mobile_EnterValidMobile><![CDATA[css= #signupForm>div:nth-child(6)>small:nth-child(5)]]></Mobile_EnterValidMobile>
+		<Password_PleaseEnterValidValue><![CDATA[#signupForm>div:nth-child(7)>small:nth-child(4)]]></Password_PleaseEnterValidValue>
+		<Password_EnterAValidPassword><![CDATA[#signupForm>div:nth-child(7)>small:nth-child(5)]]></Password_EnterAValidPassword>
+		<Password_ShouldBeMinimumOf8><![CDATA[#signupForm>div:nth-child(7)>small:nth-child(6)]]></Password_ShouldBeMinimumOf8>
+	</ErrorMessage>
+
+</Locators>

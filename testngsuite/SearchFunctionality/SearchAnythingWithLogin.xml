@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="5" verbose="1" name="SearchAnythingWithLogin"
+    annotations="JDK">
+    <test name="SearchAnythingWithLogin" junit="false"
+        preserve-order="true">
+        <classes>
+            <class name="com.edureka.searchFunctionality.SearchAnythingWithLogin" />
+        </classes>
+    </test>
+</suite>

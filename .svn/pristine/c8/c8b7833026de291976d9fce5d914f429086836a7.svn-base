@@ -1,0 +1,57 @@
+package com.edureka.registration;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class CreateUserForForgotPassword extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private UserHomePage userHomePage;
+    private SignInModalPage signInModalPage;
+
+    @Test
+    public void test_CreateUserForForgotPassword() throws Exception {
+
+      try {
+        // Navigate to app url]
+        addLog("Navigate to the Edureka application url");
+        dashboardPage = applicationSetup();
+
+        // Verify Edureka Dashboard Page
+        addLog("Verify Edureka Dashboard Page");
+        dashboardPage=  dashboardPage.verifyDashboard();
+
+        // Click on Signin Navigation Header
+        addLog("Click on SignIn Navigation header");
+        signInModalPage = dashboardPage.clickSignInHeader();
+
+        // Verify Login is selected as default
+        addLog("Verify Login is selected as default");
+        signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+        // click on Sign up link
+        addLog("click on Sign up link");
+        signInModalPage=signInModalPage.clickSignUp();
+
+        // Sign up user
+        String domainName= propertyReader.readApplicationFile("MailnatorDomain");
+        addLog("Sign up user");
+        userHomePage= signInModalPage.signUp(UserHomePage.class,domainName);
+
+        // Verify User Home Page
+        addLog("Verify User Home Page");
+        userHomePage=userHomePage.verifyUserPage();
+
+      }
+      catch (final Error e) {
+        captureScreenshot("test_CreateUserForForgotPassword");
+        throw e;
+      } catch (final Exception e) {
+        captureScreenshot("test_CreateUserForForgotPassword");
+        throw e;
+      }
+    }
+  }

@@ -1,0 +1,325 @@
+package com.edureka.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class MyProfilePage extends DriverHelper{
+
+    private LocatorReader myProfile;
+    private DatabaseVerifications databaseVerification;
+    public MyProfilePage(WebDriver driver) {
+        super(driver);
+        myProfile = new LocatorReader("MyProfile.xml");
+        databaseVerification= new DatabaseVerifications(getWebDriver());
+    }
+
+    /**
+     *  Verify My Profile Page
+     * @return
+     */
+    public MyProfilePage verifyPage(){
+        String pageHeader = myProfile.getLocator("PageHeader");
+        WaitForElementPresent(pageHeader, getTimeOut());
+        Assert.assertTrue(isElementPresent(pageHeader));
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Verify success payment message
+     * @return
+     */
+    public MyProfilePage verifySuccessPaymentMessage(){
+        String msgPaymentSuccess = myProfile.getLocator("MessagePaymentSuccess");
+        WaitForElementPresent(msgPaymentSuccess, getTimeOut());
+        Assert.assertTrue(isElementPresent(msgPaymentSuccess));
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Select Community
+     * @param className
+     * @param option
+     * @return
+     */
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+    public <T> T selectOptionFromCommunity(Class className,String option) {
+        String ddCommunity = myProfile.getLocator("DDCommunity");
+        WaitForElementPresent(ddCommunity, 30);
+        clickOn(ddCommunity);
+
+        String communityOption = "//ul[@class='dropdown-menu']//li/a[contains(text(),'"+option+"')]";
+        WaitForElementPresent(communityOption, getTimeOut());
+        clickOn(communityOption);
+        return (T) PageFactory.initElements(driver, className);
+    }
+
+
+    /**
+     *  Verify Data in user Table
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage dataVerificationInUserTable() throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInUserTable(MyProfilePage.class);
+        return myProfile;
+    }
+
+
+    /**
+     *  Database verification in Pre_Order table When currency is INR
+     * @param course_Id
+     * @param courseTitle
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage dataVerificationInUser_PreOrderTableForINR(String course_Id, String courseTitle) throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInPreOrderTableForINR(MyProfilePage.class, course_Id, courseTitle);
+        return myProfile;
+    }
+
+    /**
+     *  Database verification in Pre_Order table When currency is USD
+     * @param course_Id
+     * @param courseTitle
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage dataVerificationInUser_PreOrderTableForUSD(String course_Id, String courseTitle) throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInPreOrderTableForUSD(MyProfilePage.class, course_Id, courseTitle);
+        return myProfile;
+    }
+
+    /**
+     *  Verify Data in User Courses Table
+     * @param courseId
+     * @param isPaidValue
+     * @param courseGroup
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage dataVerificationInUser_CoursedTable(String courseId, String isPaidValue, String courseGroup) throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInUser_Course_Table(MyProfilePage.class, courseId, isPaidValue, courseGroup);
+        return myProfile;
+    }
+
+    /**
+     * Select Course option from course Dropdown
+     * @param className
+     * @param courseOption : My Course
+     *                       All Course
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public <T> T selectCourseOption(@SuppressWarnings("rawtypes") Class className, String courseOption) {
+        String tabCourses =myProfile.getLocator("TabCourses");
+        WaitForElementPresent(tabCourses, getTimeOut());
+        Assert.assertTrue(isElementPresent(tabCourses));
+        clickOn(tabCourses);
+
+        String option ="//ul[@class='dropdown-menu']//li/a[contains(text(),'"+courseOption+"')]";
+        WaitForElementPresent(option, getTimeOut());
+        Assert.assertTrue(isElementPresent(option));
+        clickOn(option);
+        return (T) PageFactory.initElements(driver, className);
+    }
+
+    /**
+     *  Click on Refer friend link
+     * @return
+     */
+    public MyProfilePage clickOnReferFriendButton(){
+        String btnReferFriend = myProfile.getLocator("RefferralProcess.BTNReferFriend");
+        WaitForElementPresent(btnReferFriend, getTimeOut());
+        mouseOver(btnReferFriend);
+        clickOn(btnReferFriend);
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Copy Referral Link
+     * @return
+     */
+    public String copyReferralLink(){
+        String referralLink = myProfile.getLocator("RefferralProcess.ReferralLink");
+        WaitForElementPresent(referralLink, getTimeOut());
+        String referralLinkText = getText(referralLink);
+        propertyReader.updatePropertyTestData("ReferralLink",referralLinkText);
+        return referralLinkText;
+    }
+
+    /**
+     *  Verify Refferal Form
+     * @return
+     */
+    public MyProfilePage verifyRefferralForm(){
+        String refferralForm = myProfile.getLocator("RefferralProcess.BTNReferFriend");
+        WaitForElementPresent(refferralForm, getTimeOut());
+        Assert.assertTrue(isElementPresent(refferralForm));
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Refer Friend
+     * @param email
+     * @return
+     */
+    public MyProfilePage referFriend(String email) throws InterruptedException{
+        String tbEmail = myProfile.getLocator("RefferralProcess.TBEmail");
+        WaitForElementPresent(tbEmail, getTimeOut());
+        sendKeys(tbEmail, email);
+
+        String btnSendInvitation = myProfile.getLocator("RefferralProcess.BTNSendInvitation");
+        WaitForElementPresent(btnSendInvitation, getTimeOut());
+        clickOn(btnSendInvitation);
+        clickOn(btnSendInvitation);      
+        String msgSuccess = myProfile.getLocator("RefferralProcess.SuccessMessage");
+        if(!isElementPresent(msgSuccess)){
+            clickOn(btnSendInvitation);      
+        }
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Verify Success Refferral Mail Send message
+     * @return
+     */
+    public MyProfilePage VerifySuccessRefferralMailSentMsg(){
+        String msgSuccess = myProfile.getLocator("RefferralProcess.SuccessMessage");
+        WaitForElementPresent(msgSuccess, 20);
+        Assert.assertTrue(isElementPresent(msgSuccess));
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  close Refer Pop up 
+     * @return
+     */
+    public MyProfilePage closeReferPopUp(){
+        String btnClose = myProfile.getLocator("RefferralProcess.BTNClose");
+        WaitForElementPresent(btnClose, getTimeOut());
+        clickOn(btnClose);
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Click on Profile Dropdown
+     * @param userName
+     * @return
+     */
+    public MyProfilePage clickOnProfileDropdown(String userName){
+        String dropdown ="//span[contains(text(),'"+userName+"')]";
+        WaitForElementPresent(dropdown, getTimeOut());
+        clickOn(dropdown);
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Logout application
+     * @return
+     */
+    public DashboardPage logout(){
+        String logout=myProfile.getLocator("LTLogout");;
+        WaitForElementPresent(logout, getTimeOut());
+        mouseOver(logout);
+        clickOn(logout);
+        return PageFactory.initElements(driver, DashboardPage.class);
+    }
+
+    /**
+     *  Click on Referral Tab
+     * @return
+     */
+    public MyProfilePage clickOnReferralTab(){
+        String tabReferral = myProfile.getLocator("RefferralProcess.TabReferral");
+        WaitForElementPresent(tabReferral, getTimeOut());
+        clickOn(tabReferral);
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Verify Earning Credit Points
+     * @return
+     */
+    public MyProfilePage verifyEarningCreditPoints(){
+        String earningCredit = myProfile.getLocator("RefferralProcess.EarnCredit");
+        WaitForElementPresent(earningCredit, getTimeOut());
+        String earningCreditPointsText= getText(earningCredit);
+        String earningCreditPointsText_1 = earningCreditPointsText.trim();
+        int earingCreditPoints = Integer.parseInt(earningCreditPointsText_1);
+        Assert.assertTrue(earingCreditPoints>0);
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Click on Redemption button
+     * @return
+     */
+    public AllCoursesPage clickOnRedeemButton(){
+        String btnRedeem = myProfile.getLocator("RefferralProcess.BTNRedeem");
+        WaitForElementPresent(btnRedeem, getTimeOut());
+        clickOn(btnRedeem);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     *  Verify Redeemption Earning Credit Points
+     * @return
+     */
+    public MyProfilePage verifyRedeemptionCreditPoints(){
+        String redeemptionCredit = myProfile.getLocator("RefferralProcess.RedeemptionCredit");
+        WaitForElementPresent(redeemptionCredit, getTimeOut());
+        String redeemptionCreditPointsText= getText(redeemptionCredit);
+        String redeemptionCreditPointsText_1 = redeemptionCreditPointsText.trim();
+        int redeemptionCreditPoints= Integer.parseInt(redeemptionCreditPointsText_1);
+        Assert.assertTrue(redeemptionCreditPoints>0);
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *  Database verification for Referral Process
+     * @param fName
+     * @param referralLink
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage dataVerificationFor_ReferralProcess(String email, String fName,String referralLink) throws Exception{
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationForReferralProcess(MyProfilePage.class,email, fName, referralLink);
+        return myProfile;
+    }
+
+    /**
+     *  Click on Refer button
+     * @return
+     */
+    public MyProfilePage clickOnReferButton(){
+        String btnRefer = myProfile.getLocator("RefferralProcess.BTNReferFriend");
+        WaitForElementPresent(btnRefer, getTimeOut());
+        mouseOver(btnRefer);
+        clickOn(btnRefer);
+        return PageFactory.initElements(driver, MyProfilePage.class);
+    }
+
+    /**
+     *   Database verification in Post_Order table
+     * @param course_Id
+     * @param courseTitle
+     * @param paymentGatway
+     * @param currency
+     * @return
+     * @throws Exception
+     */
+    public MyProfilePage dataVerificationInUser_PostOrderTable(String course_Id, String courseTitle, String paymentGatway, String currency) throws Exception {
+        MyProfilePage myProfile;
+        myProfile = (MyProfilePage)databaseVerification.dataVerificationInPostOrderTable(MyProfilePage.class, course_Id, courseTitle, paymentGatway, currency);
+        return myProfile;
+    }
+}

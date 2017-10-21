@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [MakePaymentThroughPaypal]">
+  <test name="MakePaymentThroughPaypal(failed)">
+    <classes>
+      <class name="com.edureka.paymentProcess.MakePaymentThroughPaypal">
+        <methods>
+          <include name="setUp"/>
+          <include name="test_022ValidateMyOrdersDetailsOnMyProfilePage"/>
+          <include name="test_004MakePaymentThroughPaypal"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.edureka.paymentProcess.MakePaymentThroughPaypal -->
+    </classes>
+  </test> <!-- MakePaymentThroughPaypal(failed) -->
+</suite> <!-- Failed suite [MakePaymentThroughPaypal] -->

@@ -1,0 +1,97 @@
+package com.edureka.util;
+
+import java.sql.*;
+import java.util.ArrayList;
+
+
+public class Database {
+    
+	static Connection connectionSource;
+	static String url = "jdbc:mysql://52.26.225.168:3306/";
+	static String databaseName = "edureka-test";
+	static String username = "testQA";
+	static String pwd="testQA-123";
+	static String dbClass = "com.mysql.jdbc.Driver";
+	
+	
+	public Database() throws Exception {
+		connectionSource=getDatabaseConnection();
+
+	}	
+		
+
+		public static Connection getDatabaseConnection() throws Exception{	
+	    	Class.forName(dbClass);
+	    	return DriverManager.getConnection(url+databaseName, username, pwd);
+	    }
+
+	public String getRecord(String tableName ,String columnNameToBeFetched ,String columnNameToBeMatched,String valueToBeMatched) throws SQLException{
+
+		String resultvar = "";
+		try{
+			String sqlQuery = "SELECT " + columnNameToBeFetched + " from " + tableName + " where "+ columnNameToBeMatched +" = \""+ valueToBeMatched +"\"";
+			try (PreparedStatement selectStmt = Database.connectionSource.prepareStatement(sqlQuery);
+					ResultSet rs = selectStmt.executeQuery()) {		        
+				if (!rs.isBeforeFirst()) {
+					System.out.println("no rows found");
+				}
+				else {
+					while (rs.next()) {
+						for (int i = 1; i < rs.getMetaData().getColumnCount() + 1; i++) {
+							resultvar = resultvar+rs.getString(i).toString()+"#";
+						}
+					}
+				}
+			}			
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+		finally{
+			if(connectionSource==null){
+				connectionSource.close();
+			}
+		}
+		
+		return resultvar;
+	}
+
+	 public ArrayList<String> getRecords(String tableName ,String columnNameToBeFetched ,String columnNameToBeMatched,String valueToBeMatched){
+
+       ArrayList<String> al = new ArrayList<String>();
+       String resultvar = null;
+       try{
+
+           String sqlQuery = "SELECT " + columnNameToBeFetched + " from " + tableName + " where "+ columnNameToBeMatched +" = \""+ valueToBeMatched +"\"";
+           try (PreparedStatement selectStmt = connectionSource.prepareStatement
+                   (sqlQuery);
+                   ResultSet rs = selectStmt.executeQuery()) {           
+               if (!rs.isBeforeFirst()) {
+                   System.out.println("no rows found");
+               }
+               else {
+                   while (rs.next()) {
+                       for (int i = 1; i < rs.getMetaData().getColumnCount() + 1; i++) {
+                           System.out.print(rs.getMetaData().getColumnName(i) + "=" + rs.getObject(i));
+                           resultvar= rs.getMetaData().getColumnName(i) + "=" + rs.getObject(i);
+                           al.add(resultvar);
+                       }
+                   }
+               }
+           }     
+       }
+
+       catch(Exception e){
+           System.out.println(e);
+       }
+
+       finally{
+           if(connectionSource!=null){
+               connectionSource=null;
+           }
+       }
+       return al;
+   }
+
+
+}

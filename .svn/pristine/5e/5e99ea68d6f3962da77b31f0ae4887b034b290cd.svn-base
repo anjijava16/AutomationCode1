@@ -1,0 +1,345 @@
+package com.edureka.util.database;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import com.sun.rowset.CachedRowSetImpl;
+
+/**
+ * This class is used to set all the database connection parameters. Any queries
+ * executions, returning their results etc are performed by its objects at
+ * various places of the application automation suite. This class does have all
+ * static properties/methods/enumerations.
+ * 
+ * @since 1.0
+ * @version 1.0
+ */
+public final class AmDatabase {
+
+	private static DatabaseConnInfoHolder DbConnectionInfo = null;
+	private static DatabaseObject AmDbObject = null;
+	private static boolean ConnectionEstablished = false;
+
+	private static synchronized final void _VerifyConnectionEstablishment() throws Exception {
+		if ((AmDatabase.ConnectionEstablished == false) || (AmDatabase.AmDbObject == null) || (AmDatabase.DbConnectionInfo == null)) {
+			throw new Exception("Connection is not established before executing Query");
+		}
+	}
+
+	/**
+	 * Closes and nullifies specified CachedRowSet object
+	 * 
+	 * @param ors
+	 * @return
+	 * @throws Exception
+	 */
+	public static synchronized final boolean CloseCachedRowSet(final CachedRowSetImpl crs) throws Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.CloseCachedRowSet(crs);
+	}
+
+	/**
+	 * Closes and nullifies specified ResultSet object
+	 * 
+	 * @param rs
+	 * @throws Exception
+	 * @returns
+	 */
+	public static synchronized final boolean CloseResultSet(final ResultSet rs) throws Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.CloseResultSet(rs);
+	}
+
+	/**
+	 * Closes and nullifies specified Statement object
+	 * 
+	 * @param stmt
+	 * @throws Exception
+	 * @returns
+	 */
+	public static synchronized final boolean CloseStatement(final Statement stmt) throws Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.CloseStatement(stmt);
+	}
+
+	/**
+	 * Executes specified query on the database. If query execution fails, it
+	 * would return false. If query execution passes, it would return true.
+	 * 
+	 * @param Query
+	 *            Specifies query to be executed on database
+	 * @return <b>true :-> </b> if query executes successfully<br>
+	 *         <b>False :-> </b> if query execution fails
+	 * 
+	 * @throws SQLException
+	 * @throws Exception
+	 */
+	public static synchronized final boolean ExecuteDmlQuery(final String Query) throws SQLException, Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.ExecuteDmlQuery(Query);
+	}
+
+	/**
+	 * Executes all specified queries as a batch on the database. If any query
+	 * fails, it would rollback all queries before failed query. If all queries
+	 * get success result, it would commit data.
+	 * 
+	 * @param Queries
+	 *            Specifies list of queries to be executed on database
+	 * 
+	 * @return <b>true :-> </b> if all queries execute successfully; Also commit
+	 *         data on success<br>
+	 *         <b>false :-> </b> if any query execution fails; Also rolls back
+	 *         data on failure
+	 * 
+	 * @throws SQLException
+	 * @throws Exception
+	 */
+	public static synchronized final boolean ExecuteDmlQueryBatch(final List<String> Queries) throws SQLException, Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.ExecuteDmlQueryBatch(Queries);
+	}
+
+	/**
+	 * This method executes the Select Query passed as an argument and returns
+	 * all rows in a two-dimensional array.
+	 * 
+	 * @param SelectQuery
+	 *            Specifies the query to retrieve the data from the database,
+	 * @return Two dimensional array having all the records is returned, NULL is
+	 *         returned in case of no records.
+	 * 
+	 * @throws SQLException
+	 * @throws Exception
+	 */
+	public static synchronized final String[][] GetAllRecords(final String SelectQuery) throws SQLException, Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.GetAllRecords(SelectQuery);
+	}
+
+	/**
+	 * This method executes the Select Query passed as an argument and returns
+	 * specified column in a one-dimensional array.
+	 * 
+	 * @param SelectQuery
+	 *            Specifies the query to retrieve the data from the database
+	 * @param ColumnNum
+	 *            Specifies column number to extract
+	 * @return One dimensional array having first column is returned, NULL is
+	 *         returned in case of no records.
+	 * 
+	 * @author Braj Thakur
+	 * @since 1.0
+	 * 
+	 * @throws SQLException
+	 * @throws Exception
+	 */
+	public static synchronized final String[] GetColumn(final String SelectQuery, final int ColumnNum) throws SQLException, Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.GetColumn(SelectQuery, ColumnNum);
+	}
+
+	/**
+	 * This method returns established connection object with database.
+	 * 
+	 * @return Connection object
+	 * @throws Exception
+	 */
+	public static synchronized final Connection GetConnection() throws Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.GetConnection();
+	}
+
+	/**
+	 * Provides all records retrieved by running provided query in CachedRowSet
+	 * form.
+	 * 
+	 * @param SelectQuery
+	 *            Specifies query to retrieve the data from the database
+	 * 
+	 * @return CachedRowSet having all the records is returned<br>
+	 *         NULL is returned in case of no records.
+	 * 
+	 * @throws SQLException
+	 * @throws Exception
+	 */
+	public static synchronized final CachedRowSetImpl GetDisconnectedResultSet(final String SelectQuery) throws SQLException, Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.GetCachedRowSet(SelectQuery);
+	}
+
+	/**
+	 * This method executes the Select Query passed as an argument and returns
+	 * only the first column in a one-dimensional array.
+	 * 
+	 * @param SelectQuery
+	 *            Specifies the query to retrieve the data from the database
+	 * @return One dimensional array having first column is returned, NULL is
+	 *         returned in case of no records.
+	 * 
+	 * @author Braj Thakur
+	 * @since 1.0
+	 * 
+	 * @throws SQLException
+	 * @throws Exception
+	 */
+	public static synchronized final String[] GetFirstColumn(final String SelectQuery) throws SQLException, Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.GetFirstColumn(SelectQuery);
+	}
+
+	/**
+	 * This method executes the Select Query passed as an argument and returns
+	 * only the first row in a one-dimensional array.
+	 * 
+	 * @param SelectQuery
+	 *            Specifies the query to retrieve the data from the database
+	 * @return One dimensional array having first record is returned, NULL is
+	 *         returned in case of no records.
+	 * 
+	 * @author Braj Thakur
+	 * @since 1.0
+	 * 
+	 * @throws SQLException
+	 * @throws Exception
+	 */
+	public static synchronized final String[] GetFirstRow(final String SelectQuery) throws SQLException, Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.GetFirstRow(SelectQuery);
+	}
+
+	/**
+	 * <b>NOTE: </b><i>Recommended to create a local result-set which receives
+	 * data using this method. After use of local ResultSet, close ResultSet.
+	 * This is recommended else it would keep on increasing number of open
+	 * cursors in database which would result in a limit reached error
+	 * sometime.</i><br>
+	 * <br>
+	 * 
+	 * Provides all records retrieved by running provided query in ResultSet
+	 * form.
+	 * 
+	 * @param SelectQuery
+	 *            Specifies query to retrieve the data from the database
+	 * 
+	 * @return ResultSet having all the records is returned<br>
+	 *         NULL is returned in case of no records.
+	 * 
+	 * @throws SQLException
+	 * @throws Exception
+	 */
+	public static synchronized final ResultSet GetResultSet(final String SelectQuery) throws SQLException, Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.GetResultSet(SelectQuery);
+	}
+
+	/**
+	 * This method return the value at the first row and the first column of the
+	 * ResultSet.
+	 * 
+	 * @param SelectQuery
+	 *            -> Query to retrieve the data from the database
+	 * 
+	 * @return Value as String
+	 * 
+	 * @throws SQLException
+	 * @throws Exception
+	 */
+	public static synchronized final String GetValue(final String SelectQuery) throws SQLException, Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.GetValue(SelectQuery);
+	}
+
+	/**
+	 * Counts number of records retrieved in specified ResultSet
+	 * 
+	 * @param rs
+	 * @return
+	 * @throws Exception
+	 */
+	public static synchronized final Integer RecordCount(final ResultSet rs) throws Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.RecordCount(rs);
+	}
+
+	/**
+	 * Resets Connection to the Database. While calling this method, make sure
+	 * that at least once SetSqlConnection should have been called.
+	 * 
+	 * @return <b>true</b> If connection reset attempt was successful<br>
+	 *         <b>false</b> If connection RESET attempt failed
+	 * @throws Exception
+	 */
+	public static synchronized final boolean ResetSqlConnection() throws Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.ResetSqlConnection();
+	}
+
+	/**
+	 * Resets Connection to the Database. While calling this method, make sure
+	 * that at least once SetSqlConnection should have been called.
+	 * 
+	 * @param numRetries
+	 * @param sleepBeforeConnection
+	 * @param sleepTimeInSeconds
+	 * @return <b>true</b> If connection reset attempt was successful<br>
+	 *         <b>false</b> If connection RESET attempt failed
+	 * @throws Exception
+	 */
+	public static synchronized final boolean ResetSqlConnection(final Integer numRetries, final Boolean sleepBeforeConnection, final Integer sleepTimeInSeconds) throws Exception {
+		AmDatabase._VerifyConnectionEstablishment();
+
+		return AmDatabase.AmDbObject.ResetSqlConnection(numRetries, sleepBeforeConnection, sleepTimeInSeconds);
+	}
+
+	/**
+	 * Sets Connection to the Database.<br>
+	 * Before calling this method, set below properties surely<br>
+	 * <ul>
+	 * <li>ConnectionDriver</li>
+	 * <li>ConnectionUrl</li>
+	 * <li>DbUser</li>
+	 * <li>DbPassword</li>
+	 * </ul>
+	 * 
+	 * @return <b>true</b> Connection with database is successful<br>
+	 *         <b>false</b> Connection with database is NOT successful
+	 */
+	public static synchronized final boolean SetSqlConnection(final DatabaseConnInfoHolder dbConInfo) throws Exception {
+
+		if (AmDatabase.DbConnectionInfo == null) {
+			AmDatabase.DbConnectionInfo = new DatabaseConnInfoHolder(dbConInfo);
+		}
+		AmDatabase.AmDbObject = new DatabaseObject(AmDatabase.DbConnectionInfo);
+
+		boolean blnConnEstablished = AmDatabase.AmDbObject.SetSqlConnection();
+		AmDatabase.ConnectionEstablished = blnConnEstablished;
+
+		return blnConnEstablished;
+	}
+
+	AmDatabase(final DatabaseConnInfoHolder dbConInfo) {
+		if (AmDatabase.DbConnectionInfo == null) {
+			AmDatabase.DbConnectionInfo = new DatabaseConnInfoHolder(dbConInfo);
+		}
+		AmDatabase.AmDbObject = new DatabaseObject(AmDatabase.DbConnectionInfo);
+	}
+}

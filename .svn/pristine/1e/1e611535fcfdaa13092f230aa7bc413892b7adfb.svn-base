@@ -1,0 +1,7 @@
+<h2>Reporter output</h2><table><tr><td>Navigate to the Edureka application url<br></td></tr>
+<tr><td>Verify Edureka Dashboard Page<br></td></tr>
+<tr><td>Click on SignIn Navigation header<br></td></tr>
+<tr><td>Verify Login is selected as default<br></td></tr>
+<tr><td> Login Application<br></td></tr>
+<tr><td>User has logged in successfully and Verify User Home Page<br></td></tr>
+</table>

@@ -1,0 +1,225 @@
+package com.edureka.pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+
+import com.edureka.locators.LocatorReader;
+import com.edureka.util.DriverHelper;
+
+public class AllCoursesPage extends DriverHelper{
+
+    private LocatorReader allCoursesLocator;
+    private DatabaseVerifications databaseVerification;
+    public AllCoursesPage(WebDriver driver) {
+        super(driver);
+        allCoursesLocator = new LocatorReader("AllCourses.xml");
+        databaseVerification = new DatabaseVerifications(driver);
+    }
+
+    /**
+     *  Verify All Courses Page
+     * @return
+     */
+    public AllCoursesPage verifyAllCoursesPage() {
+        String pageheader=allCoursesLocator.getLocator("HomePage.PageHeader");
+        WaitForElementPresent(pageheader, getTimeOut());
+        Assert.assertTrue(isElementPresent(pageheader));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+    
+    public SelectedCoursePage selectCourseFromListView(String courseName) {
+        String course="//span[contains(text(),'"+courseName+"')]";
+        WaitForElementPresent(course, getTimeOut());
+        clickOn(course);
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+    
+    /**
+     * @return
+     */
+    public AllCoursesPage clickOnListViewIcon() {
+        String imgListView=allCoursesLocator.getLocator("HomePage.ImgListView");
+        WaitForElementPresent(imgListView, getTimeOut());
+        clickOn(imgListView);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+    
+    /**
+     *  Click on Grid View Icon
+     * @return
+     */
+    public AllCoursesPage clickOnGridViewIcon() {
+        String imgGridView=allCoursesLocator.getLocator("HomePage.ImgGridView");
+        WaitForElementPresent(imgGridView, getTimeOut());
+        clickOn(imgGridView);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+    
+    /**
+     * Select given course from Grid View
+     * @return
+     */    
+    public SelectedCoursePage selectCourseFromGridView(String course) {
+        List<WebElement> courses = driver.findElements(By.xpath(("//ul[@id='product-wrap']/li")));
+        int rows = courses.size();
+       for (int i = 1; i < rows; i++) {
+            String coursesList = "//ul[@id='product-wrap']/li["+i+"]/div[1]/div[1]/a/span[2]";
+            WaitForElementPresent(coursesList, 20);
+            String coursesName= getText(coursesList);
+            if (coursesName.contains(course)) {
+            	String courseLink = "//ul[@id='product-wrap']/li["+i+"]/div[1]/div[1]/a";
+            	String loc = getAttribute(courseLink, "href");
+            	driver.get(loc);
+                break;
+            }
+        }
+        return PageFactory.initElements(driver, SelectedCoursePage.class);
+    }
+    
+    /**
+     *  Click on Query box
+     * @return
+     * @throws InterruptedException
+     */
+    public AllCoursesPage clickOnQueryBox() throws InterruptedException{
+        scrollWindow(0, 1000);
+        String queryBox= allCoursesLocator.getLocator("QueryBox.HeaderQueryBox");
+        Thread.sleep(5000);
+        mouseClickByLocator(queryBox, "Click on QuerBox");
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+    
+    /**
+     * Drop query
+     * @param query
+     * @param phNumber
+     * @return
+     */
+    public AllCoursesPage sendQuery(){
+        String userName= "User"+randomString(2);
+        String email = "test" + randomString(3)+ "@tech.edureka.in";
+        propertyReader.updatePropertyTestData("QueryEmail_Id", email);
+        propertyReader.updatePropertyTestData("QueryUserName", userName);
+        String query = propertyReader.readTestData("Query");
+
+        String phNumber= propertyReader.readTestData("PhoneNumber");
+
+        String tbQueryName = allCoursesLocator.getLocator("QueryBox.TBQueryName");
+        WaitForElementVisible(tbQueryName, getTimeOut());
+        sendKeys(tbQueryName, userName);
+
+        String tbQueryEmail= allCoursesLocator.getLocator("QueryBox.TBQueryEmail");
+        WaitForElementVisible(tbQueryEmail, getTimeOut());
+        sendKeys(tbQueryEmail, email);
+
+        String tbQueryPhNumberString= allCoursesLocator.getLocator("QueryBox.TBQueryPhNumber");
+        WaitForElementVisible(tbQueryPhNumberString, getTimeOut());
+        sendKeys(tbQueryPhNumberString, phNumber);
+
+        String tbInquiry = allCoursesLocator.getLocator("QueryBox.TBInquiry");
+        WaitForElementVisible(tbInquiry, getTimeOut());
+        sendKeys(tbInquiry, query);
+
+        String btnSubmit= allCoursesLocator.getLocator("QueryBox.BTNSubmit");
+        WaitForElementVisible(btnSubmit, getTimeOut());
+        clickOn(btnSubmit);
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+
+    /**
+     * Verify Submit Inquiry Message
+     * @return
+     */
+    public AllCoursesPage verifySumbitInquiry(){
+        String messageSubmitInquiry= allCoursesLocator.getLocator("QueryBox.MsgSubmitInquiry");
+        WaitForElementPresent(messageSubmitInquiry, 5);
+        Assert.assertTrue(isElementPresent(messageSubmitInquiry));
+        return PageFactory.initElements(driver, AllCoursesPage.class);
+    }
+    
+    /**
+     *  Verify Data in user Table
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage veryDataInUserTable() throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage)databaseVerification.dataVerificationInUserTable(AllCoursesPage.class);
+        return allCourses;
+    }
+
+    /**
+     *  Verify Data in User_Leads Table
+     * @param courseID
+     * @param webSiteAction
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage veryDataInUser_LeadsTable(String courseId, String webSiteAction) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage)databaseVerification.dataVerificationInUserLeadTable(AllCoursesPage.class, courseId, webSiteAction);
+        return allCourses;
+    }
+
+    /**
+     *  Verify Data in User Courses Table
+     * @param courseId
+     * @param isPaidValue
+     * @param courseGroup
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage veryDataInUser_CoursedTable(String courseId, String isPaidValue, String courseGroup) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage)databaseVerification.dataVerificationInUser_Course_Table(AllCoursesPage.class, courseId, isPaidValue, courseGroup);
+        return allCourses;
+    }
+
+    /**
+     *  Verify Data in user Events Table
+     * @param courseId
+     * @param event_context
+     * @param utm_source
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage veryDataInUser_EventTable(String courseId, String event_context,String utm_campaign) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage)databaseVerification.dataVerificationInUser_Events_Table(AllCoursesPage.class, courseId, event_context, utm_campaign);
+        return allCourses;
+    }
+
+    /**
+     *  Verify Data in Ambassadors Table
+     * @param level_id
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage veryDataInUser_AmbassadorsTable(String level_id) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage)databaseVerification.dataVerificationInAmbassadors(AllCoursesPage.class, level_id);
+        return allCourses;
+    }
+    
+    /**
+     *  Verify Data for inquiry
+     * @param courseId
+     * @param webSiteAction
+     * @param event_context
+     * @param utm_campaign
+     * @return
+     * @throws Exception
+     */
+    public AllCoursesPage verifyDataForInquiry(String courseId, String webSiteAction,String event_context, String utm_campaign) throws Exception {
+        AllCoursesPage allCourses;
+        allCourses = (AllCoursesPage)databaseVerification.dataVerificationFor_Inquiry(AllCoursesPage.class, courseId, webSiteAction,event_context, utm_campaign);
+        return allCourses;
+    }
+
+}

@@ -1,0 +1,55 @@
+package com.edureka.poc;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.util.DriverTestCase;
+
+public class VerifyCreatingLeadUsingDropUsQuery extends DriverTestCase{
+    private DashboardPage dashboardPage;
+    private SelectedCoursePage selectedCoursePage;
+
+    @Test
+    public void test_05VerifyCreatingLeadUsingDropUsQuery() throws Exception {
+
+        try {
+            // Navigate to app url
+            addLog("Navigate to the Edureka application url");
+            dashboardPage = applicationSetup();
+
+            // Verify Edureka Dashboard Page
+            addLog("Verify Edureka Dashboard Page");
+            dashboardPage=  dashboardPage.verifyDashboard();
+
+            // Select Course
+            String courseName = propertyReader.readTestData("DataScienceCourse");
+            addLog("Select Course");
+            selectedCoursePage=dashboardPage.selectCourse(courseName);
+
+            // Verify Selected course should be open.
+            addLog("Verify Selected course should be open.");
+            selectedCoursePage=selectedCoursePage.verifySelectedCoursePage(courseName);
+
+            // Click on Query Box
+            addLog("Click on Query Box");
+            selectedCoursePage=selectedCoursePage.clickOnQueryBox();
+
+            // Submit inquiry in drop query box
+            addLog("Submit inquiry in drop query box");
+            selectedCoursePage=selectedCoursePage.sendQuery();
+            
+            // Verify Event Type Via Drop a Query
+            addLog("Verify Event Type Via a Drop a Query");
+            selectedCoursePage=selectedCoursePage.verifyEventTypeViaDropQuery();
+
+        }
+        catch (final Error e) {
+            captureScreenshot("test_05VerifyCreatingLeadUsingDropUsQuery");
+            throw e;
+        } catch (final Exception e) {
+            captureScreenshot("test_05VerifyCreatingLeadUsingDropUsQuery");
+            throw e;
+        }
+    }
+}

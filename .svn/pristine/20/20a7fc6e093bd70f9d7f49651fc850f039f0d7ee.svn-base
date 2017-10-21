@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Locators>
+	<PageHeader><![CDATA[//div[@class='ordersummdeatil whitebg clearfix']/div[1]]]></PageHeader>
+	<BTNEnroll><![CDATA[//span[@class='btn btn-primary custbtn']]]></BTNEnroll>
+	<LTWishlst><![CDATA[//i[@class='fa fa-heart-o btn-link']]]></LTWishlst>
+	<BTNPlayVideo><![CDATA[//span[@id='playiconvideo']]]></BTNPlayVideo>
+	<LTsignIn><![CDATA[//a[text()='Sign In']]]></LTsignIn>
+	<TabCourses><![CDATA[//a[contains(text(),'Courses ')]]]></TabCourses>
+	<TBSearch><![CDATA[//input[@id='search-inp']]]></TBSearch>
+	<ImgSearch><![CDATA[//i[@id='search-button-top']]]></ImgSearch>
+	<SearchedData><![CDATA[//ul[@class='typeahead-list']/li]]></SearchedData>
+	<CoursePinkMessage><![CDATA[//div[@id='pink_banner_load']/h6/span[2]/b]]></CoursePinkMessage>
+	<ImgBigDataHadoop><![CDATA[//img[contains(@alt,'Big Data and Hadoop') and contains(@class,'img-circle img-responsive img')]]]></ImgBigDataHadoop>
+	<AddtionalDiscountBanner><![CDATA[//strong[contains(text(),'Get additional 10% referral discount on your first course! Enroll NOW! ')]]]></AddtionalDiscountBanner>
+	<OnlineClassroom><![CDATA[//div[@id='web_view']/div[3]/article/span]]></OnlineClassroom>
+	<ISTGMT><![CDATA[//div[@id='web_view']/div[3]/article/span[2]/span]]></ISTGMT>
+	<OnlineSelfLearning><![CDATA[.//*[@id='web_view']/div[3]/article/span[1]]]></OnlineSelfLearning>
+	<INRCurrency><![CDATA[.//*[@id='web_view']/div[3]/article/span[2]/span]]></INRCurrency>
+	<PriceValue><![CDATA[.//*[@id='web_view']/div[3]/div/article/div/div/span/b]]></PriceValue>
+	<EnrollNow><![CDATA[.//*[@id='web_view']/div[3]/div/article/div/div[3]/a/span]]></EnrollNow>
+	<OnlineSelfCourseDesc><![CDATA[//div[@id='web_view']/div[3]/article/span[2]/span]]></OnlineSelfCourseDesc>
+	<ReferralDiscountMessage><![CDATA[//span[contains(text(),'Test + Additional 10% Referral Discount')]]]></ReferralDiscountMessage>
+
+	<QueryBox>
+		<HeaderQueryBox><![CDATA[//div[@class='container clearfix']/div/span/i]]></HeaderQueryBox>
+		<TBQueryName><![CDATA[//input[@id='inquiry_name-modal']]]></TBQueryName>
+		<TBQueryEmail><![CDATA[//input[@id='inquiry_email-modal']]]></TBQueryEmail>
+		<TBQueryPhNumber><![CDATA[//input[@id='inquiry_mobile-modal']]]></TBQueryPhNumber>
+		<TBInquiry><![CDATA[//textarea[@id='inquiry_query-modal']]]></TBInquiry>
+		<BTNSubmit><![CDATA[//button[@id='drop-query-new-modal']]]></BTNSubmit>
+		<MsgSubmitInquiry><![CDATA[//p[contains(text(),'Thanks for inquiring with us.')]]]></MsgSubmitInquiry>
+	</QueryBox>
+
+	<Currency>
+		<LTCurrency><![CDATA[//div[@id='web_view']/div/article/span[2]/a]]></LTCurrency>
+		<CurrencyList><![CDATA[//ul[@id='currency-select-item']/li]]></CurrencyList>
+		<BTNApply><![CDATA[//button[text()='Apply']]]></BTNApply>
+		<CurrencyPopUp><![CDATA[//div[@id='country-modal-currency']]]></CurrencyPopUp>
+	</Currency>
+
+	<ProfileDropdown>
+		<UserName><![CDATA[(//span[@class='webinar-profile-name'])[1]]]></UserName>
+		<LTChangePassword><![CDATA[//a[contains(text(),'Change Password')]]]></LTChangePassword>
+		<LTLogout><![CDATA[//a[contains(text(),'Log Out')]]]></LTLogout>
+	</ProfileDropdown>
+</Locators>

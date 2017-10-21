@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite thread-count="5" verbose="1" name="VerifySignUpFromAddToWishlist"
+	annotations="JDK">
+	<test name="VerifySignUpFromAddToWishlist" junit="false"
+		preserve-order="true">
+		<classes>
+			<class name="com.edureka.poc.VerifySignUpFromAddToWishlist" />
+		</classes>
+	</test>
+</suite>

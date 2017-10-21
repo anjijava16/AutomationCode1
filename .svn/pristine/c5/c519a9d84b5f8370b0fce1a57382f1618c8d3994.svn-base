@@ -1,0 +1,179 @@
+package com.edureka.paymentProcess;
+
+import org.testng.annotations.Test;
+
+import com.edureka.pages.AllCoursesPage;
+import com.edureka.pages.DashboardPage;
+import com.edureka.pages.SelectedCoursePage;
+import com.edureka.pages.SignInModalPage;
+import com.edureka.pages.UserHomePage;
+import com.edureka.util.DriverTestCase;
+
+public class ValidateBatchesDetailsSelfPacedCourses extends DriverTestCase{
+	private DashboardPage dashboardPage;
+	private UserHomePage userHomePage;
+	private SelectedCoursePage selectedCoursePage;
+	private SignInModalPage signInModalPage;
+	private AllCoursesPage allCoursesPage;
+	@Test
+	public void test_010ValidateBatchesDetailsSelfPacedCourses() throws Exception {
+
+		try {
+
+			// Navigate to app url
+			addLog("Navigate to the Edureka application url");
+			dashboardPage = applicationSetup();
+
+			// Verify Edureka Dashboard Page
+			addLog("Verify Edureka Dashboard Page");
+			dashboardPage=  dashboardPage.verifyDashboard();
+
+			// Click on Signin Navigation Header
+			addLog("Click on SignIn Navigation header");
+			signInModalPage = dashboardPage.clickSignInHeader();
+
+			// Verify LogIn Is Default
+			addLog("Verify LogIn Is Default");
+			signInModalPage = signInModalPage.verifyLoginIsDefault();
+
+			// click on Sign up link
+			addLog("click on Sign up link");
+			signInModalPage=signInModalPage.clickSignUp();
+
+			String edurekaDomain = propertyReader.readApplicationFile("EdurekaDomain");
+			addLog("Sign up user");
+			userHomePage= signInModalPage.signUp(UserHomePage.class, edurekaDomain);
+
+			// Verify User Home Page
+			addLog("Verify User Home Page");
+			userHomePage=userHomePage.verifyUserPage();
+
+			String allCourse = propertyReader.readTestData("AllCourse");
+			addLog("Click on Course Tab");
+			userHomePage = userHomePage.selectCourseOption(UserHomePage.class, allCourse);
+
+			//Select training type
+			String trainingType = propertyReader.readTestData("Training_Type_SelfPaced");
+			allCoursesPage=userHomePage.selectTrainingType(trainingType);
+			Thread.sleep(4000);
+			// Select Course
+			String courseName = propertyReader.readTestData("Course_JenkinsIntegration");
+			addLog("Select Course" +courseName);
+			selectedCoursePage=allCoursesPage.selectCourseFromGridView(courseName);
+
+			// Verify Selected course should be open.
+			addLog("Verify Selected course should be open");
+			selectedCoursePage=selectedCoursePage.verifySelectedPopularCoursePage(courseName);
+
+			//Verify the online class room and all details at Self paced course
+			addLog("Verify Online Self learning ,INR text,Price Value,enroll button and description");
+			String courseId=propertyReader.readTestData("Course_JenkinsIntegration_Id");
+			String onlineSelfCourseDec = propertyReader.readTestData("OnlineSelfCourseDesc");
+
+			//Select Coutry as India
+			String country=propertyReader.readTestData("Country_India");
+			String currency=propertyReader.readTestData("INRCurrencySign");
+			selectedCoursePage=selectedCoursePage.changeCountryOnClpPopup(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			//Select Coutry as US(CDT)
+			country=propertyReader.readTestData("CountryUSCDT");
+			currency= propertyReader.readTestData("USDCurrency");
+			selectedCoursePage=selectedCoursePage.changeCountryOnClpPopup(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as US(EDT) 
+			country=propertyReader.readTestData("ConutryName_USMDT");
+			currency= propertyReader.readTestData("USDCurrency");
+			selectedCoursePage=selectedCoursePage.changeCountryOnClpPopup(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as US(PDT) 
+			country=propertyReader.readTestData("ConutryName_USPDT");
+			currency= propertyReader.readTestData("USDCurrency");
+			selectedCoursePage=selectedCoursePage.changeCountryOnClpPopup(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as United Kingdom
+			country=propertyReader.readTestData("ContryName_UK");
+			currency= propertyReader.readTestData("UKCurrencySign");
+			selectedCoursePage=selectedCoursePage.changeCountryOnClpPopup(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as Singapore
+			country=propertyReader.readTestData("ContryName_Singapore");
+			currency= propertyReader.readTestData("SingaporeCurrencySign");
+			selectedCoursePage=selectedCoursePage.changeCountryOnClpPopup(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as Canada
+			country=propertyReader.readTestData("ContryName_Canada");
+			currency= propertyReader.readTestData("CanadaCurrencySign");
+			selectedCoursePage=selectedCoursePage.changeCountryOnClpPopup(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as Australia
+			country=propertyReader.readTestData("ContryName_AUS");
+			currency= propertyReader.readTestData("AustralianCurrencySign");
+			selectedCoursePage=selectedCoursePage.changeCountryOnClpPopup(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+
+			//Select Coutry as India
+			country=propertyReader.readTestData("Country_India");
+			currency=propertyReader.readTestData("INRCurrencySign");
+			selectedCoursePage=selectedCoursePage.changeCountryOnInnerNavigation(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			//Select Coutry as US(CDT)
+			country=propertyReader.readTestData("CountryUSCDT");
+			currency= propertyReader.readTestData("USDCurrency");
+			selectedCoursePage=selectedCoursePage.changeCountryOnInnerNavigation(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as US(EDT) 
+			country=propertyReader.readTestData("ConutryName_USMDT");
+			currency= propertyReader.readTestData("USDCurrency");
+			selectedCoursePage=selectedCoursePage.changeCountryOnInnerNavigation(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as US(PDT) 
+			country=propertyReader.readTestData("ConutryName_USPDT");
+			currency= propertyReader.readTestData("USDCurrency");
+			selectedCoursePage=selectedCoursePage.changeCountryOnInnerNavigation(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as United Kingdom
+			country=propertyReader.readTestData("ContryName_UK");
+			currency= propertyReader.readTestData("UKCurrencySign");
+			selectedCoursePage=selectedCoursePage.changeCountryOnInnerNavigation(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as Singapore
+			country=propertyReader.readTestData("ContryName_Singapore");
+			currency= propertyReader.readTestData("SingaporeCurrencySign");
+			selectedCoursePage=selectedCoursePage.changeCountryOnInnerNavigation(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as Canada
+			country=propertyReader.readTestData("ContryName_Canada");
+			currency= propertyReader.readTestData("CanadaCurrencySign");
+			selectedCoursePage=selectedCoursePage.changeCountryOnInnerNavigation(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+			// Change conutry as Australia
+			country=propertyReader.readTestData("ContryName_AUS");
+			currency= propertyReader.readTestData("AustralianCurrencySign");
+			selectedCoursePage=selectedCoursePage.changeCountryOnInnerNavigation(country);
+			selectedCoursePage=selectedCoursePage.selfPacedTrainingElementsAndCoursePrice(onlineSelfCourseDec,currency,courseId);
+
+		}
+		catch (Error e) {
+			captureScreenshot("test_010ValidateBatchesDetailsSelfPacedCourses");
+			throw e;
+		} catch (Exception e) {
+			captureScreenshot("test_010ValidateBatchesDetailsSelfPacedCourses");
+			throw e;
+		}
+	}
+}

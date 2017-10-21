@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [SingupFromWishListInListView]">
+  <test name="SingupFromWishListInListView(failed)">
+    <classes>
+      <class name="com.edureka.leadProcess.SingupFromWishListInListView">
+        <methods>
+          <include name="test_015SignInFromAddToWishListInListViewOnAllCoursesPage"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="test_006SingupFromWishListInListView"/>
+        </methods>
+      </class> <!-- com.edureka.leadProcess.SingupFromWishListInListView -->
+    </classes>
+  </test> <!-- SingupFromWishListInListView(failed) -->
+</suite> <!-- Failed suite [SingupFromWishListInListView] -->
